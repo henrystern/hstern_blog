@@ -1,12 +1,12 @@
 /* css styles */
 .nav-link{
   color: var(--bs-secondary);
-  opacity: .85 !important;
+  opacity: .85;
 }
 
 a {
   color: var(--bs-secondary);
-  opacity: .85 !important;
+  opacity: .85;
 }
 
 .quarto-category a {
@@ -27,7 +27,6 @@ a {
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   color: var(--bs-primary) !important;
-  opacity: .85 !important;
 }
 #quarto-header .navbar-toggler:focus {
   outline-color: #d48a6e;
@@ -97,6 +96,7 @@ a {
     transition: .5s ease-in-out, transform .5s ease-in-out;
     border-radius: .25rem !important;
     min-width: auto;
+    margin-right: 0;
   }
 
   #quarto-header .navbar-brand-container:hover {
@@ -126,12 +126,15 @@ a {
 .sidebar nav[role="doc-toc"] ul > li > a.active, .sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
   color: var(--bs-secondary) !important;
 	border-left: 1px solid var(--bs-secondary);
+  font-weight: 400;
 }
 .sidebar nav[role="doc-toc"] ul > li > a:hover, .sidebar nav[role="doc-toc"] ul > li > ul > li > a:hover {
   color: black !important;
 	border-left: 1px solid var(--bs-gray-700);
+  font-weight: 400;
 }
 .sidebar .quarto-alternate-notebooks ul li a, .sidebar .quarto-alternate-formats ul li a, .sidebar nav[role="doc-toc"] > ul li a {
   color: var(--bs-gray-700) !important;
 	border-left: 1px solid #d58ef9;
+  font-weight: 400;
 }

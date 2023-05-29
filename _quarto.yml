@@ -15,6 +15,8 @@ website:
     foreground: "primary"
 format:
   html:
+    include-before-body:
+      - ./highlight_active.html
     theme: 
       - cosmo
       - custom.scss

@@ -8,11 +8,3 @@ listing:
   filter-ui: false
 page-layout: full
 ---
-```{ojs}
-for (const a of document.querySelectorAll("a")) {
-  if (a.textContent.includes("blog")) {
-    a.classList.add("active")
-  }
-}
-```
-
