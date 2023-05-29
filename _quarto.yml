@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "HStern"
+  navbar:
+    left:
+      - text: "Resume"
+        href: "https://hstern.ca/resume/"
+      - text: "Tools"
+        href: "https://hstern.ca/tools/"
+      - text: "Blog"
+        href: "https://hstern.ca/blog/"
+    background: "secondary"
+    foreground: "primary"
+format:
+  html:
+    theme: 
+      - cosmo
+      - custom.scss
+    css: styles.css
+    toc: true
