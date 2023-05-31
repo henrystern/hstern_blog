@@ -3,7 +3,9 @@ project:
 
 website:
   title: "HStern"
+  favicon: "/static/assets/favicon.ico"
   navbar:
+    logo-href: "https://hstern.ca"
     left:
       - text: "Resume"
         href: "https://hstern.ca/resume/"
@@ -13,7 +15,16 @@ website:
         href: "https://hstern.ca/blog/"
     background: "secondary"
     foreground: "primary"
-  favicon: "/static/assets/favicon.ico"
+
+comments:
+  giscus:
+    repo: henrystern/hstern_blog
+    repo-id: R_kgDOJphxWw
+    category: Announcements
+    category-id: DIC_kwDOJphxW84CW2Ug
+    mapping: pathname
+    reactions-enabled: false
+
 format:
   html:
     include-in-header:

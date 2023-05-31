@@ -3,7 +3,6 @@ title: "The FHSA is Even Better Than you Think"
 author: "Henry Stern"
 date: 2023-04-20
 categories: [finance, tax, allocation]
-foreground: "primary"
 ---
 
 The FHSA does not just combine the benefits of the TFSA and RRSP. It has unique advantages that make it much better value than any other registered account.
