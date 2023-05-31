@@ -1,0 +1,16 @@
+/*-- scss:defaults --*/
+$primary: #eeccff !default;
+$secondary: #003601 !default;
+
+$link-color: $secondary !default;
+
+$toc-color: $secondary !default;
+$toc-font-size: 300 !default;
+$toc-active-border: $secondary !default;
+$toc-inactive-border: $gray-500 !default;
+
+$navbar-padding-y: .36rem !default;
+
+$font-family-sans-serif: Muli, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial !default;
+$font-family-monospace: Muli, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial !default;
+/*-- scss:rules --*/

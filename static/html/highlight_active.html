@@ -1,7 +1,5 @@
 <script>
-  if (document.title.includes("HStern")) {
-    document.title = document.title.replace("HStern", "Henry Stern - Blog")
-  }
+  // highlight blog nav as active
   let nav_links = document.querySelectorAll(".nav-link");
   nav_links.forEach((link) => {
     if (link.innerText.includes("BLOG")) {
@@ -10,4 +8,10 @@
       link.children[0].classList.add("active")
     }
   })
+
+  // add animation for theme change
+  let content = document.querySelector("#quarto-content");
+  let nav_fixed = document.querySelector(".nav-fixed");
+  content.classList.add("color-fade");
+  nav_fixed.classList.add("bg-color-fade");
 </script>

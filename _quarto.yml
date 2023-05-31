@@ -13,12 +13,19 @@ website:
         href: "https://hstern.ca/blog/"
     background: "secondary"
     foreground: "primary"
+  favicon: "/static/assets/favicon.ico"
 format:
   html:
+    include-in-header:
+      - ./static/html/preload.html
     include-before-body:
-      - ./highlight_active.html
+      - ./static/html/highlight_active.html
     theme: 
-      - cosmo
-      - custom.scss
-    css: styles.css
+      light:
+        - flatly
+        - ./static/css/custom-light.scss
+      dark:
+        - darkly
+        - ./static/css/custom-dark.scss
+    css: ./static/css/styles.css
     toc: true
