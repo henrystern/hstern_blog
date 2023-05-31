@@ -1,4 +1,5 @@
 ---
+pagetitle: "Henry Stern - Blog"
 listing:
   contents: posts/**/*.qmd
   fields: [image, date, title, reading-time, description]

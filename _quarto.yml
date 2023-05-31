@@ -15,15 +15,17 @@ website:
         href: "https://hstern.ca/blog/"
     background: "secondary"
     foreground: "primary"
-
-comments:
-  giscus:
-    repo: henrystern/hstern_blog
-    repo-id: R_kgDOJphxWw
-    category: Announcements
-    category-id: DIC_kwDOJphxW84CW2Ug
-    mapping: pathname
-    reactions-enabled: false
+  comments:
+    giscus:
+      repo: henrystern/hstern_blog
+      repo-id: R_kgDOJphxWw
+      category: Announcements
+      category-id: DIC_kwDOJphxW84CW2Ug
+      mapping: pathname
+      reactions-enabled: false
+      theme:
+        light: light_high_contrast
+        dark: dark_dimmed
 
 format:
   html:
@@ -42,3 +44,4 @@ format:
         - ./static/css/custom-dark.scss
     css: ./static/css/styles.css
     toc: true
+    toc-title: Contents
