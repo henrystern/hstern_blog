@@ -1,0 +1,17 @@
+<script>
+  // smooth scrolling for anchor links
+  // https://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        let href = this.getAttribute('href');
+        let href_id = href.slice(href.lastIndexOf("/") + 1);
+        let element = document.querySelector(href_id)
+        element.style.cssText += 'scroll-margin: 2rem;'
+        element.scrollIntoView({
+          block: 'start',
+          behavior: 'smooth',
+        });
+    });
+  });
+</script>

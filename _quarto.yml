@@ -31,6 +31,8 @@ format:
       - ./static/html/header.html
     include-before-body:
       - ./static/html/before-body.html
+    include-after-body:
+      - ./static/html/after-body.html
     theme: 
       light:
         - flatly
