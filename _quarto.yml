@@ -28,9 +28,9 @@ comments:
 format:
   html:
     include-in-header:
-      - ./static/html/preload.html
+      - ./static/html/header.html
     include-before-body:
-      - ./static/html/highlight_active.html
+      - ./static/html/before-body.html
     theme: 
       light:
         - flatly
