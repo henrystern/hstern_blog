@@ -1,13 +1,5 @@
 ---
-pagetitle: "Henry Stern - Blog"
-listing:
-  contents: posts/**/*.qmd
-  fields: [image, date, title, reading-time, description]
-  sort: "date desc"
-  type: grid
-  categories: numbered
-  sort-ui: false
-  filter-ui: false
-page-layout: full
+# Nginx redirects to / to /blog/ so this page will never be served
+title: ""
 comments: false
 ---

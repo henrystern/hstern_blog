@@ -1,18 +1,21 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+
 website:
   title: "HStern"
   favicon: "/static/assets/favicon.ico"
   navbar:
     logo-href: "https://hstern.ca"
     left:
-      - text: "Resume"
-        href: "https://hstern.ca/resume/"
-      - text: "Tools"
-        href: "https://hstern.ca/tools/"
       - text: "Blog"
-        href: "https://hstern.ca/blog/"
+        href: "/blog/"
+      - text: "Tools"
+        href: "/tools/"
+      - text: "Links"
+        href: "/links/"
     background: "secondary"
     foreground: "primary"
   comments:
@@ -29,6 +32,10 @@ website:
 
 format:
   html:
+    pagetitle: "{{< meta title >}} | Henry Stern"
+    title-block-banner: true
+    toc: true
+    toc-title: Contents
     include-in-header:
       - ./static/html/header.html
     include-before-body:
@@ -43,5 +50,3 @@ format:
         - darkly
         - ./static/css/custom-dark.scss
     css: ./static/css/styles.css
-    toc: true
-    toc-title: Contents

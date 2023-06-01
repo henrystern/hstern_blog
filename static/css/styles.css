@@ -1,16 +1,12 @@
 /* css styles */
-.nav-link{
-  color: var(--bs-secondary);
-  opacity: .85;
-}
-
-.quarto-category a {
-  color: var(--bs-primary) !important;
-  opacity: 1 !important;
-}
 
 .navbar-dark .navbar-brand {
   color: var(--bs-white);
+  opacity: 1 !important;
+}
+
+.quarto-title h1, .quarto-category, .quarto-category a {
+  color: var(--bs-primary) !important;
   opacity: 1 !important;
 }
 
@@ -25,44 +21,11 @@
 }
 
 @media (min-width: 992px) {
-  #quarto-header {
-    padding-left: 0;
-    padding-right: 0;
-    margin-right: 0;
-    margin-left: 0;
-    text-align: right;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-  }
   #quarto-header .navbar-brand {
-    display: flex;
-    margin: auto auto 0;
     margin-right: 5rem;
     margin-left: 4.5rem;
     padding: 0rem;
     font-size: 2rem;
-    letter-spacing: 0.05rem;
-  }
-  #quarto-header .navbar-collapse {
-    display: flex;
-    align-items: left;
-    flex-grow: 0;
-    width: 100%;
-    margin-bottom: auto;
-    padding-top: .36rem;
-  }
-  #quarto-header .navbar-collapse .navbar-nav {
-    flex-direction: row;
-    width: 100%;
-  }
-  #quarto-header .navbar-collapse .navbar-nav .nav-item {
-    display: block;
-  }
-  #quarto-header .navbar-collapse .navbar-nav .nav-item .nav-link {
-    display: block;
   }
   #quarto-header ul li a {
     position: relative;
@@ -87,13 +50,10 @@
     background-color: var(--bs-secondary);
     transition: .5s ease-in-out, transform .5s ease-in-out;
     border-radius: .25rem !important;
-    min-width: auto;
-    margin-right: 0;
   }
 
   #quarto-header .navbar-brand-container:hover {
     background-color: var(--bs-primary);
-    opacity: .85 !important;
   }
 
   #quarto-header .navbar-brand {
@@ -109,8 +69,8 @@
   }
 
   #quarto-header .active {
-    color:            #F8F8F8 !important;
-    background-color: #4f81bd;
+    color:            var(--bs-white) !important;
+    background-color: var(--bs-blue);
     opacity: 1 !important;
   }
 

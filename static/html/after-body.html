@@ -7,7 +7,7 @@
         let href = this.getAttribute('href');
         let href_id = href.slice(href.lastIndexOf("/") + 1);
         let element = document.querySelector(href_id)
-        element.style.cssText += 'scroll-margin: 2rem;'
+        element.style.cssText += 'scroll-margin: 4rem;'
         element.scrollIntoView({
           block: 'start',
           behavior: 'smooth',

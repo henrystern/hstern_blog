@@ -1,8 +1,9 @@
 <script>
-  // highlight blog nav as active
+  // highlight active nav-link
   let nav_links = document.querySelectorAll(".nav-link");
+  let window_path = window.location.pathname;
   nav_links.forEach((link) => {
-    if (link.innerText.includes("BLOG")) {
+    if (window_path.includes(link.pathname)) {
       link.classList.add("active")
       link.classList.add("opacity-100")
       link.children[0].classList.add("active")
