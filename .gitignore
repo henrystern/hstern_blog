@@ -6,3 +6,4 @@
 /.quarto/
 _freeze
 _site
+site_libs/quarto-ojs

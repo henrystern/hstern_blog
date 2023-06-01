@@ -29,6 +29,77 @@ Even if you fail to make a qualifying purchase within the 15 year time limit the
 
 So what is the extent of this benefit? On a \$41,000 deposit, at 30% income tax the immediate savings amount to \$12,000. Those savings then grow as part of your investment without being subject to capital gains. At 5% annual growth for 10 years the FHSA will save \$22,000 in tax. A TFSA would have saved only \$2,600. ([see calculator](https://hstern.ca/tools/account-comparison))
 
+```{ojs}
+//| panel: sidebar
+//| code-fold: true
+// Inputs and Controls
+
+viewof pre_tax_savings = Inputs.number(
+  [0, 200000000],
+  {value: 40000, step: 500, label: "Pre-tax Savings:"}
+);
+
+viewof years = Inputs.number(
+  [0, 200],
+  {value: 10, step: 1, label: "Years Invested:"}
+);
+
+viewof annual_return = Inputs.range(
+  [0, 2],
+  {value: .07, step: .005, label: "Annual Return:"}
+);
+
+data = {
+  let temp = [];
+  for (var i = 0; i <= years; i++) {
+    temp.push({year: i, account: "taxable", value: (pre_tax_savings * (1 + annual_return) ** i) * .85})
+    temp.push({year: i, account: "tfsa", value: pre_tax_savings * (1 + annual_return) ** i})
+  }
+  return temp
+}
+```
+
+::: {.panel-tabset}
+
+## By Year
+```{ojs}
+//| code-fold: true
+
+Plot.plot({
+  y: {
+    grid: true,
+    label: "After-Tax Account Value",
+  },
+  x: {
+    grid: false,
+    label: "Year",
+  },
+  color: {legend: true},
+  marks: [
+    Plot.line(data, { x: "year", y: "value", stroke: "account" }),
+    Plot.text(data, Plot.selectLast({
+      x: "year",
+      y: "value",
+      z: "account",
+      text: (d) => d.value.toLocaleString("en-US", { style: "currency", currency: "USD" }),
+      //textAnchor: "start",
+      dy: -6,
+      dx: -6
+    }))
+  ],
+})
+```
+
+## Final
+placeholder
+
+## Data
+```{ojs}
+Inputs.table(data)
+```
+
+:::
+
 This is obviously a massive difference. For most investors the FHSA will provide a benefit unmatched by even the best case scenarios of any other registered account. 
 
 ## Exceptions
