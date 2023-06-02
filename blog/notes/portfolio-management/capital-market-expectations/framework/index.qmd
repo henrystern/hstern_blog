@@ -1,0 +1,158 @@
+---
+title: "Capital Market Expectations, Part 1: Framework and Macro Considerations"
+---
+
+## The Framework
+
+Capital market expectations are expectations concerning the risk and return prospects of asset classes.
+
+Asset allocation is the primary determinant of long-run portfolio performance.
+
+It is not possible to forecast results with precision. The goal is to ensure consistency across asset classes (cross-sectional consistency) and over various time horizons (intertemporal consistency).
+
+* The CME Framework:  
+  1. Specify what expectations are needed and the time horizon
+  1. Research the historical record
+  1. Specify the models and methods that will be used and what information is needed
+  1. Find the best sources of the required information
+  1. Interpret the current investment environment
+  1. Provide the expectations and conclusions including underlying reasoning
+  1. Monitor actual outcomes and compare with expectations $\rightarrow$ Ensure consistency
+
+You need at least 30 observations to meaningfully test a hypothesis.
+
+## Challenges in Forecasting
+
+### Data Limitations
+
+* Time lag
+* Revisions to data
+* Changing definitions and calculation methods
+
+Time zone differences can make some data appear synchronous by label even though it is not. This can distort correlations. This is exacerbated by high-frequency data.
+
+
+### Data Biases
+
+* Transcription errors
+* Survivorship bias
+* Appraisal/Smoothed data
+
+Analysts sometimes assume normality where it is not appropriate. Asset return distributions have skew and fat tails. Sometimes the increased complexity of analyzing the non-normality is not worth the improved accuracy.
+
+### Limitations of Historical Extrapolation
+
+Historical trends can be useful but they should not be uncritically extrapolated. Historical data may not be representative of the future, or may result in poor estimates.
+
+Data may not be representative due to changes in regime resulting in nonstationarity.
+
+The analyst should use the longest data history for which there is a reasonable assurance of stationarity.
+
+Higher frequency data does not always improve precision of estimates.
+
+### Analyst Biases
+
+Ex-Post Risk
+: Analysts are vulnerable to overestimate ex ante returns and underestimate ex ante risk if recent negative possibilities were not borne out. Inversely recent negative events can have the opposite effect.
+
+Data-Mining Bias
+: Excessive research generating apparently winning strategies that do not reflect an underlying economic reality.
+
+Time-Period Bias
+: Obtaining results that are only relevant to the time period of the data used in the analysis
+
+Correlation $\neq$ Causation
+:  Assuming causation without investigating the underlying linkages
+
+### Behavioural Biases
+Several behavioural biases have been identified as affecting analysts' ability to accurately forecast returns. 
+
+These include:
+
+Anchoring bias 
+: The tendency to give disproportionate weight to the first information received or first number envisioned, which is then adjusted. Such adjustment is often insufficient, and approximations are consequently biased. Analysts can try to avoid anchoring bias by consciously attempting to avoid premature conclusions.
+
+Status quo bias 
+: The tendency for forecasts to perpetuate recent observations—that is, to avoid making changes and preserve the status quo, and/or to accept a default option. This bias may reflect greater pain from errors of commission (making a change) than from errors of omission (doing nothing). Status quo bias can be mitigated by disciplined effort to avoid “anchoring” on the status quo.
+
+Confirmation bias 
+: The tendency to seek and overweight evidence or information that confirms one’s existing or preferred beliefs and to discount evidence that contradicts those beliefs. This bias can be mitigated by examining all evidence with equal rigor and/or debating with a knowledgeable person capable of arguing against one’s own views.
+
+Overconfidence bias 
+: unwarranted confidence in one’s own intuitive reasoning, judgment, knowledge, and/or ability. This bias may lead an analyst to overestimate the accuracy of her forecasts and/or fail to consider a sufficiently broad range of possible outcomes or scenarios. Analysts may not only fail to fully account for uncertainty about which they are aware (sometimes described as “known unknowns”) but they also are very likely to ignore the possibility of uncertainties about which they are not even aware (sometimes described as “unknown unknowns”).
+
+Prudence bias 
+: The tendency to temper forecasts so that they do not appear extreme or the tendency to be overly cautious in forecasting. In decision-making contexts, one may be too cautious when making decisions that could damage one’s career or reputation. This bias can be mitigated by conscious effort to identify plausible scenarios that would give rise to more extreme outcomes and to give greater weight to such scenarios in the forecast.
+
+Availability bias 
+: The tendency to be overly influenced by events that have left a strong impression and/or for which it is easy to recall an example. Recent events may likewise be overemphasized. The effect of this bias can be mitigated by attempting to base conclusions on objective evidence and analytical procedures.
+
+See [behavioural biases][/blog/notes/portfolio-management/behavioural-finance] for more info.
+
+### Other sources of uncertainty
+
+* Model uncertainty: whether the model is conceptually/structurally correct
+* Parameter uncertainty: the error of the estimate
+* Input uncertainty: whether the inputs are correct
+
+## The Role of Analysis
+
+The most important thing to remember is that all investment outcomes are inherently linked to the economy.
+
+There are several unforeseeable shocks which are known to have sudden and significant affects on asset prices.
+
+* These include:
+  * Policy changes
+  * New products and technologies
+  * Geopolitics
+  * Natural disasters
+  * Natural resources/critical inputs (change in supply)
+  * Financial crises
+
+There are three types of crises:  
+Type 1: A decline in output but the trend rate of growth is unchanged
+Type 2: No decline in output but a decline in growth
+Type 3: Both a decline in output and a decline in growth
+
+## Growth Analysis
+
+Growth can be decomposed into its components i.e. labor size, labor participation, available capital, and total factor productivity.
+
+Some components are easier to predict than others. The labor force is relatively predictable but TFP can change rapidly.
+
+Mature economies generally have stable growth while developing economies can have significant variation due to rapid structural changes.
+
+The average level of low risk government bond yields is linked to the trend rate of growth.
+
+The aggregate value of equity can be expressed in terms of the nominal GDP, profit margin of the economy, and the P/E ratio as: $V_e = GDP \times \frac{E}{GDP} \times \frac{P}{E}$
+
+As both P/E and E/GDP are bounded, only GDP can affect the long run growth rate of value.
+
+Just because a country has a higher growth rate does not mean it will have higher equity returns. The higher growth rate may already be factored into the market price.
+
+## Approaches to Forecasting
+
+The trend growth rate is a long-term average but there are short to medium term fluctuations around the trend. That is the business cycle. It is a key focus of macroeconomic analysis.
+
+### Econometric Models
+
+Structural models
+: specify relationships among variables based on economic theory.
+
+Reduced form models
+: less theoretical models that aim to provide a more compact representation than structural models.
+
+Data models
+: Non theoretical models that are entirely data driven
+
+### Indicators
+
+Indicators are easier to access than econometric models. Leading indicators are subject to revision and so can exhibit look-ahead bias.
+
+### Checklists
+
+Checklists are a heuristic approach that an analyst designs for their own needs. They can vary widely and are more subjective than other approaches.
+
+## Business Cycle Analysis
+
+

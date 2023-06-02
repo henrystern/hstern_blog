@@ -1,0 +1,61 @@
+---
+title: "Behavioral Finance and Investment Processes"
+---
+
+Important to classify investors into a behavioural investor type (BIT).
+
+Different investor types are prone to different biases.
+
+Extreme types are prone to emotional biases whereas moderates are prone to cognitive biases.
+
+Clients may not always behave according to their type. Individuals may exhibit characteristics of multiple investor types. They are also likely to change type as they age.
+
+Behavioural factors should be included in an investment policy statement (IPS).
+
+* Some features of successful wealth management relationships include:
+  -   The advisor understands the clients goals.
+  -   The advisor maintains a systematic and consistent approach to advising the client
+  -   The advisor invests as the client expects
+  -   The relationship benefits both the client and advisor
+
+All of these features are facilitated by the manager's understanding of the client's psychology.
+
+Traditional risk tolerance questionnaires are vulnerable to framing bias.
+
+They work better for institutional investors than individuals as individuals are less consistent in thinking about risk.
+
+## Effect on Portfolio Construction
+
+Defined Contribution pension plans show inertia: slow changing asset allocation over time.
+
+Individuals often stick to default options in DC plans affecting their contribution rates and investment funds.
+
+Some companies have combated this inertia by implementing automated allocation adjustments intended to reduce risk as the employee ages.)
+
+::: callout-note
+## Target Date Funds
+
+Portfolio that automatically rebalances to fixed income as the beneficiary nears retirement age. They overcome investor inertia but may automate to an allocation that is not appropriate for the individual investor's personality or circumstances.
+:::
+
+Other biases are also present. Investors engage in naïve diversification where instead of considering the underlying assets of the available investments, they instead divide their portfolio evenly between the options. In a study where investors were given the choice to invest between two funds, those given an all equity and all bond fund had lower equity exposure than those who chose between an all equity fund and a 50-50 fund.
+
+One third of employee 401(k) contributions are in the employers stock - often the discretionary portion.
+
+Individuals do not construct a mean-variance portfolio that considers correlation and risk as a whole instead they construct a pyramid with tranches dedicated to different goals. The bottom may be preservation of wealth in low-risk assets while the top is the high-risk hope for great returns. Little consideration is given to the correlations between these groups or even the overall expected return.
+
+## Overconfidence in Forecasting
+
+90% confidence intervals have been shown to be wrong 40% of the time due to overconfidence.
+
+Additional data gathering can fail to provide any valuable information while simultaneously making the analyst feel more confident.
+
+Hindsight bias "I knew it all along". Ego protection mechanism.
+
+Overconfidence biases can be combated by prompt evaluation of accuracy, incentives for good forecasting, and attribution/responsibility.
+
+Assigning clear probabilities to events and considering base probabilities can help overcome many emotional biases.
+
+Group decision making can mitigate an individual bias or exasperate it.
+
+Momentum effects may be caused by investor anchoring and early recognition of gains. As intrinsic value rises the stock price is held back by the early sellers.
