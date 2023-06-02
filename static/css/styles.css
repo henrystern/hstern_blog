@@ -16,21 +16,25 @@
   text-transform: uppercase;
   color: var(--bs-primary) !important;
 }
+
 #quarto-header .navbar-toggler:focus {
   outline-color: #d48a6e;
 }
 
 @media (min-width: 992px) {
+  
   #quarto-header .navbar-brand {
     margin-right: 5rem;
     margin-left: 4.5rem;
     padding: 0rem;
     font-size: 2rem;
   }
+  
   #quarto-header ul li a {
     position: relative;
     transition: 0s;
   }
+  
   #quarto-header ul li a::after {
     position: absolute;
     content: "";
@@ -42,6 +46,7 @@
     transition: transform 0s;
     transform: scaleX(0);
   }
+
   #quarto-header ul li a:hover::after {
     transform: scaleX(1);
   }
@@ -68,27 +73,42 @@
     color: var(--bs-secondary) !important;
   }
 
-  #quarto-header .active {
+  #quarto-header .active, #quarto-sidebar .sidebar-item.active {
     color:            var(--bs-white) !important;
     background-color: var(--bs-blue);
     opacity: 1 !important;
   }
 
+  .sidebar.sidebar-navigation > * {
+    padding-top: 0em;
+  }
+
+  .sidebar-navigation .sidebar-section .sidebar-item, .sidebar-navigation .sidebar-item {
+    font-size: 1rem;
+  }
+
+  .sidebar-navigation a {
+    color: var(--bs-body-color);
+  }
+
 }
 
+/* @media (max-width: 991.98px) { */
+/* } */
+
 .color-fade {
-  -webkit-transition: color .5s;
-  -moz-transition:    color .5s;
-  -ms-transition:     color .5s;
-  -o-transition:      color .5s;
-  transition:         color .5s;
+  -webkit-transition: color .5s !important;
+  -moz-transition:    color .5s !important;
+  -ms-transition:     color .5s !important;
+  -o-transition:      color .5s !important;
+  transition:         color .5s !important;
 
 }
 
 .bg-color-fade {
-  -webkit-transition: background-color .5s;
-  -moz-transition:    background-color .5s;
-  -ms-transition:     background-color .5s;
-  -o-transition:      background-color .5s;
-  transition:         background-color .5s;
+  -webkit-transition: background-color .5s !important;
+  -moz-transition:    background-color .5s !important;
+  -ms-transition:     background-color .5s !important;
+  -o-transition:      background-color .5s !important;
+  transition:         background-color .5s !important;
 }

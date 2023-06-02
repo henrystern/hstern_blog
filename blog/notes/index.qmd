@@ -1,0 +1,18 @@
+---
+pagetitle: "Henry Stern - Notes"
+title: "Notes"
+description: "These are my notes for the August 2023 CFA Level III exam."
+author: ""
+date: ""
+listing:
+  contents: ./**/*.qmd
+  sort: "date desc"
+page-layout: full
+comments: false
+---
+
+::: {.callout-note .mb-5}
+These notes are entirely based upon the CFA textbook and follow the same structure in lieu of citation.
+:::
+
+

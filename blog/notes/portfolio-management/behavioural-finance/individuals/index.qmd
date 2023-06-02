@@ -1,0 +1,30 @@
+---
+title: "The Behavioural Biases of Individuals"
+sidebar: true
+---
+
+Behavioural finance can be categorized as macro or micro depending on whether the topic of study is the economy as a whole or the behaviour of individuals.
+
+Biases can be categorized as based on faulty reasoning (cognitive errors) or those based on feelings and emotions (emotional biases). Cognitive biases can be more easily moderated than emotional biases.
+
+::: callout-note
+## Cognitive Cost
+
+The effort involved in processing new information.
+:::
+
+To moderate a bias is to recognize and attempt to reduce it from one's decision making.
+
+## Cognitive Errors
+
+-   Belief Perseverance Biases: The tendency to cling to one's previously held beliefs. Related to cognitive dissonance.
+-   Conservatism
+-   Confirmation
+-   Representativeness
+-   Illusion of Control
+-   Hindsight
+-   Processing Errors: illogical or irrational processing of information.
+-   Anchoring and adjustment
+-   Mental accounting
+-   Framing
+-   Availability

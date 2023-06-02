@@ -1,7 +1,9 @@
 ---
 pagetitle: "Henry Stern - Blog"
 listing:
-  contents: posts/**/*.qmd
+  contents: 
+    - posts/**/*.qmd
+    - notes/index.qmd
   fields: [image, date, title, reading-time, description]
   sort: "date desc"
   type: grid

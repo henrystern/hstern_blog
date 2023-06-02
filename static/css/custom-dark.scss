@@ -15,4 +15,10 @@ $navbar-padding-y: .36rem !default;
 $font-size-root: 16px !default;
 $font-family-sans-serif: Muli, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial !default;
 $font-family-monospace: Muli, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial !default;
+
 /*-- scss:rules --*/
+
+.sidebar-navigation a:hover {
+  color: $link-color;
+  opacity: 1;
+}

@@ -18,6 +18,24 @@ website:
         href: "/links/"
     background: "secondary"
     foreground: "primary"
+  sidebar:
+    - id: cfa_3
+      title: "CFA Level III"
+      collapse-level: 3
+      search: true
+      style: floating
+      border: false
+      contents:
+        - section: "Portfolio Management"
+          href: blog/notes/portfolio-management
+          contents: blog/notes/portfolio-management/**/*.qmd
+    - id: resume #placeholder necessary for hybrid sidebar
+      title: ""
+      style: docked
+      alignment: center
+      background: primary
+      foreground: secondary
+      border: false
   comments:
     giscus:
       repo: henrystern/hstern_blog
@@ -35,7 +53,7 @@ format:
     pagetitle: "{{< meta title >}} | Henry Stern"
     title-block-banner: true
     toc: true
-    toc-title: Contents
+    toc-title: "\n"
     include-in-header:
       - ./static/html/header.html
     include-before-body:
@@ -50,3 +68,7 @@ format:
         - darkly
         - ./static/css/custom-dark.scss
     css: ./static/css/styles.css
+
+
+author: "Henry Stern"
+date: last-modified
