@@ -88,7 +88,11 @@
   }
 
   .sidebar-navigation a {
-    color: var(--bs-body-color);
+    color: var(--bs-gray-600);
+  }
+
+  .sidebar .quarto-other-links ul li a, .sidebar .quarto-alternate-notebooks ul li a, .sidebar .quarto-alternate-formats ul li a, .sidebar nav[role="doc-toc"] > ul li a {
+    color: var(--bs-gray-600);
   }
 
 }
@@ -96,6 +100,8 @@
 @media (max-width: 991.98px) {
   #quarto-sidebar .sidebar-menu-container {
     white-space: inherit;
+    max-width: 250px;
+    min-width: 250px;
   }
   
   .quarto-secondary-nav nav.quarto-page-breadcrumbs {
@@ -131,4 +137,12 @@
   -ms-transition:     background-color .5s !important;
   -o-transition:      background-color .5s !important;
   transition:         background-color .5s !important;
+}
+
+.transition {
+  -webkit-transition: all .5s !important;
+  -moz-transition:    all .5s !important;
+  -ms-transition:     all .5s !important;
+  -o-transition:      all .5s !important;
+  transition:         all .5s !important;
 }
