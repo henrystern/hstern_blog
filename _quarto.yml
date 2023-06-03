@@ -67,7 +67,3 @@ format:
         - darkly
         - ./static/css/custom-dark.scss
     css: ./static/css/styles.css
-
-
-# author: "Henry Stern"
-date: last-modified
