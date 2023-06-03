@@ -1,5 +1,6 @@
 ---
 title: "Capital Market Expectations, Part 1: Framework and Macro Considerations"
+order: 3
 ---
 
 ## The Framework

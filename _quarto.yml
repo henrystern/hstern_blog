@@ -22,12 +22,10 @@ website:
     - id: cfa_3
       title: "CFA Level III"
       collapse-level: 3
-      search: true
       style: floating
       border: false
       contents:
         - section: "Portfolio Management"
-          href: blog/notes/portfolio-management
           contents: blog/notes/portfolio-management/**/*.qmd
     - id: resume #placeholder necessary for hybrid sidebar
       title: ""
@@ -36,6 +34,7 @@ website:
       background: primary
       foreground: secondary
       border: false
+  page-navigation: true
   comments:
     giscus:
       repo: henrystern/hstern_blog

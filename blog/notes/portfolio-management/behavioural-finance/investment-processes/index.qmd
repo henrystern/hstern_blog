@@ -1,5 +1,6 @@
 ---
 title: "Behavioral Finance and Investment Processes"
+order: 2
 ---
 
 Important to classify investors into a behavioural investor type (BIT).

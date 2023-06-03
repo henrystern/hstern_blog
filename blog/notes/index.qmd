@@ -6,13 +6,19 @@ author: ""
 date: ""
 listing:
   - id: pm
+    type: table
     contents: ./portfolio-management/**/*.qmd
-    sort: false
-    fields: [date, title, description]
+    sort: order
+    sort-ui: false
+    filter-ui: false
+    fields: [title]
   - id: ethics
+    type: table
     contents: ./ethics/**/*.qmd
-    sort: false
-    fields: [date, title, description]
+    sort: order
+    sort-ui: false
+    filter-ui: false
+    fields: [title]
 page-layout: full
 comments: false
 ---

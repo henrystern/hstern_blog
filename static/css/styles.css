@@ -93,8 +93,28 @@
 
 }
 
-/* @media (max-width: 991.98px) { */
-/* } */
+@media (max-width: 991.98px) {
+  #quarto-sidebar .sidebar-menu-container {
+    white-space: inherit;
+  }
+  
+  .quarto-secondary-nav nav.quarto-page-breadcrumbs {
+    display: none !important;
+  }
+
+  .quarto-secondary-nav .quarto-btn-toggle {
+    color: var(--bs-primary);
+  }
+
+  nav.quarto-secondary-nav {
+    background-color: var(--bs-secondary);
+    border-bottom: 0px solid #dee2e6;
+  }
+
+  body.nav-sidebar .quarto-title-banner {
+    padding-bottom: 1rem;
+  }
+}
 
 .color-fade {
   -webkit-transition: color .5s !important;
