@@ -1,0 +1,125 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  #quarto-content {
+    font-family: Calibri, sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    padding: 0 !important;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  button {
+    padding-top: 0 !important;
+    color: black;
+    background: var(--bs-gray-300);
+  }
+  
+  button:hover {
+    opacity: .8;
+  }
+
+  .remaining {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 2rem;
+    padding-top: .4rem;
+    background-color: grey;
+    text-align: center;
+  }
+
+  .question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 120%;
+
+    width: 40rem;
+    max-width: 90vw;
+    height: 4rem;
+    max-height: 20vw;
+    min-height: 2rem;
+
+    background-color: lightblue;
+    color: black;
+
+    border-style: solid;
+    border-width: .4rem;
+    border-radius: 5rem;
+    border-color: var(--bs-body-color);
+
+    margin-bottom: .5rem;
+    padding-top: 0 !important;
+
+  }
+
+  .choice {
+    width: 35rem;
+    max-width: 85vw;
+    margin-top: .25rem;
+
+    min-height: 2rem;
+
+    border-style: solid;
+    border-width: .2rem;
+    border-radius: 5px;
+    border-color: var(--bs-body-color);
+  }
+
+  .correct {
+    background-color: green;
+    border-color: green;
+    color: white;
+  }
+
+  .incorrect {
+    background-color: red;
+    border-color: red;
+    color: white;
+  }
+
+  .settings {
+    margin-top: .5rem;
+    background-color: grey;
+  }
+
+  input {
+    color: var(--bs-body-color) !important;
+  }
+
+  .next-question {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+
+  .num-choices {
+    width: 6ch;
+  }
+
+  .num-chances {
+    width: 6ch;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    background-color: grey;
+
+    display: flex;
+    justify-content: space-around;
+
+    text-align: center;
+  }

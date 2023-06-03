@@ -1,0 +1,39 @@
+---
+pagetitle: "GRE Vocab Practice"
+author: "Henry Stern"
+date: 2023-05-1
+description: "Memorize GRE vocabulary by answering multiple choice questions."
+page-layout: custom
+title-block-banner: false
+title-block-style: none
+include-in-header:
+  - text:  <script src="gre_vocab.js" type="module" defer></script>
+  - text:  <script src="words.js" type="module" defer></script>
+format:
+  html:
+    css: gre_vocab.css
+comments: false
+---
+
+```{=html}
+<div class="remaining"></div>
+<div class="question"></div>
+<button class="next-question">Next Question</button>
+<div class="settings">
+</div>
+<div class="footer">
+  <div>
+    <label>Num. Choices:</label>
+    <input type="number" max=20 value=4 class="num-choices"></input>
+  </div>
+  <div>
+    <label>Score:</label>
+    <span class="scoreboard"></span>
+  </div>
+  <div>
+    <label>Num. Chances:</label>
+    <input type="number" min=1 max=5 value=2 class="num-chances"></input>
+  </div>
+</div>
+```
+

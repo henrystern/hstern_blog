@@ -70,5 +70,5 @@ format:
     css: ./static/css/styles.css
 
 
-author: "Henry Stern"
+# author: "Henry Stern"
 date: last-modified

@@ -1,6 +1,5 @@
 ---
 title: "The Behavioural Biases of Individuals"
-sidebar: true
 ---
 
 Behavioural finance can be categorized as macro or micro depending on whether the topic of study is the economy as a whole or the behaviour of individuals.

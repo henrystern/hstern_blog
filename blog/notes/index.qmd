@@ -1,18 +1,34 @@
 ---
 pagetitle: "Henry Stern - Notes"
-title: "Notes"
+title: "CFA Notes"
 description: "These are my notes for the August 2023 CFA Level III exam."
 author: ""
 date: ""
 listing:
-  contents: ./**/*.qmd
-  sort: "date desc"
+  - id: pm
+    contents: ./portfolio-management/**/*.qmd
+    sort: false
+    fields: [date, title, description]
+  - id: ethics
+    contents: ./ethics/**/*.qmd
+    sort: false
+    fields: [date, title, description]
 page-layout: full
 comments: false
 ---
 
-::: {.callout-note .mb-5}
+::: {.callout-note .mb-5 .mt-0}
 These notes are entirely based upon the CFA textbook and follow the same structure in lieu of citation.
+:::
+
+## Portfolio Management
+
+::: {#pm}
+:::
+
+## Ethics
+
+::: {#ethics}
 :::
 
 

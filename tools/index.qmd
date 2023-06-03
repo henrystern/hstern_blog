@@ -1,7 +1,7 @@
 ---
 pagetitle: "Henry Stern - Tools"
 listing:
-  contents: tools/**/*.qmd
+  contents: ./**/*.qmd
   fields: [date, title, description]
   sort: "date desc"
   type: grid
