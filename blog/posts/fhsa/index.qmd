@@ -1,6 +1,5 @@
 ---
 title: "What Makes the FHSA Special"
-author: "Henry Stern"
 date: 2023-04-20
 categories: [finance, tax, allocation]
 ---

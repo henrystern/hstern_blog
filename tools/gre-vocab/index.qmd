@@ -1,8 +1,9 @@
 ---
 pagetitle: "GRE Vocab Practice"
-author: "Henry Stern"
+title: "GRE Vocab Practice"
 date: 2023-05-1
 description: "Memorize GRE vocabulary by answering multiple choice questions."
+categories: ["Javascript", "Game"]
 page-layout: custom
 title-block-banner: false
 title-block-style: none
@@ -11,6 +12,8 @@ include-in-header:
   - text:  <script src="words.js" type="module" defer></script>
 format:
   html:
+    template-partials:
+      - title-block.html
     css: gre_vocab.css
 comments: false
 ---

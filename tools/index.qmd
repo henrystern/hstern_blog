@@ -1,8 +1,10 @@
 ---
 pagetitle: "Henry Stern - Tools"
 listing:
-  contents: ./**/*.qmd
-  fields: [date, title, description]
+  contents: 
+    - ./**/*.qmd
+    - github-tools.yaml
+  fields: [date, title, description, categories]
   sort: "date desc"
   type: grid
   categories: false

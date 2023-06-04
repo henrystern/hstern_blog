@@ -1,7 +1,0 @@
----
-title: "Registered Account Comparison"
-author: "Henry Stern"
-date: 2023-04-26
----
-
-Compare the tax benefits of Canadian registered accounts.

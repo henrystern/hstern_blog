@@ -14,8 +14,6 @@ website:
         href: "/blog/"
       - text: "Tools"
         href: "/tools/"
-      - text: "Links"
-        href: "/links/"
     background: "secondary"
     foreground: "primary"
   sidebar:

@@ -1,7 +1,0 @@
----
-title: "GRE Vocab Practice"
-author: "Henry Stern"
-date: 2023-05-1
----
-
-Memorize GRE vocabulary by answering multiple choice questions.
