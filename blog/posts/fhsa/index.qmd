@@ -31,29 +31,104 @@ So what is the extent of this benefit? On a \$41,000 deposit, at 30% income tax 
 ```{ojs}
 //| panel: sidebar
 //| code-fold: true
-// Inputs and Controls
 
 viewof pre_tax_savings = Inputs.number(
   [0, 200000000],
   {value: 40000, step: 500, label: "Pre-tax Savings:"}
 );
 
-viewof years = Inputs.number(
-  [0, 200],
-  {value: 10, step: 1, label: "Years Invested:"}
+viewof rrsp_match = Inputs.range(
+  [0, 1],
+  {value: 0, step: .01, label: "RRSP Match:"}
+);
+
+viewof max_rrsp_match = Inputs.number(
+  [0, 100000],
+  {value: 100000, step: 100, label: "Max RRSP Match"}
+);
+
+viewof resp_match = Inputs.number(
+  [0, 1],
+  {value: .2, step: .01, label: "RESP Match:"}
+);
+
+viewof max_resp_match = Inputs.number(
+  [0, 100000],
+  {value: 7200, step: 100, label: "Max RESP Match:"}
 );
 
 viewof annual_return = Inputs.range(
-  [0, 2],
-  {value: .07, step: .005, label: "Annual Return:"}
+[0, 2],
+{value: .07, step: .005, label: "Annual Return:"}
 );
 
-data = {
-  let temp = [];
-  for (var i = 0; i <= years; i++) {
-    temp.push({year: i, account: "taxable", value: (pre_tax_savings * (1 + annual_return) ** i) * .85})
-    temp.push({year: i, account: "tfsa", value: pre_tax_savings * (1 + annual_return) ** i})
+viewof years = Inputs.number(
+[0, 200],
+{value: 10, step: 1, label: "Years Invested:"}
+);
+
+viewof current_tax = Inputs.range(
+[0, 1],
+{value: .3, step: .01, label: "Current Income Tax Rate:"}
+);
+
+viewof future_tax = Inputs.range(
+[0, 1],
+{value: .3, step: .01, label: "Future Income Tax Rate:"}
+);
+
+viewof ben_future_tax = Inputs.range(
+[0, 1],
+{value: 0, step: .01, label: "Beneficiary's Future Income Tax Rate:"}
+);
+
+```
+
+```{ojs}
+//| echo: false
+
+line_data = {
+  // Deposit
+  let current_year = new Date().getFullYear()
+  let taxable = (pre_tax_savings * (1 - current_tax))
+  let tfsa = (pre_tax_savings * (1 - current_tax))
+  let rrsp = (pre_tax_savings) + d3.min([pre_tax_savings * rrsp_match, max_rrsp_match])
+  let resp = (pre_tax_savings * (1 - current_tax)) + d3.min([pre_tax_savings * resp_match, max_resp_match])
+  let fhsa = (pre_tax_savings)
+  let temp = [
+    {year: current_year, account: "taxable", value: taxable},
+    {year: current_year, account: "tfsa", value: tfsa},
+    {year: current_year, account: "rrsp", value: rrsp},
+    {year: current_year, account: "resp", value: resp},
+    {year: current_year, account: "fhsa", value: fhsa},
+  ];
+
+  // Grow
+  for (var i = 1; i < years; i++) {
+    taxable = taxable * (1 + annual_return)
+    tfsa = tfsa * (1 + annual_return)
+    rrsp = rrsp * (1 + annual_return)
+    resp = resp * (1 + annual_return)
+    fhsa = fhsa  * (1 + annual_return)
+    temp.push({year: current_year + i, account: "taxable", value: taxable})
+    temp.push({year: current_year + i, account: "tfsa", value: tfsa})
+    temp.push({year: current_year + i, account: "rrsp", value: rrsp})
+    temp.push({year: current_year + i, account: "resp", value: resp})
+    temp.push({year: current_year + i, account: "fhsa", value: fhsa})
   }
+
+  // Withdraw
+  taxable = taxable * (1 + annual_return)
+  taxable = taxable - (taxable - pre_tax_savings * (1 - current_tax)) * .5 * future_tax
+  tfsa = tfsa * (1 + annual_return)
+  rrsp = rrsp * (1 + annual_return) * (1 - future_tax)
+  resp = resp * (1 + annual_return) * (1 - ben_future_tax)
+  fhsa = fhsa  * (1 + annual_return)
+  temp.push({year: current_year + years, account: "taxable", value: taxable})
+  temp.push({year: current_year + years, account: "tfsa", value: tfsa})
+  temp.push({year: current_year + years, account: "rrsp", value: rrsp})
+  temp.push({year: current_year + years, account: "resp", value: resp})
+  temp.push({year: current_year + years, account: "fhsa", value: fhsa})
   return temp
 }
 ```
@@ -63,11 +138,12 @@ data = {
 ## By Year
 ```{ojs}
 //| code-fold: true
+//| width: 500
 
 Plot.plot({
   y: {
     grid: true,
-    label: "After-Tax Account Value",
+    label: "Account Value",
   },
   x: {
     grid: false,
@@ -75,8 +151,8 @@ Plot.plot({
   },
   color: {legend: true},
   marks: [
-    Plot.line(data, { x: "year", y: "value", stroke: "account" }),
-    Plot.text(data, Plot.selectLast({
+  Plot.line(line_data, { x: "year", y: "value", stroke: "account" }),
+    Plot.text(line_data, Plot.selectLast({
       x: "year",
       y: "value",
       z: "account",
@@ -90,11 +166,35 @@ Plot.plot({
 ```
 
 ## Final
-placeholder
-
-## Data
 ```{ojs}
-Inputs.table(data)
+//| code-fold: true
+Plot.plot({
+  y: {
+    label: null,
+    ticks: 0,
+  },
+  x: {
+    grid: false,
+    label: "Account",
+  },
+  marks: [
+    Plot.axisY({label: null}),
+    Plot.barY(line_data, Plot.selectLast({x: "account", y: "value", fill: "account"})),
+    Plot.text(
+      line_data, 
+      Plot.selectLast({
+        x: "account", 
+        y: "value",
+        z: "account",
+        text: (d) => (
+          d.value.toLocaleString("en-US", {style: "currency", currency: "USD" })
+        ),
+        dy: -6,
+        lineAnchor: "bottom"
+      })
+    ),
+  ],
+})
 ```
 
 :::
