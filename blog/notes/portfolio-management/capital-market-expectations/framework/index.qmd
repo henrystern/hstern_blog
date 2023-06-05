@@ -88,8 +88,6 @@ Prudence bias
 Availability bias 
 : The tendency to be overly influenced by events that have left a strong impression and/or for which it is easy to recall an example. Recent events may likewise be overemphasized. The effect of this bias can be mitigated by attempting to base conclusions on objective evidence and analytical procedures.
 
-See [behavioural biases][/blog/notes/portfolio-management/behavioural-finance] for more info.
-
 ### Other sources of uncertainty
 
 * Model uncertainty: whether the model is conceptually/structurally correct

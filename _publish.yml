@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: a13f25a5-0d39-4d79-8dda-ce23eb572e69
+      url: 'https://sunny-brigadeiros-3240ad.netlify.app'
