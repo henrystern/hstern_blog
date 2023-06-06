@@ -1,0 +1,6 @@
+[[redirects]]
+  from = ""
+  to = "/blog"
+[[redirects]]
+  from = "/"
+  to = "/blog"
