@@ -1,5 +1,0 @@
----
-# Nginx redirects to / to /blog/ so this page will never be served
-title: ""
-comments: false
----

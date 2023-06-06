@@ -12,4 +12,7 @@ listing:
   filter-ui: false
 page-layout: full
 comments: false
+aliases:
+  - ""
+  - "/"
 ---
