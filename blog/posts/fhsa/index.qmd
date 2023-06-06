@@ -8,28 +8,49 @@ The FHSA does not just combine the benefits of the TFSA and RRSP. It has unique 
 
 ## The RRSP and TFSA
 
-Both the RRSP and TFSA provide the same benefit: tax free capital gains.[^same_benefit] With the TFSA tax is paid on the income when it is earned and withdrawals are untaxed. The RRSP instead defers the income tax until the funds are withdrawn. But in either case, provided your tax rate does not change, the final after tax value of both accounts will be identical and will be equivalent to the capital gains tax that would have been paid if the investments were held in a taxable account.[^detailed_rrsp_analysis]
+Both the RRSP and TFSA provide the same benefit: tax free capital gains.[^same_benefit] With the TFSA tax is paid on the income when it is earned and withdrawals are untaxed. The RRSP instead defers the income tax until the funds are withdrawn. 
 
-The difference between an RRSP and TFSA is always completely attributable to a change in tax rates. Some investors may predict paying a lower tax rate when the funds are withdrawn, in that case the RRSP will provide superior returns to the TFSA. Other investors may anticipate that their tax rate will rise, making the TFSA superior. There are a variety of factors contributing to one's future tax rates and not all of them are controllable or even predictable. You shouldn't decide between the TFSA and RRSP without considering what you will be earning when you intend to withdraw your savings. Even then, government policy will ultimately determine your tax rate.[^rrsp_deferrals]
+In either case, provided your tax rate does not change, the final after tax value of both accounts will be identical and will be equivalent to the capital gains tax that would have been paid if the investments were held in a taxable account.[^detailed_rrsp_analysis]
+
+The difference between an RRSP and TFSA is always completely attributable to a change in tax rates. This can be seen clearly from their formulas:
+
+$$\text{RRSP Return} = (\text{Savings} \times (1+r)^t) \times \text{Future Tax Rate}$$
+$$\text{TFSA Return} = (\text{Savings} \times \text{Current Tax Rate}) \times (1+r)^t$$
+$${\text{RRSP Return} \over \text{TFSA Return}} = {\text{Future Tax Rate} \over \text{Current Tax Rate}}$$
+
+The percent difference between the return of an RRSP and TFSA will thus be ${\text{Future Tax Rate} \over \text{Current Tax Rate}} - 1$.
+
+Some investors may predict paying a lower tax rate when the funds are withdrawn, in that case the RRSP will provide superior returns to the TFSA. Other investors may anticipate that their tax rate will rise, making the TFSA superior. 
+
+There are several factors that contribute to one's future tax rates and not all of them are controllable or even predictable. You shouldn't decide between the TFSA and RRSP without considering what you will be earning when you intend to withdraw your savings. Even then, government policy will ultimately determine your tax rate.[^rrsp_deferrals]
 
 [^same_benefit]: As the TFSA and RRSP both provide the same benefit it should be apparent that the FHSA cannot *combine* those benefits to provide anything new.
 
 [^detailed_rrsp_analysis]: For a fuller treatment of the relationship between the RRSP and TFSA see this [blog post](https://web.archive.org/web/20230211001735if_/https://www.retailinvestor.org/RRSPmodel.html) from retail-investor.org.
 
-[^rrsp_deferrals]: The deferral mechanism of the RRSP is often considered a benefit in the current period when really all it generates is a liability. The RRSP contribution credit should never be considered an increase in net income in the present period and the pre-tax value of your RRSP portfolio should never be considered a component of net worth without a deduction for the tax that will be owed upon withdrawal.
+[^rrsp_deferrals]: The deferral mechanism of the RRSP is often considered a benefit in the current period when really the benefit is fully offset by the future liability.
 
 ## The FHSA
 
-The FHSA is different and much more powerful. In addition to the capital gains benefit of the TFSA and RRSP, the FHSA allows the investor to permanently avoid paying income tax on the principal, provided the funds are used for a qualifying purchase - ownership shares of your intended permanent residence in Canada. This full absolution of income tax on deposits is equivalent to the absolute best case scenario of withdrawing from an RRSP at a future tax rate of 0% or contributing to a TFSA at a current rate of 0%. Even better, while your future income tax rates are subject to unpredictable government policy, the decision to purchase a residence in Canada is substantially in your control.
+The FHSA is different and much more powerful. 
 
-Even if you fail to make a qualifying purchase within the 15 year time limit there is limited downside as the FHSA can be converted to an RRSP without penalty.
+In addition to the capital gains benefit of the TFSA and RRSP, the FHSA allows the investor to permanently avoid paying income tax on the principal. This full absolution of income tax on deposits is equivalent to the absolute best case scenario of withdrawing from an RRSP at a future tax rate of 0% or contributing to a TFSA at a current rate of 0%. 
+
+While your future income tax rates are subject to unpredictable government policy, the decision to purchase a residence in Canada is substantially in your control. Even if you fail to make a qualifying purchase within the 15 year time limit there is limited downside as the FHSA can be converted to an RRSP without penalty.
 
 ## The Difference
 
-So what is the extent of this benefit? On a \$41,000 deposit, at 30% income tax the immediate savings amount to \$12,000. Those savings then grow as part of your investment without being subject to capital gains. At 5% annual growth for 10 years the FHSA will save \$22,000 in tax. A TFSA would have saved only \$2,600. ([see calculator](https://hstern.ca/tools/account-comparison))
+So what is the extent of this benefit? On a \$40,000 deposit, at 30% income tax the immediate savings amount to \$12,000. Those savings then grow as part of your investment without being subject to capital gains. At 5% annual growth for 10 years the FHSA will save \$22,000 in tax. A TFSA would have saved only \$2,600.
+
+This is obviously a massive difference. For most investors the FHSA will provide a benefit unmatched by even the best case scenarios of any other registered account. 
+
+Experiment with this calculator to see which registered account provides the greatest benefit for your situation.
+
+## Calculator
+
+::: {.panel-sidebar}
 
 ```{ojs}
-//| panel: sidebar
 //| code-fold: true
 
 viewof pre_tax_savings = Inputs.number(
@@ -62,8 +83,8 @@ viewof annual_return = Inputs.range(
 {value: .07, step: .005, label: "Annual Return:"}
 );
 
-viewof years = Inputs.number(
-[0, 200],
+viewof years = Inputs.range(
+[1, 100],
 {value: 10, step: 1, label: "Years Invested:"}
 );
 
@@ -84,55 +105,8 @@ viewof ben_future_tax = Inputs.range(
 
 ```
 
-```{ojs}
-//| echo: false
-
-line_data = {
-  // Deposit
-  let current_year = new Date().getFullYear()
-  let taxable = (pre_tax_savings * (1 - current_tax))
-  let tfsa = (pre_tax_savings * (1 - current_tax))
-  let rrsp = (pre_tax_savings) + d3.min([pre_tax_savings * rrsp_match, max_rrsp_match])
-  let resp = (pre_tax_savings * (1 - current_tax)) + d3.min([pre_tax_savings * resp_match, max_resp_match])
-  let fhsa = (pre_tax_savings)
-  let temp = [
-    {year: current_year, account: "taxable", value: taxable},
-    {year: current_year, account: "tfsa", value: tfsa},
-    {year: current_year, account: "rrsp", value: rrsp},
-    {year: current_year, account: "resp", value: resp},
-    {year: current_year, account: "fhsa", value: fhsa},
-  ];
-
-  // Grow
-  for (var i = 1; i < years; i++) {
-    taxable = taxable * (1 + annual_return)
-    tfsa = tfsa * (1 + annual_return)
-    rrsp = rrsp * (1 + annual_return)
-    resp = resp * (1 + annual_return)
-    fhsa = fhsa  * (1 + annual_return)
-    temp.push({year: current_year + i, account: "taxable", value: taxable})
-    temp.push({year: current_year + i, account: "tfsa", value: tfsa})
-    temp.push({year: current_year + i, account: "rrsp", value: rrsp})
-    temp.push({year: current_year + i, account: "resp", value: resp})
-    temp.push({year: current_year + i, account: "fhsa", value: fhsa})
-  }
-
-  // Withdraw
-  taxable = taxable * (1 + annual_return)
-  taxable = taxable - (taxable - pre_tax_savings * (1 - current_tax)) * .5 * future_tax
-  tfsa = tfsa * (1 + annual_return)
-  rrsp = rrsp * (1 + annual_return) * (1 - future_tax)
-  resp = resp * (1 + annual_return) * (1 - ben_future_tax)
-  fhsa = fhsa  * (1 + annual_return)
-  temp.push({year: current_year + years, account: "taxable", value: taxable})
-  temp.push({year: current_year + years, account: "tfsa", value: tfsa})
-  temp.push({year: current_year + years, account: "rrsp", value: rrsp})
-  temp.push({year: current_year + years, account: "resp", value: resp})
-  temp.push({year: current_year + years, account: "fhsa", value: fhsa})
-  return temp
-}
-```
-
+:::
+::: {.panel-fill}
 ::: {.panel-tabset}
 
 ## By Year
@@ -199,13 +173,53 @@ Plot.plot({
 
 :::
 
-This is obviously a massive difference. For most investors the FHSA will provide a benefit unmatched by even the best case scenarios of any other registered account. 
+```{ojs}
+//| code-fold: true
 
-## Exceptions
+line_data = {
+  // Deposit
+  let current_year = new Date().getFullYear()
+  let taxable = (pre_tax_savings * (1 - current_tax))
+  let tfsa = (pre_tax_savings * (1 - current_tax))
+  let rrsp = (pre_tax_savings) + d3.min([pre_tax_savings * rrsp_match, max_rrsp_match])
+  let resp = (pre_tax_savings * (1 - current_tax)) + d3.min([pre_tax_savings * resp_match, max_resp_match])
+  let fhsa = (pre_tax_savings)
+  let temp = [
+    {year: current_year, account: "taxable", value: taxable},
+    {year: current_year, account: "tfsa", value: tfsa},
+    {year: current_year, account: "rrsp", value: rrsp},
+    {year: current_year, account: "resp", value: resp},
+    {year: current_year, account: "fhsa", value: fhsa},
+  ];
 
-* There are only a few possible exceptions:
-  1. If your current tax rate is 0% you will be better off contributing to a TFSA.
-  1. If you are confident your future income tax rate will be 0% and you are intending to withdraw sooner than you will purchase a residence you will be better off contributing to an RRSP.
-  1. If you have access to a generous RRSP match program and anticipate withdrawing at a lower tax rate you may be better off contributing to an RRSP.
+  // Grow
+  for (var i = 1; i < years; i++) {
+    taxable = taxable * (1 + annual_return)
+    tfsa = tfsa * (1 + annual_return)
+    rrsp = rrsp * (1 + annual_return)
+    resp = resp * (1 + annual_return)
+    fhsa = fhsa  * (1 + annual_return)
+    temp.push({year: current_year + i, account: "taxable", value: taxable})
+    temp.push({year: current_year + i, account: "tfsa", value: tfsa})
+    temp.push({year: current_year + i, account: "rrsp", value: rrsp})
+    temp.push({year: current_year + i, account: "resp", value: resp})
+    temp.push({year: current_year + i, account: "fhsa", value: fhsa})
+  }
 
-Otherwise, if there is a moderate chance you will be making a qualifying purchase in the next 15 years the FHSA should probably be your highest priority investment account.
+  // Withdraw
+  taxable = taxable * (1 + annual_return)
+  taxable = taxable - (taxable - pre_tax_savings * (1 - current_tax)) * .5 * future_tax
+  tfsa = tfsa * (1 + annual_return)
+  rrsp = rrsp * (1 + annual_return) * (1 - future_tax)
+  resp = resp * (1 + annual_return) * (1 - ben_future_tax)
+  fhsa = fhsa  * (1 + annual_return)
+  temp.push({year: current_year + years, account: "taxable", value: taxable})
+  temp.push({year: current_year + years, account: "tfsa", value: tfsa})
+  temp.push({year: current_year + years, account: "rrsp", value: rrsp})
+  temp.push({year: current_year + years, account: "resp", value: resp})
+  temp.push({year: current_year + years, account: "fhsa", value: fhsa})
+  return temp
+}
+```
+
+:::
