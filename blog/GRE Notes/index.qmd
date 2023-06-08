@@ -1,0 +1,253 @@
+---
+pagetitle: "Henry Stern - GRE Notes"
+title: "GRE Notes"
+description: "These are my notes for the May 2023 GRE."
+author: ""
+date: "2023-05-13"
+---
+
+::: {.callout-note .mb-5 .mt-0}
+These notes are based upon the ETS Super Power Pack Textbooks
+:::
+
+## Analytical Writing
+
+Two sections:
+
+* Analyze an issue 
+* Analyze an argument
+
+30 minutes each.
+
+Issue looks for language, prose, and appropriate use of examples. Argument looks for reason and analysis. Combined to give one score out of 6.
+
+## Verbal Reasoning
+
+### Reading Comprehension
+
+Understanding words, sentences, and paragraphs.
+
+Inferring information and drawing conclusions.
+
+Evaluating strengths and weaknesses.
+
+Half of questions will be based on passages.
+
+## Quantitative Reasoning
+
+* Odd numbers can be represented by the equation 2n + 1
+* Squaring both sides is not reversible. Simple operations are reversible.
+* Solve for the relationship imposed by the conditions. If no relationship is imposed then answer D
+* The relationship flips on multiplying or dividing by a negative number.
+* Distance between two points on the number line is equal to absolute difference in values
+* 1 Mile = 5280 Feet
+* 1 Hour = 3600 Seconds
+* Evenly split numbers should always be rounded up if positive or down if negative
+* Modulos and remainders are always positive
+* Distances are always positive
+* Quadrants are:
+    2  |  1
+    3  |  4
+* Disjoint/mutually exclusive sets have no common members
+* The empty set is a subset of every set
+* Lists of numbers are 1-indexed
+* Sets are declared inclusively by default. "From 1985 to 2005" refers to 21 years.
+* Profit refers to Gross Profit (Revenue - COGS)
+
+## Math Review
+
+### Arithmetic
+
+Multiplying odd integers always results in an odd number.
+Summing an odd number of odds results in an odd number and summing an even number of odds results in an even number.
+
+Error in arithmetic exercise 1. g)
+
+### Algebra
+
+The degree of a term is the sum of the exponents of the variables in a term. 5xy^2 is of degree 3.
+
+Identities:
+
+  1. $ca + cb = c * (a+b)$
+  2. $ca - cb = c * (a-b)$
+  3. $(a+b)^2 = a^2 + 2ab + b^2$
+  4. $(a-b)^2 = a^2 - 2ab + b^2$
+  5. $a^2 - b^2 = (a+b)(a-b)$
+  6. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$
+  7. $(a-b)^3 = a^3 + 3a^2b + 3ab^2 - b^3$
+
+Exponent Rules:
+
+  1. $x^a * x^b = x^{a+b}$
+  1. $x^0 = 1$
+  1. $x^a * y^a = (xy)^a$
+  1. ${x \over y}^a = {x^a \over y^a}$
+  1. $(x^a)^b = x^{a*b}$
+
+Linear equations are polynomial equations of degree 1 where each term is either a constant or a single variable multiplied by a coefficient.
+
+Every linear equation with two or more variables has infinitely many solutions. 
+
+Systems of linear equations can be solved either by substitution or by elimination.
+
+Quadratic equations can be solved by the quadratic formula:
+$$
+x = {-b \pm \sqrt{b^2 - 4ac} \over 2a }
+$$
+or the simplified quadratic formula where a = 1:
+$$
+{-b \over 2} \pm \sqrt{({b \over 2})^2 - c}
+$$ 
+
+To solve an inequality find the set of numbers for which the inequality is true.
+
+The direction of the inequality is reversed when multiplied or divided by a negative constant.
+
+The domain of the function is the set of permissible inputs to that function.
+
+Simple Interest:
+$$
+V = P(1+{rt \over 100})
+$$ 
+
+Compound Interest (n times per year):
+$$
+V =P(1+{r \over 100n})^{nt}
+$$
+
+Directly proportional means $a=kb$
+
+Inversely proportional means $a=k \over b$
+
+Two lines are parallel if their slopes are equal. Two lines are perpendicular if their slopes are negative reciprocals of each other.
+
+A circle is an equation of the form $(x-a)^2 + (y-b)^2 = r^2$ with its center at the point (a, b) and with radius r > 0.
+
+### Geometry
+
+Congruent line segments are line segments with equal length.
+
+When two lines intersect the opposite angles will have equal measure. Angles of equal measure are called congruent.
+
+Two intersecting lines are perpendicular if each of their intersecting angles is 90$\degree$. Perpendicular lines are denoted $k \perp m$.
+
+Acute angles are measures of $\lt90 \degree$. An angle with measure between $90 \degree$ and $180 \degree$ is obtuse.
+
+Two lines in the same plane that do not intersect are parallel. Denoted by $k \parallel m.$
+
+A polygon is a closed figure formed by three or more line segments in the same plane.
+
+A convex polygon has interior angles that are all less than 180 $\degree$
+
+If a polygon has n sides it can be divided into n-2 triangles. The sum of the interior angles of an n-sided polygon is $(n-2)(180\degree)$
+
+The length of each side of a triangle must be less than the sum of the lengths of the other two sides.
+
+An equilateral triangle has three equal interior angles of $60 \degree$
+
+An isosceles triangle has two equal angles and accordingly two congruent sides.
+
+A right triangle has an interior angle of $90 \degree$
+
+The isosceles right triangle has two  $45\degree$ angles and one $90\degree$ angle.
+
+The $30\degree-60\degree-90\degree$ triangle is half of an equilateral triangle. Its sides have ratios of $1 : \sqrt{3} : 2$
+
+The height of a triangle is the length of the line segment that is perpendicular with the base and intersects the opposite vertex of the base.
+
+Two triangles are congruent if they have the same angles and sides.
+
+Two triangles are similar if they have the same angles but different sides.
+
+Parallelograms have parallel opposite sides. All rectangles are parallelograms.
+
+Trapezoids have at least one pair of opposite sides. The parallel sides are called the bases of the trapezoid.
+
+For all parallelograms the area is the product of the base and height.
+
+The area of a trapezoid is:
+$$
+A = {1 \over 2} * (b_1 + b_2) * (h)
+$$
+
+Two circles are congruent if they have the same radius.
+
+A line segment joining two points on the circle is called a chord.
+
+The ratio of circumference to diameter is $\pi$.
+So:
+$$
+ {C \over d} = \pi
+$$ 
+$$
+ C = \pi * d
+$$ 
+$$
+ C = 2 \pi r
+$$ 
+
+A central angle of a circle is an angle with its vertex at the center of the circle.
+
+The area of a circle is $\pi * r^2$
+
+A line is tangent to a circle if it intersects with a single point on the circle and is perpendicular to the radius at that point.
+
+A polygon is inscribed in a circle if its vertices lie on the circle. The circle is said to be circumscribed by the polygon.
+
+If a triangle is inscribed in a circle and one side passes through the center of the circle then the length of that line will be the diameter and the triangle will have a right angle.
+
+A polygon is circumscribed about a circle if each side is tangent to the circle. The circle is said to be inscribed in the polygon.
+
+The inscribed angle of two chords meeting on a circle is half the central angle that joins those two points.
+
+There are 12 edges and 8 vertices to a rectangular prism.
+
+A rectangular solid with six square faces is a cube.
+
+The volume of a rectangular solid is $length * width * height$
+
+The volume of a right angled cylinder is:
+$$
+V = \pi r^2 h
+$$ 
+Its surface area is:
+$$
+A = 2(\pi r^2) + 2 \pi r h
+$$ 
+
+### Data Analysis
+
+To find the mean:
+
+1. order the numbers from least to greatest
+1. The median is the $n + 1 \over 2$th value if the number of values is odd or the average of the bounding values if the number of values is even.
+
+The range is the difference between the greatest number and the least number.
+
+The interquartile range is the difference between the third and first quartiles.
+
+Standardization is the process of taking the difference between an observation and the mean and dividing it by the standard deviation.
+
+In any group of data most of the data are within 3 standard deviations of the mean.
+
+A list is like a set but its elements are ordered and elements can be repeated.
+
+The number of elements in a set is denoted as $|s|$
+
+Two sets are disjoint if they have no elements in common.
+
+The multiplication principle states that if there are multiple independent and sequential choices, the number of possible combinations is the product of the number of choices for each choice.
+
+
+Permutations: $n! \over (n - k)!$
+
+Combinations: $n! \over k! * (n - k)!$
+
+$P(E \vee F) = P(E) + P(F) - P(E \wedge F)$
+
+If E and F are independent then: $P(E \wedge F) = P(E)*P(F)$
+
+68 - 95 - 99.7 rule for one two and three standard deviations from the mean
+
+
