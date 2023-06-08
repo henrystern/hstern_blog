@@ -3,8 +3,9 @@ pagetitle: "Henry Stern - Blog"
 listing:
   contents: 
     - posts/**/*.qmd
-    - notes/index.qmd
-  fields: [image, date, title, reading-time, description]
+    - CFA 2 Notes/index.qmd
+    - CFA 3 Notes/index.qmd
+  fields: [date, title, reading-time, description]
   sort: "date desc"
   type: grid
   categories: numbered
@@ -12,7 +13,4 @@ listing:
   filter-ui: false
 page-layout: full
 comments: false
-aliases:
-  - ""
-  - "/"
 ---

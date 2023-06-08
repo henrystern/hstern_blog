@@ -1,0 +1,34 @@
+---
+title: Derivatives
+order: 4
+---
+
+## Valuation of Contingent Claims :
+
+### Swaptions
+
+Review equivalences and synthetics. 
+long interest rate cap + short interest rate floor = receive floating, pay fixed
+short interest rate cap + long interest rate floor = receive fixed, pay floating
+long receiver swaption + short payer swaption = receive fixed, pay floating
+short receiver swaption + long payer swaption = receive floating, pay fixed
+
+## Option Greeks and Implied Volatility: Delta :
+
+Delta: the change in a given instrument for a given small change in the value of the underlying, holding all else constant.
+
+## Gamma :
+
+Gamma: The change in a given instrument's delta for a given small change in the stock's value, holding everything else constant.
+
+## Theta :
+
+Theta: the change in a portfolio for a given small change in calendar time, holding everything else constant.
+
+## Vega :
+
+Vega: the change in a given portfolio for a given small change in volatility, holding everything else constant.
+
+## Rho :
+
+Rho: the change in a given portfolio for a given small change in the risk free interest rate, holding everything else constant
