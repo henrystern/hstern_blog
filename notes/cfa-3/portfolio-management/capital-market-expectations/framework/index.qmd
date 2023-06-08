@@ -164,7 +164,7 @@ Checklists are a heuristic approach that an analyst designs for their own needs.
 
 The phases vary in length and amplitude making them hard to predict.
 
-Over the short term expectations are subject to significant noise. In the long term the economy is likely to have experienced several business cycle phases and should approach the long term trend. Business cycle analysis generates the most reliable and actionable expectations in the 2-3 year range.
+Over the short term expectations are subject to significant noise. In the long term the economy is likely to have experienced several business cycle phases and returns should approach the long term trend. Business cycle analysis generates the most reliable and actionable expectations in the 2-3 year range.
 
 ## Inflation
 
@@ -176,5 +176,101 @@ Compared to deflation moderate inflation has only modest costs on the economy.
 
 Inflation is procyclical.
 
+## Policy Analysis
+
+Most central banks had a mandate to intervene in the business cycle.
+
+The impact of monetary policy has long and variable lags.
+
+Fiscal policy is not usually implemented to affect the business cycle. Fiscal policy takes too long to implement to be useful in short term crises.
+
+Due to progressive taxation the effective tax rate is procyclical.
+
+In the short run monetary policy is more important to expectations. In the long run fiscal policy is more important.
+
+Central banks do not all act the same or have the same mandate. Generally they want to mitigate extreme inflation or growth.
+
+::: {.callout-note}
+## Taylor Rule
+
+$$
+  i^{*}  = r_{neutral} + \pi_e + 0.5 \cdot (\hat{Y}_e - \hat{Y}_{trend}) + 0.5 \cdot (\pi_e - \pi_{target})
+.$$
+
+where:
+
+* $i = \text{nominal policy rate}$
+* $r = \text{real policy rate}$
+* $Y = \text{GDP growth rate}$
+* $\pi = \text{inflation rate}$ 
+:::
+
+## Zero and Negative Interest Rates
+
+Prior to the 2008 crisis it was believed there was a lower bound to interest rates beyond which participants would prefer to hold physical currency rather than short term negative earning accounts. 
+
+The credit crunch caused by withdrawals would put upward pressure on rates and thwart central bank policy even if they wanted to push interest rates down.
+
+Quantitative easing was utilized in an attempt to overcome this situation.
+
+QE did increase asset prices but proceeds funded dividends and repurchases rather than increasing investment.
+
+Negative policy rates were proven to be sustainable due to the impracticality of cash for large, fast, and global transactions. While the convenience yield outweighs the negative interest deposits will remain in the bank.
+
+Negative rates have similar incentives to low positive rates but market participants may have greater uncertainty which makes the monetary policy increasingly ineffective as rates are pushed lower.
+
+When short term rates are negative the neutral policy rate can be adjusted to approximate long run equilibrium short term rates/risk free rate.
+
+Negative policy rates are expected to occur in the contraction and early recovery phases of the business cycle.
+
+## Yield Curve Shape
+
+Fiscal policy is political while monetary policy is usually more independent. 
+
+Loose fiscal policy increases real rates.
+
+Loose monetary policy increases inflation and nominal rates.
+
+When fiscal and monetary policy is opposed the combined impact is uncertain.
+
+The yield curve is upward sloping because of the maturity premium.
+
+Sufficiently large sales of bonds of a particular maturity can affect the shape of the yield curve in the short term. May be important factor with central bank open market activities.
+
+Some investors must comply with regulations pertaining to their bond portfolio duration (especially pension funds). This causes inelastic demand for some bonds and accordingly lower yields in particular maturity ranges.
+
+The central bank may be politicized to inflate away government debt. If this occurs the curve will steepen.
+
+::: {.callout-note}
+
+## Inverted Curve and the Business Cycle
+
+The curve tends to be steep at the bottom of the cycle and flatten or invert at the peak. This relationship has been shown to be predictive. The direction of the causation is unclear.
+
+:::
+
+## International Interactions
+
+Smaller economies are influenced more by international developments.
+
+Increased global trade makes international interactions more impactful for all economies.
+
+Current Account and Capital Account analysis:
+
+* $(X-M) = (S-I) + (T-G)$
+
+The current and capital accounts are kept in balance through changes in income, relative prices, interest rates, and exchange rates.
+
+The capital account must adjust to balance the current account.
+
+Interest rates and exchange rates are linked. 
+
+No country can simultaneously:
+
+* allow unrestricted capital flows,
+* maintain a fixed exchange rate, and
+* pursue an independent monetary policy.
+
+Low credibility about a currency exchange peg can cause exchange rates to diverge. The weaker currency will have higher yields. This has even happened in the eurozone despite the countries sharing the same currency.
 
 
