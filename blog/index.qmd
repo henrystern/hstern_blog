@@ -4,7 +4,7 @@ listing:
   contents: 
     - posts/**/*.qmd
     - notes/index.qmd
-  fields: [image, date, title, reading-time, description]
+  fields: [date, title, reading-time, description]
   sort: "date desc"
   type: grid
   categories: numbered
@@ -12,7 +12,4 @@ listing:
   filter-ui: false
 page-layout: full
 comments: false
-aliases:
-  - ""
-  - "/"
 ---
