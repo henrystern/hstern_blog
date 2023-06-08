@@ -1,0 +1,16 @@
+---
+pagetitle: "Henry Stern - Notes"
+listing:
+  contents: 
+    - cfa-1/index.qmd
+    - cfa-2/index.qmd
+    - cfa-3/index.qmd
+    - gre/index.qmd
+  fields: [date, title, description]
+  sort: "date asc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+comments: false
+---
