@@ -1,7 +1,7 @@
 ---
 pagetitle: "Henry Stern - GRE Notes"
 title: "GRE Notes"
-description: "These are my notes for the May 2023 GRE."
+description: "Notes for the May 2023 GRE."
 author: ""
 date: "2023-05-13"
 ---

@@ -1,7 +1,7 @@
 ---
 pagetitle: "Henry Stern - CFA I Notes"
 title: "CFA I Notes"
-description: "These are my notes for the May 2022 CFA Level I exam."
+description: "Notes for the May 2022 CFA Level I exam."
 author: ""
 date: "2022-05-23"
 ---
