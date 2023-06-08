@@ -1,9 +1,9 @@
 ---
-pagetitle: "Henry Stern - Notes"
+pagetitle: "Henry Stern - CFA III Notes"
 title: "CFA III Notes"
 description: "These are my notes for the August 2023 CFA Level III exam."
 author: ""
-date: ""
+date: "2023-08-28"
 listing:
   - id: pm
     type: table

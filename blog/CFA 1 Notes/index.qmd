@@ -1,0 +1,772 @@
+---
+pagetitle: "Henry Stern - CFA I Notes"
+title: "CFA I Notes"
+description: "These are my notes for the May 2022 CFA Level I exam."
+author: ""
+date: "2022-05-23"
+---
+
+::: {.callout-note .mb-5 .mt-0}
+These notes are entirely based upon the CFA textbook and follow the same structure in lieu of citation.
+:::
+
+## Quantitative Methods
+From a statistical perspective, data can be classified as numerical data and categorical data. Numerical data (also called quantitative data) are values that represent measured or counted quantities as a number. Categorical data (also called qualitative data) are values that describe a quality or characteristic of a group of observations and usually take only a limited number of values that are mutually exclusive.
+
+*  Numerical data can be further split into two types: continuous data and discrete data. Continuous data can be measured and can take on any numerical value in a specified range of values. Discrete data are numerical values that result from a counting process and therefore are limited to a finite number of values.
+
+*  Categorical data can be further classified into two types: nominal data and ordinal data. Nominal data are categorical values that are not amenable to being organized in a logical order, while ordinal data are categorical values that can be logically ordered or ranked.
+
+Based on how they are collected, data can be categorized into three types: cross-sectional, time series, and panel. Time-series data are a sequence of observations for a single observational unit on a specific variable collected over time and at discrete and typically equally spaced intervals of time. Cross-sectional data are a list of the observations of a specific variable from multiple observational units at a given point in time. Panel data are a mix of time-series and cross-sectional data that consists of observations through time on one or more variables for multiple observational units.
+
+Kurtosis measures the combined weight of the tails of a distribution relative to the rest of the distribution. A distribution with fatter tails than the normal distribution is referred to as fat-tailed (leptokurtic); a distribution with thinner tails than the normal distribution is referred to as thin-tailed (platykurtic). Excess kurtosis is kurtosis minus 3, since 3 is the value of kurtosis for all normal distributions.
+
+*  The steps in testing a hypothesis are as follows:
+  1.	State the hypotheses.
+  2.	Identify the appropriate test statistic and its probability distribution.
+  3.	Specify the significance level.
+  4.	State the decision rule.
+  5.	Collect the data and calculate the test statistic.
+  6.	Make a decision.
+
+In reaching a statistical decision, we can make two possible errors: We may reject a true null hypothesis (a Type I error, or false positive), or we may fail to reject a false null hypothesis (a Type II error, or false negative).
+
+A nonparametric test is primarily used when data do not meet distributional assumptions, when there are outliers, when data are given in ranks, or when the hypothesis we are addressing does not concern a parameter.
+
+*  The assumptions of the classic simple linear regression model are as follows:
+* Linearity: A linear relation exists between the dependent variable and the independent variable.
+* Homoskedasticity: The variance of the error term is the same for all observations.
+* Independence: The error term is uncorrelated across observations.
+* Normality: The error term is normally distributed.
+
+## Economics
+
+*  If own-price elasticity of demand is greater than one in absolute terms, demand is elastic and a decline in price will result in higher total expenditure on that good.
+*  If own-price elasticity of demand is less than one in absolute terms, demand is inelastic and a decline in price will result in a lower total expenditure on that good.
+*  If own-price elasticity of demand is equal to negative one, demand is unit, or unitary, elastic and total expenditure on that good is independent of price.
+
+If the good is inferior, the income effect will partially or fully offset the substitution effect.
+
+Giffen goods are highly inferior and make up a large portion of the consumer budget. As price falls, the substitution effect tends to cause more of the good to be consumed, but the highly negative income effect overwhelms the substitution effect. Demand curves for Giffen goods are positively sloped.
+
+If income elasticity of demand is positive, the good is a normal good. If income elasticity of demand is negative, the good is an inferior good.
+
+If cross-price elasticity between two goods is positive, they are substitutes, and if cross-price elasticity between two goods is negative, they are complements.
+
+Maximum economic profit requires that (1) marginal revenue (MR) equals marginal cost (MC) and (2) MC not be falling with output.
+
+The categories differ because of the following characteristics: The number of producers is many in perfect and monopolistic competition, few in oligopoly, and one in monopoly. The degree of product differentiation, the pricing power of the producer, the barriers to entry of new producers, and the level of non-price competition (e.g., advertising) are all low in perfect competition, moderate in monopolistic competition, high in oligopoly, and generally highest in monopoly.
+
+Oligopoly is characterized by the importance of strategic behavior. Firms can change the price, quantity, quality, and advertisement of the product to gain an advantage over their competitors. Several types of equilibrium (e.g., Nash, Cournot, kinked demand curve) may occur that affect the likelihood of each of the incumbents (and potential entrants in the long run) having economic profits. Price wars may be started to force weaker competitors to abandon the market.
+
+* GDP counts only final purchases of newly produced goods and services during the current period. Transfer payments and capital gains are excluded from GDP.
+* National income is the income received by all factors of production used in the generation of final output. It equals GDP minus the capital consumption allowance (depreciation) and a statistical discrepancy.
+* Personal income reflects pre-tax income received by households. It equals national income plus transfers minus undistributed corporate profits, corporate income taxes, and indirect business taxes.
+
+The aggregate demand curve will shift if there is a change in a factor, other than price, that affects aggregate demand. These factors include household wealth, consumer and business expectations, capacity utilization, monetary policy, fiscal policy, exchange rates, and other nations’ GDP.
+
+* The long-run aggregate supply curve will shift because of changes in labor supply, supply of physical and human capital, and productivity/technology.
+* The short-run supply curve will shift because of changes in potential GDP, nominal wages, input prices, expectations about future prices, business taxes and subsidies, and the exchange rate.
+
+Business cycles can be split into many different phases. The investment industry typically refers to four phases of the cycle: recovery, expansion, slowdown, and contraction, with the peak in output occurring during the slowdown phase and the trough in output occurring in the recovery phase.
+
+* Leading economic indicators have turning points that usually precede those of the overall economy. They include survey-based indicators, such as (ISM), new orders, and average consumer expectations. They also include average weekly hours, initial claims for unemployment insurance, new building permits, the stock market index, and the difference between yields on short-term and long-term bonds.
+* Coincident economic indicators have turning points that are usually close to those of the overall economy. They are believed to have value for identifying the economy’s present state. They include industrial production indexes, manufacturing and trade sales indexes, aggregate real personal income, and non-agricultural employment.
+* Lagging economic indicators have turning points that take place later than those of the overall economy; they change after a trend has been established. They include average duration of unemployment, inventory–sales ratio, change in unit labor costs, average bank prime lending rate, commercial and industrial loans outstanding, ratio of consumer installment debt to income, and change in consumer price index for services.
+
+Inflation is measured by many indexes. Consumer price indexes reflect the prices of a basket of goods and services that is typically purchased by a normal household. Producer price indexes measure the cost of a basket of raw materials, intermediate inputs, and finished products. GDP deflators measure the price of the basket of goods and services produced within an economy in a given year. Core indexes exclude volatile items, such as agricultural products and energy, whose prices tend to vary more than other goods.
+
+Economists describe two types of inflation: cost-push, in which rising costs, usually wages, compel businesses to raise prices generally; and demand-pull, in which increasing demand raises prices generally, which then are reflected in a business’s costs as workers demand wake hikes to catch up with the rising cost of living.
+
+Trade barriers can generate a net welfare gain in a large country if the gain from improving its terms of trade (higher export prices and lower import prices) more than offsets the loss from the distortion of resource allocations. However, the large country can only gain if it imposes an even larger welfare loss on its trading partner(s).
+
+* An import tariff and an import quota have the same effect on price, production, and trade. With a quota, however, some or all of the revenue that would be raised by the equivalent tariff is instead captured by foreign producers (or the foreign government) as quota rents. Thus, the welfare loss suffered by the importing country is generally greater with a quota.
+* A regional trading bloc is a group of countries who have signed an agreement to reduce and progressively eliminate barriers to trade and movement of factors of production among the members of the bloc.
+* They may or may not have common trade barriers against those countries that are not members of the bloc. In a free trade area all barriers to the flow of goods and services among members are eliminated, but each country maintains its own polices against non-members.
+* A customs union extends the FTA by not only allowing free movement of goods and services among members but also creating a common trade policy against non-members.
+* A common market incorporates all aspects of a customs union and extends it by allowing free movement of factors of production among members.
+* An economic union incorporates all aspects of a common market and requires common economic institutions and coordination of economic policies among members.
+* Members of a monetary union adopt a common currency.
+* Decisions by consumers, firms, and governments influence the balance of payments.
+* Low private savings and/or high investment tend to produce a current account deficit that must be financed by net capital imports; high private savings and/or low investment, however, produce a current account surplus, balanced by net capital exports.
+* All else the same, a government deficit produces a current account deficit and a government surplus leads to a current account surplus.
+* All else the same, a sustained current account deficit contributes to a rise in the risk premium for financial assets of the deficit country. Current account surplus countries tend to enjoy lower risk premiums than current account deficit countries.
+* The IMF’s mission is to ensure the stability of the international monetary system, the system of exchange rates and international payments that enables countries to buy goods and services from each other. The IMF helps to keep country-specific market risk and global systemic risk under control.
+* The World Bank helps to create the basic economic infrastructure essential for creation and maintenance of domestic financial markets and a well-functioning financial industry in developing countries.
+* The World Trade Organization’s mission is to foster free trade by providing a major institutional and regulatory framework of global trade rules without which today’s global multinational corporations would be hard to conceive.
+
+An ideal currency regime would have three properties: (1) the exchange rate between any two currencies would be credibly fixed; (2) all currencies would be fully convertible; and (3) each country would be able to undertake fully independent monetary policy in pursuit of domestic objectives, such as growth and inflation targets. However, these conditions are inconsistent. In particular, a fixed exchange rate and unfettered capital flows severely limit a country’s ability to undertake independent monetary policy. Hence, there cannot be an ideal currency regime.
+
+The IMF identifies the following types of regimes: arrangements with no separate legal tender (dollarization, monetary union), currency board, fixed parity, target zone, crawling peg, crawling band, managed float, and independent float. Most major currencies traded in FX markets are freely floating, albeit subject to occasional central bank intervention.
+
+## Financial Statement Analysis
+
+Assets = Liabilities + Owners’ equity.
+
+Revenue + Other income – Expenses = Net income
+
+The financial statement analysis framework provides steps that can be followed in any financial statement analysis project. These steps are:
+
+* articulate the purpose and context of the analysis;
+* collect input data;
+* process data;
+* analyze/interpret the processed data;
+* develop and communicate conclusions and recommendations; and
+* follow up.
+
+IFRS Financial Statements: IAS No. 1 prescribes that a complete set of financial statements includes a statement of financial position (balance sheet), a statement of comprehensive income (either two statements—one for net income and one for comprehensive income—or a single statement combining both net income and comprehensive income), a statement of changes in equity, a cash flow statement, and notes. The notes include a summary of significant accounting policies and other explanatory information.
+
+Financial statements need to reflect certain basic features: fair presentation, going concern, accrual basis, materiality and aggregation, and no offsetting.
+
+An income statement that presents a subtotal for gross profit (revenue minus cost of goods sold) is said to be presented in a multi-step format. One that does not present this subtotal is said to be presented in a single-step format. 
+
+IFRS provide companies with the choice to report PPE using either a historical cost model or a revaluation model. US GAAP permit only the historical cost model for reporting PPE.
+
+For internally generated intangible assets, IFRS require that costs incurred during the research phase must be expensed. Costs incurred in the development stage can be capitalized as intangible assets if certain criteria are met, including technological feasibility, the ability to use or sell the resulting asset, and the ability to complete the project.
+
+Vertical common-size analysis of the balance sheet involves stating each balance sheet item as a percentage of total assets.
+
+Significant non-cash transaction activities (if present) are reported by using a supplemental disclosure note to the cash flow statement.
+
+The analyst can use common-size statement analysis for the cash flow statement. Two approaches to developing the common-size statements are the total cash inflows/total cash outflows method and the percentage of net revenues method.
+
+The total cost of inventories comprises all costs of purchase, costs of conversion, and other costs incurred in bringing the inventories to their present location and condition. Storage costs of finished inventory and abnormal costs due to waste are typically treated as expenses in the period in which they occurred.
+
+Under IFRS, inventories are measured at the lower of cost and net realisable value. Net realisable value is the estimated selling price in the ordinary course of business less the estimated costs necessary to make the sale. Under US GAAP, inventories are measured at the lower of cost, market value, or net realisable value depending upon the inventory method used. Market value is defined as current replacement cost subject to an upper limit of net realizable value and a lower limit of net realizable value less a normal profit margin. Reversals of previous write-downs are permissible under IFRS but not under US GAAP.
+
+Reversals of inventory write-downs may occur under IFRS but are not allowed under US GAAP.
+
+Expenditures related to long-lived assets are capitalised as part of the cost of assets if they are expected to provide future benefits, typically beyond one year. Otherwise, expenditures related to long-lived assets are expensed as incurred.
+
+Capitalising an expenditure rather than expensing it results in a greater amount reported as cash from operations because capitalised expenditures are classified as an investing cash outflow rather than an operating cash outflow.
+
+IFRS require research costs be expensed but allow all development costs (not only software development costs) to be capitalised under certain conditions. Generally, US accounting standards require that research and development costs be expensed; however, certain costs related to software development are required to be capitalised.
+
+The gain or loss on the sale of long-lived assets is computed as the sales proceeds minus the carrying amount of the asset at the time of sale.
+
+Under IFRS, companies are allowed to value investment properties using either a cost model or a fair value model. The cost model is identical to the cost model used for property, plant, and equipment, but the fair value model differs from the revaluation model used for property, plant, and equipment. Unlike the revaluation model, under the fair value model, all changes in the fair value of investment property affect net income.
+
+Leases are classified as operating or finance leases. Finance leases resemble an asset purchase or sale while operating leases resemble a rental agreement.
+
+* US GAAP and IFRS share the same accounting treatment for lessors but differ for lessees. IFRS has a single accounting model for both operating leases and finance lease lessees, while US GAAP has an accounting model for each.
+* Lessees reporting under IFRS and finance lease lessees reporting under US GAAP
+* Recognize a lease liability and corresponding right-of-use asset on the balance sheet, equal to the present value of lease payments. The liability is subsequently reduced using the effective interest method and the right-of-use asset is amortized. Interest expense and amortization expense are shown separately on the income statement. The statement of cash flows shows the entire lease payment.
+* Operating lease lessees reporting under US GAAP
+* Recognize a lease liability and corresponding right-of-use asset on the balance sheet, equal to the present value of lease payments. The liability is subsequently reduced using the effective interest method, but the amortization of the right-of-use asset is the lease payment less the interest expense. Interest expense and amortization expense are shown together as a single operating expense on the income statement.
+* Finance lease lessors (IFRS and US GAAP)
+* Recognize a lease receivable asset equal to the present value of future lease payments and de-recognize the leased asset, simultaneously recognizing any difference as a gain or loss. The lease receivable is subsequently reduced by each lease payment using the effective interest method. Interest income is reported on the income statement, typically as revenue, and the entire cash receipt is reported under operating activities on the statement of cash flows.
+* Operating lease lessors (IFRS and US GAAP)
+* The balance sheet is not affected: the lessor continues to recognize the underlying asset and depreciate it. Lease revenue is recognized on a straight-line basis on the income statement and the entire cash receipt is reported under operating activities on the statement of cash flows.
+
+## Corporate Issuers
+
+Corporate governance can be defined as a system of controls and procedures by which individual companies are managed.
+
+Executive (internal) directors are employed by the company and are typically members of senior management. Non-executive (external) directors have limited involvement in daily operations but serve an important oversight role.
+
+Two primary duties of a board of directors are duty of care and duty of loyalty.
+
+ESG investment approaches range from value-based to values-based. There are six broad ESG investment approaches: Negative screening, Positive screening, ESG integration, Thematic investing, Engagement/active ownership, and Impact investing.
+
+* The typical steps in the capital allocation process are (1) generating ideas, (2) analyzing investment opportunities, (3) planning the capital allocation, and (4) monitoring and post-auditing.
+
+Types of investments appropriate for the capital allocation process can be categorized as (1) replacement, (2) expansion, (3) new products and services, and (4) regulatory, safety, and environmental.
+
+Capital allocation decisions are based on incremental after-tax cash flows discounted at the opportunity cost of funds. Financing costs are ignored because both the cost of debt and the cost of other capital are captured in the discount rate.
+
+The capital allocation decision rules are to invest if the NPV > 0 or if the IRR > r.
+
+For mutually exclusive investments that are ranked differently by the NPV and IRR, the NPV criterion is more economically sound.
+
+Real options can be classified as (1) timing options; (2) sizing options, which can be abandonment options or growth (expansion) options; (3) flexibility options, which can be price-setting options or production-flexibility options; and (4) fundamental options.
+
+When estimating the cost of equity capital using the CAPM, if we do not have publicly traded equity, we may be able to use a comparable company operating in the same business line to estimate the unlevered beta for a company with similar business risk, βU:
+βU=βE[11+(1−t)DE].
+
+Then, we lever this beta to reflect the financial risk of the project or company:
+
+βE=βU[1+(1−t)DE].
+
+Generally speaking, as companies mature and move from start-up, through growth, to mature, their business risk declines as operating cash flows turn positive with increasing predictability, allowing for greater use of leverage at more attractive terms.
+
+Modigliani and Miller’s work shows us that managers cannot change firm value simply by changing the firm’s capital structure. Firm value is independent of the capital structure decision.
+
+## Equity Investments
+
+Dealers provide liquidity in quote-driven markets. Public traders as well as dealers provide liquidity in order-driven markets.
+
+Order-driven markets arrange trades by ranking orders using precedence rules. The rules generally ensure that traders who provide the best prices, display the most size, and arrive early trade first. Continuous order-driven markets price orders using the discriminatory pricing rule. Under this rule, standing limit orders determine trade prices.
+
+* Prices are informationally efficient when they reflect all available information about fundamental values. Information-motivated traders make prices informationally efficient. Prices will be most informative in liquid markets because information-motivated traders will not invest in information and research if establishing positions based on their analyses is too costly.
+
+Regulators generally seek to promote fair and orderly markets in which traders can trade at prices that accurately reflect fundamental values without incurring excessive transaction costs. Governmental agencies and self-regulating organizations of practitioners provide regulatory services that attempt to make markets safer and more efficient.
+
+* Index management includes 1) periodic rebalancing to ensure that the index maintains appropriate weightings and 2) reconstitution to ensure the index represents the desired target market.
+
+Rebalancing and reconstitution create turnover in an index. Reconstitution can dramatically affect prices of current and prospective constituents.
+
+There are three forms of efficient markets, each based on what is considered to be the information used in determining asset prices. In the weak form, asset prices fully reflect all market data, which refers to all past price and trading volume information. In the semi-strong form, asset prices reflect all publicly known and available information. In the strong form, asset prices fully reflect all information, which includes both public and private information.
+
+* Callable common shares give the issuer the right to buy back the shares from shareholders at a price determined when the shares are originally issued.
+* Putable common shares give shareholders the right to sell the shares back to the issuer at a price specified when the shares are originally issued.
+* Cumulative preference shares are preference shares on which dividend payments are accrued so that any payments omitted by the company must be paid before another dividend can be paid to common shareholders. Non-cumulative preference shares have no such provisions, implying that the dividend payments are at the company’s discretion and are thus similar to payments made to common shareholders.
+* Participating preference shares allow investors to receive the standard preferred dividend plus the opportunity to receive a share of corporate profits above a pre-specified amount. Non-participating preference shares allow investors to simply receive the initial investment plus any accrued dividends in the event of liquidation.
+* The three main approaches to classifying companies are
+* products and/or services supplied,
+* business-cycle sensitivities, and
+* statistical similarities.
+* Commercial industry classification systems include
+* The Global Industry Classification Standard (GICS)
+* The Industry Classification Benchmark (ICB)
+* The steps in constructing a preliminary list of peer companies are as follows:
+* Examine commercial classification systems if available. These systems often provide a useful starting point for identifying companies operating in the same industry.
+* Review the subject company’s annual report for a discussion of the competitive environment. Companies frequently cite specific competitors.
+* Review competitors’ annual reports to identify other potential comparables.
+* Review industry trade publications to identify additional peer companies.
+* Confirm that each comparable or peer company derives a significant portion of its revenue and operating profit from a business activity similar to that of the subject company.
+
+The framework for strategic analysis known as “Porter’s five forces” can provide a useful starting point. Porter maintained that the profitability of companies in an industry is determined by five forces: (1) the threat of new entrants, which, in turn, is determined by economies of scale, brand loyalty, absolute cost advantages, customer switching costs, and government regulation; (2) the bargaining power of suppliers, which is a function of the feasibility of product substitution, the concentration of the buyer and supplier groups, and switching costs and entry costs in each case; (3) the bargaining power of buyers, which is a function of switching costs among customers and the ability of customers to produce their own product; (4) the threat of substitutes; and (5) the intensity of rivalry among existing competitors, which, in turn, is a function of industry competitive structure, demand conditions, cost conditions, and the height of exit barriers.
+
+* A useful framework for analyzing the evolution of an industry is an industry life-cycle model, which identifies the sequential stages that an industry typically goes through. The five stages of an industry life cycle according to the Hill and Jones model are
+* embryonic,
+* growth,
+* shakeout,
+* mature, and
+* decline.
+* Porter identified two chief competitive strategies:
+* A low-cost strategy (cost leadership) is one in which companies strive to become the low-cost producers and to gain market share by offering their products and services at lower prices than their competition while still making a profit margin sufficient to generate a superior rate of return based on the higher revenues achieved.
+* A product/service differentiation strategy is one in which companies attempt to establish themselves as the suppliers or producers of products and services that are unique either in quality, type, or means of distribution. To be successful, the companies’ price premiums must be above their costs of differentiation and the differentiation must be appealing to customers and sustainable over time.
+* A checklist for company analysis includes a thorough investigation of
+* the corporate profile,
+* industry characteristics,
+* demand for products/services,
+* supply of products/services,
+* pricing,
+* financial ratios, and
+* sustainability metrics.
+* “law of parsimony:” A model should be kept as simple as possible in light of the available inputs.
+* Present value models estimate value as the present value of expected future benefits.
+* Multiplier models estimate intrinsic value based on a multiple of some fundamental variable.
+* Asset-based valuation models estimate value based on the estimated value of assets and liabilities.
+
+## Fixed Income
+* Collateral backing is a way to alleviate credit risk. Secured bonds are backed by assets or financial guarantees pledged to ensure debt payment. Examples of collateral-backed bonds include collateral trust bonds, equipment trust certificates, mortgage-backed securities, and covered bonds.
+* Credit enhancement can be internal or external. Examples of internal credit enhancement include subordination, overcollateralization, and reserve accounts. A bank guarantee, a surety bond, a letter of credit, and a cash collateral account are examples of external credit enhancement.
+
+Bond covenants are legally enforceable rules that borrowers and lenders agree on at the time of a new bond issue. Affirmative covenants enumerate what issuers are required to do, whereas negative covenants enumerate what issuers are prohibited from doing.\
+
+Bonds issued in a country in local currency are domestic bonds if they are issued by entities incorporated in the country and foreign bonds if they are issued by entities incorporated in another country. Eurobonds are issued internationally, outside the jurisdiction of any single country and are subject to a lower level of listing, disclosure, and regulatory requirements than domestic or foreign bonds. Global bonds are issued in the Eurobond market and at least one domestic market at the same time.
+
+* A G-spread is the spread over or under a government bond rate, and an I-spread is the spread over or under an interest rate swap rate.
+* A G-spread or an I-spread can be based on a specific benchmark rate or on a rate interpolated from the benchmark yield curve.
+* A Z-spread (zero-volatility spread) is based on the entire benchmark spot curve. It is the constant spread that is added to each spot rate such that the present value of the cash flows matches the price of the bond.
+* An option-adjusted spread (OAS) on a callable bond is the Z-spread minus the theoretical value of the embedded call option.
+* Market participants measure the prepayment rate using two measures: the single monthly mortality rate (SMM) and its corresponding annualized rate—namely, the conditional prepayment rate (CPR). For MBS, a measure widely used by market participants to assess effective duration is the weighted average life or simply the average life of the MBS.
+
+Market participants use the Public Securities Association (PSA) prepayment benchmark to describe prepayment rates. A PSA assumption greater than 100 PSA means that prepayments are assumed to occur faster than the benchmark, whereas a PSA assumption lower than 100 PSA means that prepayments are assumed to occur slower than the benchmark.
+
+The three sources of return on a fixed-rate bond purchased at par value are: (1) receipt of the promised coupon and principal payments on the scheduled dates, (2) reinvestment of coupon payments, and (3) potential capital gains, as well as losses, on the sale of the bond prior to maturity.
+
+* Market price risk dominates coupon reinvestment risk when the investor has a short-term horizon (relative to the time-to-maturity on the bond).
+* Coupon reinvestment risk dominates market price risk when the investor has a long-term horizon (relative to the time-to-maturity)—for instance, a buy-and-hold investor.
+* When the investment horizon is greater than the Macaulay duration of the bond, coupon reinvestment risk dominates price risk. The investor’s risk is to lower interest rates. The duration gap is negative.
+* When the investment horizon is equal to the Macaulay duration of the bond, coupon reinvestment risk offsets price risk. The duration gap is zero.
+* When the investment horizon is less than the Macaulay duration of the bond, price risk dominates coupon reinvestment risk. The investor’s risk is to higher interest rates. The duration gap is positive.
+
+Bonds rated Aaa to Baa3 by Moody’s and AAA to BBB− by Standard & Poor’s (S&P) and/or Fitch (higher to lower) are referred to as “investment grade.” Bonds rated lower than that—Ba1 or lower by Moody’s and BB+ or lower by S&P and/or Fitch—are referred to as “below investment grade” or “speculative grade.” Below-investment-grade bonds are also called “high-yield” or “junk” bonds.
+
+The “4 Cs” of credit—capacity, collateral, covenants, and character—provide a useful framework for evaluating credit risk.
+
+In assessing sovereign credit risk, a helpful framework is to focus on five broad areas: (1) institutional effectiveness and political risks, (2) economic structure and growth prospects, (3) external liquidity and international investment position, (4) fiscal performance, flexibility, and debt burden, and (5) monetary flexibility.
+
+## Derivatives
+
+American call prices can differ from European call prices only if there are cash flows on the underlying, such as dividends or interest; these cash flows are the only reason for early exercise of a call.
+
+### Alternative Investments
+
+Waterfalls can be on a whole-of-fund basis (European) or deal-by-deal basis (American).
+
+Hedge funds are typically classified by strategy. One such classification includes four broad categories of strategies: equity hedge (e.g., market neutral), event driven (e.g., merger arbitrage), relative value (e.g., convertible bond arbitrage), macro and CTA strategies (e.g., commodity trading advisers).
+
+* Farmland, like timberland, has an income component related to harvest quantities and agricultural commodity prices. However, farmland doesn’t have the production flexibility of timberland, because farm products must be harvested when ripe.
+
+Timberland can be thought of as both a factory and a warehouse. Plus, timberland is a sustainable investment that mitigates climate-related risks.
+
+* Real estate includes two major sectors: residential and commercial. Residential real estate is the largest sector, making up some 75% of the market globally. Commercial real estate primarily includes office buildings, shopping centers, and warehouses. Real estate property has some unique features compared with other asset classes, including heterogeneity (no two properties are identical) and fixed location.
+
+Infrastructure investments may also be categorized by the underlying asset’s stage of development. Investing in infrastructure assets that are to be constructed is generally referred to as greenfield investment. Investing in existing infrastructure assets may be referred to as brownfield investment.
+
+## Portfolio Management
+
+Understanding the needs of your client and preparing an investment policy statement represent the first steps of the portfolio management process. Those steps are followed by asset allocation, security analysis, portfolio construction, portfolio monitoring and rebalancing, and performance measurement and reporting.
+
+* Obtaining a unique optimal risky portfolio is not possible if investors are permitted to have heterogeneous beliefs because such beliefs will result in heterogeneous asset prices.
+
+The security market line is an implementation of the CAPM and applies to all securities, whether they are efficient or not.
+
+* The IPS is the starting point of the portfolio management process. Without a full understanding of the client’s situation and requirements, it is unlikely that successful results will be achieved.
+* The IPS can take a variety of forms. A typical format will include the client’s investment objectives and also list the constraints that apply to the client’s portfolio.
+* The client’s objectives are specified in terms of risk tolerance and return requirements.
+* The constraints section covers factors that need to be considered when constructing a portfolio for the client that meets the objectives. The typical constraint categories are liquidity requirements, time horizon, regulatory requirements, tax status, and unique needs.
+
+The client’s overall risk tolerance is a function of both the client’s ability to accept risk and the client’s “risk attitude,” which can be considered the client’s willingness to take risk.
+
+Behavioral biases may be categorized as either cognitive errors or emotional biases. A single bias may have aspects of both, however, with one type of bias dominating.
+
+Cognitive errors can be further classified into two categories: belief perseverance biases and information-processing biases.
+
+Belief perseverance biases include conservatism, confirmation, representativeness, illusion of control, and hindsight.
+
+Information-processing biases include anchoring and adjustment, mental accounting, framing, and availability.
+
+Emotional biases include loss aversion, overconfidence, self-control, status quo, endowment, and regret aversion.
+
+A risk management framework is the infrastructure, processes, and analytics needed to support effective risk management; it includes risk governance, risk identification and measurement, risk infrastructure, risk policies and processes, risk mitigation and management, communication, and strategic risk analysis and integration.
+
+Risk governance is the top-level foundation for risk management, including risk oversight and setting risk tolerance for the organization.
+
+Individuals face many of the same organizational risks outlined here but also face health risk, mortality or longevity risk, and property and casualty risk.
+
+Risks are not necessarily independent because many risks arise as a result of other risks; risk interactions can be extremely non-linear and harmful.
+
+## Ethical and Professional Standards
+
+Ethics refers to the study of making good choices. Ethics encompasses a set of moral principles and rules of conduct that provide guidance for our behavior.
+
+* Challenges to ethical behavior include being overconfident in our own morality, underestimating the effect of situational influences, and focusing on the immediate rather than long-term outcomes or consequences of a decision.
+
+the code of ethics publicly communicates the established principles and expected behavior of its members.
+
+A framework for ethical decision making can help people look at and evaluate a decision from different perspectives, enabling them to identify important issues, make wise decisions, and limit unintended consequences.
+
+### The Code of Ethics
+
+Members of CFA Institute (including CFA charterholders) and candidates for the CFA designation (“Members and Candidates”) must:
+
+* Act with integrity, competence, diligence, and respect and in an ethical manner with the public, clients, prospective clients, employers, employees, colleagues in the investment profession, and other participants in the global capital markets.
+* Place the integrity of the investment profession and the interests of clients above their own personal interests.
+* Use reasonable care and exercise independent professional judgment when conducting investment analysis, making investment recommendations, taking investment actions, and engaging in other professional activities.
+* Practice and encourage others to practice in a professional and ethical manner that will reflect credit on themselves and the profession.
+* Promote the integrity and viability of the global capital markets for the ultimate benefit of society.
+* Maintain and improve their professional competence and strive to maintain and improve the competence of other investment professionals.
+Standards of Professional Conduct
+1.	PROFESSIONALISM
+0.	Knowledge of the Law
+
+Members and Candidates must understand and comply with all applicable laws, rules, and regulations (including the CFA Institute Code of Ethics and Standards of Professional Conduct) of any government, regulatory organization, licensing agency, or professional association governing their professional activities. In the event of conflict, Members and Candidates must comply with the more strict law, rule, or regulation. Members and Candidates must not knowingly participate or assist in and must dissociate from any violation of such laws, rules, or regulations.
+
+1.	Independence and Objectivity
+
+Members and Candidates must use reasonable care and judgment to achieve and maintain independence and objectivity in their professional activities. Members and Candidates must not offer, solicit, or accept any gift, benefit, compensation, or consideration that reasonably could be expected to compromise their own or another’s independence and objectivity.
+
+2.	Misrepresentation
+
+Members and Candidates must not knowingly make any misrepresentations relating to investment analysis, recommendations, actions, or other professional activities.
+
+3.	Misconduct
+
+Members and Candidates must not engage in any professional conduct involving dishonesty, fraud, or deceit or commit any act that reflects adversely on their professional reputation, integrity, or competence.
+
+2.	INTEGRITY OF CAPITAL MARKETS
+
+0.	Material Nonpublic Information
+
+Members and Candidates who possess material nonpublic information that could affect the value of an investment must not act or cause others to act on the information. 
+
+1.	Market Manipulation
+
+Members and Candidates must not engage in practices that distort prices or artificially inflate trading volume with the intent to mislead market participants.
+
+3.	DUTIES TO CLIENTS
+
+0.	Loyalty, Prudence, and Care
+
+Members and Candidates have a duty of loyalty to their clients and must act with reasonable care and exercise prudent judgment. Members and Candidates must act for the benefit of their clients and place their clients’ interests before their employer’s or their own interests.
+
+1.	Fair Dealing
+
+Members and Candidates must deal fairly and objectively with all clients when providing investment analysis, making investment recommendations, taking investment action, or engaging in other professional activities.
+
+2.	Suitability
+
+0.	When Members and Candidates are in an advisory relationship with a client, they must:
+
+0.	Make a reasonable inquiry into a client’s or prospective client’s investment experience, risk and return objectives, and financial constraints prior to making any investment recommendation or taking investment action and must reassess and update this information regularly.
+
+1.	Determine that an investment is suitable to the client’s financial situation and consistent with the client’s written objectives, mandates, and constraints before making an investment recommendation or taking investment action.
+
+2.	Judge the suitability of investments in the context of the client’s total portfolio.
+
+1.	When Members and Candidates are responsible for managing a portfolio to a specific mandate, strategy, or style, they must make only investment recommendations or take only investment actions that are consistent with the stated objectives and constraints of the portfolio.
+
+4.	Performance Presentation
+
+When communicating investment performance information, Members and Candidates must make reasonable efforts to ensure that it is fair, accurate, and complete.
+
+5.	Preservation of Confidentiality
+
+Members and Candidates must keep information about current, former, and prospective clients confidential unless:
+
+0.	The information concerns illegal activities on the part of the client or prospective client,
+
+1.	Disclosure is required by law, or
+
+2.	The client or prospective client permits disclosure of the information.
+
+4.	DUTIES TO EMPLOYERS
+
+1.	Loyalty
+
+In matters related to their employment, Members and Candidates must act for the benefit of their employer and not deprive their employer of the advantage of their skills and abilities, divulge confidential information, or otherwise cause harm to their employer.
+
+2.	Additional Compensation Arrangements
+
+Members and Candidates must not accept gifts, benefits, compensation, or consideration that competes with or might reasonably be expected to create a conflict of interest with their employer’s interest unless they obtain written consent from all parties involved.
+
+3.	Responsibilities of Supervisors
+
+Members and Candidates must make reasonable efforts to ensure that anyone subject to their supervision or authority complies with applicable laws, rules, regulations, and the Code and Standards.
+
+5.	INVESTMENT ANALYSIS, RECOMMENDATIONS, AND ACTIONS
+
+1.	Diligence and Reasonable Basis
+
+Members and Candidates must:
+
+0.	Exercise diligence, independence, and thoroughness in analyzing investments, making investment recommendations, and taking investment actions.
+
+1.	Have a reasonable and adequate basis, supported by appropriate research and investigation, for any investment analysis, recommendation, or action.
+
+2.	Communication with Clients and Prospective Clients
+
+Members and Candidates must:
+
+0.	Disclose to clients and prospective clients the basic format and general principles of the investment processes they use to analyze investments, select securities, and construct portfolios and must promptly disclose any changes that might materially affect those processes.
+
+1.	Disclose to clients and prospective clients significant limitations and risks associated with the investment process.
+
+2.	Use reasonable judgment in identifying which factors are important to their investment analyses, recommendations, or actions and include those factors in communications with clients and prospective clients.
+
+3.	Distinguish between fact and opinion in the presentation of investment analysis and recommendations.
+
+3.	Record Retention
+
+Members and Candidates must develop and maintain appropriate records to support their investment analyses, recommendations, actions, and other investment-related communications with clients and prospective clients.
+
+6.	CONFLICTS OF INTEREST
+
+1.	Disclosure of Conflicts
+
+Members and Candidates must make full and fair disclosure of all matters that could reasonably be expected to impair their independence and objectivity or interfere with respective duties to their clients, prospective clients, and employer. Members and Candidates must ensure that such disclosures are prominent, are delivered in plain language, and communicate the relevant information effectively.
+
+2.	Priority of Transactions
+
+Investment transactions for clients and employers must have priority over investment transactions in which a Member or Candidate is the beneficial owner.
+
+3.	Referral Fees
+
+Members and Candidates must disclose to their employer, clients, and prospective clients, as appropriate, any compensation, consideration, or benefit received from or paid to others for the recommendation of products or services.
+
+7.	RESPONSIBILITIES AS A CFA INSTITUTE MEMBER OR CFA CANDIDATE
+
+1.	Conduct as Participants in CFA Institute Programs
+
+Members and Candidates must not engage in any conduct that compromises the reputation or integrity of CFA Institute or the CFA designation or the integrity, validity, or security of CFA Institute programs.
+
+2.	Reference to CFA Institute, the CFA Designation, and the CFA Program
+
+When referring to CFA Institute, CFA Institute membership, the CFA designation, or candidacy in the CFA Program, Members and Candidates must not misrepresent or exaggerate the meaning or implications of membership in CFA Institute, holding the CFA designation, or candidacy in the CFA Program.
+
+
+## Formulas:
+
+### Quantitative Methods
+
+* Money Weighted Rate of Return
+* Time weighted Rate of Return
+* Geometric Mean
+* Arithmetic Mean
+* Harmonic Mean
+* Percentiles
+* Mean Absolute Deviation
+* Sample Variance
+* Sample Standard Deviation
+* Coefficient of Variation
+* Sharpe Ratio
+* Odds for an event
+* Odds against an event
+* Dependent events:
+	* Probability of A given B
+	* Probability of A and B
+	* Probability of A or B
+* Independent events:
+	* Probability of A given B
+	* Probability of A and B
+	* Probability of A or B
+* Bayes Formula
+* Covariance
+* Correlation
+* Portfolio Variance
+* 2 Asset Portfolio Variance
+* Confidence Intervals:
+	* 68:
+	* 90:
+	* 95:
+	* 98:
+	* 99:
+* Approximates:
+	* 50:
+	* 68:
+	* 95:
+	* 99:
+* Z score
+* Roy’s Shortfall Ratio
+* Standard Error of Sample Mean
+* T stat
+* Z Stat
+* Test of Means Equal Variance
+* Test of Means Unequal Variance
+* Chi squared stat
+* F test
+
+### Economics
+
+* Inverse demand function
+* Elasticity
+* Total Revenue
+* Marginal Revenue
+* Shutdown Point
+* Long run exit point
+* N firm concentration ratio
+* HHI ratio
+* GDP deflator
+* GDP
+* Personal Income
+* Disposable Income
+* Savings
+* Quantity theory of money
+* Labor productivity
+* Money Multiplier
+* Fiscal Multiplier
+* Current Account
+* Capital Account
+* Financial Account
+* Real Exchange Rate
+* Direct Exchange Rate
+* Indirect Exchange Rate
+* Relative Currency Movement
+* Arbitrage Relationship
+
+
+### Financial Statement Analysis
+
+* Assets (expanded equation)
+* Basic eps
+* Diluted eps
+* Current ratio
+* Quick ratio (acid tes)
+* Cash ratio
+* Long term debt to equity
+* Debt to equity
+* Total debt
+* Financial leverage
+* Free cash flow to firm
+* Free cash flow to equity
+* Cf to revenue
+* Cash return on assets
+* Cash return on equity
+* Cash to income
+* Cf per share
+* Debt coverage
+* Reinvestment
+* Debt payment
+* Dividend payment
+* Investing/financing
+* Inventory turnover
+* Days of inventory on hand
+* Receivables turnover
+* Days of sales outstanding
+* Payables turnover
+* Number of days of payables
+* Working capital turnover
+* Fixed asset turnover
+* Total asset turnover
+* Defensive interval ratio
+* Cash conversion cycle
+* Debt to assets
+* Debt to capital
+* Debt to equity
+* Financial leverage ratio
+* Interest coverage ratio
+* Fixed charge coverage ratio
+* Gross profit margin
+* Operating profit margin
+* Pretax margin
+* Net profit margin
+* Return on assets
+* Adjusted ROA
+* Operating ROA
+* Return on total capital
+* Return on equity
+* Dupont decomposition or ROE
+* Sustainable growth rate
+* Estimated useful life
+* Average age of asset
+* Remaining useful life
+* Effective tax rate
+* Income tax expense
+
+### Equity Investments
+
+* Leverage ratio
+* Price at margin call
+* Accounting return on equity
+* Gordon growth model
+
+### Fixed Income
+
+* Macauley Duration
+* Modified Duration
+* %ChangePV
+* ApproxModDur
+* ApproxMacDur
+* Effective duration
+* Portfolio duration
+* Money Duration
+* Price value of basis point
+* Basis point value
+* Annual convexity
+* Duration and convexity price effect
+* Money convexity
+* Effective convexity
+* Yield volatility
+* Duration gap
+* Yield spread
+* Approximate return impact small changes
+* Approximate return impact big changes
+
+
+### Derivatives
+
+* Arbitrage and replication
+* Put-call parity and synthetics
+* Put-call-forward parity
+
+### Portfolio Management
+
+* Head and Shoulder price target
+* Inverse head and shoulders price target
+* Short interest ratio
+* Weighted average cost of capital
+* Debt to equity to component’s weight
+* Preferred stock valuation
+* CAPM
+* Dividend discount model
+* Country equity risk premium
+* Degree of operating leverage
+* Degree of financial leverage
+* Degree of total leverage
+* Purchases
+* Operating cycle
+* Net operating cycle
+* Utility function with risk
+* Expected return on capital market line
+* Equation of capital market line
+* The market model
+* Calculation of beta
+* Sharpe Ratio
+* Traynor ratio
+* m-squared
+* Jensens alpha
+* Sortino ratio
+* security characteristic line
+
+## Definitions
+
+### Economics
+
+* GDP expenditure approach
+* GDP income approach
+* Marginal propensity to consume
+* Fischer effect
+* Balance of payments and components
+
+### Financial Statement Analysis
+
+* Analysis framework
+* Corporate Issuers
+
+### Fixed Income
+
+* American option
+* European option
+* Bermuda option
+* Eurobond
+
+### Alternative Investments
+
+* Waterfall (American European)
+* hard hurdle
+* soft hurdle
+
+### Portfolio Management
+
+* Portfolio management process
+
+### Other
+
+* Free trade area: no restrictions on import and export of goods and services
+* Customs Union: FTA + common trade restrictions with non-member countries
+* Common Market: customs union and no restrictions on movements of labor and capital between member countries
+* Economic Union: common market and common economic policy and institutions
+* Monetary Union: economic union and common currency
+* Business Cycle: Trough, Expansion, Peak, Contraction
+* Cost-push inflation = inflation caused by a decrease in aggregate supply (AS)
+* Demand-pull inflation = inflation caused by an increase in aggregate demand (AD)
+* Laspeyres index: uses base consumption basket to measure inflation
+* Paasche index: uses current consumption basket to measure inflation
+* Fischer index: is the geometric mean of Laspeyres and Paasche index.
+* Formal dollarization:	Don’t have own currency. Adopts another country’s currency.
+* Monetary union: Several countries adopt the same currency, e.g. European Union. 
+* Currency board system:	Commitment to exchange domestic currency for a specified foreign currency at a fixed exchange rate.
+* Fixed parity/fixed peg:	A country pegs its own currency with a foreign currency (or a basket of currencies) within a +/- 1% margin.
+* Target zone:	Similar to fixed parity, but with a wider margin (+/- 2%).
+* Crawling peg:	Exchange rate is pegged but adjusted periodically.
+* Crawling bands:	Gradually increasing the margins of the fixed peg bands to transition from fixed peg to floating rate.
+* Managed float:	Monetary authority intervenes to manage exchange rate without any specific target level.
+* Independently floating:	Market-driven exchange rate.
+
+
+### Capital Allocation fundamentals
+1.	Decisions are based on cash flows, not accounting concepts. Include incremental after-tax cash flows, (positive/negative) externalities. Exclude sunk cost because it is already incurred.
+2.	Cash flows are not accounting net income or operating income.
+3.	Cash flows must account for opportunity cost.
+4.	Cash flows must be on an after-tax basis.
+5.	Timing of cash flows is vital.
+6.	Ignore financing costs, as it is already included in cost of capital. 
+Common Mistakes
+7.	Failure to include economic responses
+8.	Misusing capital budgeting templates
+9.	Pet projects
+10.	Basing investment decisions on earning metrics (EPS, net income or ROE), instead of incremental cash flows
+11.	Using IRR to make investment decisions, instead of NPV
+12.	Poor accounting of cash flows
+13.	Over or underestimating overhead costs
+14.	Misestimating discount rate
+15.	Spending all of the investment budget just because it is available
+16.	Failure to consider investment alternatives
+17.	Improper handling of sunk cost and opportunity costs
+   
+### Types of limit orders:
+
+a)	Marketable (aggressively priced) ensures immediate execution:
+  * Limit buy order > best ask, OR 
+  * Limit sell order < best bid
+
+b) Making a new market / inside the market:
+  * Best bid < Limit price < Best ask
+
+c) Behind the market:
+  * Limit buy price < Best bid
+  * Limit sell price > Best ask
