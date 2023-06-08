@@ -154,4 +154,27 @@ Checklists are a heuristic approach that an analyst designs for their own needs.
 
 ## Business Cycle Analysis
 
+### Phases of the Business Cycle
+
+1. Initial Recovery: uptick in spending after recession
+1. Early Expansion: momentum, increased profits and demand
+1. Late Expansion: output gap is closed, boom mentality
+1. Slowdown: rising interest rates, rising inflation, inverted yield curve
+1. Contraction: 12-18 month, low investment and lending, cut production, easing monetary policy, steep yield curve
+
+The phases vary in length and amplitude making them hard to predict.
+
+Over the short term expectations are subject to significant noise. In the long term the economy is likely to have experienced several business cycle phases and should approach the long term trend. Business cycle analysis generates the most reliable and actionable expectations in the 2-3 year range.
+
+## Inflation
+
+A central bank's policy tools are more effective at slowing the economy than accelerating it. As such, they prefer to promote persistent positive inflation.
+
+This inflation gives a buffer for the bank to operate in without causing deflation which makes the bank less effective and undermines the mortgage sector.
+
+Compared to deflation moderate inflation has only modest costs on the economy.
+
+Inflation is procyclical.
+
+
 
