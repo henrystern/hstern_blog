@@ -1,17 +1,13 @@
 ---
 pagetitle: "Henry Stern - CFA II Notes"
-title: "CFA II Notes"
+title: "CFA II"
 description: "Notes for the November 2022 CFA Level II exam."
 author: ""
 date: "2022-11-23"
 listing:
   - type: table
     contents: 
-      - FSA.qmd
-      - Equity Valuation.qmd
-      - Fixed Income.qmd
-      - Derivatives.qmd
-      - Summaries.qmd
+      - ./**/*.qmd
     sort: order
     sort-ui: false
     filter-ui: false

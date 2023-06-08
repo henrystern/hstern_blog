@@ -1,6 +1,6 @@
 ---
 pagetitle: "Henry Stern - GRE Notes"
-title: "GRE Notes"
+title: "GRE"
 description: "Notes for the May 2023 GRE."
 author: ""
 date: "2023-05-13"
