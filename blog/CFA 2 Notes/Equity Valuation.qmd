@@ -1,0 +1,99 @@
+---
+title: Equity Valuation
+order: 2
+---
+
+## Equity Valuation (1)
+
+### Applications and Processes
+
+#### Considerations in Using Accounting Information
+
+Important: Table of Quality of Earnings Indicators 
+
+#### Communicating Valuation Results
+
+Default report template:
+
+* Table of Contents
+* Summary and Investment Conclusion
+* Business Summary
+* Risks
+* Valuation
+* Historical and Pro Forma Tables
+
+
+### Return Concepts
+
+#### Equity Risk Premium
+
+The equity risk premium is the amount over the risk free rate that is required by an investor. Sometimes in backward looking calculations ERP is the realized excess return of equities over the risk free rate.
+
+#### CAPM
+
+CAPM = RF + beta(ERP) where RF is a long government bond yield
+
+Blume Beta adjustment = (2/3)(unadjusted beta) + (1/3)(1.0)
+
+#### Summary
+
+Discount rates must be on a nominal (real) basis if cash flows are on a nominal (real) basis.
+
+## Equity Valuation (2)
+
+### Industry and Company Analysis
+
+Porters Five Forces: threat of substitute products, intensity of rivalry among incumbent companies, bargaining power of suppliers, bargaining power of customers, and threat of new entrants.
+
+## Equity Valuation (3)
+
+### Market Based Valuation
+
+::: {.callout-note}
+
+## Justified P/E
+
+    p/e = (1-b)*(1+g) / (r-g)
+:::
+
+::: {.callout-note}
+
+## Justified P/B
+
+    p/b = (ROE*(1+g)) / (r-g)
+:::
+
+::: {.callout-note}
+
+## Justified P/S
+
+    p/s = (E0 / S0)*(1-b)*(1+g) / (r-g)
+:::
+
+::: {.callout-note}
+
+## Normalized EPS
+
+    Normalized EPS = arithmetic average EPS or,
+    Normalized EPS = ROE * Present BV/Share
+:::
+
+$$
+BV/Share = Shareholder's equity - preferred equity
+.$$ 
+
+$$
+FCFE = FCFF - Int(1-t) + Net Borrowing
+.$$ 
+
+$$
+Blume's adjusted beta = (2/3) * beta + (1/3) * 1
+.$$ 
+
+$$
+GGM ERP = Div/P + g - long term rfr + adjustments
+.$$ 
+
+$$
+Macro ERP = (1+Einfl)*(1_+ Eg_real_eps)*(1 + Eg_p/e) - 1 + Einc -Erfr  
+.$$ 

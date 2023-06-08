@@ -1,0 +1,471 @@
+---
+title: Financial Statement Analysis
+order: 1
+---
+
+## Intercorporate Investments
+### Investments in Financial Assets
+
+Under IFRS financial assets can be valued three ways.
+
+* Fair value through profit/loss
+* Fair value through OCI
+* Amortized cost
+
+
+The appropriate method is determined principally by two tests.
+
+* A business model test: why the assets are held. and,
+* A cash flow characteristic test: the nature of the payments
+
+
+These tests are similar to the deprecated IAS 39 categories of "management intent to hold to maturity", "held for trading, and "available for sale".
+
+To be measured at amortized cost the financial assets must be being held to collect contractual cash flows, and the cash flows must be solely payments of principal and interest on principal.
+
+Whether other financial assets are measured through OCI or profit/loss depends on whether they are held for trading and accountants discretion.
+
+Equity's cannot be measured through amortized cost. If measured through OCI only the dividend income is recognized in profit or loss. Equities also cannot be reclassified after their initial classification.
+
+Reclassification of debt instruments is only permitted if the business model for the financial assets has changed significantly. These changes are expected to be very infrequent.
+
+### Investments In Associates And Joint Ventures
+
+significant influence over a holding may be evidenced by
+
+* representation on the board of directors
+* participation in the policy-making process
+* material transactions between the investor and the investee
+* interchange of managerial personnel; or
+* technological dependency
+
+
+For joint ventures the equity method of accounting is required by both IFRS and US GAAP. Joint ventures are defined by IFRS where
+
+* a contractual arrangement exists between two or more venturers; and
+* the contractual arrangement establishes joint control
+
+
+Under proportionate consolidation the venturer's share is combined or shown on a line by line basis with similar items under its sole control. In contrast, the equity method presents a single line item on the income statement and a single line item on the balance sheet. Under both methods identical income is recognized but there can be significant differences in ratio analysis.
+
+#### Equity Method
+
+* initially the investment is recorded at cost
+* the carrying amount is subsequently adjusted to recognize the investors proportionate share of profit or loss these profits or losses are reported in income
+* dividends received are treated as a return of capital and reduce the carrying amount
+* these investments are classified as non current
+* ultimately:
+$$\begin{align}
+  \text{Balance-Equity Investment} = \text{initial investment} \\ + \text{share of profits received to date} \\ - \text{dividends received to date}
+\end{align}.$$
+
+
+### Investment Costs That Exceed the Book Value of the Investee, Amortization of Excess Purchase Price, Fair Value Option and Impairment"
+
+US GAAP only permits PPE to be valued at historical cost less accumulated depreciation. IFRS allows either historical cost or fair valuations for PPE.
+
+Differences between the cost of the acquisition and the book value of the net identifiable assets can be due to either discrepancy between the book value of assets and their fair value or due to goodwill. Assets should be revalued and the difference between the fair value and the book value should be amortized individually as part of the investors share of the p/l over the life of those assets. The excess price of the asset should be accounted for according to the treatment of the specific asset.
+
+Any remaining difference between the cost of the acquisition and the investors share of the fair value of the net identifiable assets is valued as goodwill. Goodwill is reviewed for impairment regularly and written down on impairment. Goodwill is included in the carrying amount of the investment.
+
+Goodwill is not amortized because it is presumed to have an indefinite life.
+
+#### Fair Value Option
+Both IFRS and US GAAP give the investor the option to account for their equity method investment at fair value. But under IFRS this option is only available to venture capital companies, mutual funds, and similar companies.
+
+The option to value at fair value must occur at the time of initial recognition and is irrevocable.
+
+Under this system the investment account does not reflect the investor's proportionate share of p/l, and dividends. Additionally, the excess of costs over fair value is not amortized and goodwill is not created
+
+#### Impairment
+IFRS and US GAAP require periodic reviews for impairment of equity method investments.
+
+Under IFRS the impairment loss is recognized if an event occurs that has an impact on future cash flows that can be estimated. It is recognized on the income statement and the carrying amount of the investment on the balance sheet is reduced directly or through an allowance account.
+
+US GAAP recognizes impairment if the fair value of the investment declines below its carrying value and the decline is determined to be permanent. The impairment loss is recognized on the income statement and the carrying value of the investment on the balance sheet is reduced to its fair value.
+
+Both IFRS and US GAAP prohibit the reversal of impairment losses.
+
+### Transactions with Associates and Disclosure
+
+Profits from transactions with its associates cannot be realized until confirmed through sale to third parties. The investors share must be deferred by reducing the amount recorded under the equity method. When the profit is confirmed it is added to the equity income.
+
+::: {.callout-note}
+
+## Streams
+
+	Transactions can be upstream (associate to investor) or downstream.
+:::
+
+In an upstream sale the profit is recorded on the associate's income statement. The investors share of the profit is included in equity income on the investor's income statement.
+
+In a downstream sale the profit is recorded on the investor's income statement. Unearned profits are eliminated to the extent of the investors interest in the associate. So the income is adjourned to equity income on the investors sheet.
+
+#### Issues for analysts
+Analysts should question whether the equity method is appropriate. Sometimes low \% holdings may still exhibit significant control and some high \% holdings do not have significant influence.
+
+Some important information may be missed due to the equity methods 'one line consolidation'.
+
+A company may prefer to use the equity method to improve their financial rations. Careful analysis can reveal whether this is the case.
+
+An analyst must consider the quality of the earnings and the likelihood of the future cash flows will eventually be distributed to the investor as the equity method counts earnings that have not yet been paid.
+
+### Business Combinations
+
+Business combinations are typically motivated by 'synergies'.
+
+IFRS does not distinguish between business combinations based on the resulting structure of the entity. One of the parties is identified as the acquirer. Under GAAP an acquirer is identified and the combination is classified as merger, acquisition, or consolidation based on the structure after the combination. Under both IFRS and US GAAP business combinations are accounted for using the acquisition method.
+
+* Merger: Company A + Company B = Company A
+* Acquisition: Company A + Company B = (Company A + Company B)\footnote{a new parent company is formed but both companies continue to exist}
+* Consolidation: Company A + Company B = Company C
+
+
+#### Special Purpose/Variable Interest Entities
+
+IFRS requires consolidation of SPE's if the substance of the relationship indicates control by the sponsor. Relevant factors must be considered to determine whether control exists. Control is present when:
+
+* the investor has the ability to exert influence on the financial and operating policy of the entity; and
+* is exposed or has rights to variable returns from its involvement with the investee.
+
+
+The US GAAP consolidation model includes a variable interest component and a voting interest component. Under the variable interest component the primary beneficiary of a VIE must consolidate the VIE.
+
+Pooling of interests is no longer permitted in a business combination. Pooling allowed assets to be combined at historical cost which often resulted in lower shareholders equity than would be recognized if the assets were valued fairly.
+
+#### Acquisition Method
+
+IFRS and US GAAP require the acquisition method of accounting for business combinations, although both have a few specific exemptions.
+
+Under this approach, the fair value of the consideration given by the acquiring company is the appropriate measurement for acquisitions and also includes the acquisition-date fair value of any contingent consideration. Direct costs of the business combination, such as professional and legal fees, valuation experts, and consultants, are expensed as incurred.
+
+IFRS allows two options of recognizing goodwill for acquisitions. The goodwill option is on a transaction by transaction basis. One can choose to recognize:
+
+* Partial goodwill: fair value of the acquisition - acquirer's share of the fair value of all identifiable tangible and intangible assets, liabilities, and contingent liabilities acquired. Or,
+* Full goodwill: fair value of the entity as a whole - the fair value of all identifiable tangible and intangible assets, liabilities and contingent liabilities.
+
+
+US GAAP requires the full goodwill method.
+
+If the market price of the acquisition is below the fair value of its net assets the acquisition is considered a bargain purchase. The difference is recognized immediately in profit or loss.
+
+### The Consolidation Process
+
+In an acquisition the acquirer does not have to obtain 100\% of the acquired company but merely control. (usually 50\%) the controlling company is considered the parent and the controlled entity the subsidiary. They both prepare their own financial statements but consolidated financial statements likely present a more accurate indication of their operations.
+
+A non controlling interests in a consolidated subsidiary is presented as a separate component on the balance sheet. Under IFRS non-controlling interest can be measured at its fair value under the full goodwill method or at its share of the fair value under the partial goodwill method. US GAAP requires the full goodwill method.
+
+On the income statement non controlling interests are presented on a line item reflecting the allocation of profit or loss for the period.
+
+#### Impairment of Goodwill
+
+Under both IFRS and US GAAP impairments to goodwill are recognized on the consolidated income statement. However impairment occurs differently between IFRS and GAAP.
+
+### Variable Interest and SPEs
+
+SPEs allow a company to segregate certain activities to reduce risk. The sponsoring entity provides assets to the SPE and has rights to use the SPEs assets, but other parties provide funding to the SPE. Often the SPE is funded with debt that is guaranteed by the sponsoring entity.
+
+Formerly, SPEs did not have to be included in consolidated statements as the sponsoring entity did not have >50\% of the SPEs equity. New rules have been brought in to require consolidation when the equity holders do not have control. The entity that is likely to absorb the majority of the SPE or VIEs losses must consolidate the entity on its statements. Entities must also disclose their relationship to SPEs even if the are not the primary beneficiary.
+
+## Employee Compensation
+
+### Introduction
+
+It is difficult to measure alternative compensation schemes because often the employees earn the benefits in the period that they provide the service but they receive the benefit in future periods.
+
+### Pensions and Post-employment Benefits
+
+#### Types
+
+Post-employment benefits include pensions, health care, medical insurance, and life insurance.
+
+Depending on the assumptions made the estimates of the values of these benefits can vary widely. This is especially important for defined benefit plans.
+
+### Measuring a Defined Benefit Pension Plan's Obligations
+
+The pension obligation is the present value of future benefits earned by employees for service provided to date.
+
+Under IFRS:
+
+* the obligation is called present value of defined benefit obligation (PVDBO)
+* PVDBO is “the present value, without deducting any plan assets, of expected future payments required to settle the obligation arising from employee service in the current and prior periods”
+
+
+While, under US GAAP:
+
+* the obligation is called the projected benefit obligation (PBO)
+* PBO is the “the actuarial present value as of a date of all benefits attributed by the pension benefit formula to employee service rendered prior to that date”
+
+
+The discount rate used to compute the present value is the rate of return on high quality corporate bonds.
+
+Actuarial gains and losses arise when estimates are reevaluated and change the anticipated present value of the obligations.
+
+### Reporting DC Obligations
+
+The employers contributions are recorded as an expense on the income statement. An accrual is recognized at the end of the reporting period for any unpaid contributions.
+
+### DB Balance Sheet Reporting
+
+The funded status must be reported on the balance sheet.
+
+::: {.callout-note}
+
+## Funded Status
+
+$$
+  \text{Funded Status} = \text{Fair value of plan assets} - \text{PV of DB obligation}
+.$$
+:::
+
+If the plan has a deficit the net underfunded obligation is reported as a liability on the balance sheet. Otherwise an asset is reported.
+
+### DB Costs
+
+The periodic cost of a company's DB pension plan is the change in the net pension liability or asset adjusted for the employers contributions.
+
+Under IFRS periodic pension costs have three components:
+
+* Service costs: additional costs incurred as employee services are rendered
+* Net interest expense/income: the discounted cost or income of the net pension account
+* Remeasurement: Actuarial gains and losses, and the difference between the actual cost and the estimated cost. These amounts are recognized in OCI.
+
+
+While, under US GAAP:
+
+* past service costs are reported in OCI in the period in which the change occurs and not p/l. The cost is then amortized over the average service life of the employees.
+* GAAP does not present the interest expenses and gains as net
+* Returns on plan assets are recognized in p/l using the expected rather than actual return. any differences are recognized as actuarial gains or losses in OCI.
+* When actuarial adjustments are large (>10\%) they can be recognized under p/l through the corridor approach.
+
+
+::: {.callout-note}
+
+## Amortization Amount
+
+$$
+  \text{Amortization amount} = \frac{\text{Actuarial Diff} - .1(\text{Greater of DB Obligation or FV of assets})}{\text{employee working years}}
+$$
+:::
+
+::: {.callout-note}
+
+## Periodic Pension Costs
+
+$$
+	\text{Periodic Pension Cost = End Funded Status - Contributions - Begin funded status}
+$$
+:::
+
+### Translation Methods
+
+There are several permissible translation methods for the conversion of foreign currency into the presentation currency of the corporation.
+
+::: {.callout-note}
+
+## Current Rate Method
+
+A translation method where all assets and liabilities measured in foreign currencies are translated to the presentation currency at the current exchange rate
+:::
+
+::: {.callout-note}
+
+## Monetary/non-monetary method
+
+A translation method where all monetary assets and liabilities in foreign currencies are translated to the presentation currency at the current exchange rate but non-monetary assets and liabilities are converted to the presentation currency at historical cost
+:::
+
+::: {.callout-note}
+
+## Temporal Method
+
+monetary and non monetary assets and liabilities that are measured at their current value on the balance sheet are converted to the presentation currency at the current exchange rate.	
+	Meanwhile monetary and non-monetary assets and liabilities that are measured at historical costs are translated at the historical exchange rates.
+:::
+
+### CAMELS Approach to Analyzing a Bank
+
+CAMELS is an acronym for \textbf{C}apital, \textbf{A}sset quality, \textbf{M}anagement, \textbf{E}arnings sufficiency, \textbf{L}iquidity, and \textbf{S}ensitivity
+
+each feature is rated from 1 being great to 5 being terrible. The weightings for each category are subjectively determined by the analyst.
+
+#### Capital Adequacy
+
+Tier 1 Capital is the most loss absorbing capital such as common stock, retained earnings, accumulated OCI, and deferred taxes.
+
+Tier 2 Capital includes instruments that are subordinate to depositors and creditors. and has a minimum maturity of five years amongst other requirements.
+
+Basel III mandates certain capital relationships be maintained.
+
+
+* Common equity tier 1 must be at least 4.5\% of risk weighted assets (RWA)
+* Total tier 1 must be at least 6\%
+* Total capital (tier 1 plus tier 2) must be at least 8\%
+
+
+#### Asset Quality
+
+The most important asset for most banks are their loans. The quality of these loans depends upon the credit quality of the borrowers.
+
+Equity investments are measured differently depending on accounting system.
+Under IFRS equity investments can be measured through:
+
+* Amortized cost
+* Fair value through OCI
+* Fair value through P/L
+
+
+While, under US GAAP:
+
+* all equity investments with readily determinable fair values are measured at fair value with changes in the fair value recognized in net income
+
+
+#### Management Capabilities
+
+Elements of an analysis of management skills includes:
+
+* consideration of internal controls
+* governance structure
+* compliance policies
+* compensation
+* communication
+* reporting quality
+
+
+Ultimately, performance is the most reliable indicator of management effectiveness.
+
+#### Earnings
+
+Sustainability of earnings is important to an analysis of any business.
+
+For banks impairment allowances are particularly important as a cause of deceptive earnings. 
+
+Fair value measurements of financial assets an liabilities are categorized on the basis of the type of inputs used to establish the fair value according to a fair value hierarchy.
+
+there are 3 levels to the fair value hierarchy:
+
+1. inputs are prices for identical assets or liabilities
+1. inputs are observable but are not quoted prices for identical instruments.
+1. inputs are unobservable (future cash flows for example)
+
+The composition of a bank's earnings are also important. Typically, a bank's earnings are comprised of net interest income, service income, and trading income. Trading income is the most volatile. Highly volatile net interest income could indicate exposure to excessive interst rate risk.
+
+#### Liquidity Position
+
+Basel III introduced two liquidity measures in the wake of the great recession.
+
+* The Liquidity Coverage Ratio (LCR) which is the ratio of the bank's one month liquidity need in a stress scenario to the highly liquid assets of the bank
+* The Net Stable Funding Ratio (NSFR) a the composition and maturity of a bank's funding sources divided by the composition and maturity of the bank's funding sources.
+
+Basel III also specifies minimums that a bank must maintain a minimum 1:1 for both of these ratios.
+
+#### Sensitivity to Market Risk
+
+Almost every company is exposed to market risk. However banks are particularly tied to the general market. Accordingly banks make special disclosures about their market risks including VAR assessments.
+
+### Non Camels factors to analyzing a bank
+
+The bank specific factors that are not fully addressed by a camels analysis:
+
+* Government Support
+* Government Ownership
+* Mission of banking entity
+* Corporate culture
+
+
+Other important factors for an analysis of any business:
+
+* Competitive environment
+* Off-balance-sheet items
+* Segment information
+* Currency exposure
+* Risk factors
+* Basel III disclosures
+
+
+### Example of CAMELS Approach
+
+The importance of different CAMELS components varies depending upon the purpose of the analysis (fixed income analyst would be more concerned with capital than equity analyst)
+
+### Analyzing Insurance Companies
+
+::: {.callout-note}
+
+## 
+
+Loss and loss adjustment expense ratio = (Loss expense + Loss adjustment expense)/Net premiums earned. This ratio indicates the degree of success an underwriter has achieved in estimating the risks insured. The lower the ratio, the greater the success.
+:::
+
+::: {.callout-note}
+
+## Underwriting expense ratio
+
+Underwriting expense ratio = Underwriting expense/Net premiums written. This ratio measures the efficiency of money spent in obtaining new premiums. A lower ratio indicates higher success.
+:::
+
+::: {.callout-note}
+
+## Combined ratio
+
+Combined ratio = Loss and loss adjustment expense ratio + Underwriting expense ratio. This ratio indicates the overall efficiency of an underwriting operation. A combined ratio of less than 100 is considered efficient.
+:::
+
+::: {.callout-note}
+
+## Dividends to policyholders (shareholders) ratio
+
+Dividends to policyholders (shareholders) ratio = Dividends to policyholders (shareholders)/Net premiums earned. This ratio is a measure of liquidity, in that it relates the cash outflow of dividends to the premiums earned in the same period.
+:::
+
+::: {.callout-note}
+
+## Combined ratio after dividends
+
+Combined ratio after dividends = Combined ratio + Dividends to policyholders (shareholders) ratio. This ratio is a stricter measure of efficiency than the ordinary combined ratio, in that it takes into account the cash satisfaction of policyholders or shareholders after consideration of the total underwriting efforts. Dividends are discretionary cash outlays, and factoring them into the combined ratio presents a fuller description of total cash requirements.
+:::
+
+Some countries mandate that insurers prepare financial statements that are distinct from both IFRS and US GAAP and generally have a greater focus on solvency
+
+### Evaluating Quality of Financial Statements
+
+Prior to beginning any financial analysis, an analyst should clarify the purpose and context and clearly understand the following:
+
+* What is the purpose of the analysis? What questions will this analysis answer?
+* What level of detail will be needed to accomplish this purpose?
+* What data are available for the analysis? 
+* What are the factors or relationships that will influence the analysis?
+* What are the analytical limitations, and will these limitations potentially impair the analysis? 
+
+
+In the context of evaluating the quality of financial reports, an analyst is attempting to answer two basic questions:
+
+
+* Are the financial reports GAAP-compliant and decision-useful?
+* Are the results (earnings) of high quality? Do they provide an adequate level of return, and are they sustainable?
+
+
+::: {.callout-note}
+
+## Beneish Model
+
+A probit model for the estimation of a company's likelihood of manipulating their accounting. Is a normal distribution.
+
+A higher m-score indicates higher probability of false reporting.
+
+* \< -1.78 : Unlikely to manipulate
+* \> -1.78 : Likely to be a manipulator
+    
+:::
+
+::: {.callout-note}
+
+## Altman Model
+
+The Altman z score is a formula for predicting the likelihood of a company's bankruptcy.
+A higher Altman z-score indicates greater safety from bankruptcy.
+
+* \> 2.99 : Safe
+* 1.81 \< Z \< 2.99 : Indeterminate
+* \< 1.81 : Distressed
+    
+:::

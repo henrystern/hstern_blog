@@ -1,0 +1,926 @@
+---
+title: Summary Review
+order: 5
+---
+
+## Quantitative Methods (1) :
+
+### Reading 1
+
+The assumptions of the classic simple linear regression model are as follows:
+
+* Linearity: A linear relation exists between the dependent variable and the independent variable.
+* Homoskedasticity: The variance of the error term is the same for all observations.
+* Independence: The error term is uncorrelated across observations.
+* Normality: The error term is normally distributed.
+
+
+F-stat tests $h_0: b_1 = 0$ against $h_1: b_1 \neq 0$ with 1 and n-2 df.
+F-Test:
+$$
+    F = \frac{RSS / k}{SSE / [n-(k+1)} = \frac{Mean Regression Sum of Squares}{Mean Squared Error}
+.$$ 
+
+Standard error is the $\sqrt{MSE} $
+ 
+Test of a regression coefficient = t-stat/standard error
+$$
+tstat = \frac{\hat{b}_j - b_j}{s_{\hat{b}_j}}
+.$$ 
+
+### Reading 2
+
+The assumptions of classical normal multiple linear regression model are as follows:
+
+* A linear relation exists between the dependent variable and the independent variables.
+* The independent variables are not random. Also, no exact linear relation exists between two or more of the independent variables.
+* The expected value of the error term, conditioned on the independent variables, is 0.
+* The variance of the error term is the same for all observations.
+* The error term is uncorrelated across observations.
+* The error term is normally distributed.
+
+
+Analysts often choose to use adjusted R2 because it does not necessarily increase when one adds an independent variable.
+
+Breusch-Pagan test of heteroskedasticity tests whether $nR^2$ is a  $\chi^2$ random variable with df equal to the number of independent variables in the regression. If no then there is conditional heteroskedasticity. 
+
+Positive serial correlation typically inflates the t-statistics of estimated regression coefficients as well as the F-statistic for the overall significance of the regression.
+
+Durbin-Watson test for serial correlation. If stat > 2 then the regression errors have serial correlation.
+
+Sign of multicollinearity is when the F-stat for the regression is highly significant but the individual coefficients are not significant
+
+### Reading 3
+
+The predicted value of a linear time series model in period t is $\hat{b}_0 + \hat{b}_1t$. A log-linear trend model is $e^{\hat{b}_0 + \hat{b}_1t}$
+
+An autoregressive model of order p, denoted AR(p), uses p lags of a time series to predict its current value.
+
+A time series is covariance stationary if the following three conditions are satisfied: First, the expected value of the time series must be constant and finite in all periods. Second, the variance of the time series must be constant and finite in all periods. Third, the covariance of the time series with itself for a fixed number of periods in the past or future must be constant and finite in all periods. Inspection of a nonstationary time-series plot may reveal an upward or downward trend (nonconstant mean) and/or nonconstant variance. The use of linear regression to estimate an autoregressive time-series model is not valid unless the time series is covariance stationary.
+
+For a specific autoregressive model to be a good fit to the data, the autocorrelations of the error term should be 0 at all lags.
+
+Root Mean Squared Error (RMSE) is $\sqrt{Average(forecast error^2)}$. Smaller is better.
+
+Random walk's have unit roots and are not covariance stationary. Sometimes the unit root can be eliminated by first-differencing the time series and modelling on the first-differenced series.
+
+The Dickey-Fuller test tests for the presence of unit roots.
+
+The autocorrelations of a moving average model of order q will suddenly drop to 0 after the first q autocorrelations. This can help distinguish between MA and AR models.
+
+ARMA models have fewer requirements but are unstable and may not forecast well.
+
+In a linear regression between two time series, if only one of the time series has a unit root then the model should be abandoned. If both have a unit root regression can be used if they are cointegrated. The Engle-Granger test can be used to determine if the time series are cointegrated.
+
+## Quantitative Methods (2) :
+
+### Reading 1
+
+ML algorithms find the pattern and apply the pattern
+
+If the target variable is continuous then the task is regression. If categorical or ordinal then it is classification.
+
+Unsupervised ML can be used for dimension reduction and clustering.
+
+Bias error is the degree to which a model fits the training data. Variance error describes how much a model’s results change in response to new data from validation and test samples. Base error is due to randomness in the data. Out-of-sample error equals bias error plus variance error plus base error.
+
+Ensemble learning is a technique of combining the predictions from a collection of models
+
+Neural networks consist of nodes connected by links. They have three types of layers: an input layer, hidden layers, and an output layer. Learning takes place in the hidden layer nodes, each of which consists of a summation operator and an activation function
+
+### Reading 2
+
+Text preprocessing requires performing normalization that involves the following: lowercasing, removing stop words, stemming, lemmatization, creating bag-of-words (BOW) and n-grams, and organizing the BOW and n-grams into a document term matrix (DTM).
+
+To carry out an error analysis for each model, a confusion matrix is created; true positives (TPs), true negatives (TNs), false positives (FPs), and false negatives (FNs) are determined. Then, the following performance metrics are calculated: accuracy, F1 score, precision, and recall. The higher the accuracy and F1 score, the better the model performance.
+
+To carry out receiver operating characteristic (ROC) analysis, ROC curves and area under the curve (AUC) of various models are calculated and compared. The more convex the ROC curve and the higher the AUC, the better the model performance.
+
+Model tuning involves managing the trade-off between model bias error, associated with underfitting, and model variance error, associated with overfitting. A fitting curve of in-sample (training sample) error and out-of-sample (cross-validation sample) error on the y-axis versus model complexity on the x-axis is useful for managing the bias vs. variance error trade-off.
+
+## Economics :
+
+### Reading 1
+
+Spot exchange rates apply to trades for the next settlement date (usually T + 2) for a given currency pair. Forward exchange rates apply to trades to be settled at any longer maturity.
+
+Market makers quote bid and offer prices (in terms of the price currency) at which they will buy or sell the base currency.
+
+The cross-rate bids (offers) posted by a dealer must be lower (higher) than the implied cross-rate offers (bids) available in the interbank market. If they are not, then a triangular arbitrage opportunity arises.
+
+International Parity Conditions:
+
+* relative expected inflation rates should determine relative nominal interest rates,
+* relative interest rates should determine forward exchange rates, and
+* forward exchange rates should correctly anticipate the path of the future spot exchange rate.
+
+
+the key international parity conditions rarely hold in either the short or medium term. However, the parity conditions tend to hold over relatively long horizons.
+
+The theory of covered interest rate parity states that a foreign-currency-denominated money market investment that is completely hedged against exchange rate risk in the forward market should yield exactly the same return as an otherwise identical domestic money market investment.
+
+According to the theory of uncovered interest rate parity, the expected change in a domestic currency’s value should be fully reflected in domestic–foreign interest rate spreads. Hence, an unhedged foreign-currency-denominated money market investment is expected to yield the same return as an otherwise identical domestic money market investment.
+
+According to the ex ante purchasing power parity condition, expected changes in exchange rates should equal the difference in expected national inflation rates.
+
+If both ex ante purchasing power parity and uncovered interest rate parity held, real interest rates across all markets would be the same. This result is real interest rate parity.
+
+The international Fisher effect says that the nominal interest rate differential between two currencies equals the difference between the expected inflation rates. The international Fisher effect assumes that risk premiums are the same throughout the world.
+
+If both covered and uncovered interest rate parity held, then forward rate parity would hold and the market would set the forward exchange rate equal to the expected spot exchange rate: The forward exchange rate would serve as an unbiased predictor of the future spot exchange rate.
+
+Most studies have found that high-yield currencies do not depreciate and low-yield currencies do not appreciate as much as yield spreads would suggest over short to medium periods, thus violating the theory of uncovered interest rate parity.
+
+Carry trades overweight high-yield currencies at the expense of low-yield currencies
+
+According to a balance of payments approach, countries that run persistent current account deficits will generally see their currencies weaken over time. Similarly, countries that run persistent current account surpluses will tend to see their currencies appreciate over time.
+
+Monetary policy affects the exchange rate through a variety of channels. In the Mundell–Fleming model, it does so primarily through the interest rate sensitivity of capital flows, strengthening the currency when monetary policy is tightened and weakening it when monetary policy is eased. The more sensitive capital flows are to the change in interest rates, the greater the exchange rate’s responsiveness to the change in monetary policy.
+
+In the Mundell–Fleming model, an expansionary fiscal policy typically results in a rise in domestic interest rates and an increase in economic activity. The rise in domestic interest rates should induce a capital inflow, which is positive for the domestic currency, but the rise in economic activity should contribute to a deterioration of the trade balance, which is negative for the domestic currency. The more mobile capital flows are, the greater the likelihood that the induced inflow of capital will dominate the deterioration in trade.
+
+The IMF believes that capital controls may be needed to prevent exchange rates from overshooting, asset price bubbles from forming, and future financial conditions from deteriorating.
+
+Relative to developed countries, emerging markets may have greater success in managing their exchange rates because of their large foreign exchange reserve holdings, which appear sizable relative to the limited turnover of FX transactions in many emerging markets.
+
+
+
+Although each currency crisis is distinct in some respects, the following factors were identified in one or more studies:
+
+1. Prior to a currency crisis, the capital markets have been liberalized to allow the free flow of capital.
+1. There are large inflows of foreign capital (relative to GDP) in the period leading up to a crisis, with short-term funding denominated in a foreign currency being particularly problematic.
+1. Currency crises are often preceded by (and often coincide with) banking crises.
+1. Countries with fixed or partially fixed exchange rates are more susceptible to currency crises than countries with floating exchange rates.
+1. Foreign exchange reserves tend to decline precipitously as a crisis approaches.
+1. In the period leading up to a crisis, the currency has risen substantially relative to its historical mean.
+1. The terms of trade (exports relative to imports) often deteriorate before a crisis.
+1. Broad money growth and the ratio of M2 (a measure of money supply) to bank reserves tend to rise prior to a crisis.
+1. Inflation tends to be significantly higher in pre-crisis periods compared with tranquil periods.
+
+### Reading 2
+
+A permanent increase in productivity growth will raise the upper limit on earnings growth and should translate into faster long-run earnings growth and a corresponding increase in stock price appreciation.
+
+One of the best indicators of short- to intermediate-term inflation trends is the difference between the growth rate of actual and potential GDP.
+
+The correlation between long-run economic growth and the rate of investment is high.
+
+The academic growth literature is divided into three theories —the classical view, the neoclassical model, and the new endogenous growth view.
+
+In the classical model, growth in per capita income is only temporary because an exploding population with limited resources brings per capita income growth to an end.
+
+n the neoclassical model, a sustained increase in investment increases the economy’s growth rate only in the short run. Capital is subject to diminishing marginal returns, so long-run growth depends solely on population growth, progress in TFP, and labor’s share of income.
+
+In the steady state, total output grows at the rate of labor force growth plus the rate of growth of TFP divided by the elasticity of output with respect to labor input.
+
+The following parameters affect the steady-state values for the capital-to-labor ratio and output per worker: saving rate, labor force growth, growth in TFP, depreciation rate, and elasticity of output with respect to capital.
+
+Endogenous growth theory explains technological progress within the model rather than treating it as exogenous. As a result, self-sustaining growth emerges as a natural consequence of the model and the economy does not converge to a steady-state rate of growth that is independent of saving/investment decisions.
+
+Unlike the neoclassical model, where increasing capital will result in diminishing marginal returns, the endogenous growth model allows for the possibility of constant or even increasing returns to capital in the aggregate economy.
+
+In the endogenous growth model, expenditures made on R\&D and for human capital may have large positive externalities or spillover effects. Private spending by companies on knowledge capital generates benefits to the economy as a whole that exceed the private benefit to the company.
+
+Countries fail to converge because of low rates of investment and savings, lack of property rights, political instability, poor education and health, restrictions on trade, and tax and regulatory policies that discourage work and investing.
+
+### Reading 3
+
+The existence of informational frictions and externalities creates a need for regulation. Regulation is expected to have societal benefits and should be assessed using cost–benefit analysis.
+
+The focus of regulators in financial markets includes prudential supervision, financial stability, market integrity, and economic growth.
+
+Regulation that arises to enhance the interests of regulated entities reflects regulatory capture.
+
+## Financial Statement Analysis (1) :
+
+### Reading 1
+
+Investments in financial assets are those in which the investor has no significant influence. They can be measured and reported as FVPL, FVOCI, or Amortized cost
+
+Investments in associates and joint ventures are those in which the investor has significant influence, but not control, over the investee’s business activities. Because the investor can exert significant influence over financial and operating policy decisions, IFRS and US GAAP require the equity method of accounting:
+
+* The equity method requires the investor to recognize income as earned rather than when dividends are received.
+* The equity investment is carried at cost, plus its share of post-acquisition income (after adjustments) less dividends received.
+* The equity investment is reported as a single line item on the balance sheet and on the income statement.
+
+
+IFRS and US GAAP accounting standards require the use of the acquisition method to account for business combinations. Fair value of the consideration given is the appropriate measurement for identifiable assets and liabilities acquired in the business combination.
+
+Goodwill is evaluated for impairment annually but is not amortized. IFRS uses a one step approach for impairment US GAAP uses a two step approach.
+
+If the acquiring company acquires less than 100\%, non-controlling (minority) shareholders’ interests are reported on the consolidated financial statements. IFRS allows the non-controlling interest to be measured at either its fair value (full goodwill) or at the non-controlling interest’s proportionate share of the acquiree’s identifiable net assets (partial goodwill). US GAAP requires the non-controlling interest to be measured at fair value (full goodwill).
+
+Special purpose (SPEs) and variable interest entities (VIEs) are required to be consolidated by the entity which is expected to absorb the majority of the expected losses or receive the majority of expected residual benefits.
+
+### Reading 2
+
+Both IFRS and US GAAP require companies to report on their balance sheet a pension liability or asset equal to the projected benefit obligation minus the fair value of plan assets. The amount of a pension asset that can be reported is subject to a ceiling.
+
+Under IFRS, the components of periodic pension cost are recognised as follows: Service cost is recognised in P\&L, net interest income/expense is recognised in P\&L, and remeasurements are recognised in OCI and are not amortised to future P\&L.
+
+Under US GAAP, the components of periodic pension cost recognised in P\&L include current service costs, interest expense on the pension obligation, and expected returns on plan assets (which reduces the cost). Other components of periodic pension cost—including past service costs, actuarial gains and losses, and differences between expected and actual returns on plan assets—are recognised in OCI and amortised to future P\&L.
+
+Share-based compensation expense is reported at fair value under IFRS and US GAAP.
+
+The valuation technique, or option pricing model, that a company uses is an important choice in determining fair value and is disclosed.
+
+Certain assumptions are highly subjective, such as stock price volatility or the expected life of stock options, and can greatly change the estimated fair value and thus compensation expense.
+
+### Reading 3
+
+For accounting purposes, any currency other than an entity’s functional currency is a foreign currency for that entity
+
+Revenues and receivables are translated into the functional currency using the exchange rate on the transaction date. Any change between the transaction date and the settlement date is recognized as a foreign currency transaction gain or loss.
+
+If a balance sheet date falls between the transaction date and the settlement date, the foreign currency account receivable (account payable) is translated at the exchange rate at the balance sheet date. The change in the functional currency value of the foreign currency account receivable (account payable) is recognized as a foreign currency transaction gain or loss in income.
+
+A foreign currency transaction gain arises when an entity has a foreign currency receivable and the foreign currency strengthens or it has a foreign currency payable and the foreign currency weakens.
+
+Companies may choose to report foreign currency transaction gains and losses as a component of operating income or as a component of non-operating income.
+
+Under the current rate method, assets and liabilities are translated at the current exchange rate, equity items are translated at historical exchange rates, and revenues and expenses are translated at the exchange rate that existed when the underlying transaction occurred. For practical reasons, an average exchange rate is often used to translate income items.
+
+Under the temporal method, monetary assets (and non-monetary assets measured at current value) and monetary liabilities (and non-monetary liabilities measured at current value) are translated at the current exchange rate. Non-monetary assets and liabilities not measured at current value and equity items are translated at historical exchange rates. Revenues and expenses, other than those expenses related to non-monetary assets, are translated at the exchange rate that existed when the underlying transaction occurred. Expenses related to non-monetary assets are translated at the exchange rates used for the related assets.
+
+Under both IFRS and US GAAP, the functional currency of a foreign operation determines the method to be used in translating its foreign currency financial statements into the parent’s presentation currency and whether the resulting translation adjustment is recognized in income or as a separate component of equity.
+
+The foreign currency financial statements of a foreign operation that has a foreign currency as its functional currency are translated using the current rate method, and the translation adjustment is accumulated as a separate component of equity. The cumulative translation adjustment related to a specific foreign entity is transferred to net income when that entity is sold or otherwise disposed of. The balance sheet risk exposure associated with the current rate method is equal to the foreign subsidiary’s net asset position.
+
+The foreign currency financial statements of a foreign operation that has the parent’s presentation currency as its functional currency are translated using the temporal method, and the translation adjustment is included as a gain or loss in income. US GAAP refer to this process as remeasurement. The balance sheet exposure associated with the temporal method is equal to the foreign subsidiary’s net monetary asset/liability position (adjusted for non-monetary items measured at current value).
+
+IFRS and US GAAP differ with respect to the translation of foreign currency financial statements of foreign operations located in a highly inflationary country. Under IFRS, the foreign currency statements are first restated for local inflation and then translated using the current exchange rate. Under US GAAP, the foreign currency financial statements are translated using the temporal method, with no restatement for inflation.
+
+Companies must disclose the total amount of translation gain or loss reported in income and the amount of translation adjustment included in a separate component of stockholders’ equity. Companies are not required to separately disclose the component of translation gain or loss arising from foreign currency transactions and the component arising from application of the temporal method.
+
+### Reading 4
+
+Systemic risk refers to the risk of impairment in some part of the financial system that then has the potential to spread throughout other parts of the financial system and thereby to negatively affect the entire economy.
+
+The Basel Committee’s international regulatory framework for banks includes minimum capital requirements, minimum liquidity requirements, and stable funding requirements.
+
+A widely used approach to analyzing a bank, CAMELS, considers a bank’s Capital adequacy, Asset quality, Management capabilities, Earnings sufficiency, Liquidity position, and Sensitivity to market risk.
+
+* “Capital adequacy,” described in terms of the proportion of the bank’s assets that is funded with capital, indicates that a bank has enough capital to absorb potential losses without severely damaging its financial position.
+* “Asset quality” includes the concept of quality of the bank’s assets—credit quality and diversification—and the concept of overall sound risk management.
+* “Management capabilities” refers to the bank management’s ability to identify and exploit appropriate business opportunities and to simultaneously manage associated risks.
+* “Earnings” refers to the bank’s return on capital relative to cost of capital and also includes the concept of earnings quality.
+* “Liquidity” refers to the amount of liquid assets held by the bank relative to its near-term expected cash flows. Under Basel III, liquidity also refers to the stability of the bank’s funding sources.
+* “Sensitivity to market risk” pertains to how adverse changes in markets (including interest rate, exchange rate, equity, and commodity markets) could affect the bank’s earnings and capital position.
+
+
+Insurance companies are typically categorized as property and casualty (P\&C) or life and health (L\&H).
+
+P\&C insurers’ policies are usually short term, and the final cost will usually be known within a year of a covered event, whereas L\&H insurers’ policies are usually longer term. P\&C insurers’ claims are more variable, whereas L\&H insurers’ claims are more predictable.
+
+For both types of insurance companies, important areas for analysis include business profile, earnings characteristics, investment returns, liquidity, and capitalization. In addition, analysis of P\&C companies’ profitability includes analysis of loss reserves and the combined ratio.
+
+## Financial Statement Analysis (2) :
+
+### Reading 1
+
+Potential problems that affect the quality of financial reporting broadly include revenue and expense recognition on the income statement; classification on the statement of cash flows; and the recognition, classification, and measurement of assets and liabilities on the balance sheet.
+
+the term “high-quality earnings” assumes that reporting quality is high.
+
+Low-quality earnings are insufficient to cover the company’s cost of capital and/or are derived from non-recurring, one-off activities. In addition, the term “low-quality earnings” can be used when the reported information does not provide a useful indication of the company’s performance.
+
+For the balance sheet, high financial reporting quality is indicated by completeness, unbiased measurement, and clear presentation.
+
+### Reading 2
+
+disaggregation techniques review the company’s performance in terms of ROE and then successively examined the drivers of ROE in increasing detail to evaluate management’s skills in capital allocation.
+
+## Corporate Issuers (1) :
+
+### Reading 1
+
+The goal of the capital structure decision is to determine the financial leverage that maximizes the value of the company (or minimizes the weighted average cost of capital).
+
+In the Modigliani and Miller theory developed without taxes, capital structure is irrelevant and has no effect on company value.
+
+The deductibility of interest lowers the cost of debt and the cost of capital for the company as a whole. Adding the tax shield provided by debt to the Modigliani and Miller framework suggests that the optimal capital structure is all debt.
+
+When there are bankruptcy costs, a high debt ratio increases the risk of bankruptcy.
+
+The costs of asymmetric information increase as more equity is used versus debt, suggesting the pecking order theory of leverage in which new equity issuance is the least preferred method of raising capital.
+
+According to the static trade-off theory of capital structure, in choosing a capital structure, a company balances the value of the tax benefit from deductibility of interest with the present value of the costs of financial distress. At the optimal target capital structure, the incremental tax shield benefit is exactly offset by the incremental costs of financial distress.
+
+### Reading 2
+
+Only cash dividends are payments to shareholders. Stock dividends and splits merely carve equity into smaller pieces and do not create wealth for shareholders. Reverse stock splits usually occur after a stock has dropped to a very low price and do not affect shareholder wealth.
+
+MM, argues that given perfect markets dividend policy is irrelevant. The second, “bird in hand” theory, contends that investors value a dollar of dividends today more than uncertain capital gains in the future. The third theory argues that in countries in which dividends are taxed at higher rates than capital gains, taxable investors prefer that companies reinvest earnings in profitable growth opportunities or repurchase shares so they receive more of the return in the form of capital gains.
+
+shareholders can create their preferred cash flow stream by selling the company’s shares (“homemade dividends”).
+
+Under double taxation systems, dividends are taxed at both the corporate and shareholder level. Under tax imputation systems, a shareholder receives a tax credit on dividends for the tax paid on corporate profits. Under split-rate taxation systems, corporate profits are taxed at different rates depending on whether the profits are retained or paid out in dividends.
+
+A stable dividend policy can be represented by a gradual adjustment process in which the expected dividend is equal to last year’s dividend per share plus $(Expected earnings * target payout ratio - previous dividend) * adjustment factor$
+
+Share repurchases made with excess cash have the potential to increase earnings per share, whereas share repurchases made with borrowed funds can increase, decrease, or not affect earnings per share depending on the company’s after-tax borrowing rate and earnings yield.
+
+If the buyback market price per share is greater (less) than the book value per share, then the book value per share will decrease (increase).
+
+Companies can repurchase shares in lieu of increasing cash dividends. Share repurchases usually offer company management more flexibility than cash dividends by not establishing the expectation that a particular level of cash distribution will be maintained.
+
+## Corporate Issuers (2) :
+
+### Reading 1
+
+Dispersed ownership reflects the existence of many shareholders, none of which, either individually or collectively, has the ability to exercise control over the corporation. Concentrated corporate ownership reflects an individual shareholder or a group (controlling shareholders) with the ability to exercise control over the corporation.
+
+Controlling shareholders may be either majority shareholders or minority shareholders.
+
+Horizontal ownership involves companies with mutual business interests that have cross-holding share arrangements with each other. Vertical (or pyramid) ownership involves a company or group that has a controlling interest in two or more holding companies, which in turn have controlling interests in various operating companies.
+
+A corporation’s board of directors is typically structured as either one tier or two tier. A one-tier board consists of a single board of directors, composed of executive (internal) and non-executive (external) directors. A two-tier board consists of a supervisory board that oversees a management board.
+
+CEO duality exists when the chief executive officer also serves as chairperson of the board.
+
+A primary challenge of integrating ESG factors into investment analysis is identifying and obtaining information that is relevant, comparable, and decision-useful.
+
+Analysts typically use three main sources of information to identify a company’s (or industry’s) ESG factors: (1) proprietary research, (2) ratings and analysis from ESG data providers, or (3) research from not-for-profit industry organizations and initiatives.
+
+In equity analysis, ESG integration is used to both identify potential opportunities and mitigate downside risk, whereas in fixed-income analysis, ESG integration is generally focused on mitigating downside risk.
+
+### Reading 2
+
+To fully evaluate a merger, analysts must ask two fundamental questions: First, will the transaction create value; and second, does the acquisition price outweigh the potential benefit? This reading has made the following important points.
+
+An acquisition is the purchase of some portion of one company by another. A merger represents the absorption of one company by another such that only one entity survives following the transaction.
+
+Mergers can be categorized by the form of integration. In a statutory merger, one company is merged into another; in a subsidiary merger, the target becomes a subsidiary of the acquirer; and in a consolidation, both the acquirer and target become part of a newly formed company.
+
+Conglomerates are formed by companies in unrelated businesses.
+
+A merger transaction may take the form of a stock purchase (when the acquirer gives the target company’s shareholders some combination of cash or securities in exchange for shares of the target company’s stock) or an asset purchase (when the acquirer purchases the target company’s assets and payment is made directly to the target company). The decision of which approach to take will affect other aspects of the transaction, such as how approval is obtained, which laws apply, how the liabilities are treated, and how the shareholders and the company are taxed.
+
+Examples of pre-offer defense mechanisms include poison pills and puts, incorporation in a jurisdiction with restrictive takeover laws, staggered boards of directors, restricted voting rights, supermajority voting provisions, fair price amendments, and golden parachutes.
+
+Examples of post-offer defenses include the “just say no” defense, litigation, greenmail, share repurchases, leveraged recapitalization, “crown jewel” defense, Pac-Man® defense, or finding a white knight or a white squire.
+
+In a merger bid, the gain to target shareholders is measured as the control premium, which equals the price paid for the target company in excess of its value. The acquirer gains equal the value of any synergies created by the merger minus the premium paid to target shareholders.
+
+The empirical evidence suggests that merger transactions create value for target company shareholders. Acquirers, in contrast, tend to accrue value in the years following a merger. This finding suggests that synergies are often overestimated or difficult to achieve.
+
+The three basic ways that a company divests assets are a sale to another company, a spin-off to shareholders, and liquidation.
+
+### Reading 3
+
+Equations for the capital budgeting cash flows are as follows:
+
+Initial outlay:
+$$
+Outlay=FCInv+NWCInv-Sal_0+t(Sal_0-B_0)
+$$ 
+Annual after-tax operating cash flow:
+$$
+CF=(S-C-D)(1-t)+D, orCF=(S-C)(1-t)+tD
+.$$ 
+Terminal year after-tax non-operating cash flow:
+$$
+TNOCF=Sal_T+NWCInv-t(Sal_T-B_T)
+.$$ 
+
+When inflation exists, the analyst should perform capital budgeting analysis in “nominal” terms if cash flows are nominal and in “real” terms if cash flows are real.
+
+Two ways of comparing mutually exclusive projects in a replacement chain are the “least common multiple of lives” approach and the “equivalent annual annuity” approach.
+
+For the least common multiple of lives approach, the analyst extends the time horizon of analysis so that the lives of both projects will divide exactly into the horizon. The projects are replicated over this horizon, and the NPV for the total cash flows over the least common multiple of lives is used to evaluate the investments.
+
+The equivalent annual annuity is the annuity payment (series of equal annual payments over the project’s life) that is equivalent in value to the project’s actual cash flows. Analysts find the present value of all of the cash flows for an investment (the NPV) and then calculate an annuity payment that has a value equivalent to the NPV.
+
+Real options can be classified as 1) timing options; 2) sizing options, which can be abandonment options or growth (expansion) options; 3) flexibility options, which can be price-setting options or production-flexibility options; and 4) fundamental options.
+
+## Equity Valuation (1) :
+
+### Reading 1
+
+Intrinsic value incorporates the going-concern assumption, that is, the assumption that a company will continue operating for the foreseeable future. In contrast, liquidation value is the company’s value if it were dissolved and its assets sold individually.
+
+
+
+The valuation process has five steps:
+\begin{enumerate}
+* Understanding the business.
+* Forecasting company performance.
+* Selecting the appropriate valuation model.
+* Converting forecasts to a valuation.
+* Applying the analytical results in the form of recommendations and conclusions.
+\end{enumerate}
+
+Absolute valuation models specify an asset’s intrinsic value, supplying a point estimate of value that can be compared with market price. Present value models of common stock (also called discounted cash flow models) are the most important type of absolute valuation model.
+
+Relative valuation models specify an asset’s value relative to the value of another asset. As applied to equity valuation, relative valuation is also known as the method of comparables, which involves comparison of a stock’s price multiple to a benchmark price multiple. The benchmark price multiple can be based on a similar stock or on the average price multiple of some group of stocks.
+
+Situational adjustments include control premiums (premiums for a controlling interest in the company), discounts for lack of marketability (discounts reflecting the lack of a public market for the company’s shares), and illiquidity discounts (discounts reflecting the lack of a liquid market for the company’s shares).
+
+
+
+An effective research report:
+
+* contains timely information;
+* is written in clear, incisive language;
+* is objective and well researched, with key assumptions clearly identified;
+* distinguishes clearly between facts and opinions;
+* contains analysis, forecasts, valuation, and a recommendation that are internally consistent;
+* presents sufficient information that the reader can critique the valuation;
+* states the risk factors for an investment in the company; and
+* discloses any potential conflicts of interest faced by the analyst.
+
+
+### Reading 2
+
+For private companies, the analyst can either adapt public equity valuation models for required return using public company comparables or use a build-up model, which starts with the risk-free rate and the estimated equity risk premium and adds additional appropriate risk premia.
+
+When the analyst approaches the valuation of equity indirectly, by first valuing the total firm as the present value of expected future cash flows to all sources of capital, the appropriate discount rate is a weighted average cost of capital based on all sources of capital. Discount rates must be on a nominal (real) basis if cash flows are on a nominal (real) basis.
+
+Approaches to equity risk premium estimation include historical, adjusted historical, and forward-looking approaches.
+
+In historical estimation, the analyst must decide whether to use a short-term or a long-term government bond rate to represent the risk-free rate and whether to calculate a geometric or arithmetic mean for the equity risk premium estimate. Forward-looking estimates include Gordon growth model estimates, supply-side models, and survey estimates. Adjusted historical estimates can involve an adjustment for biases in data series and an adjustment to incorporate an independent estimate of the equity risk premium.
+
+The Fama–French model is a three-factor model that incorporates the market factor, a size factor, and a value factor. The Pastor–Stambaugh extension to the FFM adds a liquidity factor. The bond yield plus risk premium approach finds a required return estimate as the sum of the YTM of the subject company’s debt plus a subjective risk premium (often 3% to 4%).
+
+The country spread model estimates the equity risk premium as the equity risk premium for a developed market plus a country premium. The country risk rating model approach uses risk ratings for developed markets to infer risk ratings and equity risk premiums for emerging markets.
+
+The weighted average cost of capital is used when valuing the total firm and is generally understood as the nominal after-tax weighted average cost of capital, which is later used in discounting nominal cash flows to the firm. The nominal required return on equity is used in discounting cash flows to equity.
+
+## Equity Valuation (2) :
+
+### Reading 1
+
+Time-series approaches are considered bottom-up, although time-series analysis can be a tool used in top-down approaches. Hybrid approaches include elements of top-down and bottom-up approaches.
+
+Operating margins that are positively correlated with sales provide evidence of economies of scale in an industry.
+
+High and persistent levels of ROIC are often associated with having a competitive advantage.
+
+Porter’s five forces framework can be used as a basis for identifying such factors.
+
+three forces from 'horizontal competition' – the threat of substitute products or services, the threat of established rivals, and the threat of new entrants – and two others from 'vertical' competition – the bargaining power of suppliers and the bargaining power of customers.
+
+### Reading 2
+
+The free cash flow approach (FCFF or FCFE) might be appropriate when the company does not pay dividends, dividends differ substantially from FCFE, free cash flows align with profitability, or the investor takes a control (majority ownership) perspective.
+
+The residual income approach can be useful when the company does not pay dividends (as an alternative to a FCF approach) or free cash flow is negative.
+
+## Equity Valuation (3) :
+
+### Reading 1
+
+
+
+Analysts like to use free cash flow (either FCFF or FCFE) as the return
+
+* if the company is not paying dividends;
+* if the company pays dividends but the dividends paid differ significantly from the company’s capacity to pay dividends;
+* if free cash flows align with profitability within a reasonable forecast period with which the analyst is comfortable; or
+* if the investor takes a control perspective.
+
+
+### Reading 2
+
+When stocks have zero or negative EPS, a ranking by earnings yield is meaningful whereas a ranking by P/E is not.
+
+Stocks with low PEG ratios are, all else equal, more attractive than stocks with high PEG ratios.
+
+Book value is calculated as common shareholders’ equity divided by the number of shares outstanding. Analysts adjust book value to accurately reflect the value of the shareholders’ investment and to make P/B (the price-to-book ratio) more useful for comparing different stocks.
+
+The ratio of EV to total sales is conceptually preferable to P/S because EV/S facilitates comparisons among companies with varying capital structures.
+
+CF and EBITDA are not strictly cash flow numbers because they do not account for noncash revenue and net changes in working capital.
+
+EV/EBITDA may be more appropriate than P/E for comparing companies with different amounts of financial leverage (debt).
+
+Relative-strength indicators allow comparison of a stock’s performance during a period either with its own past performance (first type) or with the performance of some group of stocks (second type).
+
+### Reading 3
+
+In most cases, value is recognized earlier in the residual income model compared with other present value models of stock value, such as the dividend discount model.
+
+Strengths of the residual income model include the following:
+
+* Terminal values do not make up a large portion of the value relative to other models.
+* The models use readily available accounting data.
+* The models can be used in the absence of dividends and near-term positive free cash flows.
+* The models can be used when cash flows are unpredictable.
+
+
+Weaknesses of the residual income model include the following:
+
+* The models are based on accounting data that can be subject to manipulation by management.
+* Accounting data used as inputs may require significant adjustments.
+* The models require that the clean surplus relation holds, or that the analyst makes appropriate adjustments when the clean surplus relation does not hold.
+
+
+The residual income model is most appropriate in the following cases:
+
+* A company is not paying dividends or if it exhibits an unpredictable dividend pattern.
+* A company has negative free cash flow many years out but is expected to generate positive cash flow at some point in the future.
+* A great deal of uncertainty exists in forecasting terminal values.
+
+
+Residual income valuation is most closely related to P/B. When the present value of expected future residual income is positive (negative), the justified P/B based on fundamentals is greater than (less than) one.
+
+Continuing residual income is residual income after the forecast horizon. Frequently, one of the following assumptions concerning continuing residual income is made:
+
+* Residual income continues indefinitely at a positive level. (One variation of this assumption is that residual income continues indefinitely at the rate of inflation, meaning it is constant in real terms.)
+* Residual income is zero from the terminal year forward.
+* Residual income declines to zero as ROE reverts to the cost of equity over time.
+* Residual income declines to some mean level.
+
+
+In practice, to apply the residual income model most accurately, the analyst may need to do the following:
+
+* adjust book value of common equity for: off-balance-sheet items; discrepancies from fair value; or the amortization of certain intangible assets.
+* adjust reported net income to reflect clean surplus accounting.
+* adjust reported net income for non-recurring items misclassified as recurring items.
+
+
+### Reading 4
+
+Within the income approach, the FCF method is frequently used to value larger, mature private companies. For smaller companies or in special situations, the capitalized cash flow method and residual income method may also be used.
+
+Within the market approach, three methods are regularly used: the guideline public company method, guideline transactions method, and prior transactions method.
+
+An asset-based approach is infrequently used in valuing private companies. This approach may be appropriate for companies that are worth more in liquidation than as going concerns. This approach is also applied for asset holding companies, very small companies, or companies formed recently that have limited operating histories.
+
+A DLOM may be inappropriate if the company has a high likelihood of a liquidity event in the immediate future.
+
+DLOM can be estimated based on 1) private sales of restricted stock in public companies relative to their freely traded share price, 2) private sales of stock in companies prior to a subsequent IPO, and 3) the pricing of put options.
+
+## Fixed Income (1) :
+
+### Reading 1
+
+If forward rates are realized, then all bonds, regardless of maturity, will have the same one-period realized return, which is the first-period spot rate.
+
+If the spot rate curve is upward sloping and is unchanged, then each bond “rolls down” the curve and earns the forward rate that rolls out of its pricing (i.e., an N-period zero-coupon bond earns the N-period forward rate as it rolls down to be a $N-1$ period security). This dynamic implies an expected return in excess of short-maturity bonds (i.e., a term premium) for longer-maturity bonds if the yield curve is upward sloping.
+
+The swap curve provides another measure of the time value of money.
+
+The local expectations theory, liquidity preference theory, segmented markets theory, and preferred habitat theory provide traditional explanations for the shape of the yield curve.
+
+Historical yield curve movements suggest that they can be explained by a linear combination of three principal movements: level, steepness, and curvature.
+
+The sensitivity of a bond value to yield curve changes may make use of effective duration, key rate durations, or sensitivities to parallel, steepness, and curvature movements. Using key rate durations or sensitivities to parallel, steepness, and curvature movements allows one to measure and manage shaping risk.
+
+During highly uncertain market periods, investors flock to government bonds in a flight to quality that is often associated with bullish flattening, in which long-term rates fall by more than short-term rates.
+
+When investors expect a steeper (flatter) curve under which long-term rates rise (fall) relative to short-term rates, they will sell (buy) long-term bonds and purchase (sell) short-term bonds.
+
+### Reading 2
+
+A fixed-income security is a portfolio of zero-coupon bonds, each with its own discount rate that depends on the shape of the yield curve and when the cash flow is delivered in time.
+
+A binomial interest rate tree permits the short interest rate to take on one of two possible values consistent with the volatility assumption and an interest rate model based on a lognormal random walk.
+
+The possible interest rates for any following period are consistent with the following three assumptions: (1) an interest rate model that governs the random process of interest rates, (2) the assumed level of interest rate volatility, and (3) the current benchmark yield curve.
+
+From the lognormal distribution, adjacent interest rates on the tree are multiples of e raised to the $2\sigma$ power, with the absolute change in interest rates becoming smaller and smaller as rates approach zero.
+
+We use the backward induction valuation methodology that involves starting at maturity, filling in those values, and working back from right to left to find the bond’s value at the desired node.
+
+The interest rate tree is fit to the current yield curve by choosing interest rates that result in the benchmark bond value. By doing this, the bond value is arbitrage free.
+
+Term structure models seek to explain the yield curve shape and are used to value bonds (including those with embedded options) and bond-related derivatives. General equilibrium and arbitrage-free models are the two major types of such models.
+
+Arbitrage-free models are frequently used to value bonds with embedded options. Unlike equilibrium models, arbitrage-free models begin with the observed market prices of a reference set of financial instruments, and the underlying assumption is that the reference set is correctly priced.
+
+## Fixed Income (2) :
+
+### Reading 1
+
+Putable and extendible bonds are equivalent, except that their underlying option-free bonds are different.
+
+A convertible bond includes a conversion option that allows the bondholders to convert their bonds into the issuer’s common stock. 
+
+A bond with an estate put can be put by the heirs of a deceased bondholder. 
+
+Sinking fund bonds make the issuer set aside funds over time to retire the bond issue and are often callable, may have an acceleration provision, and may also contain a delivery option. 
+
+Valuing and analyzing bonds with complex embedded option structures is challenging.
+
+If a bond is callable, the decision to exercise the option is made by the issuer, which will exercise the call option when the value of the bond’s future cash flows is higher than the call price. In contrast, if the bond is putable, the decision to exercise the option is made by the bondholder, who will exercise the put option when the value of the bond’s future cash flows is lower than the put price.
+
+Interest rate volatility is modeled using a binomial interest rate tree. The higher the volatility, the lower the value of the callable bond and the higher the value of the putable bond.
+
+(1) Generate a tree of interest rates based on the given yield curve and volatility assumptions; (2) at each node of the tree, determine whether the embedded options will be exercised; and (3) apply the backward induction valuation methodology to calculate the present value of the bond.
+
+The option-adjusted spread is the single spread added uniformly to the one-period forward rates on the tree to produce a value or price for a bond. OAS is sensitive to interest rate volatility: The higher the volatility, the lower the OAS for a callable bond.
+
+The effective duration of a callable or putable bond cannot exceed that of the straight bond.
+
+one-sided durations provide a better indication regarding the interest rate sensitivity of bonds with embedded options than (two-sided) effective duration.
+
+Key rate durations show the effect of shifting only key points, one at a time, rather than the entire yield curve.
+
+The conversion price is adjusted in case of corporate actions, such as stock splits, bonus share issuances, and rights and warrants issuances. Convertible bondholders may receive compensation when the issuer pays dividends to its common shareholders, and they may be given the opportunity to either put their bonds or convert their bonds into shares earlier and at more advantageous terms in the case of a change of control.
+
+When the underlying share price is well below the conversion price, the convertible bond is “busted” and exhibits mostly bond risk–return characteristics. Thus, it is mainly sensitive to interest rate movements. In contrast, when the underlying share price is well above the conversion price, the convertible bond exhibits mostly stock risk–return characteristics. Thus, its price follows similar movements to the price of the underlying stock. In between these two extremes, the convertible bond trades like a hybrid instrument.
+
+### Reading 2
+
+Three factors important to modeling credit risk are the expected exposure to default, the recovery rate, and the loss given default.
+
+The credit valuation adjustment is calculated as the sum of the present values of the expected loss for each period in the remaining life of the bond. Expected values are computed using risk-neutral probabilities, and discounting is done at the risk-free rates for the relevant maturities.
+
+Credit analysis models fall into two broad categories: structural models and reduced-form models.
+
+Structural models are based on an option perspective of the positions of the stakeholders of the company. Bondholders are viewed as owning the assets of the company; shareholders have call options on those assets.
+
+Reduced-form models seek to predict when a default may occur, but they do not explain the why as structural models do. Reduced-form models, unlike structural models, are based only on observable variables.
+
+The discount margin for floating-rate notes is similar to the credit spread for fixed-coupon bonds. The discount margin can also be calculated using an arbitrage-free valuation framework.
+
+### Reading 3
+
+A CDS is written on the debt of a third party, called the reference entity, whose relevant debt is called the reference obligation, typically a senior unsecured bond.
+
+A CDS written on a particular reference obligation normally provides coverage for all obligations of the reference entity that have equal or higher seniority.
+
+The two parties to the CDS are the credit protection buyer, who is said to be short the reference entity’s credit, and the credit protection seller, who is said to be long the reference entity’s credit.
+
+The CDS pays off upon occurrence of a credit event, which includes bankruptcy, failure to pay, and, in some countries, involuntary restructuring.
+
+Settlement of a CDS can occur through a cash payment from the credit protection seller to the credit protection buyer as determined by the cheapest-to-deliver obligation of the reference entity or by physical delivery of the reference obligation from the protection buyer to the protection seller in exchange for the CDS notional.
+
+A cash settlement payoff is determined by an auction of the reference entity’s debt, which gives the market’s assessment of the likely recovery rate. The credit protection buyer must accept the outcome of the auction even though the ultimate recovery rate could differ.
+
+The fixed payments made from CDS buyer to CDS seller are customarily set at a fixed annual rate of 1\% for investment-grade debt or 5\% for high-yield debt.
+
+Valuation of a CDS is determined by estimating the present value of the payment leg, which is the series of payments made from the protection buyer to the protection seller, and the present value of the protection leg, which is the payment from the protection seller to the protection buyer in event of default.
+
+The hazard rate is the probability of default given that default has not already occurred.
+
+Either party can monetize an accumulated gain or loss by entering into an offsetting position that matches the terms of the original CDS.
+
+## Derivatives :
+
+### Reading 1
+
+The arbitrageur would rather have more money than less and abides by two fundamental rules: Do not use your own money, and do not take any price risk.
+
+Forward commitment pricing results in determining a price or rate such that the forward contract value is equal to zero.
+
+A forward rate agreement (FRA) is a forward contract on interest rates. The FRA’s fixed interest rate is determined such that the initial value of the FRA is zero.
+
+(lots of formulas)
+
+### Reading 2
+
+The two-period binomial model can be viewed as three one-period binomial models, one positioned at Time 0 and two positioned at Time 1.
+
+Both American-style options and European-style options can be valued based on the no-arbitrage approach, which provides clear interpretations of the component terms; the option value is determined by working backward through the binomial tree to arrive at the correct current value.
+
+For American-style options, early exercise influences the option values and hedge ratios as one works backward through the binomial tree.
+
+A key assumption of the Black–Scholes–Merton option valuation model is that the return of the underlying instrument follows geometric Brownian motion, implying a lognormal distribution of the price.
+
+BSM model interpretations related to N(d1) are that it is the basis for the number of units of underlying instrument to replicate an option, that it is the primary determinant of delta, and that it answers the question of how much the option value will change for a small change in the underlying.
+
+BSM model interpretations related to N(d2) are that it is the basis for the number of zero-coupon bonds to acquire to replicate an option and that it is the basis for estimating the risk-neutral probability of an option expiring in the money.
+
+Interest rate options can be valued based on a modified Black futures option model in which the underlying is a forward rate agreement (FRA), there is an accrual period adjustment as well as an underlying notional amount, and that care must be given to day-count conventions.
+
+A payer swaption is an option on a swap to pay fixed and receive floating.
+
+A receiver swaption is an option on a swap to receive fixed and pay floating.
+
+Long a callable fixed-rate bond can be viewed as long a straight fixed-rate bond and short a receiver swaption.
+
+Delta is a static risk measure defined as the change in a given portfolio for a given small change in the value of the underlying instrument, holding everything else constant.
+
+Delta hedging refers to managing the portfolio delta by entering additional positions into the portfolio.
+
+A delta neutral portfolio is one in which the portfolio delta is set and maintained at zero.
+
+Gamma captures the non-linearity risk or the risk—via exposure to the underlying—that remains once the portfolio is delta neutral.
+
+A gamma neutral portfolio is one in which the portfolio gamma is maintained at zero.
+
+Theta is a static risk measure defined as the change in the value of an option given a small change in calendar time, holding everything else constant.
+
+Vega is a static risk measure defined as the change in a given portfolio for a given small change in volatility, holding everything else constant.
+
+Rho is a static risk measure defined as the change in a given portfolio for a given small change in the risk-free interest rate, holding everything else constant.
+
+Implied volatility is the BSM model volatility that yields the market option price.
+
+Implied volatility is a measure of future volatility, whereas historical volatility is a measure of past volatility.
+
+The volatility smile is a two dimensional plot of the implied volatility with respect to the exercise price.
+
+The volatility surface is a three dimensional plot of the implied volatility with respect to both expiration time and exercise prices.
+
+## Alternative Investments :
+
+### Reading 1
+
+Investor allocations to public and private real estate have increased significantly over the last 20 years.
+
+Because of the lack of transactions, the appraisal process is required to value real estate property
+
+Real estate investments can occur in four basic forms: private equity (direct ownership), publicly traded equity (indirect ownership claim), private debt (direct mortgage lending), and publicly traded debt (securitized mortgages).
+
+The returns to equity real estate investors have two components: an income stream and capital appreciation.
+
+Debt investments in real estate are similar to other fixed-income investments, such as bonds.
+
+Real estate property has some unique characteristics compared with other investment asset classes. These characteristics include heterogeneity and fixed location, high unit value, management intensiveness, high transaction costs, depreciation, sensitivity to the credit market, illiquidity, and difficulty of value and price determination.
+
+The main commercial (income-producing) real estate property types are office, industrial and warehouse, retail, and multi-family.
+
+Definitions of value include market value, investment value, value in use, and mortgage lending value.
+
+Appraisal-based and transaction-based indexes are used to track the performance of private real estate. Appraisal-based indexes tend to lag transaction-based indexes and appear to have lower volatility and lower correlation with other asset classes than transaction-based indexes.
+
+Compared with other publicly traded shares, REITs offer higher-than-average yields and greater stability of income and returns. They are amenable to a net asset value approach to valuation because of the existence of active private markets for their real estate assets. Compared with REOCs, REITs offer higher yields and income tax exemptions but have less operating flexibility to invest in a broad range of real estate activities and less potential for growth from reinvesting their operating cash flows because of their high income-to-payout ratios.
+
+Analysts make adjustments to the historical cost-based financial statements of REITs and REOCs to obtain better measures of current income and net worth. The three principal figures they calculate and use are (1) funds from operations or accounting net earnings, excluding depreciation, deferred tax charges, and gains or losses on sales of property and debt restructuring; (2) adjusted funds from operations, or funds from operations adjusted to remove straight-line rent and to provide for maintenance-type capital expenditures and leasing costs, including leasing agents’ commissions and tenants’ improvement allowances; and (3) net asset value or the difference between a real estate company’s asset and liability ranking prior to shareholders’ equity, all valued at market values instead of accounting book values.
+
+### Reading 2
+
+Private equity funds seek to add value by various means, including optimizing financial structures, incentivizing management, and creating operational improvements.
+
+private equity concentrates ownership and control. Many view the combination of ownership and control as a fundamental source of the returns earned by the best private equity funds.
+
+Valuation techniques differ according to the nature of the investment. Early-stage ventures require very different techniques than leveraged buyouts. Private equity professionals tend to use multiple techniques when performing a valuation, and they explore many different scenarios for the future development of the business.
+
+Planning the exit route for the investment is a critical role for the GP, and a well-timed and well-executed investment can be a significant source of realized value.
+
+The two main metrics for measuring the ongoing and ultimate performance of private equity funds are IRR and multiples. Comparisons of PE returns across funds and with other assets are demanding because it is important to control for the timing of cash flows, differences in risk and portfolio composition, and vintage-year effects.
+
+### Reading 3
+
+Fundamental analysis of commodities relies on analyzing supply and demand for each of the products as well as estimating the reaction to the inevitable shocks to their equilibrium or underlying direction.
+
+A short life cycle allows for relatively rapid adjustment to outside events, whereas a long life cycle generally limits the ability of the market to react.
+
+The valuation of commodities is not based on the estimation of future profitability and cash flows but rather on a discounted forecast of future possible prices based on such factors as the supply and demand of the physical item.
+
+The commodity trading environment is similar to other asset classes, with three types of trading participants: (1) informed investors/hedgers, (2) speculators, and (3) arbitrageurs.
+
+The difference between spot and futures prices is generally called the basis. When the spot price is higher than the futures price, it is called backwardation, and when it is lower, it is called contango.
+
+
+
+There are three primary theories of futures returns.
+
+* In insurance theory, commodity producers who are long the physical good are motived to sell the commodity for future delivery to hedge their production price risk exposure.
+* The hedging pressure hypothesis describes when producers along with consumers seek to protect themselves from commodity market price volatility by entering into price hedges to stabilize their projected profits and cash flow.
+* The theory of storage focuses on supply and demand dynamics of commodity inventories, including the concept of “convenience yield.”
+
+
+The roll return is effectively the weighted accounting difference (in percentage terms) between the near-term commodity futures contract price and the farther-term commodity futures contract price.
+
+## Portfolio Management (1) :
+
+### Reading 1
+
+Holding period performance deviations (tracking differences) are more useful than the standard deviation of daily return differences (tracking error).
+
+Premiums and discounts can occur because NAVs are based on the last traded prices, which may be observed at a time lag to the ETF price, or because the ETF is more liquid and more reflective of current information and supply and demand than the underlying securities in rapidly changing markets.
+
+ETFs are different from exchange-traded notes, although both use the creation/redemption process.
+Exchange-traded notes carry unique counterparty risks of default.
+Swap-based ETFs may carry counterparty risk.
+ETFs, like mutual funds, may lend their securities, creating risk of counterparty default.
+ETF closures can create unexpected tax liabilities.
+
+When positions are in transition from one external manager to another, ETFs are often used as the temporary holding and may be used to fund the new manager.
+
+Proper utilization requires investors to carefully research and assess the ETF’s index construction methodology, costs, risks, and performance history.
+
+### Reading 2
+
+Multifactor models describe the return on an asset in terms of the risk of the asset with respect to a set of factors. Such models generally include systematic factors, which explain the average returns of a large number of risky assets. Such factors represent priced risk—risk for which investors require an additional return for bearing.
+
+Like the CAPM, the APT describes a financial market equilibrium; however, the APT makes less strong assumptions.
+
+The major assumptions of the APT are as follows:
+
+* Asset returns are described by a factor model.
+* With many assets to choose from, asset-specific risk can be eliminated.
+* Assets are priced such that there are no arbitrage opportunities.
+
+
+In macroeconomic factor models, the factors are surprises in macroeconomic variables that significantly explain asset class (equity in our examples) returns. Surprise is defined as actual minus forecasted value and has an expected value of zero. 
+
+In fundamental factor models, the factors are attributes of stocks or companies that are important in explaining cross-sectional differences in stock prices. Among the fundamental factors are book-value-to-price ratio, market capitalization, price-to-earnings ratio, and financial leverage.
+
+In fundamental factor models, we generally specify the factor sensitivities (attributes) first and then estimate the factor returns through regressions. In macroeconomic factor models, however, we first develop the factor (surprise) series and then estimate the factor sensitivities through regressions.
+
+In statistical factor models, statistical methods are applied to a set of historical returns to determine portfolios that explain historical returns in one of two senses. In factor analysis models, the factors are the portfolios that best explain (reproduce) historical return covariances. In principal-components models, the factors are portfolios that best explain (reproduce) the historical return variances.
+
+A factor portfolio is a portfolio with unit sensitivity to a factor and zero sensitivity to other factors.
+
+The IR measures the increment in mean active return per unit of active risk.
+
+Generally, investors would gain from accepting above average (below average) exposures to risks that they have a comparative advantage (comparative disadvantage) in bearing.
+
+### Reading 3
+
+Value at risk (VaR) is the minimum loss in either currency units or as a percentage of portfolio value that would be expected to be incurred a certain percentage of the time over a certain period of time given assumed market conditions.
+
+The three methods of estimating VaR are the parametric method, the historical simulation method, and the Monte Carlo simulation method.
+
+The parametric method of VaR estimation typically provides a VaR estimate from the left tail of a normal distribution, incorporating the expected returns, variances, and covariances of the components of the portfolio.
+
+The historical simulation method of VaR estimation uses historical return data on the portfolio’s current holdings and allocation.
+
+The Monte Carlo simulation method of VaR estimation requires the specification of a statistical distribution of returns and the generation of random outcomes from that distribution.
+
+The advantages of VaR include the following: It is a simple concept; it is relatively easy to understand and easily communicated, capturing much information in a single number. It can be useful in comparing risks across asset classes, portfolios, and trading units and, as such, facilitates capital allocation decisions. It can be used for performance evaluation and can be verified by using backtesting. It is widely accepted by regulators.
+
+The primary limitations of VaR are that it is a subjective measure and highly sensitive to numerous discretionary choices made in the course of computation. It can underestimate the frequency of extreme events. It fails to account for the lack of liquidity and is sensitive to correlation risk. It is vulnerable to trending or volatility regimes and is often misunderstood as a worst-case scenario. It can oversimplify the picture of risk and focuses heavily on the left tail.
+
+Conditional VaR is the average loss conditional on exceeding the VaR cutoff.
+
+Incremental VaR measures the change in portfolio VaR as a result of adding or deleting a position from the portfolio or if a position size is changed relative to the remaining positions.
+
+MVaR measures the change in portfolio VaR given a small change in the portfolio position. In a diversified portfolio, MVaRs can be summed to determine the contribution of each asset to the overall VaR.
+
+Reverse stress testing is the process of stressing the portfolio’s most significant exposures.
+
+Historical scenarios are unlikely to re-occur in exactly the same way. Hypothetical scenarios may incorrectly specify how assets will co-move and thus may get the magnitude of movements wrong. And, it is difficult to establish appropriate limits on a scenario analysis or stress test.
+
+Constraints are widely used in risk management in the form of risk budgets, position limits, scenario limits, stop-loss limits, and capital allocation.
+
+Risk budgeting is the allocation of the total risk appetite across sub-portfolios.
+
+A scenario limit is a limit on the estimated loss for a given scenario, which, if exceeded, would require corrective action in the portfolio.
+
+A stop-loss limit either requires a reduction in the size of a portfolio or its complete liquidation (when a loss of a particular size occurs in a specified period).
+
+Position limits are limits on the market value of any given investment.
+
+Banks use risk tools to assess the extent of any liquidity and asset/liability mismatch, the probability of losses in their investment portfolios, their overall leverage ratio, interest rate sensitivities, and the risk to economic capital.
+
+Asset managers’ use of risk tools focuses primarily on volatility, probability of loss, or the probability of underperforming a benchmark.
+
+Pension funds use risk measures to evaluate asset/liability mismatch and surplus at risk.
+
+### Reading 4
+
+The main objective of backtesting is to understand the risk–return trade-off of an investment strategy by approximating the real-life investment process.
+
+In the rolling-window backtesting methodology, researchers use a rolling-window (or walk-forward) framework, fit/calibrate factors or trade signals based on the rolling window, rebalance the portfolio periodically, and then track the performance over time. Thus, rolling-window backtesting is a proxy for actual investing.
+
+Asset (and factor) returns are often negatively skewed and exhibit excess kurtosis (fat tails) and tail dependence compared with a normal distribution. As a result, standard rolling-window backtesting may be unable to fully account for the randomness in asset returns, particularly on downside risk.
+
+Historical simulation is relatively straightforward to perform but shares pros and cons similar to those of rolling-window backtesting. For example, a key assumption these methods share is that the distribution pattern from the historical data is sufficient to represent the uncertainty in the future. Bootstrapping (or random draws with replacement) is often used in historical simulation.
+
+A multivariate skewed t-distribution considers skewness and kurtosis but requires estimation of more parameters and thus is more likely to suffer from larger estimation errors.
+
+## Portfolio Management (2) :
+
+### Reading 1
+
+Other things being equal, these relationships mean that we should expect to find that the average level of real short-term interest rates is higher in an economy with high and volatile growth and lower in an economy with lower, more stable growth.
+
+Short-term nominal rates will be closely related to a central bank’s policy rate of interest and will comprise the real interest rate that is required to balance the requirements of savers and investors plus investors’ expectations of inflation over the relevant borrowing or lending period. Short-term nominal interest rates will be positively related to short-term real interest rates and to inflation expectations.
+
+Risk premium will generally rise with the maturity of these bonds because longer-dated government bonds tend to be less negatively correlated with consumption and, therefore, represent a less useful consumption hedge for investors.
+
+The P/E tends to rise during periods of economic expansion and to fall during recessions. A “high” P/E could be the result of a number of factors, including the following: falling real interest rates, a decline in the equity risk premium, an increase in the expectation of future real earnings growth, an expectation of lower operating and/or financial risk, or a combination of all of these factors. All of these components will be influenced by the business cycle.
+
+### Reading 2
+
+Value added can come from a variety of active portfolio management decisions, including security selection, asset class allocation, and even further decompositions into economic sector weightings and geographic or country weights.
+
+The Sharpe ratio measures reward per unit of risk in absolute returns, whereas the information ratio measures reward per unit of risk in benchmark relative returns.
+
+The active risk of an actively managed strategy can be adjusted to its desired level by combining it with a position in the benchmark. Furthermore, once an investor has identified the maximum Sharpe ratio portfolio, the total volatility of a portfolio can be adjusted to its desired level by combining it with cash (two-fund separation concept).
+
+The fundamental law of active portfolio management began as a conceptual framework for evaluating the potential value added of various investment strategies, but it has also emerged as an operational system for measuring the essential components of those active strategies.
+
+Although the fundamental law provides a framework for analyzing investment strategies, the essential inputs of forecasted asset returns and risks still require judgment in formulating the expected returns.
+
+The fundamental law separates the expected value added, or portfolio return relative to the benchmark return, into the basic elements of the strategy:
+    skill as measured by the information coefficient,
+    structuring of the portfolio as measured by the transfer coefficient,
+    breadth of the strategy measured by the number of independent decisions per year, and
+    aggressiveness measured by the benchmark tracking risk.
+
+The fundamental law of active management has limitations, including uncertainty about the ex ante information coefficient and the conceptual definition of breadth as the number of independent decisions by the investor.
+
+### Reading 3
+
+Electronic trading benefits investors through lower transaction costs and greater efficiencies but also introduces systemic risks and the need to closely monitor markets for abusive trading practices.
+
+The effective spread is a poor estimate of actual transaction costs when large orders have been filled in many parts over time or when small orders receive price improvement.
+
+Implicit costs include indirect costs, such as the impact of the trade on the price received. The bid–ask spread, market impact, delay, and unfilled trades all contribute to implicit trading costs.
+
+The implementation shortfall method measures the total cost of implementing an investment decision by capturing all explicit and implicit trading costs. It includes the market impact costs, delay costs, as well as opportunity costs.
+
+The VWAP method of estimating transaction costs compares average fill prices to average market prices during a period surrounding the trade. It tends to produce lower transaction cost estimates than does implementation shortfall because it often does not measure the market impact of an order well.
+
+Hidden orders, quote leapfrogging, flickering quotes, and the use of machine learning to support trading strategies commonly are found in electronic markets.
+
+Examples of systemic risks posed by electronic traders include: runaway algorithms that produce streams of unintended orders caused by programming mistakes, fat finger errors that occur when a manual trader submits a larger order than intended, overlarge orders that demand more liquidity than the market can provide, and malevolent order streams created deliberately to disrupt the markets.
+
+Market manipulation strategies include bluffing, squeezing, cornering, and gunning.

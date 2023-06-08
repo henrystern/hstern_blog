@@ -1,0 +1,40 @@
+---
+title: Fixed Income
+order: 3
+---
+
+## Fixed Income (1)
+
+### The Term Structure and Interest Rate Dynamics
+
+#### Spot Rates, Forward Rates, and the Forward Rate Model
+
+The spot curve: the annualized return of an option and default risk free zero coupon bonds of various maturities 
+
+The forward curve: the curve of forward rates over a range of maturities from a specified start date
+
+The par curve: the curve of YTM on coupon-paying government bonds priced at par over a range of maturities.
+
+Bootstrapping: a technique for deriving the zero coupon yield curve from the par curve
+
+An inverted yield curve reflects market expectation of declining future inflation rates. They are often observed before recessions.
+
+#### Yield-to-Maturity in Relation to Spot and Forward Rates
+
+The YTM is the expected rate of return for a bond held to maturity, assuming that all promised coupon and principal payments are made in full when due and that coupons are reinvested at the original YTM.
+
+#### Summary
+
+Z Spread: The constant spread that equates the price of a security to the present value of its cash flows when added to the yield at each point on the spot curve
+
+### Arbitrage Free Valuation
+
+#### Intro
+
+Value Additivity: The sum of the whole must equal the sum of the parts. ex. buy portfolio sell individual holdings
+
+Dominance: A risk free payout must have a positive price in the future. ex. two risk free assets of different rates having the same price.
+
+#### Arbitrage-free valuation for an option free bond
+
+definitely need to review pathwise valuation
