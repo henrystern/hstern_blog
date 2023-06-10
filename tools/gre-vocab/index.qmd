@@ -1,5 +1,4 @@
 ---
-pagetitle: "GRE Vocab Practice"
 title: "GRE Vocab Practice"
 date: 2023-05-1
 description: "Memorize GRE vocabulary by answering multiple choice questions."
