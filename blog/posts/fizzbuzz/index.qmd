@@ -1,0 +1,129 @@
+---
+title: Infinite Fizzbuzz With Generator Functions
+date: 2023-06-08
+---
+
+Anyone can write a solution to the FizzBuzz problem, but what if you need it to run indefinitely?
+
+## The FizzBuzz Problem
+
+I was introduced to the FizzBuzz problem by this [Tom Scott video](https://www.youtube.com/watch?v=QPZ0pIK_wsc). 
+
+Essentially the task is to write a function that:
+
+1. Counts through the natural numbers,
+1. Replaces numbers divisible by three with "Fizz",
+1. Replaces numbers divisible by five with "Buzz", and
+1. Replaces numbers divisible by three and five with "FizzBuzz".
+
+It looks like this: ${response}
+
+The purpose is to test the most foundational concepts in programming: loops and conditionals. As such, the task is usually restricted to the first 100 turns. 
+
+If the problem is extended to an infinite number of turns it becomes a good example of a task for lazy evaluation and generator functions.
+
+## Generator Functions
+
+Generator functions are functions that can pause and resume their execution while remembering their state.
+
+This makes them extremely useful in situations where you have a large (or infinite) number of items that follow a pattern. Instead of attempting to store each item in memory, the generator allows you to encode the rules of the pattern in a function and compute the next item as it is needed. 
+
+This is lazy because the generator pauses itself as soon as it finds the next solution. 
+
+## Implementation
+
+Here are some lazy FizzBuzz implementations:
+
+::: {.panel-tabset}
+
+## Javascript
+
+```javascript
+function* fizz_counter(n=1, pairs=[[3, "fizz"], [5, "buzz"]]) {
+  while (true) {
+    let responses = [];
+    pairs.forEach(([divisor, response]) => {
+      if (n % divisor == 0) responses.push(response);
+    })
+    yield responses.length ? responses.join("") : n;
+    n++;
+  }
+}
+
+const count = fizz_counter();
+setInterval(() => console.log(count.next().value), 1000);
+```
+This will log the next FizzBuzz response every second forever.
+
+This implementation is almost identical to the standard solution except successive turns are called with the generator's `.next()` method.
+
+The `yield` keyword tells the generator where to pause execution and what to return in the meantime. 
+
+## Python
+
+```python
+import time
+
+def fizz_counter(n=1, pairs=[(3, "fizz"), (5, "buzz")]):
+    while True:
+        responses = [response for divisor, response in pairs if n % divisor == 0]
+        yield "".join(responses) if responses else n
+        n += 1
+
+count = fizz_counter()
+while True:
+    current = next(count)
+    print(current)
+    time.sleep(1)
+```
+This will log the next FizzBuzz response every second forever.
+
+The implementation is almost identical to a standard solution except successive turns are called with the `next()` function. 
+
+The `yield` keyword tells the generator where to pause execution and what to return in the meantime. 
+
+## OJS
+
+```{ojs} 
+//| code-fold: true
+function* fizz_counter(n=1, pairs) {
+  while (true) {
+    let responses = [];
+    for (const row of pairs) {
+      if (n % row.divisor == 0) responses.push(row.response);
+    }
+    yield responses.length ? responses.join("") : n;
+    n++;
+  }
+}
+
+viewof n = Inputs.number([1,99999999999], {step: 1, label: "Starting turn", value: 1})
+
+viewof pairs_input = Inputs.textarea({label: "Pairs", placeholder: "divisor,response\n3,fizz\n5,buzz", value: "divisor,response\n3,fizz\n5,buzz"})
+
+pairs = d3.csvParse(pairs_input)
+
+response = {
+  for (const i of fizz_counter(n, pairs)) {
+    yield await Promises.tick(1000, i)
+  }
+}
+```
+
+${response}
+
+:::
+
+## Why?
+
+Similar functionality could be obtained by tracking the current turn and passing it to a regular function as an argument or even just doing all of the processing in main. 
+
+While that works fine where the iteration occurs in a single loop, generator functions are much cleaner if the next item is needed at unpredictable intervals, or in multiple locations. Since generators store both the state and value in a single object there is no need to remember to change the state variable each time you call the function. This keeps the code cleaner and reduces the likelihood of making an error. 
+
+Whenever you see a patterned sequence of indeterminate length a generator function will probably allow a cleaner implementation than a standard function.
+
+## More Info
+
+For an introduction to lazy evaluation you can see this [Computerphile video](https://www.youtube.com/watch?v=5jwV3zxXc8E).^[Their implementation is recursive so it will bottom out at the recursion limit.]
+
+For a more advanced demonstration of the techniques and applications of javascript generators you can read this [blog post](https://observablehq.com/@anjana/the-power-of-js-generators) about generator functions in ObservableJS. 
