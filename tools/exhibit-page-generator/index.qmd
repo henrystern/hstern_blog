@@ -1,6 +1,0 @@
----
-title: "Exhibit Page Generator"
-date: 2023-04-05
-description: "Quickly generate a pdf of affidavit exhibit pages."
-categories: ["Python", "Automation"]
----

@@ -24,8 +24,8 @@ For a constant tax rate, the final after tax value of both accounts will be iden
 
 When the tax rate is not constant, the percent difference in return between an RRSP and TFSA is completely attributable to the change in tax rates:
 
-$$\text{RRSP Return} = (\text{Savings} \times (1+r)^t) \times (1-\text{Future Tax Rate})$$
-$$\text{TFSA Return} = (\text{Savings} \times (1-\text{Current Tax Rate})) \times (1+r)^t$$
+$$\text{RRSP Return} = (\text{Savings} \, (1+r)^t) \cdot (1-\text{Future Tax Rate})$$
+$$\text{TFSA Return} = (\text{Savings} \, (1-\text{Current Tax Rate})) \cdot (1+r)^t$$
 $$\%\Delta = {\text{RRSP Return} \over \text{TFSA Return}} - 1 = {1-\text{Future Tax Rate} \over 1-\text{Current Tax Rate}}-1 = {\text{Current Tax Rate} - \text{Future Tax Rate} \over 1-\text{Current Tax Rate}}$$
 
 Some investors may predict paying a lower tax rate when the funds are withdrawn, in that case the RRSP will provide superior returns to the TFSA. Other investors may anticipate that their tax rate will rise, making the TFSA superior. 
@@ -88,7 +88,7 @@ viewof max_RESP_match = Inputs.number(
 
 viewof annual_return = Inputs.range(
 [0, 2],
-{value: .07, step: .005, label: "Annual Return:"}
+{value: .05, step: .005, label: "Annual Return:"}
 );
 
 viewof years = Inputs.range(
@@ -120,17 +120,14 @@ viewof ben_future_tax = Inputs.range(
 ## Final
 ```{ojs}
 //| code-fold: true
+html`<style>svg { font-size: 12px !important }`
 Plot.plot({
-  y: {
-    label: null,
-    ticks: 0,
-  },
   x: {
     grid: false,
     label: "Account",
   },
   marks: [
-    Plot.axisY({label: null}),
+    Plot.axisY({label: null, ticks: 0}),
     Plot.barY(line_data, Plot.selectLast({x: "account", y: "value", fill: "account"})),
     Plot.text(
       line_data, 
@@ -152,7 +149,6 @@ Plot.plot({
 ## By Year
 ```{ojs}
 //| code-fold: true
-//| width: 500
 
 Plot.plot({
   y: {
@@ -165,15 +161,15 @@ Plot.plot({
   },
   color: {legend: true},
   marks: [
-  Plot.line(line_data, { x: "year", y: "value", stroke: "account" }),
+    Plot.axisX({ticks: d3.min([years, 15]), tickFormat: (year) => year.toFixed(0)}),
+    Plot.line(line_data, { x: "year", y: "value", stroke: "account" }),
     Plot.text(line_data, Plot.selectLast({
       x: "year",
       y: "value",
       z: "account",
       text: (d) => d.value.toLocaleString("en-US", { style: "currency", currency: "USD" }),
-      //textAnchor: "start",
       dy: -6,
-      dx: -6
+      dx: -25
     }))
   ],
 })

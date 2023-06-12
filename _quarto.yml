@@ -19,6 +19,12 @@ website:
     background: "secondary"
     foreground: "primary"
   sidebar:
+    - id: cfa_2
+      title: "CFA Level II"
+      collapse-level: 3
+      style: floating
+      border: false
+      contents: notes/cfa-2/**/*.qmd
     - id: cfa_3
       title: "CFA Level III"
       collapse-level: 3

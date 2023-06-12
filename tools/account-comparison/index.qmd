@@ -1,0 +1,182 @@
+---
+title: "Registered Account Comparison"
+description: "Compare the tax benefits of Canadian registered accounts."
+date: 2023-06-09
+categories: ["Javascript", "Finance", "Visualization"]
+page-layout: full
+comments: false
+---
+
+::: {.panel-sidebar}
+
+```{ojs}
+//| code-fold: true
+
+viewof pre_tax_savings = Inputs.number(
+  [0, 200000000],
+  {value: 40000, step: 500, label: "Pre-tax Savings:"}
+);
+
+viewof RRSP_match = Inputs.range(
+  [0, 1],
+  {value: 0, step: .01, label: "RRSP Match:"}
+);
+
+viewof max_RRSP_match = Inputs.number(
+  [0, 100000],
+  {value: 100000, step: 100, label: "Max RRSP Match"}
+);
+
+viewof RESP_match = Inputs.number(
+  [0, 1],
+  {value: .2, step: .01, label: "RESP Match:"}
+);
+
+viewof max_RESP_match = Inputs.number(
+  [0, 100000],
+  {value: 7200, step: 100, label: "Max RESP Match:"}
+);
+
+viewof annual_return = Inputs.range(
+  [0, 2],
+  {value: .07, step: .005, label: "Annual Return:"}
+);
+
+viewof years = Inputs.range(
+  [1, 100],
+  {value: 10, step: 1, label: "Years Invested:"}
+);
+
+viewof current_tax = Inputs.range(
+  [0, 1],
+  {value: .3, step: .01, label: "Current Income Tax Rate:"}
+);
+
+viewof future_tax = Inputs.range(
+  [0, 1],
+  {value: .3, step: .01, label: "Future Income Tax Rate:"}
+);
+
+viewof ben_future_tax = Inputs.range(
+  [0, 1],
+  {value: 0, step: .01, label: "Beneficiary's Future Income Tax Rate:"}
+);
+
+```
+
+:::
+
+::: {.panel-fill}
+
+::: {.panel-tabset}
+
+## Final
+```{ojs}
+//| code-fold: true
+html`<style>svg { font-size: 12px !important }`
+Plot.plot({
+  x: {
+    grid: false,
+    label: "Account",
+  },
+  marks: [
+    Plot.axisY({label: null, ticks: 0}),
+    Plot.barY(line_data, Plot.selectLast({x: "account", y: "value", fill: "account"})),
+    Plot.text(
+      line_data, 
+      Plot.selectLast({
+        x: "account", 
+        y: "value",
+        z: "account",
+        text: (d) => (
+          d.value.toLocaleString("en-US", {style: "currency", currency: "USD" })
+        ),
+        dy: -6,
+        lineAnchor: "bottom"
+      })
+    ),
+  ],
+})
+```
+
+## By Year
+```{ojs}
+//| code-fold: true
+
+Plot.plot({
+  y: {
+    grid: true,
+    label: "Account Value",
+  },
+  x: {
+    grid: false,
+    label: "Year",
+  },
+  color: {legend: true},
+  marks: [
+    Plot.axisX({ticks: d3.min([years, 15]), tickFormat: (year) => year.toFixed(0)}),
+    Plot.line(line_data, { x: "year", y: "value", stroke: "account" }),
+    Plot.text(line_data, Plot.selectLast({
+      x: "year",
+      y: "value",
+      z: "account",
+      text: (d) => d.value.toLocaleString("en-US", { style: "currency", currency: "USD" }),
+      dy: -6,
+      dx: -25
+    }))
+  ],
+})
+```
+
+:::
+
+```{ojs}
+//| code-fold: true
+
+line_data = {
+  // Deposit
+  let current_year = new Date().getFullYear()
+  let Taxable = (pre_tax_savings * (1 - current_tax))
+  let TFSA = (pre_tax_savings * (1 - current_tax))
+  let RRSP = (pre_tax_savings) + d3.min([pre_tax_savings * RRSP_match, max_RRSP_match])
+  let RESP = (pre_tax_savings * (1 - current_tax)) + d3.min([pre_tax_savings * RESP_match, max_RESP_match])
+  let FHSA = (pre_tax_savings)
+  let temp = [
+    {year: current_year, account: "Taxable", value: Taxable},
+    {year: current_year, account: "TFSA", value: TFSA},
+    {year: current_year, account: "RRSP", value: RRSP},
+    {year: current_year, account: "RESP", value: RESP},
+    {year: current_year, account: "FHSA", value: FHSA},
+  ];
+
+  // Grow
+  for (var i = 1; i < years; i++) {
+    Taxable = Taxable * (1 + annual_return)
+    TFSA = TFSA * (1 + annual_return)
+    RRSP = RRSP * (1 + annual_return)
+    RESP = RESP * (1 + annual_return)
+    FHSA = FHSA  * (1 + annual_return)
+    temp.push({year: current_year + i, account: "Taxable", value: Taxable})
+    temp.push({year: current_year + i, account: "TFSA", value: TFSA})
+    temp.push({year: current_year + i, account: "RRSP", value: RRSP})
+    temp.push({year: current_year + i, account: "RESP", value: RESP})
+    temp.push({year: current_year + i, account: "FHSA", value: FHSA})
+  }
+
+  // Withdraw
+  Taxable = Taxable * (1 + annual_return)
+  Taxable = Taxable - (Taxable - pre_tax_savings * (1 - current_tax)) * .5 * future_tax
+  TFSA = TFSA * (1 + annual_return)
+  RRSP = RRSP * (1 + annual_return) * (1 - future_tax)
+  RESP = RESP * (1 + annual_return) * (1 - ben_future_tax)
+  FHSA = FHSA  * (1 + annual_return)
+  temp.push({year: current_year + years, account: "Taxable", value: Taxable})
+  temp.push({year: current_year + years, account: "TFSA", value: TFSA})
+  temp.push({year: current_year + years, account: "RRSP", value: RRSP})
+  temp.push({year: current_year + years, account: "RESP", value: RESP})
+  temp.push({year: current_year + years, account: "FHSA", value: FHSA})
+  return temp
+}
+```
+
+:::
