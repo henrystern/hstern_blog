@@ -7,11 +7,7 @@ date: "2022-11-23"
 listing:
   - type: table
     contents: 
-      - FSA.qmd
-      - Equity Valuation.qmd
-      - Fixed Income.qmd
-      - Derivatives.qmd
-      - Summaries.qmd
+      - ./**/*.qmd
     sort: order
     sort-ui: false
     filter-ui: false
