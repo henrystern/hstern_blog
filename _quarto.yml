@@ -68,8 +68,9 @@ format:
     theme: 
       light:
         - flatly
-        - ./static/css/custom-light.scss
+        - ./static/css/variables.scss
       dark:
         - darkly
-        - ./static/css/custom-dark.scss
+        - ./static/css/variables.scss
+        - ./static/css/dark.scss
     css: ./static/css/styles.css
