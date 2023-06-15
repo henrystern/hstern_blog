@@ -1,0 +1,272 @@
+---
+title: "Capital Market Expectations, Part 2: Forecasting Asset Class Returns"
+order: 4
+---
+
+## Tools and Approaches
+
+Different tools are useful over different time horizons.
+
+Over sufficiently long horizons estimation techniques assume a central tendency.
+
+### Statistical Methods
+
+Sample statistics are clear and understandable but prone to sampling error.
+
+Shrinkage estimation takes a weighted average of two estimates to reduce forecast error.
+
+Time series estimation forecasts based on lagged values of the variables being forecast. They may explain historical data well but are not structural.
+
+## Forecasting Fixed Income Returns
+
+### DCF
+
+This is the only model precise enough to use for individual fixed-income securities. Also useful for Macro analysis. 
+
+Allows for scenario adjustment by changing inputs.
+
+If the investment horizon is different from the bonds time to maturity the yield-to-maturity will not equal the expected return. YTM also fails to reflect reinvestment as a component of return.
+
+If the investment horizon equals the Macauley duration of the bond the reinvestment and horizon effects will offset each other. Return will be close to the YTM. The remaining difference will be due to the yield curve and delays in rate changes.
+
+Over horizons shorter than the MacDur the capital gain effect will outweigh the reinvestment effect and vice versa.
+
+The timing of rate changes over the investment horizon will not affect the capital gain/loss of the bond but will affect reinvestment returns. When rate changes are anticipated this can be controlled by conducting a different DCF analysis for each subperiod.
+
+### Risk Premium Models
+
+The building block approach estimates expected return in terms of compensation for different types of risk.
+
+The standard risk types for fixed income investments are:
+
+* Interest rate
+* Duration
+* Credit, and
+* Illiquidity
+
+The short term default free rate is essentially the central bank's policy rate. It is the base return on which the risk premia are added.
+
+#### Rate Risk
+
+When the forecast horizon is longer than the maturity of the instrument additional adjustment is necessary. There are two approaches. 
+
+1. Use the yield on a longer zero-coupon bond with a maturity that matches the horizon, or
+2. Estimate the roll return of the instrument with the expected path of short term rates.
+
+The implied rates of futures contracts can be interpreted as the expected path of short term rates.
+
+#### Term Risk
+
+The spot rate can give an implied sequence of period by period returns but it cannot be used to derive the term premium: the expected returns for bonds of different maturities over the investment horizon.
+
+Other indicators provide better estimates of the term premia such as the Cochrane and Piazzesi curve factor or the Kim and Wright premium.
+
+#### Credit Risk
+
+Corporate bonds do pay a credit premium but that return is highly variant due to the correlations between separate companies failures (in recession).
+
+This pattern makes lagged models effective for predicting next years default rate.
+
+Top quality bonds have low default rates so the credit premium is actually indicative of the risk of downgrade rather than default. Downgrades induce greater spread changes than upgrades.
+
+Credit premiums are related to maturity as a longer maturity provides more opportunity for default. Despite this credit premiums do not appear to increase with maturity.
+
+#### Liquidity Risk
+
+Bonds are mostly only traded for a few weeks after issuance. Liquidity is worse for small issues, low quality, old, or complex instruments.
+
+The liquidity premium can be estimated by the spread between top quality vanilla bonds and the next highest quality large issuer of similar bonds.
+
+### Equilibrium Model
+
+Allows for consistency in estimation across asset classes. Black-Litterman framework.
+
+## Emerging Market Bonds
+
+Emerging market bonds are issued in local currencies as well as hard currencies (foreign, widely used currencies).
+
+Emerging market debt is more vulnerable to economic, political, and legal risks. These risks can be categorized as:
+
+1. Ability to Pay
+1. Willingness to Pay
+
+Emerging markets are highly heterogeneous so risks must be considered individually for each economy.
+
+## Forecasting Equity Returns
+
+Differences in mean equity returns between developed countries from 1900-2017 were not statistically significant.
+
+### DCF Approach
+
+The Gordon model estimates required equity return by discounting dividends. It is less noisy than historical returns as it is not influenced by changes in P/E and E/GDP.
+
+::: {.callout-note}
+## Grinold-Kroner Model
+
+The Grinold-Kroner model adjusts the Gordon model to account for share repurchases.
+
+$$
+  E(R_e) \approx \frac{D}{P} + (\%\Delta E - \%\Delta S) + \%\Delta \frac{P}{E}
+$$
+
+| Where:
+|    $S$ is shares outstanding
+
+| The expected return can be divided into three components:
+|    Expected cash flow: $\frac{D}{P} - \%\Delta S$
+|    Expected earnings growth: $\%\Delta E$
+|    Expected repricing: $\%\Delta \frac{P}{E}$
+
+The only very long-run assumptions that are consistent with economically plausible relationships are $\%\Delta E = \text{Nominal GDP growth}$, $\%\Delta S = 0$, and $\%\Delta \frac{P}{E} = 0$.
+:::
+
+### Risk Premium Approach
+
+The equity premium is the amount of excess return on equities compared to the riskless rate^[Either risk free bonds or bills].
+
+Equity returns are much more volatile than either bills or bonds so the ERP provides little insight for short term forecasts.
+
+### Equilibrium Approach
+
+CAPM^[$RP_i = {\beta}_{i, M} \cdot RP_M$] can be extended to model equity returns across markets. The Singer and Terhaar approach extends CAPM by assuming all markets are fully integrated and each asset class and country is priced independently.
+
+::: {.callout-note}
+## Singer and Terhaar Risk Premium
+$$
+  RP_i = \phi {RP_i}^{G} + (1 - \phi){RP_i}^{S} 
+$$
+
+| Where:
+|     $\phi$ is the degree of global integration
+|     $\beta$ is the asset's $\beta$ wrt to the global market portfolio
+:::
+
+### Emerging Market Equity Considerations
+
+Country factors are generally more important than global industry effects.
+
+Important to consider standards, regulatory environment, investor rights, political risks.
+
+## Forecasting Real Estate Returns
+
+Real estate is relatively illiquid and has high transaction costs.
+
+Historical returns are generally based on appraisals rather than transactions. Appraisals are not representative of the market volatility and correlations as they are essentially weighted averages of unobserved "true" returns.
+
+Appraisal data will understate volatility and will spuriously imply a lagged correlation with market variables that actually have an instantaneous effect.
+
+### Real Estate Cycles
+
+Demand for real estate is highly cyclical due to the inelasticity of supply.
+
+Generally the cycle is driven by a boom-bust cycle in real estate demand. The global financial crisis was an exception as it was driven by capital markets (excess leverage rather than overbuilding).
+
+### Cap Rate Return Estimation
+
+The capitalization rate can be used to derive the required return. 
+
+Using the Gordon model:
+$$
+  E(R_{re}) = Cap + NOI Growth
+$$
+
+or, over finite horizons:
+$$
+  E(R_{re}) = Cap + NOI Growth - \%\Delta Cap
+$$
+
+Cap rates are higher for riskier properties.
+
+### Risk Premium Approach
+
+Real estate has a high effective duration. Requires a high term premium. Property value returns are pro-cyclical.
+
+Real estate has bond like and equity like components. Requires an equity premium and credit premium.
+
+The overall premium should fall between bond and equity premiums.
+
+### Equilibrium Model
+
+Real estate can be incorporated into the Singer-Terhaar model. Requires controlling data for smoothing and illiquidity.
+
+### Public Real Estate
+
+Delevered REIT returns and volatilities are similar to direct ownership. REIT returns are more closely correlated to equity returns. In the long run REIT returns are more closely correlated to direct real estate returns than equity returns.
+
+### Long Term Returns
+
+Residential real estate account for 75% of the total value globally.
+
+A 2017 study found residential real estate outperformed all other asset classes with higher return and lower volatility since 1870. Effect was reversed since 1980.
+
+Equity returns are highly correlated across countries but residential real estate is not.
+
+## Forecasting Exchange Rates
+
+Exchange rates are very difficult to forecast.
+
+No single approach is sufficient. Exchange rate forecasting techniques are not mutually exclusive.
+
+### Trade Approach
+
+Trade affects the exchange rate through:
+
+1. Flows
+2. Quasi-arbitrage of prices
+3. Competitiveness
+
+With perfect capital mobility exchange rates will adjust to eliminate arbitrage opportunities.
+
+Hot money are a concern to central banks as they impair monetary policy (see the Mundell-Fleming model). They also encourage firms fund long term investment with short term borrowing which can be disastrous when financing dries up. The bank can sell government securities to maintain target interest rates or intervene in the currency market. Capital controls might be imposed if other attempts are ineffective.
+
+Strong economic growth will weaken a currency. Large, persistent current account deficits will also put downward pressure on the exchange rate.
+
+## Forecasting Volatility
+
+### Estimating a Variance-Covariance Matrix
+
+#### Sample Statistics
+
+Computing a sample variance for each asset can generate a VCV matrix but only for a smaller number of assets than observations. It is also vulnerable to large sampling errors.
+
+The number of observations should be at least 10 times the number of assets for the VCV to be reliable. Even then it might not be cross-sectionally consistent.
+
+#### Factor Models
+
+Variance is determined by an asset specific component while covariance is determined by exposure to common factors.
+
+The ith assets return is given by:
+$$
+   r_i = a_i + \sum_{k=1}^K \beta_{ik}F_k + \epsilon_i
+.$$
+
+This technique has less estimation error and fewer required observations than sample statistics. Nevertheless it will almost certainly be misspecified. The output VCV matrix will be biased from the true VCV and does not converge as sample size increases.
+
+Estimating the wrong thing with precision instead of the right thing with lots of noise.
+
+#### Shrinkage Estimation
+
+Combining estimates can mitigate the effect of estimation error. 
+
+#### ARCH Models
+
+Asset returns exhibit volatility clustering. Traditional methods assume constant true volatility but autoregressive conditional heteroskedasticity (ARCH) models allow time-varying volatilities.
+
+Generally estimates are constrained to a few assets.
+
+## Adjusting a Global Portfolio
+
+A reasonable allocation to a global portfolio can be adjusted by considering country, sector, and asset class exposures to macro risks. 
+
+Things to consider include:
+
+* Country growth rate changes
+  * Growth favors equities especially if due to productivity. 
+* Global integration changes
+  * Increased integration should reduce required return under Singer-Terhaar
+* Business cycle estimation
+  * Best time to buy is as the market approaches a trough
+* monetary and fiscal policies
+  * Especially relevant when there is a shift in targets
+* current account balances
+  * Reallocate from rising CA deficits to those with rising surpluses
