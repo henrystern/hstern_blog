@@ -1,0 +1,79 @@
+---
+title: "Overview of Asset Allocation"
+order: 5
+---
+
+Asset allocation is an early and important decision in the portfolio construction process.
+
+# Investment Governance
+
+Asset allocation should reflect a balancing of the clients requirements and sensitivities.
+
+# Allocation of Rights and Responsibilities
+
+Good governance allocates responsibility for decisions to those most qualified to make those decisions.
+
+Decision-reversal risk is the risk of reversing a previous investment decision at exactly the wrong time, maximizing loss.
+
+# Economic Balance Sheet
+
+The economic balance sheet shows all of an individuals assets liabilities (financial and non-financial). 
+
+Human capital is 30% equity-like and 70% bond-like with variation among industries. This suggests as human capital diminishes over a life allocation to bonds should increase.
+
+# Asset Class Risk
+
+Greer three types of assets:
+
+1. Capital assets, ongoing source of value
+1. Consumable assets, transformed into something of value
+1. Store of value, inherently valuable without generating income
+
+Asset classes should have correlations below .95 to other asset classes.
+
+# Strategic Allocation
+
+An efficient portfolio has the highest possible Sharpe ratio among portfolios with the same volatility of return.
+
+The Sharpe ratio should not be the only means for evaluating portfolios as it does not capture other characteristics of the portfolio like VaR and funded ratio.
+
+A liability relative approach takes additional steps to prevent a fund failing to match its liabilities. For example they might allocate the value of their liabilities to a low risk account while seeking returns with the excess.
+
+Goals based allocation exploits the mental accounting bias to help investors develop better portfolios.  It can help investors to accept greater (more optimal) risk than they would otherwise by treating the account as a "high risk" account and vice versa. 
+
+# Implementation Choices
+
+::: {.callout-note}
+# Tactical Asset Allocation
+
+Short term deviations from the strategic allocation to exploit deviations from equilibrium.
+:::
+
+::: {.callout-note}
+# Dynamic Asset Allocation
+
+Medium-long term deviations from the strategic allocation to exploit deviations from equilibrium.
+:::
+
+::: {.callout-note}
+# Passive Management
+
+A portfolio that does not react to changes in capital market expectations.
+:::
+
+# Rebalancing Options
+
+::: {.callout-note}
+# Calendar Rebalancing
+
+Rebalancing to targets on a periodic basis.
+:::
+
+::: {.callout-note}
+# Percent-range rebalancing
+
+Rebalancing to targets when the allocation hits a threshold or trigger point. The bands chosen can be proportional or absolute.
+:::
+
+Derivatives can often be used to reduce the transaction costs of rebalancing.
+
