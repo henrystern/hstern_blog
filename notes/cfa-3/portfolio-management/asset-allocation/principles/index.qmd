@@ -1,0 +1,233 @@
+---
+title: "Principles of Asset Allocation"
+order: 6
+---
+
+# Mean Variance Optimization
+
+Probably the most common approach to asset allocation.
+
+Maximizing return for given amount of variation.
+
+The objective function
+: $$
+  U_{m} = E(R_m) - \frac{1}{2} \lambda \sigma_{m}^{2} 
+$$ {#eq-mvo}
+
+Where (for asset mix $m$):
+
+* $U_m$ is utility
+* $R_m$ is return
+* $\lambda$ is risk aversion, and
+* $\sigma_{m}^{2}$ is variance
+
+Cash can be treated as risky or (nominally) risk free.
+
+## Monte Carlo Simulation
+
+When terminal wealth is path dependent an analytical approach is not feasible but Monte Carlo simulation is.
+
+## Criticisms of Mean Variance Optimization
+
+* Outputs are sensitive to inputs
+* They don't address investors primary concerns
+* They are not connected to future liabilities
+* They don't account for rebalancing and taxes
+
+## Responses to Critiques
+
+MVO is more sensitive to changing return estimates than volatilities and correlations. Returns are also more difficult to estimate.
+
+#### Reverse Optimization
+
+Take a set of allocation weights (for example observed market cap weights) that are assumed to be optimal and solve for expected returns. This process relates well to CAPM.
+
+If the reverse-optimized returns differ strongly from the analysts expectation the Black-Litterman approaches is preferred.
+
+#### Black-Litterman Model
+
+Model for deriving a set of expected returns that can be used in an optimization setting.
+
+Start with excess returns above the risk free rate from reverse optimization then alter the returns to reflect the analysts expectation. 
+
+This model reflects economic reality as well as analyst expectations.
+
+#### Constraining MVO
+
+Constraints help to overcome the input quality, input sensitivity, and concentration criticisms of MVO.
+
+Constraints can
+
+* Fix an allocation to a specific asset
+* Fix an allocation range to an asset
+* Specify a relative allocation between two assets
+
+Constraints shouldn't be used to contrive MVO output. They should be reflective of the investors circumstances.
+
+### Resampled MVO
+
+Resampling generates more diversified portfolios than simple MVO. By running MVO for various possible inputs.
+
+This approach reflects the reality that estimated inputs are subject to error.
+
+It can generate a frontier where expected return decreases for increased variation. The allocations also inherit the error of the original inputs.
+
+### Other Approaches
+
+Investor preference may also be shaped by the skew and kurtosis of returns.
+
+Alternative approaches consider non-normal return distributions and a more sophisticated definition of risk like conditional var.
+
+## Illiquid Asset Classes
+
+Illiquid asset classes lack reliably indexes which makes it hard to generate capital market expectations.
+
+You can address illiquid asset classes by:
+
+1. Excluding the classes from the asset allocation decision. Include them as part of a strategic allocation adjustment.
+2. Attempt to model the inputs based on the likely investments characteristics
+3. Attempt to model the inputs based on the diversified estimate of the true asset classes characteristics
+
+## Risk Budgeting
+
+The marginal contribution to a type of risk is $\frac{\partial \ \text{risk}}{\partial \ \text{holding}}$  
+
+The marginal contribution to total risk of asset $i$ is:
+$$
+  \text{MCTR}_i = \beta _{i \text{ wrt portfolio}} \cdot \sigma_\text{portfolio return}
+$$
+ 
+The absolute contribution to total risk of asset class $i$ is:
+$$
+  \text{ACTR}_i = \text{Weight $_i$} \cdot \text{MCTR}_i
+$$
+and, 
+$$
+  \sum_{i=1}^{K} \text{ACTR}_i = \sigma _\text{portfolio return}
+$$
+accordingly,
+$$
+  \frac{\text{ACTR$_i$}}{\sigma} = \text{\% $\sigma$ contributed by asset class $i$}
+$$
+
+# Factor Based Allocation
+
+Factors can be estimated as the difference between the return of the premium class and the return of the base class. ie. 
+$$
+\text{Size Factor Return} = 
+\begin{split}
+  \text{Small-Cap Stock Return} - \\ \text{Large-Cap Stock Return}
+\end{split}
+$$
+
+Factors generally have lower pairwise correlations to each other than asset classes but neither approach is superior to the other.
+
+Choose between asset class and risk factor approaches based on the ability to generate capital market expectations.
+
+# Liability Relative Allocation
+
+This approach was developed in an institutional context.
+
+Requires accurate understanding of the liabilities. A contingent liability depends upon the course of future, uncertain events. 
+
+Non legal liabilities (ie. going concern expenditures) are quasi-liabilities.
+
+The characteristics of the investor's liabilities can affect their preferred asset allocation.
+
+Pension Funding Ratio:
+$$
+  FR  = \frac{MV_{\text{assets}}}{PV_{\text{liabilities}}}
+$$
+
+## Generating Liability Relative Allocations
+
+### Surplus Optimization
+
+Apply MVO to the volatility of the surplus above liabilities
+
+The surplus objective function:
+: 
+$$
+\underbrace{U_{m}^{LR}}_{\text{surplus value for mix $m$}} = \underbrace{E(R_{s, m})}_{\text{surplus return for mix $m$}} - \frac{1}{2} \underbrace{\lambda}_{\text{risk aversion}} \sigma ^2 (R_{s, m})$$
+
+This can be compared to the MVO objective function (@eq-mvo).
+
+### Hedging/Return Seeking
+
+Separate the assets into a hedging and return seeking portfolio. The size of the hedging portfolio can be determined by cash flow matching.
+
+The hedge portfolio returns must be correlated to the liability returns which can be challenging when the liabilities are contingent.
+
+### Integrated asset-liability approach
+
+When the asset allocation decisions and liability decisions are closely connected they can be integrated into a single approach.
+
+This is common for insurers and banks. Both asset and liability portfolios are managed by an overall enterprise risk management system.
+
+Unlike surplus optimization and hedging, the integrated approach considers the liabilities at multiple periods and can be used to gauge the probability of meeting future liabilities at a particular time.
+
+# Goals Based Asset Allocations
+
+Subportfolios are constructed so that the expected return and variance generates a sufficient return to be confident of achieving the goal. If the confidence interval is sufficiently high the funding for a goal can seem excessive.
+
+## Constructing Subportfolios
+
+A subportfolio table shows the expected return of various portfolio modules for each time horizon and probability of success. The best module is the one with the highest return for the clients time horizon and success requirements. 
+
+To determine the required present contribution discount the cost of the goal at the expected return of the best module.
+
+## Rebalancing
+
+The time horizon of goals does not necessarily correlate perfectly to the passage of time so goal time horizon's should be revisited occasionally.
+
+As time horizons shorten the probability of success increases and subportfolios will appear overfunded.
+
+## Issues
+
+Goals based approaches work best when there are multiple goals with different requirements and time horizons.
+
+Goals based approaches tend to be more complex.
+
+# Other Asset Allocation Heuristics
+
+::: {.callout-note}
+## 120 Minus Your Age
+
+$$
+  120 - \text{age} = \%\text{ Allocation to Stocks}
+$$
+:::
+
+::: {.callout-note}
+## 60/40 Stock/Bond
+
+This allocation appears close to the global financial asset market portfolio, but ignores alternative investments and non-financial assets.
+
+Norway's State Pension essentially follows this allocation.
+:::
+
+::: {.callout-note}
+## Endowment Model (Yale Model)
+
+Large allocations to non-traditional investments in order to obtain illiquidity premiums and active return.
+:::
+
+::: {.callout-note}
+## Risk Parity
+
+Allocate such that each asset contributes equally to the total risk of the portfolio:
+
+$$
+  w_i \times \text{Cov}(r_i, r_p) = \frac{1}{n} \sigma _{p}^{2}
+$$
+
+There is no closed form solution. This approach can be criticized for failing to consider expected returns.
+:::
+
+::: {.callout-note}
+## 1/N rule
+
+Allocate equal portions to each asset class.
+:::
+
+

@@ -30,9 +30,11 @@ website:
       collapse-level: 3
       style: floating
       border: false
+      sort: order
       contents:
         - section: "Portfolio Management"
           contents: notes/cfa-3/portfolio-management/**/*.qmd
+          sort: order
     - id: resume #placeholder necessary for hybrid sidebar
       title: ""
       style: docked
