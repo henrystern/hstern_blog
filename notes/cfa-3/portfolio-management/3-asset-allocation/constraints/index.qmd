@@ -1,0 +1,112 @@
+---
+title: "Asset Allocation With Real World Constraints"
+order: 7
+---
+
+# Constraints in Asset Allocation and Asset Size
+
+An investors allocation may be constrained by a number of factors including regulation, and taxes.
+
+Asset size may be constrained due to economies of scale. 
+
+Investment managers tend to exhibit diseconomies of scale while asset owners tend to exhibit economies of scale. 
+
+Large pensions outperform small ones by 45-50 basis points per year. Lower fees from external managers, larger allocations to liquidity premium assets. Despite the difficulty in allocating to small-cap stocks they have a greater opportunity to manage private equity and real estate portfolios.
+
+Very large portfolios are less likely to meaningfully benefit from manager alpha due to limited opportunity sets.
+
+Small portfolios may not be permitted to invest in advanced asset classes due to minimum deposit requirements or regulatory restrictions defining accredited or qualified purchasers.
+
+# Liquidity
+
+Long term investors are well positioned to exploit illiquidity premiums. 
+
+A pension or bank will face regulatory restrictions on its ability to invest in illiquid assets. 
+
+Liquidity needs should be evaluated in the contxt of an extreme market stress event. When liquidity is needed most it often evaporates. Market stress will cause illiquid allocations to increase as a percentage of the portfolio as liquid assets are sold first.
+
+Increased global market integration eases the spread of liquidity crises between markets.
+
+# Time Horizon
+
+::: {.callout-note}
+#### Time Diversification
+The idea that lower risk assets should be for short term/high certainty goals and high variance risk assets should be for long term/low certainty goals.
+
+The below and above average returns of a high risk asset have time to even out over a sufficient time frame.
+:::
+
+# Regulatory Constraints
+
+::: {.callout-note}
+#### Solvency II regulatory standards
+These standards harmonize risk-based capital requirements for insurance companies across countries.
+:::
+
+US, Austrian, and some Asian foundations are not obligated to make minimum distributions.
+
+# Tax Considerations
+
+Assets that mostly return interest tend to be less tax efficient.
+
+The expected after-tax return:
+$$
+  r_{\text{after-tax}} = r_{\text{pre-tax}}(1-t)
+$$
+
+The expected after-tax return of an equity:
+$$
+  r_{at} = \rho_dr_{pt}(1-t_d) + \rho_a r_{pt}(1-t_{cg})
+$$
+
+| where:
+|          $\rho _d =$ proportion of pre-tax return due to dividends
+|          $\rho _a=$ proportion of pre-tax return due to price
+|          $t_d =$ the dividend tax rate
+|          $t_{cg} =$ the capital gains tax rate
+
+The expected after-tax standard deviation:
+$$
+  \sigma _{at} = \sigma _{pt}(1-t)
+$$
+
+## Rebalancing
+
+Rebalancing is essential but can have significant tax consequences. There is a need to balance the benefit to the portfolio of rebalancing and the tax cost.
+
+The rebalancing range of an asset:
+$$R_{at}= \frac{R_{pt}}{1-t}$$
+
+::: {.callout-note}
+#### Tax-loss Harvesting
+Intentionally recognizing a tax loss to offset a gain, reducing owed tax.
+:::
+
+::: {.callout-note}
+#### De-risking
+Allocating a greater portion of pension plan assets to fixed income to align with future liabilities, reducing uncertainty. Some accounting rules discourage de-risking as it can reduce net income due to a reduced expected return.
+
+It may be a more efficient allocation of risk as it allows management to take more risk in their core business.
+
+It is also more tax-efficient as the higher tax fixed income is paid at the corporate rate allowing the shareholders to hold more equities in their personal (higher taxed) accounts.
+:::
+
+# Revising the Strategic Asset Allocation
+
+The allocation policy should be revisited at least once every five years to assess its appropriateness.
+
+Changes may be warranted due to a change in:
+
+* Goals
+* Constraints
+* Beliefs
+* Status (Especially pension funded status)
+  
+# Short Term Shifts in Asset Allocation
+
+Tactical asset allocation depends upon a belief in predictable short run returns and price inefficiencies. 
+
+# Dealing with Behavioural Biases
+
+Many behavioural biases can be managed by considering other risk metrics than just standard deviation. Shortfall risk, tail-risk, stress test, and Monte Carlo simulations can communicate risk in a tangible way.
+
