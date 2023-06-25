@@ -6,7 +6,7 @@ execute:
 
 website:
   title: "HStern"
-  favicon: "/static/assets/favicon.ico"
+  favicon: "/static/assets/favicon.svg"
   navbar:
     logo-href: "https://hstern.ca"
     left:
