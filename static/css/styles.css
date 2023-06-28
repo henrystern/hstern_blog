@@ -150,3 +150,8 @@
 div.observablehq svg {
   background-color: var(--bs-body-bg);
 }
+
+.breadcrumb {
+  background-color: var(--bs-secondary);
+  display: none;
+}
