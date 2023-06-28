@@ -1,0 +1,7 @@
+---
+title: "Extend Layer"
+description: "A Capslock remap for mouse and navigation control"
+date: 2023-03-05
+href: "https://github.com/henrystern/extend_layer"
+categories: ["AutoHotkey", "Efficiency"]
+---

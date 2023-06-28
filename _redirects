@@ -1,2 +1,10 @@
 # Netlify Redirects
 https://hstern.ca/    https://hstern.ca/blog/ 301!
+/tools/ahk-osk    https://github.com/henrystern/ahk_on_screen_keyboard 301!
+/tools/bulk-msg-extractor    https://github.com/henrystern/bulk-msg-extractor 301!
+/tools/controller-mkb    https://github.com/henrystern/controller_mkb 301!
+/tools/edgar-db    https://github.com/henrystern/edgar_db_tools 301!
+/tools/exhibit-pages    https://github.com/henrystern/generate_exhibit_pages 301!
+/tools/extend-layer    https://github.com/henrystern/extend_layer 301!
+/tools/hotstring-hints    https://github.com/henrystern/hotstring_hints 301!
+/tools/pdf-metadata    https://github.com/henrystern/PDF-Metadata-to-CSV 301!

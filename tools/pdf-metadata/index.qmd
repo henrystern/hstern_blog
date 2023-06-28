@@ -1,0 +1,7 @@
+---
+title: "PDF Metadata-to-CSV"
+description: "Bulk extract metadata from a batch of PDFs and export it to a CSV"
+date: 2022-10-14
+href: "https://github.com/henrystern/pdf-metadata-to-csv"
+categories: ["Java", "Automation"]
+---

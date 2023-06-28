@@ -1,0 +1,7 @@
+---
+title: "Exhibit Page Generator"
+description: "Quickly generate a pdf of affidavit exhibit pages."
+date: 2023-04-05
+href: "https://github.com/henrystern/exhibit-page-generator"
+categories: ["Python", "Automation"]
+---

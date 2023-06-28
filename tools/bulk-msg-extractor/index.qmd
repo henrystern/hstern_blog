@@ -1,0 +1,7 @@
+---
+title: "Bulk MSG Extractor"
+description: "Convert a collection of outlook messages to a single spreadsheet"
+date: 2022-12-07
+href: "https://github.com/henrystern/bulk-msg-extractor"
+categories: ["Python", "Automation"]
+---
