@@ -1,0 +1,175 @@
+---
+title: "Options Strategies"
+order: 8
+---
+
+# Position Equivalencies
+
+Derivatives can be combined to create a payoff with the desired risk exposure.
+
+Put Call Parity:
+$$
+  S_0 + p_0 = c_{0} + \frac{X}{(1+r)^{T}}
+$$
+| where:
+|          $S_0$ is the price of the underlying
+|          $p_0$ and $c_0$ are the premiums of the put and call options, and
+|          $\frac{X}{(1+r)^{t}}$ is the present value of the risk free bond.
+
+Put Call Forward Parity:
+$$
+ \frac{F_0(T)}{(1+r)^{T}} + p_0 = c_0 + \frac{X}{(1+r)^{T}} 
+$$
+| where:
+|          $F_0(T)$ is a forward priced at $S_0(1+r)^{T}$
+
+Purchasing a long call and a short put with the same strike and expiration is equivalent to a long forward.
+
+Covered Call
+: Short call, long stock. Profits off the premium if the call isn't exercised but sacrifices appreciation beyond the strike.
+
+Protective Put
+: Long stock and long put. Limits downside risk.
+
+Delta ($\Delta$)
+: The change in an option's price in response to a change in price of the underlying.
+
+Gamma ($\gamma$)
+: The first derivative of Delta
+
+Vega ($v$)
+: The change in price for a change in volatility.
+
+Theta ($\theta$)
+: The sensitivity of the option price to a change time to expiration
+
+American call premium
+: $$
+  \text{Call Premium} = \text{Time Value} + \text{Intrinsic Value} = \text{Time Value} + \text{Max}(0,S-X)
+$$
+
+Gamma is greatest for near the money options. Gamma also increases rapidly as the time to expiration approaches.
+
+::: {.callout-note}
+#### Covered Call Outcomes
+
+* Maximum Gain: $(X-S_0) + c_0$
+* Maximum Loss: $S_0 - c_0$
+* Breakeven Price: $S_0 - c_0$
+* Expiration Value: $S-T - \text{max}[(S_T-X), 0]$
+* Profit at Expiration: $S_T - \text{max}[(S_T-X),0] + c_{0} - S_{0}$
+:::
+
+# Protective Put
+
+Comparable to insurance. The exercise price is the coverage amount. The difference between the current asset price and the strike price is the deductible.
+
+Provides downside protection while maintaining upside potential.
+
+The BSM model assumes volatility does not change over time or strike price. 
+
+To breakeven the underlying's price must increase more than the premium paid for the put.
+
+* Maximum Gain: $S_{T} - S_{0} - p_{0} \qquad  (\text{Unlimited})$
+* Maximum Loss: $S_{0} - X + p_{0}$
+* Breakeven Price: $S_{0}+p_{0}$
+* Expiration Value: $S_T + \text{Max}[(X-S_T), 0]$
+* Profit at Expiration: $S_T + \text{Max}[(X-S_T), 0] - S_{0} - p_{0}$
+
+# Equivalence to Long Asset/Short Forward Position
+
+Call $\Delta$ ranges from 0 to 1 and put $\Delta$ ranges from -1 to 0.
+
+For options with the same BSM inputs, $\Delta _\text{Call} - \Delta _\text{Put} = 1$
+
+Without dividends, long futures and forwards have $\Delta = 1$.
+
+# Risk Reduction Strategies
+
+Covered calls and protective puts are both hedging strategies. The covered call reduces price uncertainty for price increases while a protective put protects against a price decrease.
+
+If the position delta is negative (positive) the strategy is bearish (bullish).
+
+# Spreads and Combinations
+
+Money spread
+: The spread between two options that differ only with respect to exercise price
+
+A spread that becomes more valuable as the price increases is a bull spread.
+
+If establishing the spread requires a cash payment it is a debit spread (effectively long). If it results in an inflow it is a credit spread (effectively short). 
+
+## Bull Spread
+
+A bull spread involves buying an option while writing another option with a higher exercise price. 
+
+The profit for a call spread is:
+$$
+  \pi  = S_{T^{\star}} - X_L + C_L - C_H
+$$
+Accordingly the breakeven point is:
+$$
+\begin{align}
+  0 &= S_{T^{\star}} - X_L + C_L - C_H \\
+  S_{T^{\star}} &= X_L + C_L - C_H
+\end{align}
+$$
+
+## Bear Spread
+
+A bear spread involves selling an option and simultaneously buying an option with a lower exercise price. This will result in a cash inflow making it a debit spread.
+
+# Straddle
+
+A long straddle involves buying both puts and calls with the same exercise price and expiration date on the same underlying asset.
+
+If both options are written it is a short straddle.
+
+A long straddle is undertaken on the view that option prices are underestimating future volatility while a short straddle profits from an overestimation in volatility.
+
+The worst outcome for the straddle buyer is the price remaining unchanged and both options expiring worthless.
+
+# Collar
+
+A collar involves purchasing the underlying and buying a put with an exercise price below the current stock price while writing a call with an exercise price above the current price.
+
+In other words, buying a protective put and writing a covered call. The premium from writing the call can offset the price of the put.
+
+Collars can also be used to hedge interest rate risk.
+
+The collar severely limits the range of possible outcomes by limiting both upside and downside potential.
+
+# Calendar Spread
+
+Buying and selling the same type of option with different expiration dates is a calendar spread. Where the more distant call or put is bought it is a long calendar spread.
+
+The calendar spread takes advantage of time decay and has a very low delta.
+
+A short calendar spread will benefit from a big move in price or a decrease in implied volatility. A long calendar spread will benefit from a stable market or an increase in implied volatility. 
+
+# Implied Volatility and Volatility Skew
+
+Implied volatility is derived from an option pricing model. Implied volatilities can differ across strike prices or time to expiration. 
+
+OTM puts typically have higher IV's than ATM or OTM calls. This may be due to fat tailed negative events.
+
+The assumed number of trading days in a year is 252 and in a month is 21.
+
+To annualize a period standard deviation multiply $\sigma_\text{period} \text{ by } \sqrt[]{\frac{252}{\text{days in period}} }$
+
+To estimate the period standard deviation from the annual divide $\sigma _{\text{annual}}$ by $\sqrt[]{\frac{252}{21} }$.
+
+When the implied volatility curve is lowest for ATM options it is called volatility smile. If implied volatility is highest for OTM puts and lowest for OTM calls it is called volatility skew.
+
+Volatility skew is more common as demand for OTM puts is higher than demand for OTM calls (as portfolio insurance).
+
+The volatility skew can be measured as the difference between the implied volatilities of an OTM put and OTM call equidistant to the current asset price.
+
+The implied volatilities for longer term options are generally higher than for near term ones. Reverses in stressed markets. 
+
+# Setting an Objective
+
+Market direction is not sufficient for options trading. Also requires an assessment of gamma, theta, and vega.
+
+A profit graph shows the profit of a trade (y-axis) against the terminal stock price (x-axis).
+
