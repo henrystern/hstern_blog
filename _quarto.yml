@@ -2,7 +2,7 @@ project:
   type: website
 
 execute:
-  freeze: auto
+  freeze: true #for github actions
 
 website:
   title: "HStern"
