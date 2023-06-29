@@ -1,0 +1,141 @@
+---
+title: "Integrating R Graphics with Neovim and Nvim-R"
+date: 2023-06-25
+# bibliography: references.yaml
+categories: ["nvim", "R", "setup"]
+---
+
+The Nvim-R plugin extends a lot of RStudio functionality to Neovim like an object browser, help menu, and interactive terminal but the default plotting experience leaves a lot to be desired.
+
+While RStudio levels of integration may be out of reach there are several ways it can be improved. Doing so just requires going outside of Neovim.
+
+Here is what it will look like when its all done.
+
+![](demo.gif)
+
+::: {.callout-note}
+#### Requirements
+This guide assumes you already have Neovim and Nvim-R installed.
+:::
+
+## The Problem
+
+GUI editors like RStudio and VSCode can quite easily integrate plots into a pane either by defining their own output device or redirecting the output of an existing device to the application. 
+
+Terminal based editor's like Neovim do not support graphics and so cannot display the output inside the app. Instead they delegate the graphics to a separate program running in a separate window. By default this leaves Nvim-R plots popping up in the middle of your screen, and falling behind your Neovim window with every edit you make. Additionally the default plotting window does not keep a plot history so each new plot overwrites the previous one. 
+
+## The Workaround
+
+Luckily improving the experience is as simple as configuring the behaviour of that external window.
+
+The default window device used by R depends on your operating system but they all have a fairly consistent set of options that can be specified either as defaults through the .options method or on window creation as arguments.
+
+::: {.callout-warning}
+#### OS Differences
+I'll be using the `windows` device. Linux users should use `x11` and MacOS users `quartz`.
+
+There may be minor differences between the options and behaviour of these devices. Check the R documentation for these devices under the `grDevices` library if things aren't behaving as expected.
+:::
+
+## .Rprofile
+
+The best place to change the default behaviour of the plotting window is in a .Rprofile file. This script runs when R starts and can be used to configure all sorts of user preferences. R looks for .Rprofile in three places: the current directory, the home directory, and the installation directory.
+
+The user home directory can be found with the command `path.expand("~")`. It is not the same as the user's home directory. Mine is in my Documents folder.
+
+Create a text file in that directory called `.Rprofile` and write `print("Loaded .Rprofile")`. If everything is in the right place, when you open an R terminal you should see the message below the startup text.
+
+::: {.callout-tip}
+#### While You're There
+.Rprofile can configure more than just the graphics device. Some especially useful settings are:
+```{r filename="Default CRAN Mirror"}
+#| eval: false
+local({r <- getOption("repos")
+      r["CRAN"] <- "https://mirror.csclub.uwaterloo.ca/CRAN/"
+      options(repos=r)})
+```
+and
+```{r filename="Disable Scientific Notation"}
+#| eval: false
+options(scipen=10)
+```
+:::
+
+
+## Setting Defaults
+
+Unfortunately .Rprofile is loaded before the grDevices library so the `windows.options` method can't be called directly. Instead you have to set a hook that will wait until grDevices is ready.
+
+```{r filename=".Rprofile"}
+#| eval: false
+setHook(packageEvent("grDevices", "onLoad"),
+        function(...) {
+          # Your Settings
+        })
+```
+
+The settings I use are:
+```{r}
+#| eval: false
+grDevices::windows.options(
+  # Save the plot history
+  record = TRUE,
+  # Position the display in the bottom right corner of main monitor
+  width = 4,
+  height = 3,
+  xpos = 1273,
+  ypos = 668
+)
+if (interactive()) {
+  # Open an empty window with a distinctive title for ahk window detection
+  grDevices::windows(title = "Nvim-R Plot")
+  # Set that window to stay on top
+  grDevices::bringToTop(which = grDevices::dev.cur(), stay = TRUE)
+}
+```
+
+This overcomes all the main issues with the default plotting experience. The plot history is retained, the window is contained to a defined zone of the screen, and it always stays on top of Neovim.
+
+# Final Refinements
+
+For finishing touches we can configure Nvim-R to create an extra buffer for the plotting window to go over. I do this by setting these options in my Nvim-R config.
+```lua
+-- Create empty pane at bottom right
+vim.g.R_after_start = {':winc j', ':vsplit', ':vertical resize ' .. math.floor(vim.fn.winwidth(0) / 3), ":winc k"}
+-- Place object browser above plot pane
+vim.g.R_objbr_place = 'script,right'
+```
+This ensures console and object browser output is not blocked by the plot.
+
+Then I use Autohotkey to hide the plot window's title bar whenever I start R from Neovim with the `\rf` keymapping.
+```lua
+#HotIf WinActive("ahk_exe WindowsTerminal.exe")
+:*?B0:\rf:: {
+    win := WinWait("Nvim-R Plot", , 10)
+    if win {
+        WinActivate win ; to stop the notification
+        WinSetStyle "-0xC00000", win
+        Sleep 50
+        WinActivate "ahk_exe WindowsTerminal.exe"
+    }
+}
+```
+
+Finally, while opening in the bottom corner is a big improvement from the default you can make things even more precise with some more AHK.
+
+This function finds the location of the pane from a screenshot of the pane intersection and automatically moves the plot window into position. 
+```lua
+MovePlot() {
+    plot := WinExist("Nvim-R Plot")
+    if not plot 
+        return
+    WinGetPos , , &width, &height, "A"
+    WinSetAlwaysontop True, "A"
+    if ImageSearch(&x, &y, 0, 0, A_ScreenWidth, A_ScreenHeight, "r_plot_location.png")
+        WinMove x + 1, y + 3, width - x - 10, height - y - 70, plot
+    WinSetAlwaysontop False, "A"
+}
+ScrollLock::MovePlot()
+#HotIf
+```
+I call this function on plot open as well as with the ScrollLock hotkey when I move the window.
