@@ -1,11 +1,10 @@
 ---
 title: "Integrating R Graphics with Neovim and Nvim-R"
 date: 2023-06-25
-# bibliography: references.yaml
-categories: ["nvim", "R", "setup"]
+categories: ["nvim", "R", "config"]
 ---
 
-The Nvim-R plugin extends a lot of RStudio functionality to Neovim like an object browser, help menu, and interactive terminal but the default plotting experience leaves a lot to be desired.
+The Nvim-R plugin extends a lot of RStudio functionality to Neovim but the default plotting experience leaves a lot to be desired.
 
 While RStudio levels of integration may be out of reach there are several ways it can be improved. Doing so just requires going outside of Neovim.
 
