@@ -87,11 +87,11 @@ def map_keys(keys):
 
 def decipher(s, input_key, output_key):
     input_map = map_keys(input_key)
-    out = ""
+    out = []
     for char in s:
         i, j = input_map[char]
-        out += output_key[i][j]
-    return str.upper(out)
+        out.append(output_key[i][j])
+    return ''.join(out).upper()
 
 ```
 
