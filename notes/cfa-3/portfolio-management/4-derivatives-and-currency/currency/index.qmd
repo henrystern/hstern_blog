@@ -1,0 +1,188 @@
+---
+title: "Currency Management"
+order: 10
+---
+
+# Concepts Review
+
+## Spot Markets
+
+The spot market accounts for less than 40% of daily turnover in currencies. It is unusual for businesses to engage in foreign currency transactions without managing the currency risk they create.
+
+In CFA notation a USD/EUR rate of 1.365 means one euro buys 1.365 USD. The euro is the base currency and the dollar is the price currency i.e. $\frac{\text{Price}}{\text{Base}}$
+
+Generally priced to four decimal places. A quote of 1.3568 has a handle of 1.35 and 68 pips.
+
+Typically spot transactions settle at T+2 days.
+
+## Forward Markets
+
+The points on a forward quote are the difference between the forward rate and the spot rate (in terms of pips).
+
+Marking to market by calculating the return if the position was closed early by entering into an offsetting forward at the current rates and discounting back to present value with the discount rate.
+
+## FX Swap
+
+Simultaneous spot and forward transactions where the currency is bought in one market and sold in the other. The legs can be of equal size (a matched swap) or one can be larger than the other (a mismatched swap). 
+
+Not the same as a currency swap. Both exchange principal at swap initiation and maturity but FX swaps don't have interest payments and are generally shorter term. 
+
+An FX swap occurs when a position is rolled forward at maturity. The existing position is settled spot while simultaneously a new forward is entered into.
+
+## Currency Options
+
+Exotic options are actively traded. The market is quite large but small compared to the overall FX market.
+
+# Currency Risk
+
+The return of foreign assets is affected by exchange rate changes.
+
+The foreign currency return is the return in the foreign currency.
+
+$$
+  R_{domestic} = (1+R_{\text{foreign}})(1+R_{FX}) - 1
+$$
+
+$R_{FX}$ is not always the same as the $\%\Delta$ in spot rates. $R_{FX}$ is the $\%\Delta$ of the spot rate in direct terms. i.e. with domestic currency as the price currency ($S_{{d} / {f}}$). 
+
+## Volatility Decomposition
+
+$$
+  R_{DC} = (1+R_{FC})(1+R_{FX}) - 1=R_{FC}+R_{FX}+R_{FC}R_{FX}
+$$
+When $R_{FC}$ is small:
+$$
+  R_{DC}  \approx R_{FC} +R_{FX}
+$$
+
+The risk exposure of the overall portfolio will depend on the variances of each of the foreign currency returns and exchange rate movements as well as their pairwise correlations. 
+
+For a single foreign asset:
+$$
+  \sigma ^2_{DC} \approx \sigma ^2_{FC} + \sigma ^2_{FX} + 2\sigma _{FC} \sigma _{FX} \rho 
+$$
+
+# Strategic Decisions
+
+Different managers hedge currency risk in different ways and to different extents.
+
+In the long run currency exposure should not affect portfolio returns. Hence long term investments do not need to be fully hedged. Justified on the basis of PPP. Still, parity conditions may not hold for a very long time. Likely to be some currency hedging to protect against underperformance against the benchmark.
+
+As both bonds and exchange rates are reactive to interest rates they tend to have higher correlations than equities and exchange rates.
+
+Currency exposure provides less diversification to a fixed income portfolio and should thus be hedged more than they should for an equity portfolio.
+
+Reserve currencies tend to appreciate when global bond prices fall so it may be valuable to maintain some currency exposure to reserve currencies. Either by under-hedging (for a foreign reserve currency) or over hedging (for a domestic reserve currency)
+
+There are costs to hedging.
+
+# Strategies
+
+## Passive Hedging
+
+Keep the portfolios currency exposure close to a benchmark. Reflects a belief that currency exposure is unrewarded risk.
+
+## Discretionary Hedging
+
+Similar to passive but not strictly rules based. Manager has discretion to vary from neutral position based on beliefs up to a specified range.
+
+## Active Management
+
+Complete management discretion to express their beliefs in hedging (or not hedging) the portfolio.
+
+The manager is expected to manage currency risks for profit. 
+
+## Currency Overlay
+
+Outsourcing foreign exchange exposure management to a specialized firm. The external manager can implement any strategy depending on IPS.
+
+Some portfolios fully hedge their exposure while also engaging a specialized firm to manage currency risk separately from the investment portfolio. 
+
+For these portfolios, currency risk becomes akin to an alternative investment outsourced to a specialist or specialists.
+
+# Active Management Techniques
+
+Active management is predicated on a market view. There is no simple approach to precisely predicting exchange rates.
+
+## Economic Framework
+
+In the long run assume exchange rates converge to fair value. Long run PPP. 
+
+## Technical Analysis
+
+Belief in information value of past prices and that patterns have a tendency to repeat with opportunity for profit.
+
+## Carry Trading
+
+A carry trade borrows in low yield currencies to invest in high yield currencies. 
+
+> If technical analysis is based on ignoring economic fundamentals, then the carry trade is based on exploiting a well-recognized violation of one of the international parity conditions often used to describe these economic fundamentals.
+
+Uncovered interest rate parity often does not hold allowing carry trades to profit. The higher yield currency does not depreciate enough to equate its return to the lower yield currency.
+
+Carry trade is equivalent to trading the forward rate bias -- buying currencies trading at a forward discount and selling currencies trading at a forward premium.
+
+Carry trade returns have a pronounced negative skew generally following a pattern of several years of small positive returns followed by a period of large losses. This is because the borrowing currencies are typically reserves. In times of stress the borrowing currency appreciates (and secondary currencies depreciate) resulting in large losses.
+
+## Volatility Trading
+
+Volatility trading expresses a view about the future volatility of exchange rates but not their direction (delta hedged to ~0)
+
+There are volatility overlay programs for delegating volatility management to external specialists.
+
+Exchange rate options are quoted in terms of "delta". 
+
+For a put, delta ranges from -1 to 0.
+$$
+  \begin{cases}
+    -1 < \Delta < -.5 &ITM \\
+    \Delta = -.5 &ATM \\
+    -.5 < \Delta < 0 &OTM
+  \end{cases}
+$$
+
+For a call, delta ranges from 0 to 1.
+$$
+  \begin{cases}
+    0 < \Delta < .5 &OTM \\
+    \Delta =.5 &ATM \\
+    .5 < \Delta < 1 &ITM
+  \end{cases}
+$$
+
+# Currency Management Tools
+
+Institutional investors prefer forwards to futures as they are more customizable and do not require funding an initial margin.
+
+Forwards are more liquid and are the predominant hedging vehicle globally. 
+
+Both carry trades and trading the forward rate bias will earn a positive roll yield.
+
+# Reducing Hedging Cost
+
+OTM options are cheaper than ATM (deductible).
+
+Writing options can earn premiums. The call premium in a collar offsets the insurance cost.
+
+In FX a collar is called a risk reversal. Buying a put and writing a call would be a short risk reversal.
+
+Seagull spread is a put spread with a covered call. Options strategies named for birds have three components. If the wings are sold it is a short position.
+
+Digital options have binary outcomes of total loss or (fixed) large payoff. American digital options pay off if they "touch" their exercise level at any time before expiry.
+
+# Hedging Multiple Currencies
+
+With multiple currencies, correlations must be considered. 
+
+A cross hedge is when a position in one asset is used to hedge exposure to a different asset. Some cross hedges are referred to as macro hedges -- applies if the hedge is focused on hedging the entire portfolio against a financial scenario. Gold is often a macro hedge.
+
+Cross hedges need to be actively monitored for changes in correlations which will introduce basis risk.
+
+# Managing Emerging Market Currency Risk
+
+Currencies in emerging countries general face higher trading costs and increased likelihood of extreme events.
+
+Time zone differences can introduce other risks to conversions between untraded currency pairs that have to pass through a reserve currency.
+
+Non-deliverable forwards are cash settled rather than physically settled. They don't exchange the controlled currency and usually are payed in a major currency. They represent speculation on the spot rate of the currency rather than the real currency demand that drives regular forward markets.
+
