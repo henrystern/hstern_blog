@@ -1,0 +1,182 @@
+---
+title: "How Fast Did Barbara Blackburn Type on Letterman?"
+date: 2023-07-01
+# bibliography: references.yaml
+categories: ["typing", "python"]
+---
+
+In 1985 Barbara Blackburn appeared on *Late Night with David Letterman* in one of the most disastrous late night segments of all time. 
+
+She was introduced as the Guinness approved "World's Fastest Typist"^[She was featured in the *Guinness Book of World Records* but they never witnessed her typing.] and was challenged to compete against the fastest typist Late Night could find around the office. In what should have been an easy contest, Barbara managed to fault twice. First failing to load her typewriter with paper and then, in the redo, typing only gibberish.
+
+The next week Letterman revisited the segment with three experts and determined that Barbara had positioned her right hand incorrectly resulting in the mixed up letters.
+
+That was the end of Barbara's odyssey on late night, and largely the end of her recognition as the world's fastest typist. But one thing that was never answered was how fast she actually typed on the show.
+
+Luckily, Letterman showed what Barbara typed to the camera. It looked like this:
+
+```{python}
+#| code-fold: true
+from collections import Counter
+from IPython.display import display, Markdown
+barb = (
+    "i "
+    "g ntele i- a lussel, ol lussel-, in i- a ma/k vtes "
+    "nte pinrtel vti/e nourtisc ti- p/ane, wake- asy wonios sanula//y "
+    "a--orianeh vint ti- pinrt ol lictnatseh .inrtel -visc- ti- glee gon pa-n nte "
+    "mark ehce og nte pinrtel;- a- lunmel te i- lequileh no pinrt no nte mannel exrepn "
+    "no -erosh ma-e os a pirk "
+    "op/ay. nte pinrtel, vti/e nourtisc tp- p/ane geisn- a ntlov ne "
+)
+chars = Counter(barb)
+display(Markdown(f"""
+> {barb}
+
+This immediately gives an upper-bound to her performance of just {chars.total() / 5} words per minute.^[Using the conventional 5 characters per word] This makes it clear that her performance was a long way from her claim of 170 WPM, but this upper-bound does not account for errors. To determine her actual WPM we have to decipher what she typed and compare it the 1984 Official Baseball Rules Section 8.05 "The Balk Rule".
+"""))
+```
+
+I started by defining some keyboard layouts as lists of lists.
+
+```{python}
+qwerty = [
+    ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "\n"],
+    ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
+    [" "],
+]
+
+dvorak = [
+    ["'", ",", ".", "p", "y", "f", "g", "c", "r", "l", "/", "=", "\\"],
+    ["a", "o", "e", "u", "i", "d", "h", "t", "n", "s", "-", "\n"],
+    [";", "q", "j", "k", "x", "b", "m", "w", "v", "z"],
+    [" "],
+]
+
+# Dvorak with right hand shifted one space. <CR> is a double width key.
+dvorak_p1 = [
+    ["'", ",", ".", "p", "y", "g", "c", "r", "l", "/", "=", "\\", "#"],
+    ["a", "o", "e", "u", "i", "h", "t", "n", "s", "-", "\n", "\n"],
+    [";", "q", "j", "k", "x", "m", "w", "v", "z", "#"],
+    [" "],
+]
+
+colemak = [  # dh-variant
+    ["q", "w", "f", "p", "b", "j", "l", "u", "y", ";", "[", "]", "\\"],
+    ["a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'", "\n"],
+    ["x", "c", "d", "v", "z", "k", "h", ",", ".", "/"],
+    [" "],
+]
+
+```
+
+Then I defined some functions for mapping input in one layout to output in another layout.
+
+```{python}
+def map_keys(keys):
+    i = j = 0
+    map = {}
+    for row in keys:
+        for key in row:
+            map[key] = [i, j]
+            j += 1
+        i += 1
+        j = 0
+    return map
+
+
+def decipher(s, input_key, output_key):
+    input_map = map_keys(input_key)
+    out = []
+    for char in s:
+        i, j = input_map[char]
+        out.append(output_key[i][j])
+    return ''.join(out).upper()
+
+```
+
+```{python}
+#| code-fold: true
+barb_fixed = decipher(barb, dvorak_p1, dvorak)
+display(Markdown(f"""
+Deciphering Barbara's typing from dvorak_p1 to dvorak gives:
+
+> {barb_fixed}
+"""))
+```
+
+So it was real typing after all but we can tell there are still several errors.
+
+```{python}
+#| code-fold: true
+balk = (
+    "if there is a runner, or runners, it is a balk when - "
+    "(a) the pitcher while touching his plate, makes any motion naturally "
+    "associated with his pitch and fails to make such delivery; "
+    "if a lefthanded or righthanded pitcher swings his free foot past the back "
+    "edge of the pitcher's rubber, he is required to pitch to the batter except "
+    "to throw to second base on a pick-off play. "
+    "(b) the pitcher, while touching his plate, feints a throw to first "
+    "base and fails to complete the throw; "
+)
+display(Markdown(f"""
+She was supposed to type:
+
+> {balk}
+"""))
+```
+
+Aside from just positioning her fingers incorrectly Barbara also made several typos and lost her position in the text while she was copying it.
+
+
+```{python}
+# (Word, Incorrect Characters)
+barb_typos = [
+    ("RIGHTAHNED", 4),
+    (".ITCHER", 1),
+    ("FOT", 1),
+    ("PITCHER;S", 1),
+    ("AS", 2),  # not in text
+    ("OPLAY", 3),
+    ("HPS", 1),
+    ("TE", 1),
+]
+```
+
+```{python}
+#| code-fold: true
+errors = sum(errors for _, errors in barb_typos)
+display(Markdown(f"""
+Being fairly generous and ignoring the structural mistakes, I counted {errors} typos.
+"""))
+```
+
+Applied to the raw WPM Barbara's final results are:
+
+```{python}
+#| code-fold: true
+chars = Counter(barb_fixed)
+raw_wpm = chars.total() / 5
+net_wpm = (chars.total() - errors) / 5
+errors_penalized_wpm = (
+    chars.total() / 5
+) - errors  # this is the prevalent formula online but it seems arbitrary to overweight errors
+accuracy = (chars.total() - errors) / chars.total()
+
+display(Markdown(f"""
+> {raw_wpm = }
+
+> {net_wpm = }
+
+> {errors_penalized_wpm = }
+
+> accuracy = {accuracy:,.2%}
+"""))
+  
+```
+
+As far as I can tell this is the only public typing performance Barbara ever did. It is understandable that she was nervous and positioned her hands incorrectly but even correcting for that error her performance was deeply unimpressive --- amounting to less than half of her claimed speed. 
+
+She does not appear to have thrown the competition, correcting for her hand position the text was fairly legible but she still made several typos and copied the text incorrectly. This would not be the performance expected of the world's fastest typist. 
+
+Regardless, Letterman said that Barbara's opponent wrote just 50 words so we can conclude that Barbara won the competition with a speed of 73 WPM. In all likelihood this makes her undefeated in her competitive typing career.

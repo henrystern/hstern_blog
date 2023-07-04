@@ -1,0 +1,103 @@
+---
+title: "Swaps, Forwards, and Futures"
+order: 9
+---
+
+# Managing Interest Rate Risk
+
+Interest rate swaps exchange cash flows of a variable rate and fixed rate instrument. The tenor is when the swap is agreed to expire. The interest rates of the cash flows are both applied to the swap's notional value to determine the amount of each payment. The payments are usually netted against each other to determine the obligation.
+
+Since the hedging instrument and the portfolio to be hedged are usually imperfect substitutes, there remains market risk (basis/spread risk). 
+
+A manager can accomplish any portfolio modified duration by entering a swap of a certain notional value and tenor.
+
+For a target $\text{MDUR}_T$ and swap modified duration $\text{MDUR}_S$ the notional of the swap $N_S = \left( \frac{\text{MDUR}_T - \text{MDUR}_P}{\text{MDUR}_S} \right) (MV_P)$ 
+
+Forward rate agreements hedge interest rate risk especially the risk of changes from present to an anticipated date of borrowing.
+
+Forwards and futures can be used to hedge borrowing or lending.
+
+The duration of a futures contract is usually the same as the cheapest deliverable bond underlying the contract.
+
+The principal invoice at maturity $= \frac{\text{Futures settlement price}}{100} \cdot CF \cdot \text{Contract Size}$ where $CF$ is the conversion factor.
+
+The cheapest to deliver bond will generally have a basis of zero to the futures price. So the hedge ratio $= \frac{\Delta P}{\Delta CTD} (CF)$ 
+
+Basis Point Value
+: $$
+  BPV = MDUR \cdot .01\% \cdot  MV
+$$
+
+BPV Hedging Ratio
+: $$
+  BPVHR = \frac{-BPV_P}{BPV_{CTD}} \times CF
+$$
+
+# Managing Currency Exposure
+
+Currency swap interest rates are associated with cash flows in different currencies. They do not always exchange the notional value.
+
+Usually both legs are floating rate.
+
+# Managing Equity Risk
+
+An equity swap involves one party paying a variable series determined by a stock or basket of stocks, while the other party pays either a variable series determined by a different equity or floating rate or else pays a fixed series.
+
+They are OTC so are usually collateralized. 
+
+They can save on taxes compared to holding equity's but do not confer voting rights and have credit risk.
+
+If the equity earns a negative return the amount the equity leg pays is negative and must be paid by the counterparty.
+
+Cash equitization is the use of unintended cash holdings to replicate equity returns either by establishing a synthetic long asset or entering into an equity swap. 
+
+Cash has a $\beta_S$ of zero.
+
+# Volatility Derivatives
+
+Volatility has become an asset class in itself; traded by futures and swaps. Long volatility exposure hedges against market stress.
+
+VIX futures do not reflect the index in the event of large spikes. Costs can be high when the short end of the futures curve is much steeper than the long end. Especially costly for exchange traded products which have to adjust frequently to maintain a constant average time to expiration. 
+
+VIX options are European style. 
+
+## Variance Swaps
+
+No exchange of cash until expiry.
+
+$$
+  \text{Settlement Amount} = N \cdot (\sigma ^2_\text{actual} - \sigma ^2_\text{strike})
+$$
+
+If the difference is positive the seller pays the buyer.
+
+$$
+  \text{Realized Variance} = 252 \cdot \left[ \sum_{i+1}^{N-1} \frac{R_{i}^{2}}{N-1} \right]
+$$
+
+They are usually traded in vega notional rather than variance notional and the strike represents expected future volatility rather than variance.
+
+When the vega notional is \$50,000, the profit and loss for one point of difference between the realized volatility and the strike will be close to \$50,000
+
+The difference is due to convexity. Variance swaps are long gamma.
+
+For a volatility $\sigma$ and variance notional $= \frac{\text{Vega notional}}{2\cdot \text{strike price}}$:
+$$
+  \text{Settlement Amount}_T = N_{\text{Vega}} \left( \frac{\sigma ^2 - X^2}{2\cdot \text{Strike price}} \right) = N_{\text{Variance}} (\sigma ^2 - X^2)
+$$
+
+# Using Derivatives to Infer Market Expectations
+
+The effective federal funds rate (FFE) ^[The rate at which funds are actually transacted as opposed to the target.] can be estimated as:
+$$
+  \text{Expected FFE Rate} = 100 - \text{Fed funds futures contract price}
+$$
+
+The probability of a change can be inferred as:
+$$
+  100 \cdot \frac{\text{implied rate} - \text{current rate}}{\text{rate assuming a hike} - \text{current rate}}
+$$
+
+Where the values for current and rate given a hike are the average of the target range and the average of the target range +25 BP.
+
+End of month activities by banks reduce the FFE rate creating a bias to the FFE estimate.
