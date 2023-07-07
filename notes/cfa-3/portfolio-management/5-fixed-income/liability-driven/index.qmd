@@ -1,0 +1,84 @@
+---
+title: "Liability-Driven and Index-Based Strategies"
+order: 12
+---
+
+Three quarters of global financial assets are fixed-income. 
+
+Effective duration is used to estimate interest rate sensitivity of complex fixed-income assets.
+
+Liability driven investing occurs when the investor acquires liabilities and wishes to offset them with their portfolio. Asset driven liabilities are when the assets are given and the portfolio is managed to reduce interest rate risk.
+
+# Interest Rate Immunization
+
+Immunization structures a fixed income portfolio to minimize variance of return over a known time horizon. Default risk is ignored.
+
+A zero coupon bond of equivalent duration to the liability is perfectly immunized.
+
+For a coupon paying bond the position is immunized when the Macaulay duration is equal to the investment horizon.
+
+Portfolio Macaulay duration can be estimated as a weighted average of the duration's of its constituents.
+
+A portfolio must be rebalanced frequently to maintain a target MacDur.
+
+Structural risk can be reduced by concentrating payouts around the investment horizon and minimizing portfolio convexity.
+
+# Immunization with Multiple Liabilities
+
+A laddered portfolio protects from shifts and twists in the yield curve by diversifying the portfolio across times. As bonds mature they are reinvested at the long end of the ladder.
+
+$$
+  \text{Immunized Portfolio Convexity} = \frac{\text{MacDur}^2 + \text{MacDur} + \text{Dispersion}}{(1+\text{Cash Flow Yield})^2}
+$$
+
+For three portfolios of the same duration:
+$$
+  \text{Barbell Convexity} > \text{Laddered Convexity} > \text{Bullet Convexity}
+$$
+
+Laddered portfolios also tend to have liquidity benefits as the near to redemption bond can be sold near par even in a crisis.
+
+A mutual fund provides greater diversification of default risk than a laddered portfolio.
+
+Interest rate derivatives can rebalance an immunized portfolio.
+
+The number of futures contracts to buy can be found from the relation
+$$
+  \text{Asset Portfolio BPV} + (N_f \times \text{Futures BPV}) = \text{Liability Portfolio BPV}
+$$
+
+It can also be approximated as
+$$
+  \text{Futures BPV} \approx \frac{\text{BPV}_{\text{CTD}}}{\text{CF}_{\text{CTD}}}
+$$
+
+# Defined Benefit Pension Plan
+
+Accumulated Benefit Obligation is based on the number of years worked and the current wage. It represents the liability today if the plan were closed or converted.
+
+The Projected Benefit Obligation estimated the workers wage at retirement to determine the liability. It is the liability reported in financial statements.
+
+The portfolio manager must decide which liability measure is relevant for the portfolio. A going concern should usually use PBO.
+
+Interest rate hedging relationship
+: 
+$$
+\begin{split}
+    \text{Asset BPV} \cdot \Delta \text{Asset Yields} + \text{Hedge BPV} \cdot \Delta \text{Hedge Yields} \\
+    \approx \text{Liability BPV} \cdot \Delta  \text{Liability Yields}
+\end{split}
+$$
+
+# Passive Investment in Bond Markets
+
+Full replication is impractical for most bond market indexes as they are too broad.
+
+Enhanced indexing approximates an index via a stratified sampling of the indexes constituents.
+
+# Benchmark Selection
+
+The characteristics of fixed income indexes can change dramatically over time.
+
+The investor should choose an index with a similar target duration and credit risk.
+
+
