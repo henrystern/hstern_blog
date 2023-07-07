@@ -1,0 +1,72 @@
+---
+title: "Overview of Fixed Income Portfolio Management"
+order: 11
+---
+
+Even with pure indexing the return of the portfolio will be lower than the index due to trading costs and management fees.
+
+For zero coupon bonds, MacDur increases linearly with maturity. Convexity is approximately proportional to duration squared. 
+
+A zero coupon bond has the lowest convexity of all bonds of a given duration.
+
+Portfolios with high convexity tend to have lower yields to maturity. 
+
+Portfolio dispersion measures the variance of the time to receive cash flows from the held fixed income securities.
+
+# Liquidity
+
+Fixed income is less liquid than equity.
+
+Far more bonds than stocks. Typically traded in dealer markets. 
+
+A total return swap has a lower bid-offer cost and a smaller initial cash outlay but the investor does not own the underlying assets.
+
+# Return Model
+
+Rolldown Return
+: $$
+  \frac{\text{Bond Price}_{\text{end}} - \text{Bond Price}_{\text{beginning}}}{\text{Bond Price}_{\text{beginning}}}
+$$
+
+# Leverage
+
+Leveraged portfolio return
+: 
+$$
+\begin{align}
+  r_p &= \frac{\text{Portfolio Return}}{\text{Portfolio Equity}} \\
+  &= \frac{r_i \times (V_E + V_B) - (V_B \times r_B)}{V_E} \\
+  &=r_i + \frac{V_B}{V_E}(r_i - r_B)
+\end{align}
+$$
+
+| Where:
+|          $V_E$ is the value of equity
+|          $V_B$ is the borrowed amount
+|          $r_B$ is the borrowing rate
+|          $r_i$ is the return on invested funds, and
+|          $r_p$ is the return on the levered portfolio
+
+The determining factor is the degree to which investment returns exceed or lag the borrowing cost.
+
+Futures Leverage
+: $$
+  \text{Leverage}_{\text{futures}} = \frac{\text{Notional Value} - \text{Margin}}{\text{Margin}}
+$$
+
+The repo rate is annualized.
+$$
+  \text{Dollar Interest} = \text{Principal} \times \text{Repo Rate} \times \frac{\text{Term}}{360}
+$$
+
+The rebate rate is the portion of the collateral earnings rate that is repaid the to borrower by the lender.
+
+$$
+  \text{Rebate Rate}= \text{Collateral Earnings Rate} - \text{Security Lending Rate}
+$$
+
+If portfolio value false equity is reduced. The borrower must either liquidate assets to reduce leverage to its previous value or accept the greater risk of increased leverage.
+
+# Taxation
+
+An investor usually has no control over the timing of coupon income but does decide the timing of capital gains and losses (via sale). It may be efficient to delay realizing gains and realize losses early (tax-loss harvesting).
