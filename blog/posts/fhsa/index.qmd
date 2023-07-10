@@ -24,9 +24,19 @@ For a constant tax rate, the final after tax value of both accounts will be iden
 
 When the tax rate is not constant, the percent difference in return between an RRSP and TFSA is completely attributable to the change in tax rates:
 
-$$\text{RRSP Return} = (\text{Savings} \, (1+r)^t) \cdot (1-\text{Future Tax Rate})$$
-$$\text{TFSA Return} = (\text{Savings} \, (1-\text{Current Tax Rate})) \cdot (1+r)^t$$
-$$\%\Delta = {\text{RRSP Return} \over \text{TFSA Return}} - 1 = {1-\text{Future Tax Rate} \over 1-\text{Current Tax Rate}}-1 = {\text{Current Tax Rate} - \text{Future Tax Rate} \over 1-\text{Current Tax Rate}}$$
+$$
+\begin{align}
+  \text{RRSP Return} &= (\text{Savings} \, (1+r)^t) \cdot (1-\text{Future Tax Rate}) \\
+  \text{TFSA Return} &= (\text{Savings} \, (1-\text{Current Tax Rate})) \cdot (1+r)^t
+\end{align}
+$$
+$$
+\begin{align}
+  \%\Delta &= \frac{\text{RRSP Return}}{\text{TFSA Return}} - 1 \\
+  &= \frac{1-\text{Future Tax Rate}}{1-\text{Current Tax Rate}}-1 \\
+  &= \frac{\text{Current Tax Rate} - \text{Future Tax Rate}}{1-\text{Current Tax Rate}}
+\end{align}
+$$
 
 Some investors may predict paying a lower tax rate when the funds are withdrawn, in that case the RRSP will provide superior returns to the TFSA. Other investors may anticipate that their tax rate will rise, making the TFSA superior. 
 
