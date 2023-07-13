@@ -483,29 +483,44 @@ When referring to CFA Institute, CFA Institute membership, the CFA designation, 
 
 ### Quantitative Methods
 
-* Money Weighted Rate of Return
-* Time weighted Rate of Return
-* Geometric Mean
-* Arithmetic Mean
-* Harmonic Mean
-* Percentiles
-* Mean Absolute Deviation
-* Sample Variance
-* Sample Standard Deviation
-* Coefficient of Variation
-* Sharpe Ratio
-* Odds for an event
-* Odds against an event
+* Money Weighted Rate of Return: $r_{mw} = IRR_{CF}$
+* Time weighted Rate of Return: $r_{tw}= \text{Geometric Mean}$
+* Geometric Mean: $1+r = \sqrt[]{\prod_{k=1}^{t}(1+r_k)}$
+* Arithmetic Mean: 
+  $$\overline{x}=\frac{\sum_{i}^{n}x_{i}}{n}$$
+* Harmonic Mean: 
+  $$\overline{x}_H= \frac{N}{\sum_{i}^{n}\frac{1}{x_i}}$$
+* Percentiles: 
+  $$(n+1)(\frac{y}{100})$$
+* Mean Absolute Deviation: 
+  $$\frac{\sum_{i}^{n}(x_i-\overline{x})}{n}$$
+* Sample Variance:
+  $$
+    \frac{\sum_{i}^{n} (x_i-\overline{x})^2}{n-1}
+  $$
+* Sample Standard Deviation: $\ \sqrt[]{s^2}$
+* Coefficient of Variation: $\ s / \overline{x}$
+* Sharpe Ratio:
+  $$
+    \frac{r_p-r_{rf}}{s_p}
+  $$
+* Odds for an event: $\text{success}:\text{failure}$
+* Odds against an event: $\text{failure}:\text{success}$
+* Probability from odds:
+  $$
+    \frac{\text{success}}{(\text{success} + \text{failure})} 
+  $$
 * Dependent events:
-	* Probability of A given B
-	* Probability of A and B
-	* Probability of A or B
+  * Probability of A given B: $P(A|B) = \frac{P(AB)}{P(B)}$
+  * Probability of A and B: $P(AB) = P(A|B)\cdot P(B)$
+  * Probability of A or B: $P(A \text{ or } B) = P(A) + P(B) - P(AB)$
 * Independent events:
-	* Probability of A given B
-	* Probability of A and B
-	* Probability of A or B
-* Bayes Formula
-* Covariance
+  * Probability of A given B: $P(A|B) = P(A)$
+  * Probability of A and B: $P(AB) = P(A) \cdot P(B)$
+  * Probability of A or B: $P(A \text{ or } B = P(A) + P(B) - P(AB)$ 
+* Bayes Formula: 
+  $$P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}$$
+* Covariance: $\text{Cov}_{ab} = \text{Corr}_{ab}(\sigma _a)(\sigma _b)$
 * Correlation
 * Portfolio Variance
 * 2 Asset Portfolio Variance
