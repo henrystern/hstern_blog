@@ -1,0 +1,51 @@
+---
+title: "Yield Curve Strategies"
+order: 13
+---
+
+# Key Concepts
+
+The primary yield curve risk factors are level, slope, and shape. Yield curve changes can be decomposed into these factors by principal components analysis.
+
+$$
+\begin{split}
+    \text{butterfly spread} = &\ 2\cdot \text{medium-term yield} \\ &-\text{short term yield} \\ &- \text{long term yield}
+\end{split}
+$$
+
+Taylor approximation of present value for change in yield:
+$$
+  \%\Delta PV ^{\text{Full}} \approx -(\text{ModDur}\cdot \Delta \text{Yield})+(\frac{1}{2} \cdot \text{Convexity} \cdot \left(\Delta \text{yield})^2 \right)
+$$
+
+A bond with higher convexity will gain more from a rate decrease and lose less from a rate increase.
+
+# Yield Curve Strategies
+
+An investor who believes the yield curve is static can increase returns by increasing duration or leverage of the portfolio.
+
+Buying a bond with a maturity longer than the investment horizon will yield more than one that matches the investment horizon by rolling down the yield curve. 
+
+Financing a long term purchase at repo rates generates a repo carry return if the rolldown yield exceeds the financing cost.
+
+A receive-fixed swap is like a repo carry but pays a market reference rate instead of the repo rate.
+
+Bull Steepening
+: Short term rates fall more than long term rates
+
+Bear Steepening
+: Long term rates rise more than short term rates
+
+Bear steepening scenario should short duration, bull should long duration.
+
+A butterfly position combines an intermediate bullet position with a long and short term barbell position.
+
+# Active Fixed-Income Management Across Currencies
+
+Covered interest rate parity
+: $$
+  F(\frac{DC}{FC}, \ T) = S_0(\frac{DC}{FC})\frac{(1+r_{DC})^{T}}{(1+r_{FC})^{T}}
+$$
+
+Butterfly spread
+: Twice the intermediate term rate minus the short term and long term rates
