@@ -1,0 +1,37 @@
+---
+title: "Fixed-Income Active Management"
+order: 14
+---
+
+# Key Concepts
+
+CDS Basis
+: The difference between the Z-spread on a bond and the CDS spread of the same maturity for the same issuer.
+
+# Credit Strategies
+
+Excess Spread
+: $$
+  E \approx \text{Spread}_0 - (\text{EffSpreadDur}\times \Delta \text{Spread}) - (\text{POD}\times \text{LGD})
+$$
+
+# Synthetic Credit Strategies
+
+CDS allow an investor to manage credit risk separately from interest rate risk. CDS pay out the loss given default in a credit event.
+
+$$
+  \text{CDS Price} \approx 1+((\text{Fixed Coupon} - \text{CDS Spread}) \times \text{EffSpreadDur}_{\text{CDS}})
+$$
+
+$$
+  \frac{\Delta\text{CDS Price}}{\Delta \text{CDS Spread}} \approx -\Delta\text{CDS Spread}\times \text{EffSpreadDur}_{\text{CDS}}
+$$
+
+Five year CDS are the most frequently traded tenor.
+
+The fixed coupon is usually 1% for an investment grade or 5% for a high yield CDS.
+
+The protection buyer is short and the seller is long.
+
+# Global Credit Strategies
+
