@@ -1,0 +1,10 @@
+---
+title: "Overview of Equity Portfolio Management"
+order: 15
+---
+
+Dividend capture is a strategy where one purchases stock just before their ex-dividend date, receives the dividend, and then sells the shares.
+
+There are implicit and explicit trading costs. Implicit costs include the bid-offer spread, market impact, and delay costs.
+
+Voting rights are conferred when a stock is lent. Sometimes shares are borrowed for the explicit purpose of voting. Called 'empty voting' when no capital is invested in the voted shares.
