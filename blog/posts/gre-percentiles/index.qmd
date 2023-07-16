@@ -1,0 +1,392 @@
+---
+title: "Examining the Score Distributions of the GRE and GMAT"
+date: 2023-07-11
+categories: ["statistics"]
+---
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Imports"
+require("tibble")
+require("dplyr")
+require("ggplot2")
+require("ExtDist")
+```
+
+It's somewhat strange that GRE and GMAT score percentiles are almost always presented in table form rather than visualizations. Plotting makes the distributions much easier to interpret and can even illuminate differences between the tests.
+
+# Verbal
+
+The verbal score percentiles, mean, and standard deviation can be obtained from each test's website.
+
+::: {.panel-tabset}
+
+## Summary
+
+```{r}
+gre_v_mean <- 150.61
+gmat_v_mean <- 27.51
+gre_v_sd <- 8.57
+gmat_v_sd <- 9.07
+```
+
+## Data
+
+```{r}
+verbal <- tribble(
+~Score, ~Percentile, ~Test,
+170, 99, "GRE",
+169, 99, "GRE",
+168, 98, "GRE",
+167, 98, "GRE",
+166, 97, "GRE",
+165, 95, "GRE",
+164, 94, "GRE",
+163, 92, "GRE",
+162, 90, "GRE",
+161, 87, "GRE",
+160, 85, "GRE",
+159, 81, "GRE",
+158, 78, "GRE",
+157, 74, "GRE",
+156, 71, "GRE",
+155, 66, "GRE",
+154, 62, "GRE",
+153, 58, "GRE",
+152, 52, "GRE",
+151, 48, "GRE",
+150, 43, "GRE",
+149, 38, "GRE",
+148, 34, "GRE",
+147, 30, "GRE",
+146, 27, "GRE",
+145, 24, "GRE",
+144, 21, "GRE",
+143, 18, "GRE",
+142, 16, "GRE",
+141, 13, "GRE",
+140, 11, "GRE",
+139, 9,  "GRE",
+138, 8,  "GRE",
+137, 6,  "GRE",
+136, 5,  "GRE",
+135, 4,  "GRE",
+134, 3,  "GRE",
+133, 2,  "GRE",
+132, 2,  "GRE",
+131, 1,  "GRE",
+51, 99, "GMAT",
+50, 99, "GMAT",
+49, 99, "GMAT",
+48, 99, "GMAT",
+47, 99, "GMAT",
+46, 99, "GMAT",
+45, 99, "GMAT",
+44, 98, "GMAT",
+43, 98, "GMAT",
+42, 96, "GMAT",
+41, 93, "GMAT",
+40, 90, "GMAT",
+39, 88, "GMAT",
+38, 84, "GMAT",
+37, 81, "GMAT",
+36, 79, "GMAT",
+35, 74, "GMAT",
+34, 69, "GMAT",
+33, 67, "GMAT",
+32, 64, "GMAT",
+31, 59, "GMAT",
+30, 56, "GMAT",
+29, 54, "GMAT",
+28, 49, "GMAT",
+27, 44, "GMAT",
+26, 41, "GMAT",
+25, 37, "GMAT",
+24, 34, "GMAT",
+23, 30, "GMAT",
+22, 28, "GMAT",
+21, 24, "GMAT",
+20, 21, "GMAT",
+19, 17, "GMAT",
+18, 16, "GMAT",
+17, 13, "GMAT",
+16, 11, "GMAT",
+15, 9,  "GMAT",
+14, 8,  "GMAT",
+13, 6,  "GMAT",
+12, 4,  "GMAT",
+11, 3,  "GMAT",
+10, 2,  "GMAT",
+9, 2,   "GMAT",
+8, 1,   "GMAT",
+7, 1,   "GMAT",
+6, 0,   "GMAT",
+)
+```
+:::
+
+You can see that the tests have similar standard deviations for both sections despite the very different scoring scale.
+
+Normalizing the data, we can see that the distributions are approximately normal (the normal distribution is shown in grey).
+
+```{r}
+#| code-fold: true
+verbal <- verbal |> mutate(ZScore = case_when(
+  Test == "GRE" ~ (Score - gre_v_mean) / gre_v_sd,
+  Test == "GMAT" ~ (Score - gmat_v_mean) / gmat_v_sd
+))
+
+scale_pnorm <- function(x, mean = 0, sd = 1) {
+  pnorm(x, mean, sd) * 100
+}
+
+ggplot2::ggplot(verbal, aes(x = ZScore, y = Percentile, colour = Test)) +
+  geom_line() +
+  geom_point() +
+  stat_function(fun = scale_pnorm, colour = "grey")
+```
+
+There might be a slight negative skew and perhaps some platykurtosis especially for the GMAT which has a significantly thinner upper tail than both the GRE and the normal distribution.
+
+# Quantitative
+
+The quantitative score data is also publicly available and can be examined the same way as the verbal scores.
+
+::: {.panel-tabset}
+
+## Summary
+
+```{r}
+gre_q_mean <- 154.34
+gmat_q_mean <- 41.3
+gre_q_sd <- 9.58
+gmat_q_sd <- 9.64
+```
+
+## Data
+
+```{r}
+quant <- tribble(
+~Score, ~Percentile, ~Test,
+170, 96, "GRE",
+169, 93, "GRE",
+168, 90, "GRE",
+167, 87, "GRE",
+166, 84, "GRE",
+165, 81, "GRE",
+164, 78, "GRE",
+163, 76, "GRE",
+162, 73, "GRE",
+161, 70, "GRE",
+160, 67, "GRE",
+159, 64, "GRE",
+158, 61, "GRE",
+157, 57, "GRE",
+156, 54, "GRE",
+155, 51, "GRE",
+154, 47, "GRE",
+153, 43, "GRE",
+152, 40, "GRE",
+151, 37, "GRE",
+150, 33, "GRE",
+149, 30, "GRE",
+148, 27, "GRE",
+147, 23, "GRE",
+146, 20, "GRE",
+145, 17, "GRE",
+144, 14, "GRE",
+143, 12, "GRE",
+142, 10, "GRE",
+141, 8,  "GRE",
+140, 7,  "GRE",
+139, 5,  "GRE",
+138, 4,  "GRE",
+137, 3,  "GRE",
+136, 2,  "GRE",
+135, 2,  "GRE",
+134, 1,  "GRE",
+133, 1,  "GRE",
+51, 97, "GMAT",
+50, 87, "GMAT",
+49, 73, "GMAT",
+48, 65, "GMAT",
+47, 57, "GMAT",
+46, 53, "GMAT",
+45, 50, "GMAT",
+44, 44, "GMAT",
+43, 41, "GMAT",
+42, 36, "GMAT",
+41, 34, "GMAT",
+40, 32, "GMAT",
+39, 28, "GMAT",
+38, 27, "GMAT",
+37, 25, "GMAT",
+36, 22, "GMAT",
+35, 20, "GMAT",
+34, 19, "GMAT",
+33, 17, "GMAT",
+32, 15, "GMAT",
+31, 14, "GMAT",
+30, 13, "GMAT",
+29, 11, "GMAT",
+28, 11, "GMAT",
+27, 9,  "GMAT",
+26, 8,  "GMAT",
+25, 7,  "GMAT",
+24, 7,  "GMAT",
+23, 6,  "GMAT",
+22, 5,  "GMAT",
+21, 5,  "GMAT",
+20, 4,  "GMAT",
+19, 4,  "GMAT",
+18, 4,  "GMAT",
+17, 3,  "GMAT",
+16, 3,  "GMAT",
+15, 3,  "GMAT",
+14, 2,  "GMAT",
+13, 2,  "GMAT",
+12, 2,  "GMAT",
+11, 1,  "GMAT",
+10, 1,  "GMAT",
+9, 1,   "GMAT",
+8, 1,   "GMAT",
+7, 1,   "GMAT",
+6, 0,   "GMAT",
+)
+```
+:::
+
+```{r}
+#| code-fold: true
+quant <- quant |> mutate(ZScore = case_when(
+  Test == "GRE" ~ (Score - gre_q_mean) / gre_q_sd,
+  Test == "GMAT" ~ (Score - gmat_q_mean) / gmat_q_sd
+))
+
+ggplot2::ggplot(quant, aes(x = ZScore, y = Percentile, colour = Test)) +
+  geom_line() +
+  geom_point() +
+  stat_function(fun = scale_pnorm, colour = "grey")
+```
+
+These distributions are obviously very different from the verbal distributions.
+
+The GMAT quantitative scores have a fat lower tail, a thin upper tail, and very low definition at the top end. 
+
+The definition issue is particularly pronounced. Only half of scores are in the 6 to 44 range with the other half being described by just 7 points from 45 to 51. There appears to be substantial risk of being rounded away from true performance. An 80th percentile test-taker would either be rounded down to a 73rd percentile score or up to an 87th percentile score, with neither score accurately representing their ability. 
+
+On a Z-Score basis the top three GMAT scores are very close together and yet they contain fully 25 percent of test-takers. It is unlikely that the true distribution of quantitative ability would be so concentrated between $.75\sigma$ and $1\sigma$. The test may be struggling to reliably differentiate test-takers at the top end introducing greater variation in scores for test takers of the same ability.
+
+At the low end there is the opposite problem of high definition. The test extends past $-3\sigma$ while the GRE only extends to $-2.25\sigma$. For low performing test takers the GMAT will provide far more detail as to the lack of quantitative ability and extreme outcomes are more likely.
+
+The GRE scores are much more evenly distributed across the curve and are far more similar to a normal distribution particularly at the low end. The curve exhibits some negative skew with moderately good scores appearing more often than they would under the normal distribution.
+
+Perfect GRE quantitative scores are slightly rarer than they would be under a normal distribution.
+
+Overall the GRE appears more likely to report a score that is close to the test-taker's true ability. The greater definition makes GRE scores more informative than GMAT scores at the top end.
+
+# Total
+
+The GMAT reports a total score percentile alongside section scores, but the GRE does not.
+
+The GRE has released some quartile data that could give us some indication of the distribution; but I'm not convinced it is reliable. It presents a score of 300 as both 50th percentile and 42nd percentile which calls into doubt the entire report. The data is also from 2011-2012, a different period to the section score data used above. Accordingly, I'm not going to bother plotting it. If you are interested you can read the report [here](https://www.ets.org/pdfs/gre/data-views-balanced-approach-to-score-use.pdf).
+
+::: {.panel-tabset}
+
+## Summary
+
+```{r}
+gmat_mean <- 574.51
+gmat_sd <- 113.07
+```
+
+## Data
+```{r}
+total <- tribble(
+  ~Score, ~Percentile, ~Test,
+  800, 99, "GMAT",
+  790, 99, "GMAT",
+  780, 99, "GMAT",
+  770, 99, "GMAT",
+  760, 99, "GMAT",
+  750, 98, "GMAT",
+  740, 97, "GMAT",
+  730, 96, "GMAT",
+  720, 94, "GMAT",
+  710, 90, "GMAT",
+  700, 87, "GMAT",
+  690, 84, "GMAT",
+  680, 80, "GMAT",
+  670, 78, "GMAT",
+  660, 74, "GMAT",
+  650, 70, "GMAT",
+  640, 64, "GMAT",
+  630, 62, "GMAT",
+  620, 58, "GMAT",
+  610, 54, "GMAT",
+  600, 50, "GMAT",
+  590, 47, "GMAT",
+  580, 43, "GMAT",
+  570, 40, "GMAT",
+  560, 37, "GMAT",
+  550, 34, "GMAT",
+  540, 31, "GMAT",
+  530, 27, "GMAT",
+  520, 26, "GMAT",
+  510, 24, "GMAT",
+  500, 22, "GMAT",
+  490, 20, "GMAT",
+  480, 18, "GMAT",
+  470, 17, "GMAT",
+  460, 14, "GMAT",
+  450, 13, "GMAT",
+  440, 12, "GMAT",
+  430, 11, "GMAT",
+  420, 10, "GMAT",
+  410, 09, "GMAT",
+  400, 08, "GMAT",
+  390, 07, "GMAT",
+  380, 06, "GMAT",
+  370, 06, "GMAT",
+  360, 05, "GMAT",
+  350, 04, "GMAT",
+  340, 04, "GMAT",
+  330, 03, "GMAT",
+  320, 03, "GMAT",
+  310, 03, "GMAT",
+  300, 02, "GMAT",
+  290, 02, "GMAT",
+  280, 02, "GMAT",
+  270, 02, "GMAT",
+  260, 02, "GMAT",
+  250, 01, "GMAT",
+  240, 01, "GMAT",
+  230, 01, "GMAT",
+  220, 01, "GMAT",
+  210, 0,  "GMAT",
+  200, 0,  "GMAT",
+)
+```
+
+:::
+
+```{r}
+#| code-fold: true
+ggplot2::ggplot(total, aes(x = Score, y = Percentile, colour = Test)) +
+  geom_line() +
+  geom_point() +
+  stat_function(fun = scale_pnorm, args = list(mean = gmat_mean, sd = gmat_sd), colour = "grey")
+```
+
+The GMAT results are negatively skewed with a thick lower tail and a very thin upper tail.
+
+# Conclusion
+
+Overall the GRE and GMAT verbal scores are comparable with good GRE scores being slightly more likely.
+
+The main difference between the tests is in Quantitative scores. GRE quantitative scores appear far more informative and consistent than the GMAT. The GMAT quantitative distribution is highly abnormal and only extends to $1\sigma$ above the mean.
+
+For total scores we can see that GMAT scores are not normally distributed. Low scores are more likely and high scores are less likely than they would be under a normal distribution.
+
+Ultimately the GRE appears to give more consistent and informative results. Very good scores are more common on the GRE and I expect results would be more consistent for GRE test-takers of equal ability.
