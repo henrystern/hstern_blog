@@ -1,0 +1,20 @@
+---
+title: "Passive Equity Investing"
+order: 16
+---
+
+The creation methodology and performance of an index is just as important to investors as the selection of an active portfolio.
+
+An index for a passive portfolio must be rules-based, transparent, and investable.
+
+Equal weighting produces higher volatility than cap weighting due to small-cap bias.
+
+An index with many constituents will tend to create higher tracking error as the manager may struggle to fully replicate it.
+
+Securities lending can increase returns and offset costs but carries counterparty risk and collateral risk.
+
+Securities borrowers pay cash to the lender in lieu of dividends, the lender rebates a specified return on the cash held as collateral.
+
+Borrowers formally own the borrowed securities and retain voting rights but have to return the shares at the lenders request.
+
+
