@@ -1,0 +1,25 @@
+---
+title: "Active Equity Investing: Strategies"
+order: 17
+---
+
+# Approaches
+
+Active strategies can be categorized as fundamental (discretionary) and quantitative (systematic).
+
+Fundamental portfolios are usually more concentrated over a smaller number of investments than quantitative portfolios.
+
+# Bottom-Up Strategies
+
+Start the asset selection process from individual company data.
+
+# Top-Down Strategies
+
+Start from the macro level. Often use ETFs, derivatives, and baskets rather than individual picks.
+
+# Factor-Based Strategies
+
+Factor portfolios can be created by going long the top decile of the factor and short the bottom decile of the factor. Won't perfectly replicate factor performance.
+
+Pearson Information Coefficient is vulnerable to outliers, Spearman rank IC is often preferred.
+
