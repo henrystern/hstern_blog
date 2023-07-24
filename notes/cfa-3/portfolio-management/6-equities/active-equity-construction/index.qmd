@@ -1,0 +1,65 @@
+---
+title: "Active Equity Investing: Portfolio Construction"
+order: 18
+---
+
+# Active Return
+
+$$
+  R_A = \sum_{i=1}^{N}\Delta W_i R_i
+$$
+
+or in terms of exposure to factor k
+
+$$
+  R_A = \sum_{}^{}(\beta _{pk} - \beta _{bk}) \times F_k + (\alpha + \varepsilon )
+$$
+
+The expected active return is
+$$
+  E(R_A) = IC\  \sqrt[]{BR}\ \sigma _{R_A}\ TC
+$$
+| where:
+|          BR is the number of truly independent decisions made each year, and
+|          TC is the transfer coefficient; the ability to translate insights into investments
+
+# Construction Approaches
+
+* Factor exposures
+* Timing
+* Position sizing
+* Breadth or depth
+* Systematic or discretionary
+* Bottom-up or top-down
+
+Active share is the percentage of assets that are not part of the benchmark.
+
+# Measures of Relative Risk
+
+$$
+  \text{Active Share} = \frac{1}{2} \sum_{i=1}^{n}|\text{Weight}_{\text{portfolio},\ i} - \text{Weight}_{\text{benchmark},\ i}|
+$$
+
+I'm not sure where the 1/2 comes from.
+
+Active risk is affected by correlations between holdings.
+
+# Measures of Performance
+
+Performance can be measured absolutely (Sharpe ratio) or relatively (information ratio).
+
+Replacing or adding an asset with high covariance to the existing portfolio will increase total portfolio risk.
+
+The contribution of an asset to a portfolio variance is the sum of the product of the weight of the asset and its covariance with each constituent of the portfolio.
+
+# Determining the Appropriate Level of Risk
+
+High leverage can reduce compound return if the increase in variance is greater than the increase in arithmetic return.
+
+# Implicit Costs
+
+Smaller funds have higher explicit costs but lower implicit costs.
+
+# The Well Constructed Portfolio
+
+A well structured portfolio delivers the promised characteristics in a cost and risk efficient way.

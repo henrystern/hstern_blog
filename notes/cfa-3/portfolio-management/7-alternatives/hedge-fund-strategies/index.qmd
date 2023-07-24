@@ -1,0 +1,28 @@
+---
+title: "Hedge Fund Strategies"
+order: 19
+---
+
+# Fund Types
+
+30% of hedge funds are long/short equity. Mostly benefit from stock selection sometimes also a market timing effect.
+
+Short funds typically have lower returns but benefit from negative correlation.
+
+Convertible strategies have left tail risk during crises due to the simultaneous flight to quality in bond markets and redemption of hedge fund capital who are the primary convertible market investors.
+
+Futures management benefits from the high liquidity and low margin requirements of futures contracts.
+
+Managed futures strategies have positively skewed returns.
+
+Fund of funds provide access, diversification, liquidity, and regulatory benefits but have two fee layers.
+
+Multi-manager funds have lower fees then FoF but higher leverage and significant left tail risk.
+
+# Evaluating Strategies
+
+Rho ($\rho$) measures first order serial autocorrelation. Indicated smoothed returns and potential liquidity issues.
+
+Evaluation requires considering regular portfolio factor exposures as well as the incremental factor exposures during market crises.
+
+
