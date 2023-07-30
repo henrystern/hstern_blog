@@ -1,0 +1,28 @@
+---
+title: "Portfolio Management for Institutional Investors"
+order: 24
+---
+
+# Sovereign Wealth Funds
+
+SWF's do not have clearly defined liabilities on which to base liability driven investment frameworks.
+
+Budget stabilization funds mostly invest in fixed income for stability and liquidity.
+
+# Endowments and Foundations
+
+In the US, both endowments and foundations are tax exempt but foundations must distribute a minimum of 5% of their asset value annually otherwise they are taxed on undistributed income.
+
+Most endowments determine annual payout based on a percentage of market value. Some use tuition inflation or a weighted average of the two.
+
+Foundation boards are typically less sophisticated investors than endowment boards.
+
+Foundations rely on their investment income for almost all of their operating budget so they tend to have more conservative and liquid portfolios than endowments.
+
+# Insurance
+
+P&C insurers usually have a shorter duration liability stream and investment horizon than life insurers.
+
+# Banks
+
+The ability to issue equity can be important in liquidity crises. This has led publicly traded companies to be preferred over mutual and co-op structures which can only expand equity by increasing membership.

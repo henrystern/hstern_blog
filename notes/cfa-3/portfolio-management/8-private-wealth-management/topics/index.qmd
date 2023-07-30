@@ -1,0 +1,16 @@
+---
+title: "Private Wealth Management: Topics"
+order: 22
+---
+
+# Tax Considerations
+
+The tax basis is the base price against which a capital gain is measured.
+
+FIFO harvesting is usually the least tax efficient. HIFO (highest) is the most efficient.
+
+In Canada the average basis is used to determine a gain or loss.
+
+# Concentrated Portfolios
+
+A concentrated position is one which due to its low tax basis or the client's biases inhibits developing an efficient, diversified portfolio.
