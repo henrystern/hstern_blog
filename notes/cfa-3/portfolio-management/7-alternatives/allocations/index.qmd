@@ -1,0 +1,66 @@
+---
+title: "Asset Allocation to Alternative Investments"
+order: 20
+---
+
+# Diversifying Risk
+
+Over the short term volatility is the principal risk. Over the long term the greater risk is failing to generate sufficient return.
+
+# Risk Based Approaches to Classification
+
+Regress returns on factors to identify exposures.
+
+Risk based approaches are sensitive to historical data, not all factors are easily observable.
+
+# Risk Considerations
+
+Standard deviation is a poor measure of risk for alternatives due to lack of data, valuation errors, and non-normal return distributions.
+
+The investor's liability to debts depends upon the structure of the funds. 
+
+# Liquidity
+
+Redemption from a LP typically occurs quarterly and requires 30 or 90 days' notice. Deposits are usually locked for one year in the US.
+
+There is a secondary market for LP shares.
+
+It often takes time to implement an investment in alternatives. The fund will call on the committed capital of the investor as opportunities arise. Capital may be called faster or slower than expected.
+
+# Fees
+
+There is often a large difference between gross and net of fee returns. 
+
+It can be difficult to estimate investment income from alternative investments for tax planning purposes.
+
+There are higher monitoring costs for alternatives.
+
+# Suitability
+
+Private real assets and private equity are only suitable over a long horizon.
+
+# Allocation Approaches
+
+Mean-Variance Optimization overallocates to alternatives due to underestimated SD. This can be controlled by imposing limits or incorporating downside risk.
+
+Serial correlation indicates smoothing.
+
+The ratio of observed to normal CVaR can indicate kurtosis.
+
+Monte Carlo Simulation overcomes the normality issues provided it is well specified.
+
+# Maintenance
+
+The capital contribution \(C\) in year $t$ can be expressed as:
+$$
+  C_t = RC_t \times (CC - \text{PIC}_t)
+$$
+
+Once the annual distribution rate is know:
+$$
+  D_t = RD_T [\text{NAV}_{t-1} \times (1+G)]
+$$
+
+# Preparing for Capital Calls
+
+Normally the LP has 30 days to pay the capital. There are allocation and opportunity costs to maintaining the committed capital in liquid assets.
