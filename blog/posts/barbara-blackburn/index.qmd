@@ -60,28 +60,16 @@ dvorak_p1 = [
     [";", "q", "j", "k", "x", "m", "w", "v", "z", "#"],
     [" "],
 ]
-
-colemak = [  # dh-variant
-    ["q", "w", "f", "p", "b", "j", "l", "u", "y", ";", "[", "]", "\\"],
-    ["a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'", "\n"],
-    ["x", "c", "d", "v", "z", "k", "h", ",", ".", "/"],
-    [" "],
-]
-
 ```
 
 Then I defined some functions for mapping input in one layout to output in another layout.
 
 ```{python}
 def map_keys(keys):
-    i = j = 0
     map = {}
-    for row in keys:
-        for key in row:
+    for i, row in enumerate(keys):
+        for j, key in enumerate(row):
             map[key] = [i, j]
-            j += 1
-        i += 1
-        j = 0
     return map
 
 
