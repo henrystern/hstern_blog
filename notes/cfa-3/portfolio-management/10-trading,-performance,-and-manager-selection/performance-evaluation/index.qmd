@@ -1,0 +1,29 @@
+---
+title: "Portfolio Performance Evaluation"
+order: 26
+---
+
+# Introduction
+
+Macro attribution measures the effects of the fund sponsor's decisions on returns.
+
+Micro attribution measures the impact of the individual portfolio manager's decisions.
+
+# Equity Attribution
+
+## BHB Model
+
+The allocation effect = $\sum_{i}^{K}(w_i - W_i) \cdot B_i$ or the difference between portfolio and benchmark weights multiplied by the benchmark return summed over each asset class. 
+
+The selection effect is $\sum_{i}^{K} W_i (R_i - B_i)$.
+
+The two effects may not explain the entire excess return. 
+
+The interaction effect explains the remaining difference. It is $\sum_{i}^{K} (w_i - W_i)(R_i - B_i)$.
+
+# Brinson-Fachler Model
+
+Allocation
+: $$
+  A_i = (w_i - W_i) (B_i - B)
+$$

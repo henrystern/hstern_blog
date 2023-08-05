@@ -1,0 +1,26 @@
+---
+title: "Trade Strategy and Execution"
+order: 25
+---
+
+# Trading Strategies
+
+The permanent component of price change associated with a trade is the information content of the trade.
+
+# Trade Execution
+
+In principal trades the executing broker assumes the trading risk and quotes it into their spread. In agency trades the broke is only an agent.
+
+In recent years average trade sizes have decreased.
+
+# Trade Cost Measurement
+
+$$
+  \text{Implementation Shortfall} = \text{Paper Return} - \text{Actual Return}
+$$
+
+Where paper return is the return that would have occurred at the market price the moment the investment decision was made.
+
+# Trade Governance
+
+MiFID II regulates client trade execution in the EU. It prohibits soft dollar arrangements.
