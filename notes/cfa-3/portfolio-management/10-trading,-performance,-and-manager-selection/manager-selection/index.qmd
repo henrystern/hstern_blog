@@ -1,0 +1,16 @@
+---
+title: "Investment Manager Selection"
+order: 27
+---
+
+# Hypothesis Testing
+
+Type I errors create explicit costs while type II errors create opportunity costs.
+
+Accordingly type I errors are more psychologically painful.
+
+# Operational Due Diligence
+
+Examines business risk and conflict between investment objectives and fund manager business objectives. 
+
+Management bonuses are essentially a manager's call option. This incentivizes the manager to increase volatility to increase call value.
