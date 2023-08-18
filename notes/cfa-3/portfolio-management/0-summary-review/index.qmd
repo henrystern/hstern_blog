@@ -1,6 +1,6 @@
 ---
 title: "Summary Review"
-order: 33
+order: 0
 format:
   html:
     number-sections: true
@@ -41,7 +41,7 @@ Cognitive errors can be belief perseverance biases or information processing bia
 
 ## Behavioural Finance and Investment Processes
 
-Classifying investors can be useful but is not always completely correct.
+Classifying investors can be useful but is not always completely correct. Investors can exhibit characteristics of multiple investor types and their type can migrate over time.
 
 Analysts are prone to overconfidence, representativeness, availability, illusion of control, and hindsight biases.
 
@@ -68,7 +68,7 @@ Forecasts of exogenous shocks are difficult.
 
 In the long run the risk free rate and equity appreciation are linked to the trend growth rate.
 
-Econometric models are robust but complex.
+Econometric models are robust but complex. They are poor predictors of turning points as econometric relationships can migrate over time and especially between regimes.
 
 Indicators are simple but can generate false signals.
 
@@ -124,7 +124,7 @@ Linear factor models are simpler but are biased.
 
 Asset only allocation focuses on the asset side of the economic balance sheet. Risk focus is principally asset risk.
 
-Liability-relative approaches focus on funding liabilities. Risk focus is principally on ability to pay of liabilities.
+Liability-relative approaches focus on funding liabilities. Risk focus is principally on ability to pay off liabilities.
 
 Goals based approaches focus on achieving financial goals. Risk focus is principally the probability of not achieving goals.
 
@@ -154,9 +154,9 @@ Tactical asset allocation performance is compared to the strategic asset allocat
 
 ## Options Strategies
 
-Synthetic Long = $c_0 + p_0$
+$\text{Synthetic Long} = c_0 + p_0$
 
-Synthetic Short = $-(c_0 + p_0)$
+$\text{Synthetic Short} = -(c_0 + p_0)$
 
 $\text{Synthetic Long Put} = c_0 - s$
 
@@ -184,13 +184,15 @@ Swaps alter cash flows of the portfolio.
 
 $BPVHR = \left( \frac{\text{BPV}_T\ -\ \text{BPV}_P}{\text{BPV}_{\text{CTD}}} \right) \cdot \text{CF}$
 
-Cross currency basis swaps can be used to exchange borrowed domestic currency funds into the required foreign currency while reducing exchange risk.
+Cross currency basis swaps can be used to exchange borrowed domestic currency funds into the required foreign currency while reducing exchange risk. It involves swapping the principal at initiation and paying interest over the term. At maturity both the principal and interest are repaid.
 
 A total return swap is an equity swap that also includes dividends.
 
 Equity futures for indexes are cash settled.
 
 Variance swaps allow directional bets on implied versus realized volatility.
+
+The variance notional of a variance swap is the profit or loss per point difference between implied and realized variance. The vega notional is the profit or loss per 1% change in variance.
 
 ## Currency Management
 
@@ -214,7 +216,9 @@ Duration times spread incorporates the observation that spread changes tend to b
 
 For two portfolios with the same duration the portfolio with the higher convexity will have higher sensitivity to large declines in YTM and lower sensitivities to large increases in ATM.
 
-Total return swaps have a lower initial outlay but carry counter party risk.
+Total return swaps have a lower initial outlay than direct investing but carry counter party risk.
+
+Call options on a bond have negative convexity. Puts have positive convexity.
 
 ## Liability-Driven and Index-Based Strategies
 
@@ -287,7 +291,7 @@ A well constructed portfolio has a clear investment philosophy, the risk and str
 
 ## Hedge Fund Strategies
 
-No hedge fund index is all-encompassing.
+No hedge fund index is all-encompassing. Returns cannot be compared across indexes due to differences in methodology.
 
 Most long/short use single name shorts but larger funds may use index based shorts.
 
@@ -323,7 +327,7 @@ Risk tolerance is willingness to accept risk. Risk capacity is ability to accept
 
 Capital sufficiency can be determined by forecasting and Monte Carlo simulation.
 
-* An IPS incudes the following sections:
+* An IPS includes the following sections:
   1. Background and objectives
   1. Risk tolerance and time horizon
   1. Asset class preferences
