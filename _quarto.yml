@@ -2,7 +2,7 @@ project:
   type: website
 
 execute:
-  freeze: true
+  freeze: true # true for main only else auto
 
 website:
   title: "HStern"
