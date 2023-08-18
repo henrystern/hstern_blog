@@ -12,13 +12,13 @@ listing:
     sort-ui: false
     filter-ui: false
     fields: [title]
-  - id: ethics
-    type: table
-    contents: ./ethics/**/*.qmd
-    sort: order
-    sort-ui: false
-    filter-ui: false
-    fields: [title]
+  # - id: ethics
+  #   type: table
+  #   contents: ./ethics/**/*.qmd
+  #   sort: order
+  #   sort-ui: false
+  #   filter-ui: false
+  #   fields: [title]
 page-layout: full
 comments: false
 ---
@@ -27,14 +27,5 @@ comments: false
 These notes are entirely based upon the CFA textbook and follow the same structure in lieu of citation.
 :::
 
-## Portfolio Management
-
 ::: {#pm}
 :::
-
-## Ethics
-
-::: {#ethics}
-:::
-
-
