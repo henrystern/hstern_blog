@@ -1,0 +1,432 @@
+---
+title: "Summary Review"
+order: 0
+format:
+  html:
+    number-sections: true
+---
+
+# Behavioural Finance
+
+## The Behavioural Biases of Individuals
+
+Cognitive errors are easier to correct. 
+
+Adapt to a bias means to recognize and adjust instead of trying to eliminate it.
+
+Moderating a bias is attempting to reduce or eliminate it.
+
+Cognitive errors can be belief perseverance biases or information processing biases.
+
+* Belief perseverance biases:
+  * Conservatism
+  * Confirmation
+  * Representativeness
+  * Illusion of control
+  * Hindsight
+
+* Information processing biases:
+  * Anchoring and adjustment
+  * Mental accounting
+  * Framing
+  * Availability
+
+* Emotional biases:
+  * Loss aversion
+  * Overconfidence
+  * Self control
+  * Status Quo
+  * Endowment
+  * Regret Aversion
+
+## Behavioural Finance and Investment Processes
+
+Classifying investors can be useful but is not always completely correct. Investors can exhibit characteristics of multiple investor types and their type can migrate over time.
+
+Analysts are prone to overconfidence, representativeness, availability, illusion of control, and hindsight biases.
+
+Management are susceptible to framing, anchoring and adjustment, availability, and overconfidence. Management biases can affect the information presented to analysts.
+
+# Capital Market Expectations
+
+## Part 1: Framework and Macro Considerations
+
+Internal consistency across asset classes and time horizons are more important than the accuracy of individual asset class projections.
+
+* The Process:
+  1. Specify the asset classes that are needed and the time horizon
+  1. Research the historical returns
+  1. Specify the methods and models
+  1. Find the best sources of the required information
+  1. Interpret the current data
+  1. Provide the expectations and document conclusions
+  1. Compare outcomes to forecasts
+
+The process can be challenged by poor or inaccessible data, biased interpretation or methodology, and ex post risk.
+
+Forecasts of exogenous shocks are difficult.
+
+In the long run the risk free rate and equity appreciation are linked to the trend growth rate.
+
+Econometric models are robust but complex. They are poor predictors of turning points as econometric relationships can migrate over time and especially between regimes.
+
+Indicators are simple but can generate false signals.
+
+Checklists are flexible but subjective, time-consuming, and can be shallow.
+
+Business cycle phases are initial recovery, early expansion, late expansion, slowdown, and contraction.
+
+The business cycle is difficult to incorporate into CME as the phases vary in length and amplitude.
+
+Business cycle estimates are most accurate over long time horizons. 
+
+Monetary policy aims to be countercyclical. Fiscal policy is not usually aimed at stabilizing the business cycle.
+
+Current and capital accounts are balanced by changes in income, relative prices, interest rates and asset prices, and exchange rates.
+
+The current account tends to reflect the business cycle.
+
+## Part 2: Forecasting Asset Class Returns
+
+Three main groups of techniques: statistical methods, discounted cash flows, and risk premium models.
+
+Shrinkage estimation combines two estimates into a more precise estimate.
+
+Three methods for modeling risk premia: equilibrium models, factor models, and building blocks.
+
+DCF is the best method for supporting individual fixed-income trades.
+
+Three methods for estimating fixed-income returns: DCF, building blocks, and equilibrium models.
+
+Term premiums are proportional to duration while credit premiums are larger at the short end of the curve.
+
+The liquidity premium can be estimated on the spread between the on-the-run sovereign and the next best quality large issuer.
+
+Grinold-Kroner decomposes equity return into cash flow return, earnings growth, and repricing return.
+
+Singer-Terhaar adjusts global CAPM for imperfect market integration.
+
+The cap rate is $\text{NOI}\ /\ \text{Property Value}$
+
+Grinold-Kroner can be adapted for real estate as $E(R_{re}) = \text{Cap Rate} + \text{NOI Growth Rate} - \%\Delta \text{Cap Rate}$
+
+Trade flows do not usually exert significant pressure on exchange rates. Capital flows are typically larger and more volatile than trade flows.
+
+PPP is only a good predictor over long horizons.
+
+The sample variance covariance matrix is an unbiased estimate. But it is complex and has high error.
+
+Linear factor models are simpler but are biased.
+
+# Asset Allocation and Related Decisions
+
+## Overview of Asset Allocation
+
+Asset only allocation focuses on the asset side of the economic balance sheet. Risk focus is principally asset risk.
+
+Liability-relative approaches focus on funding liabilities. Risk focus is principally on ability to pay off liabilities.
+
+Goals based approaches focus on achieving financial goals. Risk focus is principally the probability of not achieving goals.
+
+Assets within an asset class should be homogenous. Classes should be mutually exclusive and diversifying.
+
+Risk factors are associated with non-diversifiable risks.
+
+Rebalancing frequency should reflect transaction costs, risk aversion, correlations among asset classes, taxation, and liquidity.
+
+## Principles of Asset Allocation
+
+MVO is sensitive to changes in inputs. The allocations tend to be highly concentrated. It doesn't account for skew and kurtosis. It ignores rebalancing/trading costs and taxes.
+
+Black-Litterman reverse optimization improves optimization of MVO. Can also put constraints on allocations.
+
+Rebalancing is short volatility. The higher the correlation to the rest of the portfolio the wider the optimal rebalancing corrider.
+
+## Asset Allocation With Real World Constraints
+
+Size, liquidity, time horizon, taxes, and regulation are the primary constraints on asset allocation.
+
+Rebalancing corridors should be wider for taxable portfolios.
+
+Tactical asset allocation performance is compared to the strategic asset allocation. 
+
+# Derivatives and Currency Management
+
+## Options Strategies
+
+$\text{Synthetic Long} = c_0 + p_0$
+
+$\text{Synthetic Short} = -(c_0 + p_0)$
+
+$\text{Synthetic Long Put} = c_0 - s$
+
+$\text{Synthetic Long Call} = s + p_0$
+
+Theta is the daily change in an option's price all else equal.
+
+An option spread caps the maximum payoff and loss.
+
+Bull Spread: buy a call and write a call with a higher price.
+
+Bear Spread: buy a put and write a put with a lower price.
+
+Straddle: buy put and call with same price. Long volatility. Non-directional.
+
+Collar: Buy shares and write OTM call buy an OTM put.
+
+Calendar Spread: buy a long dated option and write a short dated option.
+
+Volatility smile is when OTM implied volatilities exceed ATM. Usually volatility skew where IV rises for OTM puts and decreases for OTM calls.
+
+## Swaps, Forwards, and Futures
+
+Swaps alter cash flows of the portfolio.
+
+$BPVHR = \left( \frac{\text{BPV}_T\ -\ \text{BPV}_P}{\text{BPV}_{\text{CTD}}} \right) \cdot \text{CF}$
+
+Cross currency basis swaps can be used to exchange borrowed domestic currency funds into the required foreign currency while reducing exchange risk. It involves swapping the principal at initiation and paying interest over the term. At maturity both the principal and interest are repaid.
+
+A total return swap is an equity swap that also includes dividends.
+
+Equity futures for indexes are cash settled.
+
+Variance swaps allow directional bets on implied versus realized volatility.
+
+The variance notional of a variance swap is the profit or loss per point difference between implied and realized variance. The vega notional is the profit or loss per 1% change in variance.
+
+## Currency Management
+
+An FX swap is a simultaneous spot and forward transaction. Used to roll maturing forward contracts.
+
+The carry trade is equivalent to trading the forward rate bias.
+
+Passive hedging will use forward rather than futures contracts to customize the hedge. Futures are used for smaller portfolios (pwm).
+
+# Fixed Income (1)
+
+## Overview of Fixed Income Portfolio Management
+
+Performance under a total return mandates is compared to a benchmark
+
+Modified duration is the percent change in MV for a given change in YTM.
+
+For small yield changes convexity is negligible.
+
+Duration times spread incorporates the observation that spread changes tend to be proportional rather than absolute.
+
+For two portfolios with the same duration the portfolio with the higher convexity will have higher sensitivity to large declines in YTM and lower sensitivities to large increases in ATM.
+
+Total return swaps have a lower initial outlay than direct investing but carry counter party risk.
+
+Call options on a bond have negative convexity. Puts have positive convexity.
+
+## Liability-Driven and Index-Based Strategies
+
+Immunization locks in the cash flow IRR.
+
+Laddered portfolios have higher convexity than a bullet portfolio.
+
+* To immunize multiple liabilities:
+  1. The market value of assets must be greater than the market value of liabilities.
+  1. The asset BPV must equal the liability BPV.
+  1. The dispersion and convexity of assets must be greater than those of liabilities. 
+
+Pensions can use receiver interest rate swaptions to hedge the risk of a decline in interest rates.
+
+# Fixed Income (2)
+
+## Yield Curve Strategies
+
+Derivatives manage exposure for a smaller cash outlay than the underlying but require cash management to cover margins and collateral requirements.
+
+The butterfly strategy combines a long bullet with a short barbell portfolio trades on yield curve shape changes.
+
+## Fixed-Income Active Management
+
+Credit spread changes are driven by the credit cycle or the business cycle.
+
+Liquidity risk is greater in credit than in equities.
+
+# Equity (1)
+
+## Overview of Equity Portfolio Management
+
+Client considerations include risk objective, return objective, liquidity requirement, time horizon, tax concerns, legal and regulatory factors, and unique circumstances.
+
+The equity universe can be segmented by size, style, geography, and economic activity.
+
+## Passive Equity Investing
+
+Benchmark indexes must be rules based, transparent, and investable.
+
+# Equity (2)
+
+## Active Equity Investing: Strategies
+
+* Fundamental active investment process steps:
+  1. Define the investment universe
+  1. Prescreen the universe
+  1. Understand the industry and business
+  1. Forecast companies financial performance
+  1. Convert forecasts into a target price
+  1. Construct the portfolio with the desired risk profile
+  1. Rebalance according to a buy and sell discipline.
+
+* Quantitative active investment process steps:
+  1. Define the investment thesis
+  1. Acquire, clean, and process the data
+  1. Backtest the strategy
+  1. Evaluate the strategy
+  1. Construct and efficient portfolio using models
+
+## Active Equity Investing: Portfolio Construction
+
+Heuristic risk constraints limit exposure to factors, security characteristics, currencies, leverage, ESG factors, and illiquidity.
+
+Formal risk constraints set quantitative limits on risk measures such as volatility, active risk, VaR, and drawdown.
+
+A well constructed portfolio has a clear investment philosophy, the risk and structural characteristics promised to investors, a risk efficient methodology, and reasonably low operating costs.
+
+# Alternatives
+
+## Hedge Fund Strategies
+
+No hedge fund index is all-encompassing. Returns cannot be compared across indexes due to differences in methodology.
+
+Most long/short use single name shorts but larger funds may use index based shorts.
+
+Equity L/S are generally liquid and net long. They aim for similar returns to a long portfolio with reduced risk. 
+
+Short biased strategies are typically 30-60% short.
+
+Dedicated short strategies are typically 60-120% short.
+
+Most equity market neutral strategies are purely quantitative.
+
+Convertible arbitrage is typically 300% long and 200% short to account for delta adjusted exposure to short sales.
+
+Multi fund strategies have outperformed FoF but they have higher variance due to higher leverage.
+
+## Asset Allocation to Alternative Investments
+
+Real assets hedge against inflation. 
+
+Farmland can have commodity like or real estate like exposures.
+
+Private real estate, assets, and private equity are only appropriate over a >15 year investment horizon.
+
+Artificially smoothed returns can be detected by serial correlation.
+
+# Private Wealth Management (1)
+
+## Private Wealth Management: Overview
+
+Planned goals are quantifiable within an expected time horizon.
+
+Risk tolerance is willingness to accept risk. Risk capacity is ability to accept risk. Risk perception is the assessment of the risk involved.
+
+Capital sufficiency can be determined by forecasting and Monte Carlo simulation.
+
+* An IPS includes the following sections:
+  1. Background and objectives
+  1. Risk tolerance and time horizon
+  1. Asset class preferences
+  1. Other investment preferences (liquidity and constraints)
+  1. Portfolio asset allocation
+  1. Portfolio management (discretionary authority, rebalancing, TAA, implementation)
+  1. Duties and responsibilities of the advisor
+  1. An appendix of additional details
+
+## Private Wealth Management: Topics
+
+It is typically more efficient to withdraw from a taxable account first and then from the tax deferred accounts.
+
+Donating securities in kind allows the shares to be sold without incurring a capital gains tax.
+
+# Private Wealth Management (2)
+
+## Risk Management for Individuals
+
+The choice between fixed and variable annuities is based on the volatility of the benefit, future market expectations, fees, and inflation expectations.
+
+Risk can be avoided, reduced, transferred, or retained. The choice among these techniques is related to the frequency and severity of the losses.
+
+# Institutional Portfolio Management
+
+## Portfolio Management for Institutional Investors
+
+Santiago principles represent a self-regulation of SWF's.
+
+Foundations in the US are required to distribute 5% of their assets annually to remain tax-exempt.
+
+# Trading, Performance Evaluation, and Manager Selection
+
+## Trade Strategy and Execution
+
+In liquidity driven trades the end-of-day closing price is used for trading and benchmarking.
+
+In short term alpha trades the arrival price is the appropriate benchmark.
+
+On longer execution horizons the VWAP or TWAP is the appropriate benchmark.
+
+A trade policy document needs to incorporate the meaning of best execution, the factors determining order execution, handling trading errors, listing eligible brokers and venues, and a process for monitoring execution.
+
+## Portfolio Performance Evaluation
+
+Macro attribution considers the decisions of the fund sponsor while micro attribution considers the decisions of the individual portfolio manager.
+
+## Investment Manager Selection
+
+Qualitative due diligence examines the investment process, personnel, and portfolio construction.
+
+Operational due diligence evaluates the fund infrastructure.
+
+# Cases in Portfolio Management and Risk Management
+
+## Case in Portfolio Management: Institutional
+
+## Case in Risk Management: Private Wealth
+
+## Integrated Cases in Risk: Institutional
+
+# Ethics (1)
+
+## Code of Ethics
+
+## Guidance for Standards
+
+## Application of Standards
+
+# Ethics (2)
+
+## Asset Manager Code
+
+## GIPS Overview
+
+The GIPS standards are intended to promote investor interests, increase investor confidence, ensure accurate and consistent performance data, obtain a worldwide standard for performance presentation, promote fair competition, and promote self-regulation.
+
+Compliance requires providing GIPS reports to all prospective clients.
+
+A "firm" must be held out to the public as a distinct business entity.
+
+All discretionary, fee-paying, segregated accounts must be included in at least one composite. All discretionary, fee-paying pooled funds must be included in any composite for which they meet the definition.
+
+Time weighted returns are required except in special circumstances.
+
+Money weighted returns can be presented instead if the firm controls external cash flows into the portfolios and the portfolio is either closed-end, fixed life, fixed commitment, or has significant illiquid investments.
+
+Returns over less than one one year must not be annualized.
+
+Returns from cash must always be included.
+
+Returns must be calculated after transaction costs.
+
+Assets must be valued at fair value if it observable.
+
+Simulated performance cannot be linked with actual performance.
+
+GIPS reports must include at least 5 years of performance (if available), composite and benchmark returns for all years, the number of portfolios in each composite at the end of each period, the amount of assets in the composite, the total firm assets at the end of each period, a measure of dispersion of portfolio returns, and the three year ex-post standard deviation of the composites and benchmark for each period.
+
+Performance from a past firm can be linked if the new firm has the same investment decision makers, the same decision making process, retains evidence of the past performance, and there is no break in time between the old and new firm.
+
+Verification must be done on a whole firm basis.
