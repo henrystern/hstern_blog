@@ -19,25 +19,25 @@ Moderating a bias is attempting to reduce or eliminate it.
 Cognitive errors can be belief perseverance biases or information processing biases.
 
 * Belief perseverance biases:
-  * Conservatism
-  * Confirmation
-  * Representativeness
-  * Illusion of control
-  * Hindsight
+  * Conservatism: Unwillingness to change beliefs in response to new information.
+  * Confirmation: Failure to seek out or appreciate contradictory facts or opinions.
+  * Representativeness: False belief that recent outcomes are representative of long term trends.
+  * Illusion of control: False belief in ability to control the outcomes of certain investments.
+  * Hindsight: False belief that the past outcomes were foreseeable.
 
 * Information processing biases:
-  * Anchoring and adjustment
-  * Mental accounting
-  * Framing
-  * Availability
+  * Anchoring and adjustment: Fixation on target outcomes that fail to absorb the changes in information that led to those outcomes.
+  * Mental accounting: Improperly grouping or categorizing financial assets with disregard to their fungibility.
+  * Framing: Interpreting information differently based on how it was presented.
+  * Availability: Place greater importance on information that is easily recalled or gathered rather than the information as a whole.
 
 * Emotional biases:
-  * Loss aversion
-  * Overconfidence
-  * Self control
-  * Status Quo
-  * Endowment
-  * Regret Aversion
+  * Loss aversion: A fixation on avoiding losses rather than prudently investing based on goals.
+  * Overconfidence: An unwarranted faith in one's intuitive abilities.
+  * Self control: A failure to act in one's best long-term interests due to short term desires.
+  * Status Quo: Resistance to change.
+  * Endowment: Attributing greater value to assets one already owns simply because it is owned.
+  * Regret Aversion: Seeking to avoid the emotional pain of unsuccessful investments or missed opportunities by excessive conservatism or following of the herd.
 
 ## Behavioural Finance and Investment Processes
 
@@ -430,3 +430,21 @@ GIPS reports must include at least 5 years of performance (if available), compos
 Performance from a past firm can be linked if the new firm has the same investment decision makers, the same decision making process, retains evidence of the past performance, and there is no break in time between the old and new firm.
 
 Verification must be done on a whole firm basis.
+
+# Other Notes and Definitions
+
+Execution Cost
+: Difference between the cost of executing the order and the price if all ordered shares were executed at the decision price.
+
+Opportunity Cost
+: Difference between the size of the order placed and transacted multiplied by the difference between current price and decision price.
+
+Delay Cost
+: The difference between the cost of filling the order and the cost if that many shares were bought at the decision price.
+
+Trading Cost
+: Difference between the cost executing the order and the cost if that many shares were bought at the arrival price.
+
+$$
+  \text{Execution Cost} = \text{Delay Cost} + \text{Trading Cost}
+$$
