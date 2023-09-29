@@ -1,12 +1,16 @@
 ---
-title: "Predoc Data Task 1: Labor Market Analysis"
+title: "Predoc Data Task: Labor Market Analysis"
 date: 2023-09-28
 categories: ["R", "Economics"]
 ---
 
 Here is my solution to the sample labour market analysis task published by [PreDoc.org](https://predoc.org). 
 
-You can find the full task [here](https://predoc.org/how-to-prepare).
+You can find the full task [here](https://predoc.org/how-to-prepare). This is exercise 1 from data task 1.
+
+I'm essentially using this as an opportunity to demonstrate my `R` and `Tidyverse` ability on something that isn't privileged.
+
+The task is to load some labour market data, identify trends for wages and labour force participation in the data, and hypothesize what is driving those trends and how those hypotheses could be tested.
 
 # Load libraries.
 
@@ -42,7 +46,6 @@ labor_by_year <- labor |>
   summarize(
     wage = mean(wage, na.rm = TRUE),
     lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
-    count = n()
   )
 
 # Summary grouped by skilled status
@@ -57,7 +60,6 @@ labor_by_year_and_skill <- labor |>
   summarize(
     wage = mean(wage, na.rm = TRUE),
     lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
-    count = n()
   )
 ```
 
@@ -150,7 +152,6 @@ adult_men_by_year_and_skill <- adult_men |>
   summarize(
     wage = mean(wage, na.rm = TRUE),
     lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
-    count = n()
   )
 
 # adult men wage plot by skill
@@ -192,7 +193,7 @@ adult_men_by_year_and_skill |>
 
 We can see that both skilled and unskilled men followed very different trends to the general population between 1976 and 2000. While the participation of all workers was trending upwards, male participation was decreasing. 
 
-The increasing trend for the general population is likely due to women entering the labour force in greater numbers but it is not easy to guess why that would cause male participation to decline.
+The increasing trend for the general population must be due to a greater proportion of women participating in the labour force but it is not obvious why that would cause male participation to decline.
 
 After 2001 the male participation trends mirror those of the general population perhaps suggesting that increasing female participation ceased to be a significant factor. As expected male participation remains higher than average and the differential has been consistent since the early 2000s for both skilled and unskilled men.
 
@@ -210,7 +211,6 @@ adult_men_by_year_and_age_group <- adult_men |>
   summarize(
     wage = mean(wage, na.rm = TRUE),
     lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
-    count = n()
   )
 
 # adult men wage by age_group
@@ -247,11 +247,13 @@ adult_men_by_year_and_age_group |>
   theme(plot.title = element_text(size = 12))
 ```
 
-By age group neither early nor mid career workers have experienced a significant change in participation. However, retirement age worker participation has varied significantly over the period.
+Neither early nor mid career workers have experienced a significant change in participation. 
 
-In the mid 1970s about 20% of men participated in the labour force. By the early 1990s that rate had declined to 15%. However since then elderly participation has increased to new highs of 25%.
+Retirement age worker participation has varied significantly.
 
-This is a substantial change and merits some consideration.
+In the mid 1970s about 20% of men over age 65 participated in the labour force. By the early 1990s that rate had declined to 15%. However since then elderly participation has increased to new highs of 25%.
+
+These are substantial changes over short time periods and merit some consideration.
 
 ### By Race
 
@@ -274,7 +276,6 @@ adult_men_by_year_and_race <- adult_men |>
   summarize(
     wage = mean(wage, na.rm = TRUE),
     lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
-    count = n()
   )
 
 # adult men wage by race
@@ -309,7 +310,7 @@ adult_men_by_year_and_race |>
   theme(plot.title = element_text(size = 12))
 ```
 
-Hispanic participation has been consistently high over the period with only small variation. The high participation of Hispanics is notable given their relatively low wages but that observation is not relevant to our current examination of participation *changes*.
+Hispanic participation has been consistently high over the period with only small variation. The high participation of Hispanics is notable given their relatively low wages but that observation is not relevant to our current focus on participation *changes*.
 
 Asian workers have also had high participation but were only included in the data set starting in 2003.
 
@@ -334,27 +335,23 @@ The greatest changes were observed for:
 
 ## Skilled Workers
 
-### Overall Population
-
-The greater overall participation rate of skilled workers may be indicative of greater market demand for skilled workers. Perhaps above-market minimum wage laws are capping demand for unskilled labour causing proportionally more unskilled workers to leave the workforce. This could be tested by comparing changes across states with additional data on that state's minimum wage.
-
-The greater participation rate of skilled workers could also be reflective of the greater opportunity cost they face in abandoning the workforce due to the higher wages they command. This hypothesis is undermined by the fact that while the wage gap has widened, increasing the relative opportunity cost difference, the participation gap has stayed the same. It would be best to convert the nominal wages to real wages to examine whether the real wage gap has increased.
-
 ### Adult Men
 
 For adult men the large decline in participation between the mid 1970s and 2000 appears to be offset against the increasing participation of the total population - which can be attributed to a higher proportion of women entering the workforce.
 
-Perhaps as women entered the workforce their partners became more likely to leave it. This may have had a more significant impact in households with two skilled workers which, given their higher and increasing wages, could afford to live on a single salary. This hypothesis could be tested by comparing the trends in participation for single skilled men against skilled men with skilled wives.
+Perhaps as women entered the workforce their partners became more likely to leave it. This may have had a more significant impact in households with two skilled workers which, given their higher wages, could afford to live on a single salary. This hypothesis could be tested by comparing the trends in participation for single skilled men against skilled men with skilled female partners. 
 
 Additionally, the proportion of skilled workers likely changed over the period as America's economy transitioned from industrial to service based. As more of the population became skilled, the skilled population would become more average. That could be tested by confirming the proportion of skilled workers changed.
 
 ## Black Workers
 
-It is difficult to hypothesize why black labour force participation would decline over the period. The barriers to entry have presumably been reduced over the years which might lead one to expect their participation would have increased rather than decreased. 
+It is difficult to hypothesize why black labour force participation would decline over the period. The barriers to entry have presumably been reduced over the years which would lead one to expect their participation would have increased rather than decreased. 
 
-Over the period we also observed wages for black people rising faster than those of Hispanics. On the opportunity cost hypothesis presented above this would be expected to increase participation. Nevertheless it was a decrease that was actually observed.
+Wages for black people also rose faster than those of Hispanics. The increasing opportunity cost of not participating would be expected to increase participation.
 
-Perhaps black people are concentrated in particular areas (urban and Southern) or professions (e.g. Industrial, agriculture) which have seen declining participation rates. First one would have to determine the accuracy of these generalizations and then test whether participation for workers of other races in those professions/areas also declined over the period.
+Despite this it was a decrease that was actually observed.
+
+Perhaps black people are concentrated in particular areas (urban and Southern) or professions (e.g. industrial, agricultural) which have seen declining participation rates. First one would have to determine the accuracy of these generalizations and then test whether participation for workers of other races in those professions/areas also declined over the period.
 
 ## Retirement Age Workers
 
@@ -370,10 +367,10 @@ Looking only at the data since the mid 90s it would appear that as elderly worke
 
 Perhaps the participation in the 1970s was of necessity. The period's stagflation would have eroded the value of nominal denominated fixed income (pensions, and investments); at the same time the low growth may have impeded the ability of children to care for their parents. This might have forced more elderly people to participate in the labour force.
 
-Of course all of these hypotheses would need to be tested in greater detail. A good place to start would be incorporating data on inflation and growth. Then nominal wages could be converted to real wages and the relative wages of elderly workers could be compared on a proportional basis over the period.
+Of course all of these assumptions and the hypotheses would need to be tested in greater detail. A good place to start would be incorporating data on inflation and growth. Then nominal wages could be converted to real wages and the relative wages of elderly workers could be compared on a proportional basis over the period.
 
 ## Overall
 
-This analysis would be better served by a multiple linear regression model than these simple exploratory graphs. A regression would allow us to quantify and test the significance of many of the hypotheses outlined above. 
+For each trend that was identified, the analysis would be better served by a multiple linear regression model than these simple exploratory graphs. A regression would allow us to quantify and test the significance of these hypotheses.
 
-There are no doubt many factors influencing labour force participation including wage, skill, race, location, profession, and age. The major weakness of the graphs we've conducted here is their inability to control for these other factors.
+There are no doubt many factors influencing labour force participation including wage, skill, race, location, profession, and age. The major weakness of the graphs we've conducted here is their inability to control for these other factors. That weakness could be overcome by a regression.

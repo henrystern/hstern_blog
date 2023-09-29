@@ -1,12 +1,14 @@
 ---
-title: "Predoc Data Task 1: Data Manipulation"
+title: "Predoc Data Task: Data Manipulation"
 date: 2023-09-28
 categories: ["R"]
 ---
 
-My solution to the sample data manipulation task published by [PreDoc.org](https://predoc.org). 
+This is my solution to the sample data manipulation task published by [PreDoc.org](https://predoc.org). 
 
-You can find the full task [here](https://predoc.org/how-to-prepare).
+You can find the full task [here](https://predoc.org/how-to-prepare). This is exercise 2 from data task 1.
+
+The task is to load some health insurance subscription data, manipulate the data to develop a summary of certain variables by county (rather than by insurance plan), and then output that data in a specified format.
 
 # Load libraries.
 
