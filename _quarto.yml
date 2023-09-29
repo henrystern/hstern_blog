@@ -59,7 +59,7 @@ format:
     title-block-banner: true
     toc: true
     toc-title: "\n"
-    df-print: default
+    df-print: paged
     include-in-header:
       - ./static/html/header.html
     include-before-body:
