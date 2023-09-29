@@ -1,0 +1,84 @@
+---
+title: "Predoc Data Task 1: Data Manipulation"
+date: 2023-09-28
+categories: ["R"]
+---
+
+My solution to the sample data manipulation task published by [PreDoc.org](https://predoc.org). 
+
+You can find the full task [here](https://predoc.org/how-to-prepare).
+
+# Load libraries.
+
+```{r}
+#| output: false
+library("dplyr")
+library("readr")
+library("tidyr")
+```
+
+# Read Data
+
+```{r}
+#| output: false
+medicare <- read_csv("./task/scp-1205.csv", col_names = FALSE)
+
+# `contract` is missing from the list of variables given in the instructions
+# it is included with the name `contract` in the sample row
+names(medicare) <- c(
+  "countyname",
+  "state",
+  "contract",
+  "healthplanname",
+  "typeofplan",
+  "countyssa",
+  "eligibles",
+  "enrollees",
+  "penetration",
+  "ABrate"
+)
+```
+
+# Fill Missing Values
+
+```{r}
+medicare_filled_missing <- medicare |>
+  mutate(
+    across(
+      c(eligibles, enrollees, penetration),
+      ~ replace_na(.x, 0)
+    )
+  )
+```
+
+# Complete Objective
+
+```{r}
+medicare_by_county <- medicare_filled_missing |>
+  # Filter territories and District of Columbia
+  filter(!state %in% c("PR", "GU", "DC", "VI", "AS")) |>
+  # Filter unspecified counties
+  filter(!(is.na(state) | state == 99)) |>
+  group_by(countyname) |>
+  summarize(
+    # first() is used where all the counties will have the same value
+    state = first(state),
+    numberofplans1 = sum(enrollees > 10),
+    numberofplans2 = sum(penetration > .5),
+    countyssa = first(countyssa),
+    eligibles = first(eligibles),
+    totalenrollees = sum(enrollees),
+    totalpenetration = 100 * totalenrollees / eligibles
+  ) |>
+  arrange(state, countyname)
+```
+
+# Write to CSV
+
+```{r}
+# Commented out for the web writeup.
+# write_csv(medicare_by_county, "medicare_output.csv")
+
+# Instead print some of the data.
+head(medicare_by_county, 100)
+```
