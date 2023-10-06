@@ -1,0 +1,376 @@
+---
+title: "Predoc Data Task: Labor Market Analysis"
+date: 2023-09-28
+categories: ["R", "Economics"]
+---
+
+Here is my solution to the sample labour market analysis task published by [PreDoc.org](https://predoc.org). 
+
+You can find the full task [here](https://predoc.org/how-to-prepare). This is exercise 1 from data task 1.
+
+I'm essentially using this as an opportunity to demonstrate my `R` and `Tidyverse` ability on something that isn't privileged.
+
+The task is to load some labour market data, identify trends for wages and labour force participation in the data, and hypothesize what is driving those trends and how those hypotheses could be tested.
+
+# Load libraries.
+
+```{r}
+#| output: false
+library("dplyr")
+library("readr")
+library("forcats")
+library("ggplot2")
+library("ggpubr")
+library("ggthemes")
+theme_set(theme_fivethirtyeight())
+```
+
+# Read Data
+
+```{r}
+#| output: false
+labor <- read_csv("./task/cps_wages_LFP.csv")
+```
+
+# (a) Summarize key trends in wages and labour force participation
+
+```{r}
+#| output: false
+
+# Overall summary by year
+labor_by_year <- labor |>
+  mutate(
+    skilled = "Combined"
+  ) |>
+  group_by(year, skilled) |>
+  summarize(
+    wage = mean(wage, na.rm = TRUE),
+    lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
+  )
+
+# Summary grouped by skilled status
+labor_by_year_and_skill <- labor |>
+  mutate(
+    skilled = case_when(
+      skilled == 1 ~ "Skilled",
+      skilled == 0 ~ "Unskilled",
+    )
+  ) |>
+  group_by(year, skilled) |>
+  summarize(
+    wage = mean(wage, na.rm = TRUE),
+    lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
+  )
+```
+
+## Wages Plot
+
+```{r}
+# Plot of wages by year
+wage_plot <- labor_by_year |>
+  ggplot(aes(year, wage, colour = skilled)) +
+  geom_line() +
+  geom_line(data = labor_by_year_and_skill) +
+  labs(
+    x = NULL, y = "Wage (Nominal USD)",
+    title = "The Skill Wage Gap Has Expanded",
+    subtitle = "Despite rising wages for both groups",
+    color = "Worker Skill: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(breaks = seq(5, 30, by = 5)) +
+  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), na.translate = FALSE) +
+  theme(axis.title.y = element_text(vjust = 3), plot.title = element_text(size = 12))
+```
+
+## Labor Force Participation Plot
+
+```{r}
+# Plot of labor force participation by year
+lfp_plot <- labor_by_year |>
+  ggplot(aes(year, lfp, colour = skilled)) +
+  geom_line() +
+  geom_line(data = labor_by_year_and_skill) +
+  labs(
+    x = NULL, y = "Labor Participation (%)",
+    title = "Participation Has Declined From 2001",
+    subtitle = "Especially for unskilled workers",
+    color = "Worker Skill: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(limits = c(.4, .8), breaks = seq(.4, .8, by = .05), labels = scales::percent_format()) +
+  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), na.translate = FALSE) +
+  theme(plot.title = element_text(size = 12))
+```
+
+## Summary
+
+```{r fig.align="center", fig.width=9}
+#| warning: false
+ggarrange(wage_plot, lfp_plot, ncol = 2, common.legend = TRUE, legend = "bottom")
+```
+
+Nominal wages have risen for both skilled and unskilled workers but not at the same rate. Skilled wages have risen faster causing the gap between skilled and unskilled wages to widen each decade since the 1980s.
+
+Across the entire period labour force participation has been about 20% greater for skilled workers than unskilled workers even as participation has varied for each group individually.
+
+The trends in participation are clearly correlated between the groups; peaks and valleys tended to occur in the same periods. Visually, unskilled participation appears to be more volatile. For both groups the maximum participation rate occurred in the early 2000s and has consistently declined since then; reaching the minimum level in 2015. 
+
+# (b) Examine adult male labour force participation changes by group
+
+## Select and Isolate Relevant Data
+
+```{r}
+#| output: false
+# Age was imported as a string due to a few odd labels i.e. "<1" or "99+".
+# Casting to numeric doesn't affect the relevant data.
+adult_men <- labor |>
+  filter(as.numeric(age) >= 25 & sex == "male")
+```
+
+## Compute Group Summaries to Look for Relationships
+
+Although this question only asks about changes in labour force participation wage trends were plotted as well. Considering labour force participation alongside wages can illustrate some interesting differences between the groups and gives clues as to the underlying relationships.
+
+### By Skill Level
+
+After isolating the data for men over age 25, we can compare their skilled and unskilled wages and participation relative to the total population as calculated in part (a).
+
+```{r fig.align="center", fig.width=9}
+#| warning: false
+# Compare to the overall population as seen in part (a)
+adult_men_by_year_and_skill <- adult_men |>
+  mutate(
+    skilled = case_when(
+      skilled == 1 ~ "Skilled",
+      skilled == 0 ~ "Unskilled",
+    )
+  ) |>
+  group_by(year, skilled) |>
+  summarize(
+    wage = mean(wage, na.rm = TRUE),
+    lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
+  )
+
+# adult men wage plot by skill
+# unskilled men were previously above the population average but have fallen far below
+# perhaps the result of reductions in the gender wage gap
+adult_men_by_year_and_skill |>
+  ggplot(aes(year, wage, colour = skilled)) +
+  geom_line() +
+  geom_line(data = labor_by_year) +
+  labs(
+    x = NULL, y = "Wage (Nominal USD)",
+    title = "The Wages of Unskilled Men Have Fallen Below the Population Average",
+    color = "Worker Skill: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(breaks = seq(5, 30, by = 5)) +
+  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), labels = c("Skilled Men", "Unskilled Men", "All Workers"), na.translate = FALSE) +
+  theme(axis.title.y = element_text(vjust = 3), plot.title = element_text(size = 12))
+
+# adult men labour force participation plot by skill
+# significant decrease in skilled participation over the period
+adult_men_by_year_and_skill |>
+  ggplot(aes(year, lfp, colour = skilled)) +
+  geom_line() +
+  geom_line(data = labor_by_year) +
+  labs(
+    x = NULL, y = "Labor Participation (%)",
+    title = "Male Participation Remains Higher Than Average",
+    subtitle = "But has decreased significantly over time", # not the store
+    color = "Worker Skill: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(limits = c(.55, 1), breaks = seq(.4, .9, by = .05), labels = scales::percent_format()) +
+  scale_colour_discrete(breaks = c("Skilled", "Unskilled", "Combined"), labels = c("Skilled Men", "Unskilled Men", "All Workers"), na.translate = FALSE) +
+  theme(plot.title = element_text(size = 12))
+```
+
+We can see that both skilled and unskilled men followed very different trends to the general population between 1976 and 2000. While the participation of all workers was trending upwards, male participation was decreasing. 
+
+The increasing trend for the general population must be due to a greater proportion of women participating in the labour force but it is not obvious why that would cause male participation to decline.
+
+After 2001 the male participation trends mirror those of the general population perhaps suggesting that increasing female participation ceased to be a significant factor. As expected male participation remains higher than average and the differential has been consistent since the early 2000s for both skilled and unskilled men.
+
+For the total population, it was unskilled workers who were observed to have greater volatility in participation; but here we can see that the participation of skilled men fell more than that of unskilled men.
+
+### By Age Group
+
+Another dimension that can be examined is participation across age groups.
+
+```{r fig.align="center", fig.width=9}
+#| warning: false
+# Compare by age group
+adult_men_by_year_and_age_group <- adult_men |>
+  group_by(year, age_group) |>
+  summarize(
+    wage = mean(wage, na.rm = TRUE),
+    lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
+  )
+
+# adult men wage by age_group
+adult_men_by_year_and_age_group |>
+  ggplot(aes(year, wage, colour = age_group)) +
+  geom_line() +
+  labs(
+    x = NULL, y = "Wage (Nominal USD)",
+    title = "The Wages of Retirement Age Workers Have Increased Significantly",
+    subtitle = "While early-career wages have fallen behind",
+    color = "Worker Age: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(breaks = seq(5, 30, by = 5)) +
+  scale_colour_discrete(breaks = c("25 <= age < 45", "45 <= age < 65", "65 <= age"), labels = c("25-45", "45-65", ">65"), na.translate = FALSE) +
+  theme(axis.title.y = element_text(vjust = 3), plot.title = element_text(size = 12))
+
+# adult men labour force participation plot by age_group
+# no significant trend
+adult_men_by_year_and_age_group |>
+  ggplot(aes(year, lfp, colour = age_group)) +
+  geom_line() +
+  labs(
+    x = NULL, y = "Labor Participation (%)",
+    title = "Little Change in Proportion of Early Retirement",
+    subtitle = "But retirement age Workers are participating more than ever",
+    color = "Worker Age: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(limits = c(.15, 1), breaks = seq(.15, .9, by = .1), labels = scales::percent_format()) +
+  scale_colour_discrete(breaks = c("25 <= age < 45", "45 <= age < 65", "65 <= age"), labels = c("25-45", "45-65", ">65"), na.translate = FALSE) +
+  theme(plot.title = element_text(size = 12))
+```
+
+Neither early nor mid career workers have experienced a significant change in participation. 
+
+Retirement age worker participation has varied significantly.
+
+In the mid 1970s about 20% of men over age 65 participated in the labour force. By the early 1990s that rate had declined to 15%. However since then elderly participation has increased to new highs of 25%.
+
+These are substantial changes over short time periods and merit some consideration.
+
+### By Race
+
+There may also be changes in the labour force participation of men by race.
+
+```{r fig.align="center", fig.width=9}
+#| warning: false
+# Compare by race
+adult_men_by_year_and_race <- adult_men |>
+  mutate(
+    race = case_when(
+      race == "white" & hispan == "not hispanic" ~ "White",
+      race == "white" ~ "Hispanic",
+      race == "asian only" ~ "Asian",
+      race == "black/negro" ~ "Black",
+      TRUE ~ "Other"
+    )
+  ) |>
+  group_by(year, race) |>
+  summarize(
+    wage = mean(wage, na.rm = TRUE),
+    lfp = sum(lfp == "In labor force", na.rm = TRUE) / sum(!is.na(lfp)),
+  )
+
+# adult men wage by race
+adult_men_by_year_and_race |>
+  ggplot(aes(year, wage, colour = fct_reorder(race, wage))) +
+  geom_line() +
+  labs(
+    x = NULL, y = "Wage (Nominal USD)",
+    title = "Black Wages Have Diverged From Hispanic Wages",
+    subtitle = "Asian's are Consistently the Highest Earning Americans",
+    color = "Race: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(breaks = seq(5, 30, by = 5)) +
+  theme(axis.title.y = element_text(vjust = 3), plot.title = element_text(size = 12))
+
+# adult men labour force participation plot by race
+# no significant trend
+adult_men_by_year_and_race |>
+  ggplot(aes(year, lfp, colour = fct_reorder(race, wage))) +
+  geom_line() +
+  labs(
+    x = NULL, y = "Labor Participation (%)",
+    title = "Hispanic Participation is Very High Relative to Their Wages",
+    subtitle = "Black Participation Continues to Decline",
+    color = "Race: ",
+    caption = "Source: Author's Calculations"
+  ) +
+  scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
+  scale_y_continuous(limits = c(.55, 1), breaks = seq(.4, .9, by = .05), labels = scales::percent_format()) +
+  theme(plot.title = element_text(size = 12))
+```
+
+Hispanic participation has been consistently high over the period with only small variation. The high participation of Hispanics is notable given their relatively low wages but that observation is not relevant to our current focus on participation *changes*.
+
+Asian workers have also had high participation but were only included in the data set starting in 2003.
+
+White workers have approximately mirrored the trends we saw for the total adult male population. This makes sense as they constitute the majority of observations.
+
+There have been significant changes to the participation of black and other races. Other appears to have been impacted by changes to the survey methodology. The big drop in participation between 2002 and 2003 was probably due to the introduction of Asian as a category. 
+
+The change in black participation is notably different from the trend of the total population.
+
+Black participation has declined 10 percentage points over the period. Unlike other groups they did not increase participation during the dot-com bubble and instead had a local maximum following the great recession; a characteristic that has not been observed for any other group.
+
+## Summary
+
+We examined trends in labour force participation for adult men with respect to skill-level, age, and race.
+
+The greatest changes were observed for:
+
+* Skilled workers and black workers whose participation rates each declined by around 10 percentage points, and,
+* Retirement age workers whose participation declined in the 1980s and 90s before rising sharply to the present,
+
+# (c) What factors are driving these patterns^[Usually I would put the analysis under the applicable chart but the task was structured to have it in a separate section]
+
+## Skilled Workers
+
+### Adult Men
+
+For adult men the large decline in participation between the mid 1970s and 2000 appears to be offset against the increasing participation of the total population - which can be attributed to a higher proportion of women entering the workforce.
+
+Perhaps as women entered the workforce their partners became more likely to leave it. This may have had a more significant impact in households with two skilled workers which, given their higher wages, could afford to live on a single salary. This hypothesis could be tested by comparing the trends in participation for single skilled men against skilled men with skilled female partners. 
+
+Additionally, the proportion of skilled workers likely changed over the period as America's economy transitioned from industrial to service based. As more of the population became skilled, the skilled population would become more average. That could be tested by confirming the proportion of skilled workers changed.
+
+## Black Workers
+
+It is difficult to hypothesize why black labour force participation would decline over the period. The barriers to entry have presumably been reduced over the years which would lead one to expect their participation would have increased rather than decreased. 
+
+Wages for black people also rose faster than those of Hispanics. The increasing opportunity cost of not participating would be expected to increase participation.
+
+Despite this it was a decrease that was actually observed.
+
+Perhaps black people are concentrated in particular areas (urban and Southern) or professions (e.g. industrial, agricultural) which have seen declining participation rates. First one would have to determine the accuracy of these generalizations and then test whether participation for workers of other races in those professions/areas also declined over the period.
+
+## Retirement Age Workers
+
+The most interesting and intriguing observation was probably the change in retirement age wages and labour force participation.
+
+In the 1970s retirement age participation was relatively high (~20%) despite retirement age wages being very low relative to the working age population.
+
+Through to the mid 1990s the wage differential stayed the same while participation fell to ~15%.
+
+Then between the mid 90s and 2015 retirement age wages rose sharply on both a relative and absolute basis, and participation also increased to a high of ~25%.
+
+Looking only at the data since the mid 90s it would appear that as elderly workers became more valued by the market their participation increased. Their increased wages may be due to their improving health over the period or the economy's transition away from physical labour and towards mental labour. Then the opportunity cost hypothesis would explain their increasing participation. But this hypothesis does not explain why participation was so high in the 1970s when retirement age wages were at their lowest point.
+
+Perhaps the participation in the 1970s was of necessity. The period's stagflation would have eroded the value of nominal denominated fixed income (pensions, and investments); at the same time the low growth may have impeded the ability of children to care for their parents. This might have forced more elderly people to participate in the labour force.
+
+Of course all of these assumptions and the hypotheses would need to be tested in greater detail. A good place to start would be incorporating data on inflation and growth. Then nominal wages could be converted to real wages and the relative wages of elderly workers could be compared on a proportional basis over the period.
+
+## Overall
+
+For each trend that was identified, the analysis would be better served by a multiple linear regression model than these simple exploratory graphs. A regression would allow us to quantify and test the significance of these hypotheses.
+
+There are no doubt many factors influencing labour force participation including wage, skill, race, location, profession, and age. The major weakness of the graphs we've conducted here is their inability to control for these other factors. That weakness could be overcome by a regression.
