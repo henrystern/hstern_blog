@@ -21,7 +21,7 @@ Cognitive errors can be belief perseverance biases or information processing bia
 * Belief perseverance biases:
   * Conservatism: Unwillingness to change beliefs in response to new information.
   * Confirmation: Failure to seek out or appreciate contradictory facts or opinions.
-  * Representativeness: False belief that recent outcomes are representative of long term trends.
+  * Representativeness: Incorrectly applying past experience as a guide in predicting future probabilities.
   * Illusion of control: False belief in ability to control the outcomes of certain investments.
   * Hindsight: False belief that the past outcomes were foreseeable.
 

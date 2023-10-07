@@ -6,6 +6,8 @@ execute:
 
 website:
   title: "HStern"
+  site-url: "https://hstern.ca"
+  description: "A blog about nothing."
   favicon: "/static/assets/favicon.svg"
   navbar:
     logo-href: "https://hstern.ca"
