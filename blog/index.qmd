@@ -9,6 +9,7 @@ listing:
   categories: numbered
   sort-ui: false
   filter-ui: false
+  feed: true
 page-layout: full
 comments: false
 ---
