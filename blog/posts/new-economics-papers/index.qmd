@@ -1,0 +1,67 @@
+---
+title: "Following New Economics Papers with RSS"
+date: 2023-10-04
+categories: [Economics, Web-Scraping]
+format:
+  html:
+    df-print: kable
+---
+
+The option to subscribe to REPEC's NEP service is hidden but still available. This post provides a list of available rss feeds.
+
+REPEC is an online database of economics papers, most of which are freely available to read. It is an incredible resource that is itself underrated by students of economics. But even more underrated is the associated *New Economics Papers* service that notifies subscribers as new papers are released.
+
+There are over a hundred categories which can be followed. Each managed by an academic volunteer who selects relevant papers for distribution. It is the absolute easiest way to stay up to date on new research in economics.
+
+The [NEP page](https://nep.repec.org) includes buttons to subscribe to an email list or Mastodon feed for each category but RSS, the objectively best option, is missing.^[It is mentioned on the page but there are no links.]
+
+I knew that RSS feeds would be around somewhere and after a little search I finally found them under [nep.repec.org/rss/](https://nep.repec.org/rss/). This page shows an Apache directory index with the RSS files. Unhelpfully they are only titled by ID but by cross-referencing with the main page I was able to generate this list of available feeds. 
+
+```{r}
+#| code-fold: True
+library("rvest")
+
+# NEP listing for humans
+nep <- read_html("https://nep.repec.org/")
+
+# Select IDs and Categories
+nep_categories <- nep |>
+  html_elements(".nitpo_antem")
+
+id_to_category <- tibble::tibble(
+  ID = nep_categories |>
+    html_element(".sbore_repcode") |>
+    html_text2(),
+  Category = nep_categories |>
+    html_element(".derep") |>
+    html_element(xpath = "a[contains(@href, 'latest')]") |>
+    html_text2()
+)
+
+# Apache rss index
+nep_rss <- read_html("https://nep.repec.org/rss/")
+
+# Select IDs and RSS Feed Links
+id_to_feed <- nep_rss |>
+  html_element("table") |>
+  html_table() |>
+  dplyr::select(Name, `Last modified`) |>
+  dplyr::mutate(
+    ID = stringr::str_sub(Name, 1, stringr::str_locate(Name, "\\.")[, "end"] - 1),
+    Feed = paste0("[", ID, "](https://nep.repec.org/rss/", ID, ".rss.xml)"),
+    Dormant = lubridate::interval(
+      lubridate::ymd_hm(`Last modified`),
+      lubridate::today()
+    ) / lubridate::years(1) > 1
+  ) |>
+  dplyr::filter(!Dormant) |>
+  dplyr::select(ID, Feed)
+
+# Combine Feed and Category
+feed_and_category <- id_to_category |>
+  dplyr::inner_join(id_to_feed, dplyr::join_by(ID)) |>
+  dplyr::select(Feed, Category)
+
+# Output
+feed_and_category
+```
