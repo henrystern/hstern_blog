@@ -1,0 +1,130 @@
+---
+title: "Dot Grid Generator"
+description: "Generate custom notepaper templates."
+date: 2023-12-13
+categories: ["Javascript", "School", "Visualization"]
+format:
+  html:
+    page-layout: full
+    code-fold: true
+comments: false
+---
+
+::: {.column-screen-inset}
+
+::: {.panel-sidebar}
+## Settings
+
+### Paper
+
+```{ojs}
+import {rasterize, serialize} from "@mbostock/saving-svg"
+
+viewof paper = Inputs.form({
+  x: Inputs.number([1, 1000], {value: 279.4, step: .01, label: "Width (mm)"}),
+  y: Inputs.number([1, 1000], {value: 215.9, step: .01, label: "Height (mm)"}),
+  split: Inputs.number([1, 1000], {value: 139.7, step: .01, label: "Split (mm)"}),
+  colour: Inputs.color({value: "#ffffff", label: "Colour"}),
+})
+```
+
+### Margins
+
+```{ojs}
+viewof margin = Inputs.form({
+  left: Inputs.range([0, 1000], {value: 5, step: 1, label: "Left (mm)"}),
+  right: Inputs.range([0, 1000], {value: 5, step: 1, label: "Right (mm)"}),
+  top: Inputs.range([0, 1000], {value: 25, step: 1, label: "Top (mm)"}),
+  bottom: Inputs.range([0, 1000], {value: 5, step: 1, label: "Bottom (mm)"}),
+})
+```
+
+### Dots
+
+```{ojs}
+viewof dots = Inputs.form({
+  dot_colour: Inputs.color({value: "#c0c0c0", label: "Colour"}),
+  dot_size: Inputs.range([0.1, 10], {value: 0.2, step: .1, label: "Size (mm)"}),
+  dot_spacing: Inputs.range([1, 20], {value: 6, step: 1, label: "Spacing (mm)"}),
+})
+```
+
+## Export
+
+::: {.d-flex .flex-row .justify-content-center .mb-3}
+```{ojs}
+//| echo: false
+DOM.download(() => serialize(grid), undefined, "Save Grid as SVG")
+```
+::: {.p-2}
+:::
+```{ojs}
+//| echo: false
+DOM.download(() => rasterize(grid), undefined, "Save Grid as PNG")
+```
+:::
+
+You can print the SVG directly by opening it in a browser, selecting the intended paper size and orientation, setting margins to none, and printing at 100% scale.
+
+Alternately, you can open it in a graphics editor like Inkscape for further customization and export to PDF.
+
+:::
+
+```{ojs}
+//| panel: fill
+
+grid = {
+  const s = d3.create("svg")
+    .attr("width", `${paper.x}mm`)
+    .attr("height",`${paper.y}mm`)
+    .style("background-color",paper.colour) 
+
+  // Page border
+  s.append("rect")
+    .attr("x",0)
+    .attr("y",0)
+    .attr("width",`${paper.x}mm`)
+    .attr("height",`${paper.y}mm`)
+    .attr("stroke", dots.dot_colour)
+    .attr("fill",paper.colour)
+
+  // Split line
+  s.append("line")
+    .attr("x1",`${paper.split}mm`)
+    .attr("x2",`${paper.split}mm`)
+    .attr("y1",0)
+    .attr("y2",`${paper.y}mm`)
+    .attr("stroke", dots.dot_colour)
+    .attr("fill",paper.colour)
+
+  // Top line
+  s.append("line")
+    .attr("x1",0)
+    .attr("x2",`${paper.x}mm`)
+    .attr("y1",`${margin.top}mm`)
+    .attr("y2",`${margin.top}mm`)
+    .attr("stroke", dots.dot_colour)
+    .attr("fill",paper.colour)
+
+  let remainder = {
+    x: ((paper.x - margin.right - margin.left) % dots.dot_spacing) / 2,
+    y: ((paper.y - margin.bottom - margin.top) % dots.dot_spacing) / 2,
+  }
+
+  // Dots
+  for (let x = remainder.x; margin.left + x < paper.x - margin.right; x += dots.dot_spacing) {
+    for (let y = dots.dot_spacing + remainder.y; margin.top + y < paper.y - margin.bottom; y += dots.dot_spacing) {
+      s.append("circle")
+        .attr("cx", `${margin.left+(x)}mm`)
+        .attr("cy", `${margin.top+(y)}mm`)
+        .attr("r", `${dots.dot_size}mm`)
+        .attr("stroke", dots.dot_colour)
+        .attr("fill", dots.dot_colour)
+    }
+  }
+
+  return s.node();
+}
+```
+
+:::

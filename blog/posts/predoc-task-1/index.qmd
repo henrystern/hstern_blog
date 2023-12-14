@@ -80,7 +80,7 @@ wage_plot <- labor_by_year |>
   ) +
   scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
   scale_y_continuous(breaks = seq(5, 30, by = 5)) +
-  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), na.translate = FALSE) +
+  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), labels = c("Skilled", "All", "Unskilled"), na.translate = FALSE) +
   theme(axis.title.y = element_text(vjust = 3), plot.title = element_text(size = 12))
 ```
 
@@ -101,7 +101,7 @@ lfp_plot <- labor_by_year |>
   ) +
   scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
   scale_y_continuous(limits = c(.4, .8), breaks = seq(.4, .8, by = .05), labels = scales::percent_format()) +
-  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), na.translate = FALSE) +
+  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), labels = c("Skilled", "All", "Unskilled"), na.translate = FALSE) +
   theme(plot.title = element_text(size = 12))
 ```
 
@@ -169,7 +169,7 @@ adult_men_by_year_and_skill |>
   ) +
   scale_x_continuous(breaks = seq(1980, 2020, by = 5)) +
   scale_y_continuous(breaks = seq(5, 30, by = 5)) +
-  scale_colour_discrete(breaks = c("Skilled", "Combined", "Unskilled"), labels = c("Skilled Men", "Unskilled Men", "All Workers"), na.translate = FALSE) +
+  scale_colour_discrete(breaks = c("Skilled", "Unskilled", "Combined"), labels = c("Skilled Men", "Unskilled Men", "All Workers"), na.translate = FALSE) +
   theme(axis.title.y = element_text(vjust = 3), plot.title = element_text(size = 12))
 
 # adult men labour force participation plot by skill
