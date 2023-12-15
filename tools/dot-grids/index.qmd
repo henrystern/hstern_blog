@@ -20,22 +20,49 @@ comments: false
 ```{ojs}
 import {rasterize, serialize} from "@mbostock/saving-svg"
 
+function get_paper_dimension(format, orientation) {
+  if (orientation == "Portrait") {
+    return {x: format.width, y: format.height}
+  } else {
+    return {x: format.height, y: format.width}
+  }
+}
+
+viewof format = Inputs.select(new Map([
+  ["Letter", {width: 215.9, height: 279.4}],
+  ["A4", {width: 210, height: 297}],
+  ]), {label: "Paper Format"})
+
+viewof orientation = Inputs.radio(["Landscape", "Portrait"], {value: "Landscape"})
+
+paper_dimension = get_paper_dimension(format, orientation)
+
 viewof paper = Inputs.form({
-  x: Inputs.number([1, 1000], {value: 279.4, step: .01, label: "Width (mm)"}),
-  y: Inputs.number([1, 1000], {value: 215.9, step: .01, label: "Height (mm)"}),
-  split: Inputs.number([1, 1000], {value: 139.7, step: .01, label: "Split (mm)"}),
+  x: Inputs.range([1, 1000], {value: paper_dimension.x, step: .01, label: "Width (mm)"}),
+  y: Inputs.range([1, 1000], {value: paper_dimension.y, step: .01, label: "Height (mm)"}),
   colour: Inputs.color({value: "#ffffff", label: "Colour"}),
 })
+```
+
+### Splits
+
+```{ojs}
+
+viewof show_split =  Inputs.checkbox(["Horizontally", "Vertically"], {label: "Split page: ", value: ["Horizontally", "Vertically"]})
+viewof x_split = Inputs.range([-1, 1000], {value: show_split.includes("Horizontally") ? paper_dimension.x / 2 : -1, step: 1, label: "Horizontal split (mm)"})
+viewof y_split = Inputs.range([-1, 1000], {value: show_split.includes("Vertically") ? 25 : -1, step: 1, label: "Vertical split (mm)"})
+
 ```
 
 ### Margins
 
 ```{ojs}
 viewof margin = Inputs.form({
-  left: Inputs.range([0, 1000], {value: 5, step: 1, label: "Left (mm)"}),
-  right: Inputs.range([0, 1000], {value: 5, step: 1, label: "Right (mm)"}),
-  top: Inputs.range([0, 1000], {value: 25, step: 1, label: "Top (mm)"}),
+  left: Inputs.range([0, 1000], {value: 10, step: 1, label: "Left (mm)"}),
+  right: Inputs.range([0, 1000], {value: 10, step: 1, label: "Right (mm)"}),
+  top: Inputs.range([0, 1000], {value: 30, step: 1, label: "Top (mm)"}),
   bottom: Inputs.range([0, 1000], {value: 5, step: 1, label: "Bottom (mm)"}),
+  centre: Inputs.toggle({label: "Centre margins", value: true})
 })
 ```
 
@@ -90,8 +117,8 @@ grid = {
 
   // Split line
   s.append("line")
-    .attr("x1",`${paper.split}mm`)
-    .attr("x2",`${paper.split}mm`)
+    .attr("x1",`${x_split}mm`)
+    .attr("x2",`${x_split}mm`)
     .attr("y1",0)
     .attr("y2",`${paper.y}mm`)
     .attr("stroke", dots.dot_colour)
@@ -101,19 +128,19 @@ grid = {
   s.append("line")
     .attr("x1",0)
     .attr("x2",`${paper.x}mm`)
-    .attr("y1",`${margin.top}mm`)
-    .attr("y2",`${margin.top}mm`)
+    .attr("y1",`${y_split}mm`)
+    .attr("y2",`${y_split}mm`)
     .attr("stroke", dots.dot_colour)
     .attr("fill",paper.colour)
 
   let remainder = {
-    x: ((paper.x - margin.right - margin.left) % dots.dot_spacing) / 2,
-    y: ((paper.y - margin.bottom - margin.top) % dots.dot_spacing) / 2,
+    x: margin.centre ? ((paper.x - margin.right - margin.left) % dots.dot_spacing) / 2 : 0,
+    y: margin.centre ? ((paper.y - margin.bottom - margin.top) % dots.dot_spacing) / 2 : 0,
   }
 
   // Dots
   for (let x = remainder.x; margin.left + x < paper.x - margin.right; x += dots.dot_spacing) {
-    for (let y = dots.dot_spacing + remainder.y; margin.top + y < paper.y - margin.bottom; y += dots.dot_spacing) {
+    for (let y = remainder.y; margin.top + y < paper.y - margin.bottom; y += dots.dot_spacing) {
       s.append("circle")
         .attr("cx", `${margin.left+(x)}mm`)
         .attr("cy", `${margin.top+(y)}mm`)
