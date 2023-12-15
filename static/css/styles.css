@@ -1,11 +1,14 @@
 /* css styles */
 
-.navbar-dark .navbar-brand {
+.navbar-dark,
+.navbar-brand {
   color: var(--bs-white);
   opacity: 1 !important;
 }
 
-.quarto-title h1, .quarto-category, .quarto-category a {
+.quarto-title h1,
+.quarto-category,
+.quarto-category a {
   color: var(--bs-primary) !important;
   opacity: 1 !important;
 }
@@ -22,22 +25,21 @@
 }
 
 @media (min-width: 992px) {
-  
   #quarto-header .navbar-brand {
     margin-right: 5rem;
     margin-left: 4.5rem;
     padding: 0rem;
     font-size: 2rem;
   }
-  
+
   #quarto-header ul li a {
     position: relative;
     transition: 0s;
   }
-  
+
   #quarto-header ul li a::after {
     position: absolute;
-    content: "";
+    content: '';
     width: 100%;
     height: 3px;
     top: 100%;
@@ -53,8 +55,10 @@
 
   #quarto-header .navbar-brand-container {
     background-color: var(--bs-secondary);
-    transition: .5s ease-in-out, transform .5s ease-in-out;
-    border-radius: .25rem !important;
+    transition:
+      0.5s ease-in-out,
+      transform 0.5s ease-in-out;
+    border-radius: 0.25rem !important;
   }
 
   #quarto-header .navbar-brand-container:hover {
@@ -62,19 +66,20 @@
   }
 
   #quarto-header .navbar-brand {
-    -webkit-transition: color .5s;
-    -moz-transition:    color .5s;
-    -ms-transition:     color .5s;
-    -o-transition:      color .5s;
-    transition:         color .5s;
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -ms-transition: color 0.5s;
+    -o-transition: color 0.5s;
+    transition: color 0.5s;
   }
 
   #quarto-header .navbar-brand-container:hover .navbar-brand {
     color: var(--bs-secondary) !important;
   }
 
-  #quarto-header .active, #quarto-sidebar .sidebar-item.active {
-    color:            var(--bs-white) !important;
+  #quarto-header .active,
+  #quarto-sidebar .sidebar-item.active {
+    color: var(--bs-white) !important;
     background-color: var(--bs-blue);
     opacity: 1 !important;
   }
@@ -83,7 +88,8 @@
     padding-top: 0em;
   }
 
-  .sidebar-navigation .sidebar-section .sidebar-item, .sidebar-navigation .sidebar-item {
+  .sidebar-navigation .sidebar-section .sidebar-item,
+  .sidebar-navigation .sidebar-item {
     font-size: 1rem;
   }
 
@@ -91,10 +97,12 @@
     color: var(--bs-gray-600);
   }
 
-  .sidebar .quarto-other-links ul li a, .sidebar .quarto-alternate-notebooks ul li a, .sidebar .quarto-alternate-formats ul li a, .sidebar nav[role="doc-toc"] > ul li a {
+  .sidebar .quarto-other-links ul li a,
+  .sidebar .quarto-alternate-notebooks ul li a,
+  .sidebar .quarto-alternate-formats ul li a,
+  .sidebar nav[role='doc-toc'] > ul li a {
     color: var(--bs-gray-600);
   }
-
 }
 
 @media (max-width: 991.98px) {
@@ -103,7 +111,7 @@
     max-width: 250px;
     min-width: 250px;
   }
-  
+
   .quarto-secondary-nav nav.quarto-page-breadcrumbs {
     display: none !important;
   }
@@ -123,28 +131,27 @@
 }
 
 .color-fade {
-  -webkit-transition: color .5s !important;
-  -moz-transition:    color .5s !important;
-  -ms-transition:     color .5s !important;
-  -o-transition:      color .5s !important;
-  transition:         color .5s !important;
-
+  -webkit-transition: color 0.5s !important;
+  -moz-transition: color 0.5s !important;
+  -ms-transition: color 0.5s !important;
+  -o-transition: color 0.5s !important;
+  transition: color 0.5s !important;
 }
 
 .bg-color-fade {
-  -webkit-transition: background-color .5s !important;
-  -moz-transition:    background-color .5s !important;
-  -ms-transition:     background-color .5s !important;
-  -o-transition:      background-color .5s !important;
-  transition:         background-color .5s !important;
+  -webkit-transition: background-color 0.5s !important;
+  -moz-transition: background-color 0.5s !important;
+  -ms-transition: background-color 0.5s !important;
+  -o-transition: background-color 0.5s !important;
+  transition: background-color 0.5s !important;
 }
 
 .transition {
-  -webkit-transition: all .5s !important;
-  -moz-transition:    all .5s !important;
-  -ms-transition:     all .5s !important;
-  -o-transition:      all .5s !important;
-  transition:         all .5s !important;
+  -webkit-transition: all 0.5s !important;
+  -moz-transition: all 0.5s !important;
+  -ms-transition: all 0.5s !important;
+  -o-transition: all 0.5s !important;
+  transition: all 0.5s !important;
 }
 
 div.observablehq svg {
