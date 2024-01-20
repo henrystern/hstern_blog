@@ -1,0 +1,7 @@
+---
+title: "Escape Nested Tex"
+description: "A Quarto extension that fixes the 'erroneous nesting of equation structures' error when rendering a quarto document to PDF."
+date: 2024-01-20
+href: "https://github.com/henrystern/escape_nested_tex"
+categories: ["Quarto", "Latex"]
+---
