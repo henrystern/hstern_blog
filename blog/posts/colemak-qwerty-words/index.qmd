@@ -1,0 +1,130 @@
+---
+title: "Valid inputs in multiple keyboard layouts"
+date: 2024-03-05
+categories: ["typing", "python"]
+format:
+  html:
+    df-print: kable
+---
+
+Most of the time, inputting keys in the wrong keyboard layout will result in gibberish --- but not always. I thought today I would try to find the longest input sequences that generate valid words in two different keyboard layouts.
+
+The script is pretty simple and just brute forces comparisons along a large wordlist.
+
+```{python}
+#| code-fold: true
+#| eval: false
+
+from numpy import loadtxt
+from unidecode import unidecode
+
+
+def main():
+    raw_words = loadtxt(
+        "./blog/posts/colemak-qwerty-words/wordlist.txt",
+        dtype="str",
+    )
+    words = [unidecode(word).lower() for word in raw_words]
+
+    layouts = get_layouts()
+
+    matches = find_matches(words, layouts)
+
+    print(matches)
+
+    return matches
+
+
+def get_layouts():
+    layouts = {}
+
+    layouts["qwerty"] = [
+        ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
+        ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "\n"],
+        ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
+        [" "],
+    ]
+
+    layouts["colemak_dh"] = [
+        ["q", "w", "f", "p", "b", "j", "l", "u", "y", ";", "[", "]", "\\"],
+        ["a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'", "\n"],
+        ["x", "c", "d", "v", "z", "k", "h", ",", ".", "/"],
+        [" "],
+    ]
+
+    layouts["colemak"] = [
+        ["q", "w", "f", "p", "g", "j", "l", "u", "y", ";", "[", "]", "\\"],
+        ["a", "r", "s", "t", "d", "h", "n", "e", "i", "o", "'", "\n"],
+        ["z", "x", "c", "v", "b", "k", "m", ",", ".", "/"],
+        [" "],
+    ]
+
+    layouts["dvorak"] = [
+        ["'", ",", ".", "p", "y", "f", "g", "c", "r", "l", "/", "=", "\\"],
+        ["a", "o", "e", "u", "i", "d", "h", "t", "n", "s", "-", "\n"],
+        [";", "q", "j", "k", "x", "b", "m", "w", "v", "z"],
+        [" "],
+    ]
+
+    return layouts
+
+
+def map_keys(keys):
+    map = {}
+    for i, row in enumerate(keys):
+        for j, key in enumerate(row):
+            map[key] = [i, j]
+    return map
+
+
+def decipher(s, input_key, output_key):
+    input_map = map_keys(input_key)
+    out = []
+    for char in s:
+        i, j = input_map[char]
+        out.append(output_key[i][j])
+    return "".join(out).upper()
+
+
+def type_sequence(sequence, layout):
+    keys = [layout[row][column] for (row, column) in sequence]
+    return "".join(keys)
+
+
+def find_matches(words, layouts):
+    maps = {name: map_keys(layout) for (name, layout) in layouts.items()}
+
+    matches = {"colemak_dh": [], "colemak": [], "dvorak": []}
+
+    for word in words:
+        sequence = [maps["qwerty"][char] for char in word]
+
+        output = {
+            "colemak_dh": type_sequence(sequence, layouts["colemak_dh"]),
+            "colemak": type_sequence(sequence, layouts["colemak"]),
+            "dvorak": type_sequence(sequence, layouts["dvorak"]),
+        }
+
+        for layout, output in output.items():
+            if output in words:
+                matches[layout].append([word, output])
+                print(f"{word} types {output} in {layout}")
+
+    return matches
+
+
+if __name__ == "__main__":
+    matches = main()
+```
+
+The prize for most similar goes to `mamma` which is the same in qwerty, colemak, and dvorak (can you guess why?).
+
+Here is the full list of pairs.
+
+```{r}
+#| echo: false
+#| warning: false
+pairs <- readr::read_csv("./output/pairs.csv")
+pairs
+```
+
