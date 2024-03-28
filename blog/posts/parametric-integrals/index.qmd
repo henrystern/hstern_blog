@@ -1,0 +1,60 @@
+---
+title: "Computing producer surplus from a parametric supply curve"
+date: 2024-03-28
+bibliography: references.bib
+categories: ["economics"]
+---
+
+This is problem 12.5 from @nicholson2017-MicroeconomicTheoryBasic. The textbook solution used a linear approximation but it is actually a good example of a parametric integral. Since calculus textbooks almost exclusively use physics to demonstrate applications of integration, I thought I'd work through an econ example.
+
+## Problem 12.5
+
+Suppose that demand, the supply of entrepreneurial talent, and long-run cost for a competitive industry are given by
+$$\begin{gather}
+  D(P) = 1500 - 50P \\
+  Q_s = .25w \\
+  C(q) = 0.5q^2 - 10q + w,
+\end{gather}$$
+where $P$ is output price, $w$ is the entrepreneur's wage, and $q$ is firm output.
+
+Assume that each firm requires exactly one entrepreneur (so $n = .25w$).
+
+### Part a)
+Find the long-run equilibrium --- setting $P = MC = AC$, $Q = n \cdot q$, and substituting $w = 4n$, we find
+$$\begin{align*}
+  S = \sqrt{8}n^{3 / 2} = n(P + 10)
+\end{align*}$$
+
+Then letting $D = S$, we find $n^* = 50$.
+
+### Part b)
+Find the new equilibrium if demand shifts to $D(P) = 2428 - 50P$. Setting $D = S$ again we find $n^* = 72$.
+
+### Part c)
+The interesting one. Show that the increase in rents accruing to the entrepreneurs is identical to the change in long-run producer surplus along the market supply curve.
+
+The change in rents is easy. We know that,
+$$\begin{align*}
+  Q_s = .25w &= n \\
+  \implies w &= 4n
+\end{align*}$$
+
+So the increase in rents is the integral,
+$$\begin{align*}
+  \int_{50}^{72} 4n\ dn.
+\end{align*}$$
+
+![](./rent.png)
+
+To find the producer surplus along the market supply curve treat $S = \sqrt{8}n^{3/ 2}$ as a parametric equation for the $x$ coordinate of the supply curve as $n$ changes. We know that $S = \sqrt{8}n^{3/2} = n(P + 10)$ so $P = \sqrt{8n} - 10$: a parametric equation for the $y$ coordinate of the supply curve in terms of $n$.
+
+We want to find the area to the left of the supply curve, so reversing the order of the formula for the area under a parametric curve,^[If you're not familiar with this technique you can read the derivation in @site-2018-10CalculusParametric]
+$$\begin{align}
+  \Delta PS &= \int_{50}^{72} S \cdot P'\ dn \\
+     &= \int_{50}^{72} \sqrt{8}n^{3 / 2} \cdot \sqrt{\frac{2}{n}}\ dn \\
+     &= \int_{50}^{72} 4n\ dn.
+\end{align}$$
+
+![](./PS.png)
+
+Which shows the change in rents is identical to the change in producer surplus.
