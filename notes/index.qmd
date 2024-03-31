@@ -1,5 +1,5 @@
 ---
-pagetitle: "Henry Stern - Notes"
+pagetitle: "Notes"
 listing:
   contents: 
     - cfa-1/index.qmd

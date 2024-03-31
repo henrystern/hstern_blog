@@ -1,5 +1,5 @@
 ---
-pagetitle: "Henry Stern - Blog"
+pagetitle: "Blog"
 listing:
   contents: 
     - posts/**/*.qmd

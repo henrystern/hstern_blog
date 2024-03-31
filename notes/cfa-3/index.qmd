@@ -1,5 +1,5 @@
 ---
-pagetitle: "Henry Stern - CFA III Notes"
+pagetitle: "CFA III Notes"
 title: "CFA III"
 description: "Notes for the August 2023 CFA Level III exam."
 author: ""

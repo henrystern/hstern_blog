@@ -5,38 +5,38 @@ execute:
   freeze: true # true for main only else auto
 
 website:
-  title: "HStern"
-  site-url: "https://hstern.ca"
-  description: "A blog about nothing."
-  favicon: "/static/assets/favicon.svg"
+  title: 'HStern'
+  site-url: 'https://hstern.ca'
+  description: 'A blog about nothing.'
+  favicon: '/static/assets/favicon.svg'
   navbar:
-    logo-href: "https://hstern.ca"
+    logo-href: 'https://hstern.ca'
     left:
-      - text: "Blog"
-        href: "/blog/"
-      - text: "Tools"
-        href: "/tools/"
-      - text: "Notes"
-        href: "/notes/"
-    background: "secondary"
-    foreground: "primary"
+      - text: 'Blog'
+        href: '/blog/'
+      - text: 'Tools'
+        href: '/tools/'
+      - text: 'Notes'
+        href: '/notes/'
+    background: 'secondary'
+    foreground: 'primary'
   sidebar:
     - id: cfa_2
-      title: "CFA Level II"
+      title: 'CFA Level II'
       collapse-level: 3
       style: floating
       border: false
       contents: notes/cfa-2/**/*.qmd
     - id: cfa_3
-      title: "CFA Level III"
+      title: 'CFA Level III'
       collapse-level: 3
       style: floating
       border: false
       contents:
-        - section: "Portfolio Management"
+        - section: 'Portfolio Management'
           contents: notes/cfa-3/portfolio-management/**/*.qmd
     - id: resume #placeholder necessary for hybrid sidebar
-      title: ""
+      title: ''
       style: docked
       alignment: center
       background: primary
@@ -57,7 +57,7 @@ website:
 
 format:
   html:
-    pagetitle: "{{< meta title >}} | Henry Stern"
+    pagetitle: '{{< meta title >}}'
     title-block-banner: true
     toc: true
     toc-title: "\n"
@@ -68,7 +68,7 @@ format:
       - ./static/html/before-body.html
     include-after-body:
       - ./static/html/after-body.html
-    theme: 
+    theme:
       light:
         - flatly
         - ./static/css/variables.scss

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Henry Stern - Tools"
+pagetitle: "Tools"
 listing:
   contents: 
     - ./**/*.qmd

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Henry Stern - CFA II Notes"
+pagetitle: "CFA II Notes"
 title: "CFA II"
 description: "Notes for the November 2022 CFA Level II exam."
 author: ""

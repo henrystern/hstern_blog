@@ -1,5 +1,5 @@
 ---
-pagetitle: "Henry Stern - GRE Notes"
+pagetitle: "GRE Notes"
 title: "GRE"
 description: "Notes for the May 2023 GRE."
 author: ""
