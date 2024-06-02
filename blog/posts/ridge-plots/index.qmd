@@ -1,0 +1,104 @@
+---
+title: "An easier way to generate seaborn ridgeplots"
+date: 2024-06-01
+categories: ["Python"]
+code-annotations: hover
+---
+
+While their Joy Division inspired t-shirts and posters have given some people the impression that they're not a serious visualization tool, ridgeline plots are an effective way to get a general sense of distributional differences between groups in a dataset.
+
+But while they're pretty enough to appear on the [seaborn](https://github.com/mwaskom/seaborn/issues/2243) logo; seaborn does not bother to include an api for them. The sole [ridgeline example](https://seaborn.pydata.org/examples/kde_ridgeplot.html) in the seaborn gallery relies on looping through a facetgrid which is hardly more elegant than just doing it in [matplotlib](https://matplotlib.org/matplotblog/posts/create-ridgeplots-in-matplotlib/). 
+
+Seaborn has an obvious bias towards the violin plot for distributional comparisons despite the violin plot being [less informative and less attractive](https://www.youtube.com/watch?v=_0QMKFzW9fw) than the ridge plot. Luckily there are enough tools in the violin plot api that we can torture it until it generates the desired output.
+
+Here is the fairly self-explanatory `ridge_plot` function.
+
+```{python}
+import pandas as pd
+import seaborn as sns
+
+
+def ridge_plot(data, x, y, **kwargs):
+    codes, uniques = pd.factorize(data[y])  # <1>
+    uniques = uniques.to_list()
+    uniques = ["NA"] + uniques if -1 in codes else uniques
+
+    plot_args = {
+        "data": data,
+        "x": x,
+        "y": codes,
+        "split": True,
+        "orient": "h",
+        "inner": None,
+        "dodge": False,
+        "native_scale": True, # <2>
+        "width": 1.75, # <3>
+    }
+    plot_args.update(**kwargs) # <4>
+    ax = sns.violinplot(**plot_args)
+
+    unique_codes = pd.unique(codes)
+    spacing = unique_codes[1] - unique_codes[0]
+    tick_locations = unique_codes + plot_args["width"] * (spacing / 2)
+    ax.set_yticks(tick_locations, labels=uniques) # <5>
+
+    ax.invert_yaxis()  # <6>
+    return ax
+```
+1. Factorize the y-axis.
+2. Plot the y-axis as the factor codes at native_scale.
+3. Increase width to create overlap.
+4. Pass all kwargs to the violinplot api.
+5. Add the factor labels at the base of each distribution.
+6. Invert y-axis so the distributions face upwards.
+
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+sns.set_style("white")
+```
+
+And here are a few examples. 
+
+```{python}
+# | code-fold: true
+penguins = sns.load_dataset("penguins")
+ridge_plot(
+    penguins, "flipper_length_mm", "species", inner="stick", color="#56ad74"
+).set(title="Flipper length by species", xlabel="")
+plt.show()
+```
+
+```{python}
+# | code-fold: true
+diamonds = sns.load_dataset("diamonds")
+ridge_plot(diamonds, "price", "cut", width=4, color="#6f83a9").set(
+    title="Diamond price by cut", xlabel="Price"
+)
+plt.show()
+```
+
+```{python}
+# | code-fold: true
+mpg = sns.load_dataset("mpg")
+
+# Get common makes and format labels
+mpg["make"] = mpg["name"].str.split(" ").str[0].str.title()
+mpg = mpg.groupby("make").filter(lambda x: len(x) > 10)
+
+# Sort by horsepower range
+hp_range = mpg.groupby("make")["horsepower"].agg(lambda x: x.max() - x.min()).sort_values()
+mpg["make"] = pd.Categorical(mpg["make"], categories=hp_range.index, ordered=True)
+mpg = mpg.sort_values("make", ascending=False)
+
+ridge_plot(
+    mpg,
+    "horsepower",
+    "make",
+    density_norm="width",
+    color="#6ea0b1",
+).set(title="American manufacturers offer a wider range of horsepowers", xlabel="Horsepower")
+plt.show()
+```
+
+
