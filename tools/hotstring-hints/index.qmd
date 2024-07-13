@@ -3,5 +3,5 @@ title: "Hotstring Hints"
 description: "A global autocompletion menu for hotstrings and phrases"
 date: 2023-04-01
 href: "https://github.com/henrystern/hotstring_hints"
-categories: ["AutoHotkey", "Efficiency"]
+categories: ["autohotkey", "efficiency"]
 ---

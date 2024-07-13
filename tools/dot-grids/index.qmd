@@ -2,7 +2,7 @@
 title: "Dot Grid Generator"
 description: "Generate custom notepaper templates."
 date: 2023-12-13
-categories: ["Javascript", "School", "Visualization"]
+categories: ["javascript", "school", "visualization"]
 format:
   html:
     page-layout: full

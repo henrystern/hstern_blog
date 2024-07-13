@@ -1,7 +1,7 @@
 ---
 title: "An easier way to generate seaborn ridgeplots"
 date: 2024-06-01
-categories: ["Python"]
+categories: ["python"]
 code-annotations: hover
 ---
 

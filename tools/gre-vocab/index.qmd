@@ -2,7 +2,7 @@
 title: "GRE Vocab Practice"
 date: 2023-05-1
 description: "Memorize GRE vocabulary by answering multiple choice questions."
-categories: ["Javascript", "Game"]
+categories: ["javascript", "game"]
 page-layout: custom
 title-block-banner: false
 title-block-style: none

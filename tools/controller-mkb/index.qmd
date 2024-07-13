@@ -3,5 +3,5 @@ title: "Controller-MKB"
 description: "Use your Xbox controller as a mouse and keyboard for a media PC"
 date: 2023-02-21
 href: "https://github.com/henrystern/controller-mkb"
-categories: ["AutoHotkey"]
+categories: ["autohotkey"]
 ---

@@ -2,7 +2,7 @@
 title: "Registered Account Comparison"
 description: "Compare the tax benefits of Canadian registered accounts."
 date: 2023-06-09
-categories: ["Javascript", "Finance", "Visualization"]
+categories: ["javascript", "finance", "visualization"]
 page-layout: full
 comments: false
 ---

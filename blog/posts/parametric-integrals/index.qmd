@@ -2,7 +2,7 @@
 title: "Computing producer surplus from a parametric supply curve"
 date: 2024-03-28
 bibliography: references.bib
-categories: ["economics"]
+categories: ["econ"]
 ---
 
 This is problem 12.5 from @nicholson2017-MicroeconomicTheoryBasic. The textbook solution used a linear approximation but it is actually a good example of a parametric integral. Since calculus textbooks almost exclusively use physics to demonstrate applications of integration, I thought I'd work through an econ example.

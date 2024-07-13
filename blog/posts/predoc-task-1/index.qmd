@@ -1,7 +1,7 @@
 ---
 title: "Predoc Data Task: Labor Market Analysis"
 date: 2023-09-28
-categories: ["R", "Economics"]
+categories: ["rlang", "econ"]
 ---
 
 Here is my solution to the sample labour market analysis task published by [PreDoc.org](https://predoc.org). 
