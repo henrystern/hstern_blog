@@ -1,0 +1,11 @@
+---
+title: "Monotonic transformations in Taskmaster"
+date: 2024-09-28
+categories: ["econ"]
+---
+
+Occasionally, a Taskmaster task will go so poorly that every contestant is disqualified. When this happens Greg always expresses his disappointment; there is often a moment of silence in the crowd. On other occasions the contestants are so impressive that they are each awarded the maximum 5 points. Here Greg praises the contestants and the crowd roars with applause. The contrasting reactions are puzzling as both scores are equivalent to the competitors.
+
+Points in taskmaster have no value beyond their role in ranking contestants. At the end of each episode and season it does not matter if the winner won by one point or ten, only that they had the most. 
+
+Functions which are used for ranking are called `ordinal`. Crucially, any number of ordinal functions can represent the same rankings and are thus, in practice, equivalent. There is a class of transformations called `positive monotonic transformations` which map between equivalent ordinal functions. When Greg awards the same number of points to all contestants it is a positive monotonic transformation---the rankings are unchanged.
