@@ -18,6 +18,7 @@
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   color: var(--bs-primary) !important;
+  border-radius: 2px;
 }
 
 #quarto-header .navbar-toggler:focus {

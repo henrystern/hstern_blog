@@ -1,0 +1,63 @@
+---
+title: "About"
+toc: false
+comments: false
+execute:
+  echo: false
+---
+
+I am a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division. I'm currently applying to PhD programs in economics and finance. 
+
+I'm interested in macroeconomics, international economics and finance with a view to understanding international differences in productivity. Currently, I am using supply and use tables to compare sectoral fixed capital investment allocations between countries and examining the relationship between these investment allocations and the transmission of productivity shocks.
+
+Aside from economics, I like solving crosswords with my wife, playing guitar and watching good movies.
+
+```{ojs}
+function getRandomElement(array) {
+  let randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex]
+}
+
+randomArtist = {
+  changeMind;
+  const artists = ["John Prine", "Iris Dement", "Guy Clark", "Barenaked Ladies", "Mississippi John Hurt", "Elliott Smith", "Bob Dylan", "Wes Montgomery", "Townes Van Zandt", "Blaze Foley", "Peter, Paul and Mary", "Norah Jones", "David Bowie", "Charlie Christian", "Frank Sinatra", "Willie Nelson", "Simon & Garfunkel", "Steve Earle", "Great Big Sea", "Rev. Gary Davis", "Paul Simon", "Jonathan Coulton", "Rodriguez", "Abba", "Dave Van Ronk", "Doc Watson", "John Martyn", "Ron Sexsmith", "Nick Drake", "Art Tatum", "Big L", "Tragically Hip", "Sturgill Simpson", "Vince Guaraldi", "Velvet Underground", "Grateful Dead", "Smiths", "Joni Mitchell", "Jimi Hendrix", "Oscar Peterson", "Ella Fitzgerald", "Cheekface", "Wilco", "Django Reinhardt", "Bill Frisell", "Bert Jansch", "James Taylor", "Bob Marley", "Mac Dre", "Mobb Deep", "Ryo Fukui", "Neil Young", "Gordon Lightfoot", "Harry Chapin", "Toots & the Maytals", "Nas", "Leonard Cohen", "Television", "Water Cycle", "Telefones", "Pharcyde", "Stooges", "Sublime"];
+  return getRandomElement(artists);
+}
+randomMovie = {
+  changeMind;
+  const movies = ["12 Angry Men", "About Time", "All That Jazz", "Anomalisa", "Barry Lyndon", "Before Trilogy", "Belle de Jour", "Breaking Away", "The Climb", "Election", "Fargo", "Heartworn Highways", "The Holdovers", "I, Daniel Blake", "Junebug", "Lilo & Stitch", "My Cousin Vinny", "Nocturnal Animals", "My Fair Lady", "Once", "Paddington", "Paper Moon", "Paris, Texas", "Roman Holiday", "A Serious Man", "School of Rock", "A Single Man", "Soul", "Sunshine Cleaning", "The Trip", "True Grit (2010)", "Viridiana", "Wallace & Gromit", "When We Were Kings", "Wordplay", "Umbrellas of Cherbourg", "Cléo from 5 to 7"];
+  return getRandomElement(movies)
+}
+randomShow = {
+  changeMind;
+  const shows = ["Jeopardy", "Fargo", "Bob's Burgers", "Taskmaster", "Top Gear", "Poker Face", "Shogun", "Curb Your Enthusiasm", "Broad City", "Joe Pera Talks with You", "How To with John Wilson", "Barry", "Always Sunny", "Patriot (2015)", "Would I Lie to You?", "Better Call Saul", "Sopranos", "Seinfeld", "The Ricky Gervais Show", "Pushing Daisies", "Louie", "The Wire", "Veep", "Extras", "Rick Mercer Report"];
+  return getRandomElement(shows)
+}
+// randomChannel = {
+//   changeMind;
+//   const channels = ["A Dose of Buckley", "Stuff Made Here", "Lindybeige", "Premodernist", "Leo Vader", "NotSmoothSteve"];
+//   return getRandomElement(channels)
+// }
+// randomTextbook = {
+//   changeMind;
+//   const channels = ["R for Data Science", "Advanced R", "Python Data Science Handbook", "Practical Typography", "The Logic Book", "Structure and Interpretation of Computer Programs", "Mathematical Reasoning"];
+//   return getRandomElement(channels)
+// }
+
+changeMind = {
+  let i = 0;
+  yield i;
+  while (true) {
+    yield await Promises.tick(5000, ++i);
+  }
+}
+```
+
+<div class=mb-0>Favourites:</div>
+
+* Musician: `{ojs} randomArtist`
+* Movie: `{ojs} randomMovie`
+* Show: `{ojs} randomShow`
+<!-- * Youtube Channel: `{ojs} randomChannel` -->
+<!-- * Textbook: `{ojs} randomTextbook` -->
+* Food: Pizza

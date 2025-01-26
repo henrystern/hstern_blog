@@ -7,10 +7,10 @@ execute:
 website:
   title: 'HStern'
   site-url: 'https://hstern.ca'
-  description: 'A blog about nothing.'
+  description: ''
   favicon: '/static/assets/favicon.svg'
   navbar:
-    logo-href: 'https://hstern.ca'
+    logo-href: 'https://hstern.ca/'
     left:
       - text: 'Blog'
         href: '/blog/'
@@ -18,6 +18,9 @@ website:
         href: '/tools/'
       - text: 'Notes'
         href: '/notes/'
+    right:
+      - text: 'About'
+        href: '/about/'
     background: 'secondary'
     foreground: 'primary'
   sidebar:

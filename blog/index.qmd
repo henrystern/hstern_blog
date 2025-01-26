@@ -3,10 +3,10 @@ pagetitle: "Blog"
 listing:
   contents: 
     - posts/**/*.qmd
-  fields: [date, title, reading-time, description]
+  fields: [date, title, description, categories]
   sort: "date desc"
   type: grid
-  categories: numbered
+  categories: false
   sort-ui: false
   filter-ui: false
   feed: true
