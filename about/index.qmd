@@ -8,7 +8,7 @@ execute:
 
 I am a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division. I'm currently applying to PhD programs in economics and finance. 
 
-I'm interested in macroeconomics, international economics and finance with a view to understanding international differences in productivity. Currently, I am using supply and use tables to compare sectoral fixed capital investment allocations between countries and examining the relationship between these investment allocations and the transmission of productivity shocks.
+I'm interested in macroeconomics, international economics and finance with a view to understanding international differences in productivity.
 
 Aside from economics, I like solving crosswords with my wife, playing guitar and watching good movies.
 
@@ -33,16 +33,6 @@ randomShow = {
   const shows = ["Jeopardy", "Fargo", "Bob's Burgers", "Taskmaster", "Top Gear", "Poker Face", "Shogun", "Curb Your Enthusiasm", "Broad City", "Joe Pera Talks with You", "How To with John Wilson", "Barry", "Always Sunny", "Patriot (2015)", "Would I Lie to You?", "Better Call Saul", "Sopranos", "Seinfeld", "The Ricky Gervais Show", "Pushing Daisies", "Louie", "The Wire", "Veep", "Extras", "Rick Mercer Report"];
   return getRandomElement(shows)
 }
-// randomChannel = {
-//   changeMind;
-//   const channels = ["A Dose of Buckley", "Stuff Made Here", "Lindybeige", "Premodernist", "Leo Vader", "NotSmoothSteve"];
-//   return getRandomElement(channels)
-// }
-// randomTextbook = {
-//   changeMind;
-//   const channels = ["R for Data Science", "Advanced R", "Python Data Science Handbook", "Practical Typography", "The Logic Book", "Structure and Interpretation of Computer Programs", "Mathematical Reasoning"];
-//   return getRandomElement(channels)
-// }
 
 changeMind = {
   let i = 0;
@@ -58,6 +48,4 @@ changeMind = {
 * Musician: `{ojs} randomArtist`
 * Movie: `{ojs} randomMovie`
 * Show: `{ojs} randomShow`
-<!-- * Youtube Channel: `{ojs} randomChannel` -->
-<!-- * Textbook: `{ojs} randomTextbook` -->
 * Food: Pizza
