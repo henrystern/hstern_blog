@@ -1,7 +1,7 @@
 ---
 title: "Following New Economics Papers with RSS"
 date: 2023-10-04
-categories: [econ, webscraping]
+categories: ["econ", "webscraping"]
 format:
   html:
     df-print: kable

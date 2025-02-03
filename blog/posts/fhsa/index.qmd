@@ -1,7 +1,7 @@
 ---
 title: "Understanding the FHSA"
 date: 2023-04-20
-categories: [finance, tax, allocation]
+categories: ["finance", "tax", "allocation"]
 ---
 
 The FHSA does not combine the benefits of the TFSA and RRSP. It has unique advantages that make it completely different from any other registered account.

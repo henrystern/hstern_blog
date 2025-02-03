@@ -1,7 +1,7 @@
 ---
 title: Infinite Fizzbuzz With Generator Functions
 date: 2023-06-08
-categories: [compsci, ojs]
+categories: ["compsci", "ojs"]
 ---
 
 Anyone can write a solution to the FizzBuzz problem, but what if you need it to run indefinitely?
