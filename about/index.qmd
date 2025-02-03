@@ -6,9 +6,9 @@ execute:
   echo: false
 ---
 
-I am a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division. I'm currently applying to PhD programs in economics and finance. 
+Hi! I'm Henry Stern, a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division. I'm currently applying to PhD programs in economics and finance. 
 
-I'm interested in macroeconomics, international economics and finance with a view to understanding international differences in productivity.
+I'm interested in macroeconomics, international economics and finance especially the relationship between investment and productivity.
 
 Aside from economics, I like solving crosswords with my wife, playing guitar and watching good movies.
 
@@ -43,9 +43,9 @@ changeMind = {
 }
 ```
 
-<div class=mb-0>Favourites:</div>
+<div class=mb-0>Favourites^[I often change my mind.]:</div>
 
 * Musician: `{ojs} randomArtist`
 * Movie: `{ojs} randomMovie`
 * Show: `{ojs} randomShow`
-* Food: Pizza
+* Food^[But not about pizza.]: Pizza
