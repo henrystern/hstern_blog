@@ -4,12 +4,12 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from PIL import Image
 
-from prod.config import FAVICON_PATH, RAW_DATA_DIR
+from prod.config import FAVICON_PATH
 
 
 def set_plot_template(colour, palette):
     """Set the plot layout template for plotly"""
-    font = "Open Sans"
+    font = "Arial"
     custom_template = go.layout.Template(
         layout=dict(
             plot_bgcolor=colour["background"],
