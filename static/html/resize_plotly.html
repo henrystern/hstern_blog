@@ -1,0 +1,55 @@
+<!-- Automatically rescale plotly charts to fit in iframe. -->
+<script>
+function resizeIframe(iframe) {
+    // Reset from initial
+    // iframe.style.aspectRatio = plotWidth / plotHeight;
+    iframe.style.transform = null;
+    iframe.style.transformOrigin = null;
+    iframe.style.width = "100%";
+    iframe.style.marginBottom = null;
+
+    // Calculate correct values and style plot
+    let frameWidth = iframe.offsetWidth;
+    let plotDocument = iframe.contentDocument.documentElement || iframe.contentWindow.document;
+    let plot = plotDocument.querySelector(".plotly-graph-div");
+    let plotHeight = parseInt(plot.style.height);
+    let plotWidth = parseInt(plot.style.width);
+
+    const scaleFactor = frameWidth / plotWidth;
+    plot.style.transform = `scale(${scaleFactor})`;
+    plot.style.transformOrigin = '0 0';
+}
+
+window.onload = function() {
+    const iframes = document.querySelectorAll('iframe.plotly-plot');
+
+    iframes.forEach(function(element) {
+    // using onload didn't work probably due to cross origin restrictions
+    const width = element.offsetWidth;
+    const scaleFactor = width / 800; // 800 is default image width
+    element.style.transform = `scale(${scaleFactor})`;
+    element.style.transformOrigin = '0 0';
+    element.style.width = `${1 / (scaleFactor) * 100}%`;
+
+    // scaling the iframe causes excess space underneath so adjust bottom margin
+    const defaultStyle = window.getComputedStyle(document.querySelector(".plotly-plot"));
+    const defaultMarginBottom = parseInt(defaultStyle.marginBottom, 10);
+    bottom_adjustment = ((1 / 1.53) * width * ((1 / scaleFactor) - 1)) - defaultMarginBottom;
+    element.style.marginBottom = `-${bottom_adjustment}px`;
+    }); 
+
+    window.addEventListener('resize', function() {
+    iframes.forEach(function(element) {
+        resizeIframe(element);
+    });
+    });
+}
+</script>
+
+<style>
+  .plotly-plot {
+    width: 100%;
+    aspect-ratio: 1.53; /* Default aspect ratio -- Can be overridden with style in html. */
+  } 
+</style>
+

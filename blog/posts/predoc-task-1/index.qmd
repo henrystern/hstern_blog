@@ -12,7 +12,7 @@ I'm essentially using this as an opportunity to demonstrate my `R` and `Tidyvers
 
 The task is to load some labour market data, identify trends for wages and labour force participation in the data, and hypothesize what is driving those trends and how those hypotheses could be tested.
 
-# Load libraries.
+# Load libraries
 
 ```{r}
 #| output: false

@@ -10,7 +10,7 @@ You can find the full task [here](https://predoc.org/how-to-prepare). This is ex
 
 The task is to load some health insurance subscription data, manipulate the data to develop a summary of certain variables by county (rather than by insurance plan), and then output that data in a specified format.
 
-# Load libraries.
+# Load libraries
 
 ```{r}
 #| output: false

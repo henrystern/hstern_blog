@@ -1,0 +1,79 @@
+---
+title: "Misleading productivity charts"
+date: 2025-02-02
+categories: ["econ"]
+include-before-body:
+  - ../../../static/html/resize_plotly.html
+---
+
+Comparing productivity between countries is difficult. Variations in the systems of national accounts, data availability, and purchasing power must all be considered and accounted for in order to generate comparable productivity levels.
+
+One way to overcome these difficulties is to instead compare growth rates over a specific period. This sidesteps the level issue and instead focuses on convergence and divergence. These indexed productivity charts are often included in [posts](https://www.apricitas.io/p/americas-productivity-boom) and [articles](https://www.ecb.europa.eu/press/economic-bulletin/focus/2024/html/ecb.ebbox202406_01~9c8418b554.en.html) arguing for productivity winners and losers.
+
+Unfortunately, these charts can be deceptive. The extent to which periods can be selected to promote almost any narrative does not seem to be accepted by either the researchers presenting these charts or the readers interpreting them.
+
+<div class=mb-0>When looking at an indexed productivity chart, you should consider the following:</div>
+1. Are the conclusions robust to changes in base year?
+1. What countries are missing?
+1. Are the differences quantitatively important?
+1. Should we be talking about levels instead?
+
+Let's consider each of these.
+
+# What happened in the base year
+
+The easiest way to generate a deceptive indexed chart is to select a base year in which only some of the series---i.e. countries or sectors---were affected by a shock.
+
+For instance, consider this chart:
+
+<iframe class="plotly-plot" scrolling="no" title="lp_growth_1990" src="analysis/reports/figures/lp_growth_1990.html"></iframe>
+
+A similar chart was posted by [Noah Smith](https://www.noahpinion.blog/p/patrick-collison-interview-at-least) to demonstrate that U.S. productivity has been unexceptional since 1990, but the main takeaway to me was that Germany has been a major winner. 
+
+What could explain Germany's impressive productivity growth since 1990? The obvious answer is that 1990 was the year of German reunification.
+
+If we look at some other base years around 1990 we can get a more accurate sense of relative productivity growth. The reunification period accounts for most of Germany's excess growth since 1990.
+
+<iframe class="plotly-plot" scrolling="no" title="lp_growth_around_1990" src="analysis/reports/figures/lp_growth_around_1990.html"></iframe>
+
+This doesn't invalidate Noah's conclusion but this base year could mislead readers into overestimating Germany's productivity growth. It would have been better to either use a more robust base year that illustrated the same point---such as 1992, 1993, or 1994---or to have excluded Germany due to the idiosyncratic shock in the base year.
+
+<iframe class="plotly-plot" scrolling="no" title="lp_growth_around_1993" src="analysis/reports/figures/lp_growth_around_1993.html"></iframe>
+
+# Which countries are missing
+
+Selecting which countries to include in the chart can also skew the results. Of course one can't include every country---each additional line makes the chart harder to read---but changing which countries are included can affect how the chart is read.
+
+For example, neither pane of the following chart is wrong but they also aren't telling the whole truth.
+
+<iframe class="plotly-plot" scrolling="no" title="lp_growth_1985_countries" src="analysis/reports/figures/lp_growth_1985_countries.html"></iframe>
+
+When reading the chart try to consider if obvious comparisons are missing and why that might be. This is especially important if the included countries change between charts while the narrative stays the same.
+
+# Mountains out of molehills
+
+Finally, it's important to be realistic about what the growth paths are telling you. They cannot be blindly extrapolated outside of the period that they cover and even within that period the differences might not be very important. A small percentage of a big number can be larger than a big percentage of a small number. Even if growth rates show productivity convergence it is possible that the levels are actually diverging in dollar terms.
+
+# Levels tell the real story
+
+We opened by discussing the many challenges involved in generating comparable series of productivity levels, but just because it's difficult does not mean it hasn't been done. The [Groningen Growth and Development Centre](https://www.rug.nl/ggdc/productivity/pwt/?lang=en) has produced excellent datasets of comparable productivity levels---including at the [sectoral level](https://www.rug.nl/ggdc/productivity/pld/releases/pld-2023).
+
+Even if the focus of the discussion is on growth, the levels are harder to misinterpret and skew. Ultimately, if the productivity convergence/divergence is not visible in a chart of the levels it probably isn't very important.
+
+<iframe class="plotly-plot" scrolling="no" title="LP_Level" src="analysis/reports/figures/lp_level_all_years.html"></iframe>
+
+<div class=mb-0>The big themes in G7 labour productivity from 1950 to 2020 are thus:</div>
+* America has been the most productive major economy.
+* Canada's productivity growth has been lagging the U.S. since the mid 1980s.
+* France and Germany have diverged from Italy and the UK and are now almost as productive as the U.S.
+* After extraordinary growth from 1960 to 1995, Japan has been stagnating.
+
+Any indexed productivity charts of PWT data that contradict these claims are abusing the researcher's ability to control the presentation.
+
+If you still don't believe me try controlling index years and countries and see how many competing narratives you can present. If Canada is a productivity growth leader since 2009, that clearly doesn't mean very much. 
+
+<iframe class="plotly-plot" scrolling="no" title="LP_Level" src="analysis/reports/figures/lp_growth_all_years.html"></iframe>
+
+---
+
+The views expressed in this paper are solely those of the author and may differ from official Bank of Canada views. No responsibility for them should be attributed to the Bank.
