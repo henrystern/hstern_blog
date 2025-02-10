@@ -32,9 +32,10 @@ window.onload = function() {
     element.style.width = `${1 / (scaleFactor) * 100}%`;
 
     // scaling the iframe causes excess space underneath so adjust bottom margin
-    const defaultStyle = window.getComputedStyle(document.querySelector(".plotly-plot"));
-    const defaultMarginBottom = parseInt(defaultStyle.marginBottom, 10);
-    bottom_adjustment = ((1 / 1.53) * width * ((1 / scaleFactor) - 1)) - defaultMarginBottom;
+    // const defaultStyle = window.getComputedStyle(document.querySelector(".plotly-plot"));
+    // const defaultMarginBottom = parseInt(defaultStyle.marginBottom, 10);
+    const defaultMarginBottom = 17.6; // adjust as necessary
+    bottom_adjustment = ((1 / 1.53) * width * ((1 / scaleFactor) - 1)) - 17.6;
     element.style.marginBottom = `-${bottom_adjustment}px`;
     }); 
 
