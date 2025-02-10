@@ -1,6 +1,6 @@
 ---
 title: "Misleading productivity charts"
-date: 2025-02-02
+date: 2025-02-09
 categories: ["econ"]
 include-before-body:
   - ../../../static/html/resize_plotly.html
