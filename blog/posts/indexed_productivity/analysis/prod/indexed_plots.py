@@ -5,7 +5,6 @@ from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import plotly.io as pio
-
 import prod.plotly_theme as pt  # noqa: F401
 from prod.config import OUTPUT_DIR, RAW_DATA_DIR
 
@@ -34,7 +33,7 @@ country_palette = {  # So plots all use the same colors for each country.
 }
 
 
-def main():
+def main(output=True):
     """Read and analyse the PWT"""
     pwt = read_pwt("pwt1001")
     lp = select_relevant_data(pwt)
@@ -55,9 +54,9 @@ def main():
         .update_yaxes(range=[0.01, 80])
         .update_layout(legend=inset_legend_layout())
     )
-    fig["lp_level_all_years"].show(
-        config=pt.get_config_options("lp_level_all_years")
-    )
+    # fig["lp_level_all_years"].show(
+    #     config=pt.get_config_options("lp_level_all_years")
+    # )
 
     fig["lp_growth_1990"] = (
         formatted_line_plot(
@@ -73,7 +72,7 @@ def main():
             legend=inset_legend_layout(),
         )
     )
-    fig["lp_growth_1990"].show(config=pt.get_config_options("lp_growth_1990"))
+    # fig["lp_growth_1990"].show(config=pt.get_config_options("lp_growth_1990"))
 
     fig["lp_growth_2007"] = (
         formatted_line_plot(
@@ -86,7 +85,7 @@ def main():
         .update_yaxes(title="Index (2007=100)", range=[95, 125])
         .update_layout(legend=inset_legend_layout())
     )
-    fig["lp_growth_2007"].show(config=pt.get_config_options("lp_growth_2007"))
+    # fig["lp_growth_2007"].show(config=pt.get_config_options("lp_growth_2007"))
 
     fig["lp_growth_all_years"] = formatted_line_plot(
         lp_indexed[
@@ -107,9 +106,9 @@ def main():
     fig["lp_growth_all_years"].layout.updatemenus[0].buttons[0].args[1][
         "transition"
     ]["duration"] = 0
-    fig["lp_growth_all_years"].show(
-        config=pt.get_config_options("lp_growth_all_years")
-    )
+    # fig["lp_growth_all_years"].show(
+    #     config=pt.get_config_options("lp_growth_all_years")
+    # )
 
     fig["lp_growth_around_1990"] = formatted_line_plot(
         lp_indexed[
@@ -130,9 +129,9 @@ def main():
         if "Base year" not in a.text
         else a.update(text=f"{a.text.split('=')[-1]}=100")
     )
-    fig["lp_growth_around_1990"].show(
-        config=pt.get_config_options("lp_growth_around_1990")
-    )
+    # fig["lp_growth_around_1990"].show(
+    #     config=pt.get_config_options("lp_growth_around_1990")
+    # )
 
     fig["lp_growth_around_1993"] = formatted_line_plot(
         lp_indexed[
@@ -153,9 +152,9 @@ def main():
         if "Base year" not in a.text
         else a.update(text=f"{a.text.split('=')[-1]}=100")
     )
-    fig["lp_growth_around_1993"].show(
-        config=pt.get_config_options("lp_growth_around_1993")
-    )
+    # fig["lp_growth_around_1993"].show(
+    #     config=pt.get_config_options("lp_growth_around_1993")
+    # )
 
     lp_indexed_selected_countries = pd.concat(
         [
@@ -208,9 +207,9 @@ def main():
             yaxis_title="Index (1985=100)", legend=inset_legend_layout()
         )
     )
-    fig["lp_growth_1985_countries"].show(
-        config=pt.get_config_options("lp_growth_1985_countries")
-    )
+    # fig["lp_growth_1985_countries"].show(
+    #     config=pt.get_config_options("lp_growth_1985_countries")
+    # )
 
     fig["lp_growth_canada"] = formatted_line_plot(
         lp_indexed[
@@ -227,11 +226,13 @@ def main():
         if "index_year" not in a.text
         else a.update(text=f"{a.text.split('=')[-1]}=100")
     )
-    fig["lp_growth_canada"].show(
-        config=pt.get_config_options("lp_growth_canada")
-    )
+    # fig["lp_growth_canada"].show(
+    #     config=pt.get_config_options("lp_growth_canada")
+    # )
 
-    output_all_figs(fig, out_dir=Path(OUTPUT_DIR))
+    if output:
+        output_all_figs(fig, out_dir=Path(OUTPUT_DIR))
+    return fig
 
 
 def output_all_figs(fig, exclude=[], out_dir=OUTPUT_DIR):

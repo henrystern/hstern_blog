@@ -26,6 +26,13 @@ The easiest way to generate a deceptive indexed chart is to select a base year i
 
 For instance, consider this chart:
 
+```{python}
+import os
+os.chdir("analysis")
+import prod.indexed_plots as plots
+fig = plots.main()
+```
+
 <iframe class="plotly-plot" scrolling="no" title="lp_growth_1990" src="analysis/reports/figures/lp_growth_1990.html"></iframe>
 
 A similar chart was posted by [Noah Smith](https://www.noahpinion.blog/p/patrick-collison-interview-at-least) to demonstrate that U.S. productivity has been unexceptional since 1990, but the main takeaway to me was that Germany has been a major winner. 
@@ -34,7 +41,11 @@ What could explain Germany's impressive productivity growth since 1990? The obvi
 
 If we look at some other base years around 1990 we can get a more accurate sense of relative productivity growth. The reunification period accounts for most of Germany's excess growth since 1990.
 
-<iframe class="plotly-plot" scrolling="no" title="lp_growth_around_1990" src="analysis/reports/figures/lp_growth_around_1990.html"></iframe>
+```{python}
+fig["lp_growth_around_1990"].show()
+```
+
+<!-- <iframe class="plotly-plot" scrolling="no" title="lp_growth_around_1990" src="analysis/reports/figures/lp_growth_around_1990.html"></iframe> -->
 
 This doesn't invalidate Noah's conclusion but this base year could mislead readers into overestimating Germany's productivity growth. It would have been better to either use a more robust base year that illustrated the same point---such as 1992, 1993, or 1994---or to have excluded Germany due to the idiosyncratic shock in the base year.
 
