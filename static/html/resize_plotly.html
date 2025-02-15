@@ -1,56 +1,32 @@
-<!-- Automatically rescale plotly charts to fit in iframe. -->
+<!-- Automatically rescale plotly charts to fit in their div. -->
 <script>
-function resizeIframe(iframe) {
-    // Reset from initial
-    // iframe.style.aspectRatio = plotWidth / plotHeight;
-    iframe.style.transform = null;
-    iframe.style.transformOrigin = null;
-    iframe.style.width = "100%";
-    iframe.style.marginBottom = null;
+  function resizePlotInDiv(plot) {
+    // Rescale plot div so that the whole plot is shown in correct aspect ratio.
+    const plotWidth = parseInt(plot.style.width, 10);
+    const plotHeight = parseInt(plot.style.height, 10);
+    const plotParent = plot.parentNode;
+    const plotParentWidth = plotParent.offsetWidth;
+    const scaleFactor = plotParentWidth / plotWidth;
 
-    // Calculate correct values and style plot
-    let frameWidth = iframe.offsetWidth;
-    let plotDocument = iframe.contentDocument.documentElement || iframe.contentWindow.document;
-    let plot = plotDocument.querySelector(".plotly-graph-div");
-    let plotHeight = parseInt(plot.style.height);
-    let plotWidth = parseInt(plot.style.width);
-
-    const scaleFactor = frameWidth / plotWidth;
     plot.style.transform = `scale(${scaleFactor})`;
-    plot.style.transformOrigin = '0 0';
-}
+    plot.style.transformOrigin = "0 0";
+    plotParent.style.overflow = "hidden"; // hide scrollbars
 
-window.onload = function() {
-    const iframes = document.querySelectorAll('iframe.plotly-plot');
+    // scaling the plot causes excess space underneath so adjust outer div height to new scale.
+    defaultMarginBottom = 17.6;
+    plotParent.style.height = `${
+      plotHeight * scaleFactor + defaultMarginBottom
+    }px`;
+  }
 
-    iframes.forEach(function(element) {
-    // using onload didn't work probably due to cross origin restrictions
-    const width = element.offsetWidth;
-    const scaleFactor = width / 800; // 800 is default image width
-    element.style.transform = `scale(${scaleFactor})`;
-    element.style.transformOrigin = '0 0';
-    element.style.width = `${1 / (scaleFactor) * 100}%`;
+  window.onload = function () {
+    const plotlyPlots = document.querySelectorAll(
+      ".plotly-graph-div.js-plotly-plot"
+    );
+    plotlyPlots.forEach(resizePlotInDiv);
 
-    // scaling the iframe causes excess space underneath so adjust bottom margin
-    // const defaultStyle = window.getComputedStyle(document.querySelector(".plotly-plot"));
-    // const defaultMarginBottom = parseInt(defaultStyle.marginBottom, 10);
-    const defaultMarginBottom = 17.6; // adjust as necessary
-    bottom_adjustment = ((1 / 1.53) * width * ((1 / scaleFactor) - 1)) - 17.6;
-    element.style.marginBottom = `-${bottom_adjustment}px`;
-    }); 
-
-    window.addEventListener('resize', function() {
-    iframes.forEach(function(element) {
-        resizeIframe(element);
+    window.addEventListener("resize", function () {
+      plotlyPlots.forEach(resizePlotInDiv);
     });
-    });
-}
+  };
 </script>
-
-<style>
-  .plotly-plot {
-    width: 100%;
-    aspect-ratio: 1.53; /* Default aspect ratio -- Can be overridden with style in html. */
-  } 
-</style>
-
