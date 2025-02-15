@@ -376,5 +376,10 @@ def inset_legend_layout(x=0.02, y=0.99):
     )
 
 
+def show(fig, key):
+    """Show the plot with the custom config options."""
+    fig[key].show(config=pt.get_config_options(key))
+
+
 if __name__ == "__main__":
     main()

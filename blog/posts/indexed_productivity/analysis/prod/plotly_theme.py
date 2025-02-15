@@ -8,7 +8,7 @@ from prod.config import FAVICON_PATH
 
 def set_plot_template(colour, palette):
     """Set the plot layout template for plotly"""
-    font = "Muli, Open Sans, Arial, sans-serif"
+    font = "Muli, 'Open Sans', Verdana, Arial, sans-serif"
     custom_template = go.layout.Template(
         layout=dict(
             plot_bgcolor=colour["background"],

@@ -4,6 +4,8 @@ date: 2025-02-09
 categories: ["econ"]
 include-before-body:
   - ../../../static/html/resize_plotly.html
+execute:
+  echo: false
 ---
 
 Comparing productivity between countries is difficult. Variations in the systems of national accounts, data availability, and purchasing power must all be considered and accounted for in order to generate comparable productivity levels.
@@ -30,10 +32,12 @@ For instance, consider this chart:
 import os
 os.chdir("analysis")
 import prod.indexed_plots as plots
-fig = plots.main()
+fig = plots.main(output=False)
 ```
 
-<iframe class="plotly-plot" scrolling="no" title="lp_growth_1990" src="analysis/reports/figures/lp_growth_1990.html"></iframe>
+```{python}
+plots.show(fig, "lp_growth_1990")
+```
 
 A similar chart was posted by [Noah Smith](https://www.noahpinion.blog/p/patrick-collison-interview-at-least) to demonstrate that U.S. productivity has been unexceptional since 1990, but the main takeaway to me was that Germany has been a major winner. 
 
@@ -42,14 +46,14 @@ What could explain Germany's impressive productivity growth since 1990? The obvi
 If we look at some other base years around 1990 we can get a more accurate sense of relative productivity growth. The reunification period accounts for most of Germany's excess growth since 1990.
 
 ```{python}
-fig["lp_growth_around_1990"].show()
+plots.show(fig, "lp_growth_around_1990")
 ```
-
-<!-- <iframe class="plotly-plot" scrolling="no" title="lp_growth_around_1990" src="analysis/reports/figures/lp_growth_around_1990.html"></iframe> -->
 
 This doesn't invalidate Noah's conclusion but this base year could mislead readers into overestimating Germany's productivity growth. It would have been better to either use a more robust base year that illustrated the same point---such as 1992, 1993, or 1994---or to have excluded Germany due to the idiosyncratic shock in the base year.
 
-<iframe class="plotly-plot" scrolling="no" title="lp_growth_around_1993" src="analysis/reports/figures/lp_growth_around_1993.html"></iframe>
+```{python}
+plots.show(fig, "lp_growth_around_1993")
+```
 
 # Which countries are missing
 
@@ -57,7 +61,9 @@ Selecting which countries to include in the chart can also skew the results. Of 
 
 For example, neither pane of the following chart is wrong but they also aren't telling the whole truth.
 
-<iframe class="plotly-plot" scrolling="no" title="lp_growth_1985_countries" src="analysis/reports/figures/lp_growth_1985_countries.html"></iframe>
+```{python}
+plots.show(fig, "lp_growth_1985_countries")
+```
 
 When reading the chart try to consider if obvious comparisons are missing and why that might be. This is especially important if the included countries change between charts while the narrative stays the same.
 
@@ -71,7 +77,9 @@ We opened by discussing the many challenges involved in generating comparable se
 
 Even if the focus of the discussion is on growth, the levels are harder to misinterpret and skew. Ultimately, if the productivity convergence/divergence is not visible in a chart of the levels it probably isn't very important.
 
-<iframe class="plotly-plot" scrolling="no" title="LP_Level" src="analysis/reports/figures/lp_level_all_years.html"></iframe>
+```{python}
+plots.show(fig, "lp_level_all_years")
+```
 
 <div class=mb-0>The big themes in G7 labour productivity from 1950 to 2020 are thus:</div>
 * America has been the most productive major economy.
@@ -83,7 +91,9 @@ Any indexed productivity charts of PWT data that contradict these claims are abu
 
 If you still don't believe me try controlling index years and countries and see how many competing narratives you can present. If Canada is a productivity growth leader since 2009, that clearly doesn't mean very much. 
 
-<iframe class="plotly-plot" scrolling="no" title="LP_Level" src="analysis/reports/figures/lp_growth_all_years.html"></iframe>
+```{python}
+plots.show(fig, "lp_growth_all_years")
+```
 
 ---
 
