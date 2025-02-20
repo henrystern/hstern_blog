@@ -10,5 +10,4 @@ blog/posts/predoc-task-1/task
 blog/posts/predoc-task-2/task
 blog/posts/colemak-qwerty-words/data/wordlist.txt
 
-**/data/raw/
 *.pyc
