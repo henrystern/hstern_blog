@@ -452,7 +452,7 @@ if __name__ == "__main__":
     parse_hansards_to_dfs()
 
     # import os
-    # os.chdir("./blog/posts/ontario-mpps/analysis/")
+    # os.chdir("./blog/ontario-mpps/analysis/")
     # from mpp.scrape import *
     # TODO scrape expense disclosures from  https://www.ola.org/en/members/expense-disclosure/list
     # TODO scrape leader expense disclosures from https://www.ola.org/en/members/expense-disclosure/official-opposition

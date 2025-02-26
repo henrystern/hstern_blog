@@ -8,4 +8,4 @@ PROCESSED_DATA_DIR = Path("./data/processed")
 
 OUTPUT_DIR = Path("./reports/figures")
 
-FAVICON_PATH = Path("../../../../static/assets/favicon-96x96.png")
+FAVICON_PATH = Path("../../../static/assets/favicon-96x96.png")

@@ -21,7 +21,7 @@ from unidecode import unidecode
 
 def main():
     raw_words = loadtxt(
-        "./blog/posts/colemak-qwerty-words/wordlist.txt",
+        "./blog/colemak-qwerty-words/wordlist.txt",
         dtype="str",
     )
     words = [unidecode(word).lower() for word in raw_words]

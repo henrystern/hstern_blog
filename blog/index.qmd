@@ -2,7 +2,7 @@
 pagetitle: "Blog"
 listing:
   contents: 
-    - posts/**/*.qmd
+    - /**/*.qmd
   fields: [date, title, description, categories]
   sort: "date desc"
   type: grid
