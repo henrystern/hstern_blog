@@ -23,6 +23,8 @@ website:
         href: '/tools/'
       - text: 'Notes'
         href: '/notes/'
+      - text: 'Research'
+        href: '/research/'
     right:
       - text: 'About'
         href: '/about/'

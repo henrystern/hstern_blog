@@ -12,3 +12,5 @@ https://hstern.ca/    https://hstern.ca/blog/ 301!
 /tools/hotstring-hints    https://github.com/henrystern/hotstring_hints 301!
 /tools/pdf-metadata    https://github.com/henrystern/PDF-Metadata-to-CSV 301!
 /tools/escape-nested-tex    https://github.com/henrystern/escape_nested_tex 301!
+
+/blog/posts/* /blog/:splat 301!
