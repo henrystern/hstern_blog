@@ -1,0 +1,8 @@
+---
+title: "Investment network and business cycles"
+description: ""
+date: 2026-01-01
+categories: ["international", "economic dynamics"]
+# href: 
+---
+
