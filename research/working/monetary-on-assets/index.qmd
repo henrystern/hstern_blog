@@ -1,0 +1,10 @@
+---
+title: "Money talks: the impact of Fed and BoC communication on Canadian financial markets"
+subtitle: ""
+Coauthors: "Rodrigo Sekkel and Xu Zhang"
+description: ""
+Journal: "Bank of Canada Staff Working Paper"
+published: forthcoming
+categories: ["finance", "event-study", "spillover"]
+href: "/research/working/monetary_on_assets/Canadian_Monetary_Policy_Database.pdf"
+---

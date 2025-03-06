@@ -171,3 +171,9 @@ div.observablehq svg {
   background-color: var(--bs-secondary);
   display: none;
 }
+
+/* Research listing styles */
+.research-paper-title {
+  text-decoration: none;
+  font-size: large;
+}

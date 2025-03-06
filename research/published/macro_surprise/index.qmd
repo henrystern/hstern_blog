@@ -1,8 +1,0 @@
----
-title: "Is anyone surprised? The high-frequency impact of macroeconomic events on Canadian asset prices."
-description: ""
-date: 2025-02-09
-categories: ["finance", "event-study", "spillover"]
-href: "https://doi.org/10.1016/j.econlet.2025.112232"
----
-

@@ -4,50 +4,46 @@ listing:
   - id: published
     contents: 
       - published/**/*.qmd
-    fields: [date, title, description, categories]
-    sort: "date desc"
-    type: table
-    categories: false
-    sort-ui: false
-    filter-ui: false
+    template: research.ejs
+    field-types:
+      published: date
+    date-format: "MMMM YYYY"
+    sort: "published desc"
     feed: true
   - id: working
     contents: 
       - working/**/*.qmd
-    fields: [date, title, description, categories]
-    sort: "date desc"
-    type: table
-    categories: false
-    sort-ui: false
-    filter-ui: false
+    template: research.ejs
+    field-types:
+      published: date
+    date-format: "MMMM YYYY"
+    sort: "published desc"
     feed: true
   - id: progress
     contents: 
-      - working/**/*.qmd
-    fields: [date, title, description, categories]
-    sort: "date desc"
-    type: table
-    categories: false
-    sort-ui: false
-    filter-ui: false
+      - progress/**/*.qmd
+    template: research.ejs
+    field-types:
+      published: date
+    date-format: "MMMM YYYY"
+    sort: "published desc"
     feed: true
 page-layout: full
 comments: false
+toc: false
 ---
 
-## Published
+### Publications
 
 :::{#published}
 :::
 
-<!--
-## Working papers
+### Working papers
 
 :::{#working}
 :::
- -->
 
-## In progress
+### Work in progress
 
 :::{#progress}
 :::

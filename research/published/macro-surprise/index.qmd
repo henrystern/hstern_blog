@@ -1,0 +1,10 @@
+---
+title: "Is anyone surprised?"
+subtitle: "The high-frequency impact of macroeconomic events on Canadian asset prices."
+Coauthors: "Blake Martos, Rodrigo Sekkel and Xu Zhang"
+description: "Macroeconomic news releases are closely watched by Canadian financial markets but they do not affect all asset prices equally. Canadian events have a greater effect on short-term assets and the spot exchange rate while US events become more impactful for long-term assets."
+Journal: "Economics Letters"
+published: 2025-03-01
+categories: ["finance", "event-study", "spillover"]
+href: "https://doi.org/10.1016/j.econlet.2025.112232"
+---

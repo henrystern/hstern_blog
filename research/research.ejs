@@ -1,0 +1,23 @@
+```{=html}
+<% for (const item of items) { %>
+<p>
+    <% if(item.href){ %>
+        <a class="research-paper-title" href="<%- item.href %>"><%= item.title %> <%= item.subtitle %></a>
+    <% } else{ %>  
+        <span class="research-paper-title"><%= item.title %> <%= item.subtitle %></span>
+    <% } %>
+    <br/>
+    <% if(item.Coauthors){ %>
+        with <%= item.Coauthors %><br/>
+    <% } %>  
+    <% if(item.Journal){ %>
+        <b><%= item.Journal %></b>, 
+    <% } %>  
+    <% if(item.published == "Invalid Date"){ %>
+        Forthcoming 
+    <% } else{ %>  
+        <%= item.published %>  
+    <% } %>
+</p>
+<% } %>
+```
