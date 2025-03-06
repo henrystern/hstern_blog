@@ -49,3 +49,7 @@ changeMind = {
 * Movie: `{ojs} randomMovie`
 * Show: `{ojs} randomShow`
 * Food^[But not about pizza.]: Pizza
+
+---
+
+The views expressed on this website are solely those of the author and may differ from official Bank of Canada views. No responsibility for them should be attributed to the Bank.
