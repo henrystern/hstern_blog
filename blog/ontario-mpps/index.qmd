@@ -1,5 +1,0 @@
----
-title: "Working or Shirking: The parliamentary attendance of Ontario MPPs"
-date: 2025-02-18
-categories: ["politics", "python", "webscraping"]
----
