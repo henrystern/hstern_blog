@@ -14,7 +14,7 @@ website:
   # favicon: '/static/assets/favicon.svg' # included through header.
   google-analytics: "G-29THZ7WT4Z"
   navbar:
-    # logo: '/static/assets/logo.svg'
+    # logo: '/static/assets/favicon.svg'
     logo-href: 'https://hstern.ca/'
     left:
       - text: 'Blog'

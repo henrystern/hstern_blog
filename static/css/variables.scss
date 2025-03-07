@@ -3,6 +3,8 @@ $primary: #eeccff !default;
 $secondary: #003601 !default;
 $blue: #4f81bd !default;
 
+$body-bg: #fff !default;
+
 $link-color: $secondary !default;
 
 $toc-color: $secondary !default;
@@ -31,7 +33,8 @@ $font-family-monospace:
   courier new,
   monospace;
 
-$code-color: #7d12ba !default;
+$code-color: $blue !default;
+$code-bg: $body-bg !default;
 
 $navbar-light-brand-color: #ffffff !default;
 
