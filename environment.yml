@@ -1,0 +1,43 @@
+name: hstern_blog
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  # Dataframes
+  - numpy
+  - pandas
+  - lxml
+  - openpyxl
+  - pyarrow
+  # Plotting
+  - seaborn
+  - matplotlib
+  - plotly=5
+  - python-kaleido=0.1.0 # necessary for plotly write_image
+  # Modelling
+  - statsmodels
+  # Web scraping
+  - beautifulsoup4
+  - html5lib
+  # Utilities
+  - tqdm
+  - loguru
+  - ruff
+  # Notebooks
+  - jupyter
+  - ipython
+  - nbformat
+  # Other/Custom
+  - pip
+  - pip:
+    # I use local paths so that changes are automatically reloaded without needing to be pushed to github.
+    # If you don't want to clone each project repo you can replace these with
+    # - -e git+https://github.com/henrystern/PackageName#egg=PackageName
+    # For each PackageName.
+    - -e C:/Users/Henry/Projects/SternPlot
+    - -e C:/Users/Henry/Projects/IndexedProductivity
+    - -e C:/Users/Henry/Projects/PhdCohort
+    - -e C:/Users/Henry/Projects/OntarioMpp
+  
+# To install: conda env create -f environment.yml
+# To update: conda env update -f environment.yml --prune -n hstern_blog

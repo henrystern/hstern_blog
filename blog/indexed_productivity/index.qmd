@@ -29,9 +29,8 @@ The easiest way to generate a deceptive indexed chart is to select a base year i
 For instance, consider this chart:
 
 ```{python}
-import os
-os.chdir("analysis")
-import prod.indexed_plots as plots
+import IndexedProductivity.plots as plots
+import SternPlot.theme as pt
 fig = plots.main(output=False)
 ```
 
