@@ -1,6 +1,6 @@
 <script>
   // highlight active nav-link
-  let nav_links = document.querySelectorAll('.nav-link')
+  let nav_links = document.querySelectorAll('#quarto-header .nav-link')
   let window_path = window.location.pathname
   nav_links.forEach((link) => {
     if (window_path.includes(link.pathname)) {

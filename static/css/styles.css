@@ -28,6 +28,13 @@
   outline-color: #d48a6e;
 }
 
+#quarto-header .active,
+#quarto-sidebar .sidebar-item.active {
+  color: var(--bs-white) !important;
+  background-color: var(--bs-blue);
+  opacity: 1 !important;
+}
+
 @media (min-width: 992px) {
   #quarto-header .navbar-brand {
     margin-right: 5rem;
@@ -55,13 +62,6 @@
 
   #quarto-header ul li a:hover::after {
     transform: scaleX(1);
-  }
-
-  #quarto-header .active,
-  #quarto-sidebar .sidebar-item.active {
-    color: var(--bs-white) !important;
-    background-color: var(--bs-blue);
-    opacity: 1 !important;
   }
 
   .sidebar.sidebar-navigation > * {
