@@ -1,9 +1,12 @@
 /* css styles */
 
+/* Only show brand logo */
 .navbar-dark,
 .navbar-brand {
-  color: var(--bs-white);
-  opacity: 1 !important;
+  display: none;
+}
+.navbar-logo {
+  max-height: 2rem;
 }
 
 .quarto-title h1,
@@ -52,30 +55,6 @@
 
   #quarto-header ul li a:hover::after {
     transform: scaleX(1);
-  }
-
-  #quarto-header .navbar-brand-container {
-    background-color: var(--bs-secondary);
-    transition:
-      0.5s ease-in-out,
-      transform 0.5s ease-in-out;
-    border-radius: 0.25rem !important;
-  }
-
-  #quarto-header .navbar-brand-container:hover {
-    background-color: var(--bs-primary);
-  }
-
-  #quarto-header .navbar-brand {
-    -webkit-transition: color 0.5s;
-    -moz-transition: color 0.5s;
-    -ms-transition: color 0.5s;
-    -o-transition: color 0.5s;
-    transition: color 0.5s;
-  }
-
-  #quarto-header .navbar-brand-container:hover .navbar-brand {
-    color: var(--bs-secondary) !important;
   }
 
   #quarto-header .active,

@@ -11,10 +11,9 @@ website:
   title: 'HStern'
   site-url: 'https://hstern.ca'
   description: ''
-  # favicon: '/static/assets/favicon.svg' # included through header.
   google-analytics: "G-29THZ7WT4Z"
   navbar:
-    # logo: '/static/assets/favicon.svg'
+    logo: '/static/assets/brand.svg'
     logo-href: 'https://hstern.ca/'
     left:
       - text: 'Blog'

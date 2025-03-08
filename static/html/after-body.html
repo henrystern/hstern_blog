@@ -6,7 +6,9 @@
     if (window_path.includes(link.pathname)) {
       link.classList.add('active')
       link.classList.add('opacity-100')
-      link.children[0].classList.add('active')
+      if (link.children.length > 0) {
+        link.children[0].classList.add('active')
+      }
     }
   })
 </script>
