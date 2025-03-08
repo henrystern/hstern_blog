@@ -1,26 +1,3 @@
-<script>
-  // highlight active nav-link
-  let nav_links = document.querySelectorAll('.nav-link')
-  let window_path = window.location.pathname
-  nav_links.forEach((link) => {
-    if (window_path.includes(link.pathname)) {
-      link.classList.add('active')
-      link.classList.add('opacity-100')
-      link.children[0].classList.add('active')
-    }
-  })
-</script>
-
-<script>
-  // add animation for theme change
-  let content = document.querySelector('#quarto-content')
-  content.classList.add('color-fade')
-  let nav_fixed = document.querySelector('.nav-fixed')
-  nav_fixed.classList.add('bg-color-fade')
-  let quarto_sidebar = document.querySelector('#quarto-sidebar')
-  if (quarto_sidebar) quarto_sidebar.classList.add('transition')
-</script>
-
 <!-- add placeholder box so there is no whitespace after header is collapsed-->
 <style>
   .top-bar {
