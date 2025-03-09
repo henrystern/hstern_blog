@@ -34,6 +34,17 @@
          x="-0.00390625"
          y="0" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <rect
+         style="fill:#cccccc"
+         id="rect7"
+         width="516"
+         height="138"
+         x="-32"
+         y="-30" />
+    </clipPath>
   </defs>
   <svg
      version="1.1"
@@ -64,14 +75,14 @@
          inkscape:deskcolor="#d1d1d1"
          inkscape:document-units="mm"
          showgrid="false"
-         inkscape:zoom="0.1767767"
-         inkscape:cx="1210.5668"
-         inkscape:cy="-1088.9444"
-         inkscape:window-width="1059"
-         inkscape:window-height="1161"
-         inkscape:window-x="4152"
+         inkscape:zoom="0.50000001"
+         inkscape:cx="642.99998"
+         inkscape:cy="240.99999"
+         inkscape:window-width="1920"
+         inkscape:window-height="1177"
+         inkscape:window-x="3192"
          inkscape:window-y="-8"
-         inkscape:window-maximized="0"
+         inkscape:window-maximized="1"
          inkscape:current-layer="layer2" />
       <defs
          id="SvgjsDefs1143" />
@@ -98,8 +109,7 @@
       <path
          id="SvgjsPath1141"
          style="opacity:1;fill:#318a00;fill-rule:evenodd;stroke-width:0.506858"
-         d="m 21.3721,0.00191489 h 102.42832 c 6.46884,0 16.92575,-3.26008939 16.92575,3.21172041 0,6.4718096 594.6748,20.1522127 -16.92575,20.1522127 H 11.690261 c -585.737371,0 -11.68905479,6.452976 -11.68905479,-0.01883 0,-3.235905 -0.04337902,-9.072179 2.25098249,-14.099478 C 4.5465501,4.2202415 11.032244,0.00191927 14.266665,0.0019179 Z"
-         sodipodi:nodetypes="sssssssss"
+         d="M 129.11667 -0.40204264 C 127.24734 -0.19975245 125.40015 0.0020670573 123.80019 0.0020670573 L 21.372339 0.0020670573 L 14.266829 0.0020670573 C 11.032408 0.0020684273 4.5464203 4.220199 2.2520589 9.2474975 C -0.042302615 14.274796 0.0010335286 20.11099 0.0010335286 23.346895 C 0.0010335286 23.360247 -0.1015822 23.371377 -0.10645345 23.384619 C 4.8381101 23.383645 6.569558 23.366015 11.690242 23.366015 L 123.80019 23.366015 C 125.81272 23.366015 127.1302 23.358043 129.11667 23.357747 L 129.11667 -0.40204264 z M -0.10645345 23.384619 C -559.58657 23.494762 -2.4421356 29.733824 -0.10645345 23.384619 z M 400.05 19.364192 L 400.05 19.36626 C 400.04955 19.365619 400.05045 19.364833 400.05 19.364192 z "
          transform="scale(3.7795276)" />
       <rect
          style="opacity:1;fill:#da23d4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.573072"
@@ -115,7 +125,8 @@
          width="1339.3572"
          height="87.709724"
          x="512.47522"
-         y="0.58367717" />
+         y="0.58367717"
+         clip-path="url(#clipPath5)" />
     </g>
   </g>
   <style

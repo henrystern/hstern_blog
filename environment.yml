@@ -19,6 +19,7 @@ dependencies:
   # Web scraping
   - beautifulsoup4
   - html5lib
+  - requests
   # Utilities
   - tqdm
   - loguru
