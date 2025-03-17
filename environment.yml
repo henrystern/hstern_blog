@@ -35,10 +35,10 @@ dependencies:
     # If you don't want to clone each project repo you can replace these with
     # - -e git+https://github.com/henrystern/PackageName#egg=PackageName
     # For each PackageName.
-    - -e C:/Users/Henry/Projects/SternPlot
-    - -e C:/Users/Henry/Projects/IndexedProductivity
-    - -e C:/Users/Henry/Projects/PhdCohort
-    - -e C:/Users/Henry/Projects/OntarioMpp
+    - -e C:/Users/Henry/Projects/stern_plot
+    - -e C:/Users/Henry/Projects/indexed_productivity
+    - -e C:/Users/Henry/Projects/phd_cohort
+    - -e C:/Users/Henry/Projects/ontario_mpp
   
 # To install: conda env create -f environment.yml
 # To update: conda env update -f environment.yml --prune -n hstern_blog
