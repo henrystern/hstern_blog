@@ -118,30 +118,6 @@
   }
 }
 
-.color-fade {
-  -webkit-transition: color 0.5s !important;
-  -moz-transition: color 0.5s !important;
-  -ms-transition: color 0.5s !important;
-  -o-transition: color 0.5s !important;
-  transition: color 0.5s !important;
-}
-
-.bg-color-fade {
-  -webkit-transition: background-color 0.5s !important;
-  -moz-transition: background-color 0.5s !important;
-  -ms-transition: background-color 0.5s !important;
-  -o-transition: background-color 0.5s !important;
-  transition: background-color 0.5s !important;
-}
-
-.transition {
-  -webkit-transition: all 0.5s !important;
-  -moz-transition: all 0.5s !important;
-  -ms-transition: all 0.5s !important;
-  -o-transition: all 0.5s !important;
-  transition: all 0.5s !important;
-}
-
 div.observablehq svg {
   background-color: var(--bs-body-bg);
 }
