@@ -1,0 +1,56 @@
+// Dracula colours from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/revealjs/themes/dracula.scss
+
+$background: #282a36;
+$foreground: #f8f8f2;
+$selection: #44475a;
+$comment: #6272a4;
+$red: #ff5555;
+$orange: #ffb86c;
+$yellow: #f1fa8c;
+$green: #50fa7b;
+$purple: #bd93f9;
+$cyan: #8be9fd;
+$pink: #ff79c6;
+
+/*-- scss:defaults --*/
+
+$presentation-heading-color: $foreground;
+$code-block-border-color: $background;
+$font-family-monospace: "BlexMono Nerd Font", "Source Code Pro", Consolas, Menlo, Monaco, Liberation Mono, Lucida Console,
+monospace;
+
+/*-- scss:rules --*/
+
+.reveal #title-slide .title {
+  color: $purple
+}
+
+.reveal .slide h2 {
+  border-top: .5rem solid $purple;
+}
+
+.reveal .speaker-notes {
+  background-color: $selection;
+  color: $foreground;
+}
+
+.reveal .slide .button {
+  display: inline-block;
+  padding: .4rem .8rem;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $comment;
+  color: $foreground !important;
+  text-decoration: none;
+  border-radius: .2rem;
+}
+
+.reveal .slide .button::before {
+  content: "▶";
+  margin-right: 5px;
+}
