@@ -1,25 +1,12 @@
 ---
 title: "Replication comes first"
 subtitle: "Structuring python data science projects for replication"
+description: "Structuring python data science projects for replication"
 author: 
     name: "Henry Stern"
     affiliation: ""
+categories: ["python", "workflow"]
 date: ""
-comments: false
-execute:
-  freeze: true
-
-format: 
-    revealjs:
-        theme: [dracula, presentation.scss]
-        logo: /static/assets/brand.svg
-        date-format: long
-        highlight-style: "dracula"
-        history: false
-        progress: true
-        embed-resources: false
-        slide-number: true
-        show-notes: false
 ---
 
 ## Outline
@@ -138,9 +125,12 @@ Here is the environment.yml for a simple project.
 It specifies the name of the conda environment, the channels to download dependencies from, and the project dependencies.
 
 This makes it easy for anyone to replicate the environment and all dependencies. More detailed dependencies can be exported with `conda env export > environment_full.yml` at the end of the project.
+
+1. It also installs the project in development mode
+2. If you're scared of conda, these are the only commands you need to know.
 :::
 
-```yml {style="font-size: 99%;"}
+```yml {style="font-size: 99%;" code-line-numbers="|10-12|13-15"}
 name: thispackage
 channels:
   - conda-forge
@@ -162,12 +152,9 @@ dependencies:
 
 ::: {.notes}
 To add a dependency just put it on a line and run `conda env update -f environment.yml --prune -n thispackage`
-
-1. It also installs the project in development mode
-2. If you're scared of conda, these are the only commands you need to know.
 :::
 
-```yml {style="font-size: 99%;" code-line-numbers="8|11-13|14-16"}
+```yml {style="font-size: 99%;" code-line-numbers="8"}
 name: thispackage
 channels:
   - conda-forge
@@ -192,7 +179,7 @@ dependencies:
 The pyproject.toml file is probably less familiar. 
 
 1. These sections tell python how to install the package and are completely boilerplate
-2. These configure ruff, a static analysis tool, this is useful for maintaining a consistent code style across multiple collaborators. With these lint rules your editor will yell at you if you forget to document your code.
+2. These configure ruff, a static analysis tool. Ruff is useful for maintaining a consistent code style across multiple collaborators. With these lint rules your editor will yell at you if you forget to document your code.
 :::
 
 ```toml {code-line-numbers="|1-4|5-16"}
@@ -280,7 +267,7 @@ A simple static site generator for documentation.
 
 ## Getting started
 
-Project parameters are defined in `thispackage.config`.
+Configuration parameters for thispackage.
 
 ::: src.thispackage.config
 ```
@@ -344,19 +331,19 @@ Other parameters can be imported from `config` in the same way.
 
 Very wrong
 ```python {code-line-numbers="false"}
-data_file = "C:/Users/steh/Projects/thispackage/data/productivity.csv"
+raw_file = "C:/Users/steh/Projects/thispackage/data/productivity.csv"
 ```
 
 Wrong
 ```python {code-line-numbers="false"}
-data_file = "../data/productivity.csv"
+raw_file = "../data/productivity.csv"
 ```
 
 Right
 
 ```python {code-line-numbers="false"}
 from thispackage.config import RAW_DATA_DIR
-raw_data_file = RAW_DATA_DIR / "productivity.csv"
+raw_file = RAW_DATA_DIR / "productivity.csv"
 ```
 
 ## Using the template
@@ -369,7 +356,7 @@ You can use a package called cookiecutter to quickly start new projects using a 
 
 The template is available from [github](https://github.com/henrystern/cookiecutter-python-data).
 
-```plaintext {code-line-numbers="false" filename="To use:"}
+``` {.plaintext code-line-numbers="false" filename="To use:"}
 conda create -n Cookiecutter python=3.13 cookiecutter
 conda run -n Cookiecutter --no-capture-output `
   cookiecutter https://github.com/henrystern/cookiecutter-python-data
@@ -380,7 +367,7 @@ Or you can create your own [cookiecutter](https://cookiecutter.readthedocs.io/en
 ## Conclusion
 
 ::: {.notes}
-Now you know why each file is in the template you mostly don't have to think about them.
+Now you know why each file is in the template, you mostly don't have to think about them.
 
 Just remember to start your projects with a good template and your replication packages will be more useful for researchers and easier for you to make.
 :::

@@ -1,0 +1,15 @@
+---
+pagetitle: "Talks"
+listing:
+  contents: 
+    - /**/*.qmd
+  fields: [date, title, description, categories]
+  sort: "date desc"
+  type: grid
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  feed: true
+page-layout: full
+comments: false
+---

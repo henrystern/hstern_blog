@@ -1,0 +1,16 @@
+comments: false
+search: false
+execute:
+  freeze: true
+format: 
+    revealjs:
+        theme: [dracula, ../../static/css/revealjs_dracula.scss]
+        # theme: ../../static/css/revealjs.scss 
+        logo: /static/assets/brand.svg
+        date-format: long
+        highlight-style: "dracula"
+        history: false
+        progress: true
+        embed-resources: false
+        slide-number: true
+        show-notes: false

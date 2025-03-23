@@ -1,0 +1,105 @@
+// SternPlot colours from https://github.com/henrystern/sternplot
+$systemFontsSansSerif: Muli, 'Open Sans', Verdana, Arial, sans-serif;
+
+$background: #1f3023;
+$foreground: #f8f8f2;
+$selection: #a0a0a0;
+$comment: #beb9db;
+$red: #fd7f6f;
+$orange: #ffb55a;
+$yellow: #ffee65;
+$green: #b2e061;
+$purple: #bd7ebe;
+$cyan: #7eb0d5;
+$pink: #eeccff;
+
+/*-- scss:defaults --*/
+
+$code-block-border-color: $background;
+$font-family-monospace: "BlexMono Nerd Font", "Source Code Pro", Consolas, Menlo, Monaco, Liberation Mono, Lucida Console,
+monospace;
+$presentation-font-size-root: 35px;
+
+// Override theme settings
+$body-color: $foreground !default;
+$presentation-heading-color: $foreground;
+$presentation-heading-text-shadow: none !default;
+$presentation-heading-text-transform: none !default;
+$body-bg: $background !default;
+$link-color: $pink !default;
+$link-color-hover: $cyan !default;
+$selection-bg: $selection !default;
+$code-color: $green !default;
+$presentation-list-bullet-color: $cyan !default;
+
+$font-family-sans-serif: $systemFontsSansSerif !default;
+
+// Change text colors against light slide backgrounds
+$light-bg-text-color: $body-bg !default;
+
+/*-- scss:rules --*/
+
+:root {
+  --r-bold-color: #{$orange};
+  --r-italic-color: #{$yellow};
+  --r-inline-code-color: #{$code-color};
+  --r-list-bullet-color: #{$presentation-list-bullet-color};
+}
+
+.reveal {
+  strong,
+  b {
+    &:not(.callout-title strong, .callout-tile b) {
+      color: var(--r-bold-color);
+    }
+  }
+  em,
+  i,
+  blockquote {
+    color: var(--r-italic-color);
+  }
+  code {
+    color: var(--r-inline-code-color);
+  }
+  // Dracula colored list bullets and numbers
+  ul,
+  ol {
+    li::marker {
+      color: var(--r-list-bullet-color);
+    }
+  }
+}
+
+.reveal #title-slide .title {
+  color: $pink
+}
+
+.reveal .slide h2 {
+  border-top: .5rem solid $pink;
+}
+
+.reveal .speaker-notes {
+  background-color: $selection;
+  color: $foreground;
+}
+
+.reveal .slide .button {
+  display: inline-block;
+  padding: .4rem .8rem;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $comment;
+  color: $foreground !important;
+  text-decoration: none;
+  border-radius: .2rem;
+}
+
+.reveal .slide .button::before {
+  content: "▶";
+  margin-right: 5px;
+}
