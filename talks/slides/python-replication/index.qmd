@@ -357,7 +357,7 @@ You can use a package called cookiecutter to quickly start new projects using a 
 The template is available from [github](https://github.com/henrystern/cookiecutter-python-data).
 
 ``` {.plaintext code-line-numbers="false" filename="To use:"}
-conda create -n Cookiecutter python=3.13 cookiecutter
+conda create -n Cookiecutter python=3.13 cookiecutter pre-commit
 conda run -n Cookiecutter --no-capture-output `
   cookiecutter https://github.com/henrystern/cookiecutter-python-data
 ```
@@ -374,3 +374,55 @@ Just remember to start your projects with a good template and your replication p
 
 - Start your projects knowing you'll have to make a replication package.
 - Use a project template to handle the replication boilerplate.
+
+## Appendix {.appendix visibility="uncounted"}
+
+I didn't mention every feature of the template.
+
+Specifically, I glossed over the git configuration.
+
+Git is a fantastic tool that you should use, but it is a bit more of a commitment.
+
+This appendix will quickly cover the files I skipped.
+
+## .gitignore {visibility="uncounted"}
+
+Controls which files are included in the repository. 
+
+Datasets should usually be excluded, as should binary outputs.
+
+```plaintext
+__pycache__/
+/data/**/*.parquet
+/data/**/*.csv
+```
+
+## .gitkeep {visibility="uncounted"}
+
+Just an empty text file.
+
+This is useful if you have gitignored output files but need the directory to avoid errors. Without it, empty directories will not be created in the git repo.
+
+For example, this line will fail if `networks` is not a directory in `PROCESSED_DATA_DIR`, so you would add a .gitkeep file in the `networks` directory.
+
+```python
+final.to_parquet(PROCESSED_DATA_DIR / "networks/canada.parquet")
+```
+
+## .pre-commit-config.yaml {visibility="uncounted"}
+
+Configures ruff to lint and format code before each commit.
+
+It will help you maintain quality standards, especially complete documentation.
+
+Requires that [pre-commit](https://pre-commit.com/) be installed and that the hooks be initialized with `pre-commit install`.
+
+The hooks are automatically initialized if you include git while creating the template.
+
+## LICENSE {visibility="uncounted"}
+
+This is an optional open-source license for the project.
+
+It is unnecessary for work projects, but should be included if the code is made public.
+
+Remember that the Bank own's the copyright to all projects made at work.
