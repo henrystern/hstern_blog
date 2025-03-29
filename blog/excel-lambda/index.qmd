@@ -1,0 +1,21 @@
+---
+title: Excel's lambda function is misnamed
+date: 2025-03-29
+categories: ["programming", "eccentricity"]
+---
+
+I don't like Excel, but I can acknowledge that it has gotten a lot better over the last five years. One of my favourite new features is the [`lambda`](https://support.microsoft.com/en-us/office/lambda-function-bd212d27-1cd1-4321-a34a-ccbf254b8b67) function that was added in 2021. 
+
+It lets you compose a new function from Excel's standard library without using VBA. So, after defining `ExtractFilename` with `lambda` you can call it from a cell instead of repeating a complex formula like `=RIGHT(A1,LEN(A1)-FIND("~",SUBSTITUTE(A1,"/","~",LEN(A1)-LEN(SUBSTITUTE(A1,"/","")))))`. This makes sheets easier to understand and prevents a lot of common bugs.
+
+Unfortunately, while I love the function, I have to cringe slightly every time I use it for its horrific misuse of the "lambda" name. 
+
+In the [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus) or any [actual programming language](https://en.wikipedia.org/wiki/Anonymous_function), "lambda" signifies an anonymous function. But, in Excel, you can only use a function defined with `lambda` after it has been named. In other words, Excel's `lambda` is only useful for defining non-lambda functions. 
+
+I try not to be too pedantic, but come on, names matter! Why would they call it `lambda` instead of `def` or `function`? Did they think it made them sound smart?
+
+Admittedly, I don't think it's as bad as [`pandas.DataFrame.filter`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.filter.html)---whose documentation has to state "this routine does not filter a dataframe on its contents"---but while I've seen `filter` mocked, I haven't been able to find anybody talking about `lambda`. I certainly think it is deserving of some criticism.
+
+Microsoft's error in naming `lambda` is made even worse by the fact that the [`let`](https://support.microsoft.com/en-us/office/let-function-34842dd8-b92b-4d3f-b325-b8b8f9908999) function was introduced at the same time. Between the two, `let` is much closer to defining a lambda function while `lambda` is much closer to instantiating a variable. These are my two favorite functions, but I constantly have to remind myself which one to use.
+
+Surely, I can't be the only one who is bothered by this?
