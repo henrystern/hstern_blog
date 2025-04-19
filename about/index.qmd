@@ -6,7 +6,7 @@ execute:
   echo: false
 ---
 
-Hi! I'm Henry Stern, a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division. I'm currently applying to PhD programs in economics and finance. 
+Hi! I'm Henry Stern, a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division.
 
 I'm interested in macroeconomics, international economics and finance especially the relationship between investment and productivity.
 
