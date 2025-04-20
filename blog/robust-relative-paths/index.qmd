@@ -1,0 +1,59 @@
+---
+title: "Robust relative paths"
+date: 2025-04-19
+categories: ["programming", "python"]
+---
+
+By now, most data scientists have learnt not to use absolute paths in their replication packages, and for good reason: absolute paths break the DRY principle, they're OS specific and they guarantee that the code will not run on another machine. The common alternative is the relative path, but while relative paths are better, they are not enough to ensure your project will replicate. This post will discuss some of the pitfalls in the common usage of relative paths, and will demonstrate how to make path management more consistent and explicit through the use of "robust relative paths".
+
+## Using a robust relative path
+
+A traditional relative path is invoked with "./", which is just shorthand for "from this directory". In contrast, a robust relative path is defined relative to a specific file.
+
+The standard way to define a robust relative path is to resolve the project root in a single place and to import it through the rest of your project. For example in the [cookiecutter-data-science](https://github.com/drivendataorg/cookiecutter-data-science/) template:
+
+```python {filename="src/my_project/config.py"}
+from pathlib import Path
+PROJ_ROOT = Path(__file__).resolve().parents[2]
+```
+
+The `PROJ_ROOT` variable is now an absolute path that has been dynamically evaluated relative to the location of the `config.py` file. By changing the index to parents you can explicitly specify the intended root, whether it is the module's directory (0), src directory (1) or project directory (2).
+
+This root directory can then be imported into other modules like any other object.
+
+```python {filename="src/my_project/dataset.py"}
+from my_project.config import PROJ_ROOT
+...
+pl.read_csv(PROJ_ROOT / "data.csv")
+```
+
+This approach may look like pointless complexity, but it provides two important benefits: 
+
+1. It guarantees paths are resolved relative to the intended directory
+2. It encourages defining variables that point to reused subfolders.
+
+## Relative to what
+
+A traditional relative path says to use the working directory but it doesn't specify where that working directory should be. The same relative path will be interpreted differently depending on how and where the code is run. Most editor's use a set of rules to determine the appropriate root directory. For example, one might use the parent directory containing a pyproject.toml or .git folder and will otherwise use the location of the script, but these rules are not standardized.
+
+The author assumes that the replicator will be running the code from the same working directory that they used, without actually declaring what that directory should be. When there is a difference between the author's and replicator's working directories, the errors can be even harder to fix than those arising from absolute paths. You may be puzzled when you see the same code will execute properly when git cloned but not when downloaded as a zip file, when run from the terminal but not when run from vscode or when run from the vscode shell but not from the debugger.
+
+A robust relative path avoids these errors by telling the computer exactly what directory the path is relative to.
+
+## Forget your children's names
+
+The other advantage of robust relative paths is that they encourage the creation of global variables to commonly used subdirectories. As you have already defined the `PROJ_ROOT` variable you may as well define variables to your `RAW_DATA_DIR` and `FIGURES_DIR` in the same place.
+
+```python {filename="src/my_project/config.py"}
+DATA_DIR = PROJ_ROOT / "data"
+RAW_DATA_DIR = DATA_DIR / "raw"
+
+REPORTS_DIR = PROJ_ROOT / "reports"
+FIGURES_DIR = REPORTS_DIR / "figures"
+```
+
+Then, if you decide you want to store your figures directly to your latex directory you only have to change the value of `FIGURES_DIR` in a single location rather than running find and replace through your whole project.
+
+## Conclusion
+
+Traditional relative paths are better than absolute paths but they're not perfect as they assume the replicator's working directory without stating it. Robust relative paths let you unambiguosly declare you're project's root directory and use variables to refer to the subdirectories in your project. This will prevent tricky errors and reduce repetition throughout your project.
