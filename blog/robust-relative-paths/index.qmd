@@ -4,7 +4,7 @@ date: 2025-04-19
 categories: ["programming", "python"]
 ---
 
-By now, most data scientists have learnt not to use absolute paths in their replication packages, and for good reason: absolute paths break the DRY principle, they're OS specific and they guarantee that the code will not run on another machine. The common alternative is the relative path, but while relative paths are better, they are not enough to ensure your project will replicate. This post will discuss some of the pitfalls in the common usage of relative paths, and will demonstrate how to make path management more consistent and explicit through the use of "robust relative paths".
+By now, most data scientists have learnt not to use absolute paths in their replication packages, and for good reason: absolute paths guarantee that the code will not run on another machine. The common alternative is the relative path, but while relative paths are better, they are not enough to ensure your project will replicate. This post will discuss some of the pitfalls in the common usage of relative paths, and will demonstrate how to make path management more consistent and explicit through the use of "robust relative paths".
 
 ## Using a robust relative path
 
