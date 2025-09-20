@@ -6,5 +6,5 @@ description: ""
 Journal: "Bank of Canada Staff Working Paper"
 published: forthcoming
 categories: ["finance", "event-study", "spillover"]
-href: "/research/working/monetary-on-assets/moneytalks.pdf"
+href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5352633"
 ---
