@@ -14,3 +14,4 @@ blog/colemak-qwerty-words/data/wordlist.txt
 
 **/data/*
 !**/data/.gitkeep
+**/*.quarto_ipynb

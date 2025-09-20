@@ -6,7 +6,7 @@ execute:
   echo: false
 ---
 
-Hi! I'm Henry Stern, a research assistant at the Bank of Canada in the Monetary Policy and Financial Studies Division.
+Hi! I'm Henry Stern, a first year PhD student in economics at the University of Western Ontario.
 
 I'm interested in macroeconomics, international economics and finance especially the relationship between investment and productivity.
 
@@ -49,7 +49,3 @@ changeMind = {
 * Movie: `{ojs} randomMovie`
 * Show: `{ojs} randomShow`
 * Food^[But not about pizza.]: Pizza
-
----
-
-The views expressed on this website are solely those of the author and may differ from official Bank of Canada views. No responsibility for them should be attributed to the Bank.
