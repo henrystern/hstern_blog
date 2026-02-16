@@ -1,69 +1,74 @@
-"Artist",
-"John Prine"
-"Iris Dement"
-"Guy Clark"
-"Barenaked Ladies"
-"Mississippi John Hurt"
-"Elliott Smith"
-"Bob Dylan"
-"Wes Montgomery"
-"Townes Van Zandt"
-"Blaze Foley"
-"Peter
-Paul and Mary"
-"Norah Jones"
-"David Bowie"
-"Charlie Christian"
-"Frank Sinatra"
-"Willie Nelson"
-"Simon & Garfunkel"
-"Steve Earle"
-"Great Big Sea"
-"Rev. Gary Davis"
-"Paul Simon"
-"Jonathan Coulton"
-"Rodriguez"
-"Abba"
-"Dave Van Ronk"
-"Doc Watson"
-"John Martyn"
-"Ron Sexsmith"
-"Nick Drake"
-"Art Tatum"
-"Big L"
-"Tragically Hip"
-"Sturgill Simpson"
-"Vince Guaraldi"
-"Velvet Underground"
-"Grateful Dead"
-"Smiths"
-"Joni Mitchell"
-"Jimi Hendrix"
-"Oscar Peterson"
-"Ella Fitzgerald"
-"Cheekface"
-"Wilco"
-"Django Reinhardt"
-"Bill Frisell"
-"Bert Jansch"
-"James Taylor"
-"Bob Marley"
-"Mac Dre"
-"Mobb Deep"
-"Ryo Fukui"
-"Neil Young"
-"Gordon Lightfoot"
-"Harry Chapin"
-"Toots & the Maytals"
-"Nas"
-"Leonard Cohen"
-"Television"
-"Water Cycle"
-"Telefones"
-"Pharcyde"
-"Stooges"
-"Sublime"
-"Beastie Boys"
-"No Trend"
-"Secret Stars"
-"Ida"
+Artist,Country,Favourite
+John Prine,USA,
+Iris Dement,USA,
+Guy Clark,USA,
+Barenaked Ladies,Canada,
+Mississippi John Hurt,USA,
+Elliott Smith,USA,
+Bob Dylan,USA,
+Wes Montgomery,USA,
+Townes Van Zandt,USA,
+Blaze Foley,USA,
+"Peter, Paul and Mary",USA,
+Norah Jones,USA,
+David Bowie,UK,
+Charlie Christian,USA,
+Frank Sinatra,USA,
+Willie Nelson,USA,
+Simon & Garfunkel,USA,
+Steve Earle,USA,
+Great Big Sea,Canada,
+Rev. Gary Davis,USA,
+Paul Simon,USA,
+Jonathan Coulton,USA,
+Rodriguez,USA,
+Abba,Sweden,
+Dave Van Ronk,USA,
+Doc Watson,USA,
+John Martyn,UK,
+Ron Sexsmith,Canada,
+Nick Drake,UK,
+Art Tatum,USA,
+Big L,USA,
+Tragically Hip,Canada,
+Sturgill Simpson,USA,
+Vince Guaraldi,USA,
+Velvet Underground,USA,
+Grateful Dead,USA,
+Smiths,UK,
+Joni Mitchell,Canada,
+Jimi Hendrix,USA,
+Oscar Peterson,Canada,
+Ella Fitzgerald,USA,
+Cheekface,USA,
+Wilco,USA,
+Django Reinhardt,France,
+Bill Frisell,USA,
+Bert Jansch,UK,
+James Taylor,USA,
+Bob Marley,Jamaica,
+Mac Dre,USA,
+Mobb Deep,USA,
+Ryo Fukui,Japan,
+Neil Young,Canada,
+Gordon Lightfoot,Canada,
+Harry Chapin,USA,
+Toots & the Maytals,Jamaica,
+Nas,USA,
+Leonard Cohen,Canada,
+Television,USA,
+Water Cycle,USA,
+Telefones,USA,
+Pharcyde,USA,
+Stooges,USA,
+Sublime,USA,
+Beastie Boys,USA,
+No Trend,USA,
+Secret Stars,USA,
+Ida,USA,
+Boygenius,USA,
+Phoebe Bridgers,USA,
+Israel Kamakawiwo'ole,USA,
+Jackson Browne,USA,
+Natalie MacMaster,Canada,
+Tom Lehrer,USA,

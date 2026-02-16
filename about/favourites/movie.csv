@@ -1,52 +1,58 @@
-"Movie",
-"12 Angry Men",
-"About Time",
-"All That Jazz",
-"Anomalisa",
-"Barry Lyndon",
-"Before Trilogy",
-"Belle de Jour",
-"Breaking Away",
-"The Climb",
-"Election",
-"Fargo",
-"Heartworn Highways",
-"The Holdovers",
-"I, Daniel Blake",
-"Junebug",
-"Lilo & Stitch",
-"My Cousin Vinny",
-"Nocturnal Animals",
-"My Fair Lady",
-"Once",
-"Paddington",
-"Paper Moon",
-"Paris, Texas",
-"Roman Holiday",
-"A Serious Man",
-"School of Rock",
-"A Single Man",
-"Soul",
-"Sunshine Cleaning",
-"The Trip",
-"True Grit (2010)",
-"Viridiana",
-"Wallace & Gromit",
-"When We Were Kings",
-"Wordplay",
-"Umbrellas of Cherbourg",
-"Cléo from 5 to 7",
-"City of God",
-"Senna",
-"Marty",
-"The Twentieth Century",
-"Marcel the Shell",
-"Knives Out",
-"Snatch",
-"The Wrestler",
-"Seven Psychopaths",
-"Fantastic Mr Fox",
-"Lost in Translation",
-"Secret of Kells",
-"Death of Stalin",
-"Somm"
+Movie,Country
+12 Angry Men,USA
+About Time,UK
+All That Jazz,USA
+Anomalisa,USA
+Barry Lyndon,UK
+Before Trilogy,USA
+Belle de Jour,France
+Breaking Away,USA
+The Climb,USA
+Election,USA
+Fargo,USA
+Heartworn Highways,USA
+The Holdovers,USA
+"I, Daniel Blake",UK
+Junebug,USA
+Lilo & Stitch,USA
+My Cousin Vinny,USA
+Nocturnal Animals,USA
+My Fair Lady,UK
+Once,Ireland
+Paddington,UK
+Paper Moon,USA
+"Paris, Texas",USA
+Roman Holiday,USA
+A Serious Man,USA
+School of Rock,USA
+A Single Man,USA
+Soul,USA
+Sunshine Cleaning,USA
+The Trip,UK
+True Grit (2010),USA
+Viridiana,Mexico
+Wallace & Gromit,UK
+When We Were Kings,USA
+Wordplay,USA
+Umbrellas of Cherbourg,France
+Cléo from 5 to 7,France
+City of God,Brazil
+Senna,Brazil
+Marty,USA
+The Twentieth Century,Canada
+Marcel the Shell,USA
+Knives Out,USA
+Snatch,UK
+The Wrestler,USA
+Seven Psychopaths,USA
+Fantastic Mr Fox,USA
+Lost in Translation,USA
+Secret of Kells,Ireland
+Death of Stalin,UK
+Somm,USA
+Mr. Smith Goes to Washington,USA
+Groundhog Day,USA
+The Ladykillers,UK
+White Tuft: The little beaver,Canada
+The Ballad of Wallis Island,UK
+Ernest & Celestine,France
