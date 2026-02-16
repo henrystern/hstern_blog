@@ -1,0 +1,78 @@
+---
+title: "Pirating the Book of Kells (like a viking)"
+date: 2025-11-24
+categories: [webscraping]
+---
+
+:::{.column-body}
+![](./9%20-%20Folio%205r%20-%20Canon%20tables.jpg)
+:::
+
+The Book of Kells is an extraordinary 9th century gospel book and also the subject of a pretty good animated movie.
+
+I recently rewatched The Secret of Kells and wanted to look through the book, which is digitized and publicly available through the [Trinity College Library](https://digitalcollections.tcd.ie/collections/ks65hc20t?locale=en). Unfortunately it was hard to appreciate the craftsmanship of the scribes due to the Library's terrible website. Each page takes seconds to load making it impossible to skim through and appreciate the book as a cohesive whole. Even when it does load it doesn't render the full resolution until you zoom in.
+
+The versions floating around the internet are all either compressed or from earlier lower quality scans. It seemed like if I wanted to look at a full resolution PDF I would have to compile it myself.
+
+The only way to download the scans is to individually download each of the 680 pages one at a time. That sounds like a job for a computer. My first thought was to use a webscraper like beautifulsoup or playwright but here again I was foiled by their terrible website; the images are assigned a random ID making their URLs unguessable, the download request had to be triggered through an iframe and all requests had to pass a captcha.
+
+Accordingly I went back to my roots and wrote a little AHK script.
+
+```{r}
+#| eval: false
+
+#Requires AutoHotkey v2.0
+#SingleInstance Force
+
+^+q::ExitApp()
+^+r::Reload()
+
+^+s::
+{
+    n := 1
+    while n <= 681 {
+        tooltip(n)
+        DownloadPage(n ".jpg")
+        FindAndClick("reference/next_page.png") ; A screenshot of the next page button
+        n++
+    }
+}
+
+
+FindAndClick(imageFile, xOffset := 0, yOffset := 0) {
+    MouseGetPos &ox, &oy
+    ImageSearch &x, &y, 0, 0, A_ScreenWidth, A_ScreenHeight, imageFile
+    if (x && y) {
+        MouseClick "Left", x + xOffset, y + yOffset
+        MouseMove ox, oy
+    }
+    else {
+        sleep 500
+        FindAndClick(imageFile, xOffset, yOffset)
+    }
+}
+
+DownloadPage(filename) {
+    MouseMove 0, 0
+    while WinActive("Work | Book of Kells. IE TCD MS 58 | ID: hm50tr726 | Digital Collections — Mozilla Firefox")
+    {
+        FindAndClick("reference/download_options.png") ; A screenshot of the download options button
+        FindAndClick("reference/resolution.png", -10, 28) ; A screenshot of the image resolution radios
+        FindAndClick("reference/download.png") ; A screenshot of the save image button
+    }
+    sleep 1000
+    Send "^s"
+
+    WinWaitActive("Save As")
+    Send "{Raw}" filename
+    Send "{Enter}"
+    WinWaitActive("ahk_exe firefox.exe")
+    sleep 200
+    Send "^w"
+}
+```
+
+
+Once I had the individual images I used some ad-hoc python code to scrape the image descriptions and give each file a more descriptive name.^[This is also where I noticed that the first two pages in the reader are out of order] Then I used img2pdf to combine the images into the final PDF.
+
+Short of going in person, this is the best way to appreciate this incredible work of art. You can download the full pdf [here](https://drive.google.com/file/d/116umI622RDu9qICQQEUBAH3Ktr2DT3um/view?usp=sharing) or look through the [illustrations](https://drive.google.com/drive/folders/1KCqzH-WLGARBNnHYDpOSZwuhBUyGNobv?usp=sharing).
