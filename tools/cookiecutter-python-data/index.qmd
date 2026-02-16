@@ -1,0 +1,7 @@
+---
+title: "Python project template"
+description: "A cookiecutter template for python data science projects."
+date: 2025-03-18
+href: "https://github.com/henrystern/cookiecutter-python-data"
+categories: ["python", "automation"]
+---

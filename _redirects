@@ -12,5 +12,9 @@ https://hstern.ca/    https://hstern.ca/blog/ 301!
 /tools/hotstring-hints    https://github.com/henrystern/hotstring_hints 301!
 /tools/pdf-metadata    https://github.com/henrystern/PDF-Metadata-to-CSV 301!
 /tools/escape-nested-tex    https://github.com/henrystern/escape_nested_tex 301!
+/tools/gradesheet    https://github.com/henrystern/gradesheet 301!
+/tools/wikirss https://github.com/henrystern/wikirss 301!
+/tools/proctor-schedule https://github.com/henrystern/proctor_schedule 301!
+/tools/cookiecutter-python-data https://github.com/henrystern/cookiecutter-python-data 301!
 
 /blog/posts/* /blog/:splat 301!

@@ -1,0 +1,7 @@
+---
+title: "Gradesheet"
+description: "Generate spreadsheets for grading tests and assignments."
+date: 2026-01-04
+href: "https://github.com/henrystern/gradesheet"
+categories: ["python", "efficiency"]
+---

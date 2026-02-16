@@ -1,0 +1,7 @@
+---
+title: "Proctor Schedule"
+description: "Convert the UWO econ proctoring schedule to icalendar events and check for errors."
+date: 2025-10-10
+href: "https://github.com/henrystern/proctor_schedule"
+categories: ["python", "automation"]
+---

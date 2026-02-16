@@ -1,0 +1,7 @@
+---
+title: "WikiRSS"
+description: "A scraper that converts the Wikipedia front page to a daily RSS feed. "
+date: 2026-01-01
+href: "https://github.com/henrystern/wikirss"
+categories: ["python", "automation"]
+---
