@@ -56,8 +56,19 @@ function launchTimer() {
     document.getElementById('start-btn').dataset.ms = dur * 60 * 1000;
 
     document.getElementById('meta-date').textContent = formatDate(new Date());
-    document.getElementById('meta-course').textContent = course;
-    document.getElementById('meta-prof').textContent = prof;
+    if (prof) {
+        document.getElementById('meta-prof').textContent = prof;
+    } else {
+        document.getElementById('sep-prof').style.display = 'none';
+        document.getElementById('meta-prof').style.display = 'none';
+    }
+    if (course) {
+        document.getElementById('meta-course').textContent = course;
+    } else {
+        document.getElementById('sep-course').style.display = 'none';
+        document.getElementById('meta-course').style.display = 'none';
+    }
+
 
     const startInstr = document.getElementById('instructions-block');
     if (startInstrText) {
@@ -210,6 +221,10 @@ function resetTimer() {
     document.getElementById('progress-bar').style.width = '0%';
     document.getElementById('progress-bar').classList.remove('warn');
     document.getElementById('end-time-val').textContent = '—';
+    document.getElementById('sep-prof').style.display = '';
+    document.getElementById('meta-prof').style.display = '';
+    document.getElementById('sep-course').style.display = '';
+    document.getElementById('meta-course').style.display = '';
     closeGear();
 
     const badge = document.getElementById('status-badge');
