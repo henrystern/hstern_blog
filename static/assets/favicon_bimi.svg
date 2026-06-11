@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<svg:svg version="1.2" width="512" height="512" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" baseProfile="tiny-ps">
+  <svg:title>favicon_bimi</svg:title>
+  <svg:defs id="defs2">
+    <svg:clipPath clipPathUnits="userSpaceOnUse" id="clipPath4">
+      <svg:rect id="rect5" width="512" height="510.8324" x="0.58380842" y="0.58380842" fill="#808080" />
+    </svg:clipPath>
+  </svg:defs>
+  <svg:svg version="1.1" width="512" height="512">
+    <svg:svg width="512" height="512" viewBox="0 0 135.46666 135.46667" version="1.1">
+      <svg:defs id="SvgjsDefs1143" />
+      <svg:g id="SvgjsG1142">
+        <svg:path id="SvgjsPath1141" d="m 21.3721,0.00191489 h 102.42832 c 6.46884,0 16.92575,-3.26008939 16.92575,3.21172041 0,6.4718096 594.6748,20.1522127 -16.92575,20.1522127 H 11.690261 c -585.737371,0 -11.68905479,6.452976 -11.68905479,-0.01883 0,-3.235905 -0.04337902,-9.072179 2.25098249,-14.099478 C 4.5465501,4.2202415 11.032244,0.00191927 14.266665,0.0019179 Z" stroke-width="0.506858" fill-rule="evenodd" fill="#318a00" />
+        <svg:rect id="SvgjsRect1140" width="36.539459" height="121.75293" x="-12.437652" y="23.362795" stroke-width="0.573072" stroke="none" fill-rule="evenodd" fill-opacity="1" fill="#da23d4" />
+        <svg:g transform="scale(1.0071574,0.99289347)" id="SvgjsG1139" stroke-linecap="round" stroke-width="10.1125" stroke="#a0a0a0" fill-rule="evenodd" fill="#a0a0a0" font-family="'Source Sans Pro'" font-size="138.678px">
+          <svg:path d="M 42.138555,40.324966 H 53.648828 V 78.461414 H 95.945617 V 40.324966 H 107.59457 V 131.29773 H 95.945617 V 88.446229 H 53.648828 V 131.29773 H 42.138555 Z" id="SvgjsPath1138" />
+        </svg:g>
+      </svg:g>
+    </svg:svg>
+  </svg:svg>
+  <svg:style id="style2">@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</svg:style>
+</svg:svg>

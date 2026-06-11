@@ -3,6 +3,7 @@ project:
   resources: # Copy over unused assets to site
     - '/static/assets/web-app-manifest-512x512.png'
     - '/static/assets/web-app-manifest-192x192.png'
+    - '/static/assets/favicon_bimi.svg' # for email logos
 
 execute:
   freeze: true # true for main only else auto
