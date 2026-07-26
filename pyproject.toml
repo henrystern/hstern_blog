@@ -1,0 +1,39 @@
+[project]
+name = "hstern_blog"
+version = "0.1.0"
+description = "Python environment for hstern.ca blog posts."
+requires-python = "==3.13.*"
+dependencies = [
+    "numpy",
+    "pandas[performance]",
+    "polars[pyarrow]",
+    "lxml",
+    "openpyxl",
+    "seaborn",
+    "matplotlib",
+    "plotly[kaleido]",
+    "statsmodels",
+    "beautifulsoup4",
+    "html5lib",
+    "requests",
+    "tqdm",
+    "loguru",
+    "ruff",
+    "stern-plot",
+    "indexed-productivity",
+    "phd-cohort",
+    "ontario-mpp",
+]
+
+[tool.uv.sources]
+stern-plot = { git = "https://github.com/henrystern/stern_plot" }
+indexed-productivity = { path = "../indexed_productivity", editable = true }
+phd-cohort = { path = "../phd_cohort", editable = true }
+ontario-mpp = { path = "../ontario_mpp", editable = true }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "jupyter>=1.1.1",
+    "nbformat>=5.10.4",
+]
