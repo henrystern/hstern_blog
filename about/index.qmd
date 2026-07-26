@@ -6,9 +6,9 @@ execute:
   echo: false
 ---
 
-Hi! I'm Henry Stern, a PhD-stream MA student in economics at the University of Western Ontario.
+Hi! I'm Henry Stern, a PhD student in economics at the University of Toronto.
 
-I'm interested in macroeconomics, international economics and finance especially the relationship between investment and productivity.
+I'm interested in macroeconomics, international economics and finance.
 
 Aside from economics, I like solving crosswords with my wife, playing guitar and watching good movies.
 
@@ -25,6 +25,14 @@ shows = FileAttachment("favourites/show.csv").csv()
 randomArtist = {
   changeMind;
   return getRandomElement(artists).Artist;
+  // let x = getRandomElement(artists);
+  // if (!x.Favourite)  
+  //   return x.Artist
+  // let link = document.createElement('a');
+  // link.href = x.Favourite;
+  // link.textContent = x.Artist;
+  // return link
+  
 }
 
 randomMovie = {
