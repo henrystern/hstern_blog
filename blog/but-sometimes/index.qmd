@@ -1,0 +1,219 @@
+---
+title: "But sometimes it's too cold for a heat pump"
+date: 2026-07-26
+# categories: []
+execute:
+  echo: false
+---
+
+The majority of Canadians rely on gas furnaces to heat their homes, but setting fire to fossil fuels is inefficient, [dangerous](https://health-infobase.canada.ca/datalab/carbon-monoxide-blog.html) and unsustainable.^[The idea for this post comes from the Technology Connections video [Why Heat Pumps are Immensely Important Right Now](https://youtu.be/MFEHFsO-XSI?t=569) in which he manually conducts a similar exercise for his location.] In mild conditions, an electric heat pump can use the same amount of energy to produce five times as much heat as gas, yet only 7% of Canadian homes are equipped with heat pumps.
+
+Because an air source heat pump works by moving energy from the cold outside air, its efficiency and output do decline at colder temperatures (that is, when the outside air has less energy). This has led some to think that heat pumps are impractical in Canada. But is this as big an issue as it is made out to be? 
+
+Using hourly temperature data from Environment Canada over 2020--2025^[I scraped the data from <https://dd.weather.gc.ca/today/climate/observations/>.], we can check how often a heat pump in your neighbourhood would be below its minimum operating temperature. 
+
+The extremely cold days where a modern heat pump requires a backup heat source are likely much rarer than you think. Let's look at the actual data from a weather station near you.
+
+Step 1: find your nearest weather station on the map below. 
+
+```{ojs}
+// Function definitions
+
+// One-time injection of the spin animation used by the loading indicator below.
+spinnerStyle = {
+  if (!document.getElementById("ojs-spin-style")) {
+    const style = document.createElement("style");
+    style.id = "ojs-spin-style";
+    style.textContent = "@keyframes ojs-spin { to { transform: rotate(360deg); } }";
+    document.head.appendChild(style);
+  }
+}
+
+// Small "recalculating" indicator, shown while a DuckDB query is still running.
+function spinner(text = "Calculating…") {
+  const wrap = document.createElement("div");
+  wrap.style.cssText = "display:flex; align-items:center; gap:10px; padding:14px 0; color:#666; font-size:0.9rem;";
+  const dot = document.createElement("div");
+  dot.style.cssText = "width:14px; height:14px; border-radius:50%; border:2px solid #c0392b; border-top-color:transparent; animation: ojs-spin 0.8s linear infinite;";
+  const label = document.createElement("span");
+  label.textContent = text;
+  wrap.append(dot, label);
+  return wrap;
+}
+```
+
+<!-- ::: {layout="[[60,40]]"} -->
+```{python}
+
+import plotly.express as px
+import polars as pl
+
+stations = pl.read_parquet("stations.parquet")
+px.scatter_map(
+    stations,
+    "Latitude (y)",
+    "Longitude (x)",
+    hover_data={"Latitude (y)": False, "Longitude (x)": False},
+    hover_name="Station Name",
+    map_style="carto-positron-nolabels",
+    zoom=2,
+    center={"lon": -100, "lat": 62},
+).update_layout(margin=dict(l=0, r=0, t=0, b=0))
+```
+
+Step 2: Search for and select your station in the table below.
+
+```{ojs}
+db = DuckDBClient.of({
+  stations: FileAttachment("stations.parquet"),
+})
+_ = await db.sql`CREATE VIEW weather AS SELECT "Station Name", "Temp (C)" FROM read_parquet('https://cloud.hstern.ca/raw_data/weather_hourly.parquet?cachebuster=1')`;
+
+resStations = await db.sql`SELECT DISTINCT "Station Name" FROM stations ORDER BY "Station Name"`;
+
+viewof searchStations = Inputs.search(resStations, {width: 100, format: (x) => "", query: "Toronto"})
+viewof filterStations = Inputs.table(searchStations, {
+  align: {"Station Name": "right"},
+  rows: 11.5,
+  multiple: false,
+  layout: "fixed",
+  value: searchStations[0],
+})
+chosenStation = filterStations === null ? null : filterStations['Station Name'].replaceAll("'", "''")
+```
+<!-- ::: -->
+
+
+```{ojs}
+// filtered is a *generator* cell: it immediately yields `null` (rendered as a
+// spinner below) while the query runs, then resolves to the real rows once
+// DuckDB finishes. This reruns, and re-shows the spinner, whenever
+// filterStations changes.
+filtered = {
+  if (filterStations === null) {
+    yield [];
+    return;
+  }
+  yield null;
+  const rows = await db.sql([
+    `SELECT * FROM weather WHERE "Station Name" = '${chosenStation}'`
+  ]);
+  yield rows;
+}
+```
+
+
+```{ojs}
+function renderPlotIfData(plot_func, data, load_message) {
+  if (filterStations === null) {
+    const emptyMsg = document.createElement("p");
+    emptyMsg.textContent = "Select a station in the table to get started.";
+    return emptyMsg;
+  }
+  else if (data === null) {
+    return spinner(load_message);
+  }
+  return plot_func(data)
+}
+
+function hourly_histogram(data) {
+  return Plot.plot({
+    title: "Distribution of hourly temperatures, 2020–2025",
+    y: {grid: true, label: "Hours"},
+    x: {label: "Temperature (°C)"},
+    color: {legend: true},
+    marks: [
+      Plot.rectY(filtered, Plot.binX({y: "count"}, {x: "Temp (C)", tip: true})),
+      Plot.ruleX([-15, -25], {stroke: "#c0392b", strokeDasharray: "4,3"}),
+      Plot.text([{x: -15, label: "standard ASHP cutoff"}, {x: -25, label: "cold-climate ASHP cutoff"}],
+        {x: "x", y: 0, text: "label", dy: -120, dx: 10, rotate: -90, textAnchor: "start", fill: "#c0392b", fontSize: 14}),
+      Plot.ruleY([0])
+    ]
+  })
+}
+
+renderPlotIfData(
+  hourly_histogram,
+  filtered, 
+  "Loading hourly records…"
+)
+```
+
+The two dashed lines mark the rough minimum operating temperature of a standard air-source heat pump (≈ -15°C) and a modern cold-climate model (≈ -25°C). Everything to the left of a line is an hour where that unit would need help from an auxiliary source like resistive electric heat or a backup furnace.
+
+If these results seem surprising to you, remember that the wind chill is irrelevant here. The wind chill temperature is often about 10 degrees colder than the true temperature shown above. Wind chill is based upon how quickly exposed human skin will transfer heat, but heat pumps do not have skin, so for this discussion it is irrelevant.^[While heavy wind could impact a heat pump's effectiveness, for example by requiring more frequent defrosting, it is irrelevant to the unit's minimum operating temperature.]
+
+Set the slider below to the minimum operating temperature of the heat pump you're considering.
+
+```{ojs}
+//| code-fold: true
+viewof minOpTemp = Inputs.range([-40, 0], {
+  value: -15,
+  step: 1,
+  label: "Heat pump minimum operating temperature (°C)"
+})
+```
+
+If we assume that it will need to be running heat for every hour that's colder than 16°C, then we can consider what percentage of these "heating hours" will also need help from a backup source.
+
+```{ojs}
+//| code-fold: true
+// Recomputes (and re-shows the spinner) whenever filterStations or minOpTemp changes.
+sliderStats = {
+  if (filterStations.length === 0) {
+    yield null;
+    return;
+  }
+  yield null;
+  const row = (await db.sql([`
+      SELECT
+        COUNT(*)::INT AS total_hours,
+        SUM(CASE WHEN "Temp (C)" < 16 THEN 1 ELSE 0 END)::INT AS heating_hours,
+        SUM(CASE WHEN "Temp (C)" < ${minOpTemp} THEN 1 ELSE 0 END)::INT AS below_cutoff
+      FROM weather
+      WHERE "Station Name" = '${chosenStation}' AND "Temp (C)" IS NOT NULL
+    `]))[0];
+  yield row;
+}
+
+function statCard(label, value, sub) {
+  const card = document.createElement("div");
+  card.style.cssText = "flex:1; min-width:160px; padding:14px 18px; border-radius:10px; background:#f4f6f8; text-align:center;";
+  const v = document.createElement("div");
+  v.style.cssText = "font-size:2rem; font-weight:700; color:#2c3e50;";
+  v.textContent = value;
+  const l = document.createElement("div");
+  l.style.cssText = "font-size:0.85rem; color:#555; margin-top:4px;";
+  l.textContent = label;
+  const s = document.createElement("div");
+  s.style.cssText = "font-size:0.75rem; color:#888; margin-top:2px;";
+  s.textContent = sub ?? "";
+  card.append(v, l, s);
+  return card;
+}
+
+function renderStatsRow(stats) {
+  const wrap = document.createElement("div");
+  wrap.style.cssText = "display:flex; gap:14px; flex-wrap:wrap; margin: 1em 0;";
+  if (filterStations.length === 0) {
+    wrap.append(statCard("hours below cutoff", "—", "select a station"));
+    return wrap;
+  }
+  if (stats === null) {
+    wrap.append(spinner("Recalculating…"));
+    return wrap;
+  }
+  const pctOfHeating = stats.heating_hours ? stats.below_cutoff / stats.heating_hours : 0;
+  const pctOfYear = stats.total_hours ? stats.below_cutoff / stats.total_hours : 0;
+  wrap.append(
+    statCard(`hours below ${minOpTemp}°C`, stats.below_cutoff.toLocaleString(), `out of ${stats.total_hours.toLocaleString()} hours`),
+    statCard("of heating hours require backup", d3.format(".2%")(pctOfHeating), `${stats.heating_hours.toLocaleString()} total heating hours`),
+    statCard("of the whole year requires backup heat", d3.format(".2%")(pctOfYear), "6-year average")
+  );
+  return wrap;
+}
+
+renderStatsRow(sliderStats)
+```
+
+For most Canadians, a modern heat pump can easily handle all but the very coldest days of the year. On those days, you may need to run relatively inefficient resistive heat (which is already the primary heat source for [25% of the population](https://www.statcan.gc.ca/o1/en/plus/2717-heat-how-canadians-heat-their-home-during-winter)) but the rest of the time the heat pump will be far more efficient than any other method.
