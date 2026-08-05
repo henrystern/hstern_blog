@@ -2,6 +2,7 @@
 title: "But sometimes it's too cold for a heat pump"
 date: 2026-07-26
 # categories: []
+draft: true
 execute:
   echo: false
 ---
