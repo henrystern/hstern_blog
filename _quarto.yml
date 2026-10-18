@@ -28,6 +28,8 @@ website:
     right:
       - text: 'About'
         href: '/about/'
+      - text: 'CV'
+        href: '/about/hstern-cv.pdf'
     background: 'secondary'
     foreground: 'primary'
   sidebar:
