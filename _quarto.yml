@@ -21,8 +21,6 @@ website:
         href: '/blog/'
       - text: 'Tools'
         href: '/tools/'
-      - text: 'Notes'
-        href: '/notes/'
       - text: 'Research'
         href: '/research/'
     right:
