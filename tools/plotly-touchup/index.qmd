@@ -1,0 +1,6 @@
+---
+title: "Plotly Touchup"
+date: 2026-11-12
+description: "A web app for making final layout adjustments to a plotly plot."
+categories: ["javascript", "vibecoded"]
+---

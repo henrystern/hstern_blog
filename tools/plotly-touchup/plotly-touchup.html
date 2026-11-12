@@ -1,0 +1,1890 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plotly Touchup</title>
+  <!-- For fully offline use: download this file next to the HTML and change src to "plotly.min.js" -->
+  <script src="https://cdn.plot.ly/plotly-4.1.1.min.js" charset="utf-8"></script>
+  <style>
+    :root {
+      --bg: #16161E;
+      --pane: #1A1B26;
+      --ink: #90BCF5;
+      --mute: #8d979a;
+      --line: #323a3c;
+      --acc: #FF9E52;
+      --accsoft: #412a00;
+      --code: #0e1415;
+      --codeink: #bfe3de
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0
+    }
+
+    body {
+      font: 14px/1.4 "Avenir Next", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: grid;
+      grid-template-rows: auto 1fr
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      padding: 8px 12px;
+      background: var(--pane);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: .2px;
+      margin-right: 6px
+    }
+
+    button,
+    .btn,
+    select {
+      font: inherit;
+      color: var(--ink);
+      background: var(--pane);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 4px 10px;
+      cursor: pointer
+    }
+
+    button:hover,
+    .btn:hover {
+      border-color: var(--acc)
+    }
+
+    button:disabled {
+      opacity: .35;
+      cursor: default
+    }
+
+    button.on {
+      background: var(--accsoft);
+      border-color: var(--acc);
+      color: var(--acc)
+    }
+
+    button.primary {
+      background: var(--acc);
+      color: var(--bg);
+      border-color: var(--acc)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--acc);
+      outline-offset: 1px
+    }
+
+    .grp {
+      display: flex;
+      gap: 0
+    }
+
+    .grp button {
+      border-radius: 0;
+      margin-left: -1px
+    }
+
+    .grp button:first-child {
+      border-radius: 6px 0 0 6px;
+      margin: 0
+    }
+
+    .grp button:last-child {
+      border-radius: 0 6px 6px 0
+    }
+
+    .sep {
+      width: 1px;
+      height: 22px;
+      background: var(--line);
+      margin: 0 4px
+    }
+
+    .grow {
+      flex: 1
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 8px var(--side, 540px);
+      min-height: 0
+    }
+
+    #stage {
+      position: relative;
+      overflow: auto;
+      background: var(--pane);
+      margin: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px
+    }
+
+    #gd {
+      width: 100%;
+      height: 100%;
+      min-height: 420px
+    }
+
+    #empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      gap: 8px;
+      padding: 24px;
+      color: var(--mute)
+    }
+
+    #empty h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 22px
+    }
+
+    #empty code {
+      background: var(--bg);
+      padding: 2px 6px;
+      border-radius: 4px
+    }
+
+    body.drag #stage {
+      outline: 3px dashed var(--acc);
+      outline-offset: -6px
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: var(--pane);
+      border-left: 1px solid var(--line)
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .tabs button {
+      flex: 1;
+      border: 0;
+      border-radius: 0;
+      border-bottom: 2px solid transparent;
+      padding: 9px 4px;
+      background: none
+    }
+
+    .tabs button.on {
+      border-bottom-color: var(--acc);
+      background: none
+    }
+
+    .pane {
+      display: none;
+      overflow: auto;
+      padding: 12px;
+      flex: 1
+    }
+
+    .pane.on {
+      display: block
+    }
+
+    label {
+      display: grid;
+      gap: 3px;
+      margin-bottom: 9px;
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    label.chk {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--ink)
+    }
+
+    input[type=text],
+    input[type=number] {
+      font: inherit;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 5px 7px;
+      width: 100%
+    }
+
+    input[type=color] {
+      width: 34px;
+      height: 28px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: none;
+      flex: none
+    }
+
+    h3 {
+      margin: 14px 0 8px;
+      font-size: 13px
+    }
+
+    .row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 8px
+    }
+
+    .row input[type=range] {
+      width: 70px;
+      flex: none
+    }
+
+    .hi {
+      padding: 7px 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin-bottom: 6px;
+      cursor: pointer
+    }
+
+    .hi.on {
+      border-color: var(--acc);
+      background: var(--accsoft)
+    }
+
+    .hi.fut {
+      opacity: .45
+    }
+
+    .hi small {
+      display: block;
+      white-space: pre-wrap;
+      color: var(--mute);
+      font: 11px/1.35 ui-monospace, Menlo, Consolas, monospace;
+      word-break: break-all
+    }
+
+    pre {
+      margin: 8px 0;
+      padding: 10px;
+      background: var(--code);
+      color: var(--codeink);
+      border-radius: 6px;
+      overflow: auto;
+      font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace;
+      max-height: 60vh
+    }
+
+    .hint {
+      color: var(--mute);
+      font-size: 12px;
+      margin: 0 0 10px
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 8px 14px;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s
+    }
+
+    #toast.show {
+      opacity: 1
+    }
+
+    @media(max-width:860px) {
+      main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60vh auto
+      }
+
+      aside {
+        border-left: 0;
+        border-top: 1px solid var(--line)
+      }
+    }
+
+    .tabs button {
+      font-size: 12.5px;
+      padding: 9px 2px
+    }
+
+    .pane {
+      padding: 12px 14px
+    }
+
+    .sec {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--mute);
+      margin: 14px 0 6px;
+      font-weight: 600
+    }
+
+    .sec:first-child {
+      margin-top: 0
+    }
+
+    details details {
+      background: var(--bg)
+    }
+
+    .lo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 6px 3px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin-bottom: 4px
+    }
+
+    .lo span {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .lo button {
+      padding: 1px 8px
+    }
+
+    code {
+      font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace;
+      word-break: break-all;
+      flex: 1;
+      background: var(--bg);
+      padding: 4px 6px;
+      border-radius: 4px
+    }
+
+    /* ---- v2: wider, resizable sidebar and refined controls ---- */
+    #stage {
+      margin: 10px 0 10px 10px
+    }
+
+    #split {
+      cursor: col-resize;
+      position: relative;
+      margin: 10px 0;
+      touch-action: none
+    }
+
+    #split::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      border-radius: 2px
+    }
+
+    #split:hover::after,
+    body.rs #split::after {
+      background: var(--acc)
+    }
+
+    body.rs {
+      user-select: none;
+      cursor: col-resize
+    }
+
+    aside {
+      border-left: 0
+    }
+
+    .tabs button {
+      font-size: 13px;
+      padding: 11px 2px
+    }
+
+    .pane {
+      padding: 16px 18px
+    }
+
+    .sec {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 13px;
+      color: var(--ink);
+      margin: 18px 0 8px
+    }
+
+    .sec:first-child {
+      margin-top: 0
+    }
+
+    input[type=text],
+    input[type=number],
+    select {
+      height: 30px
+    }
+
+    .row {
+      align-items: flex-end;
+      gap: 10px;
+      margin-bottom: 10px
+    }
+
+    .row>label,
+    .row>.lab {
+      flex: 1 1 0;
+      min-width: 0;
+      margin-bottom: 0
+    }
+
+    .row>label.chk {
+      flex: none;
+      height: 30px
+    }
+
+    .row input[type=range] {
+      width: 100%;
+      height: 30px
+    }
+
+    .row>button,
+    .seg button {
+      height: 30px
+    }
+
+    .lab {
+      display: grid;
+      gap: 3px;
+      color: var(--mute);
+      font-size: 12px;
+      margin-bottom: 9px
+    }
+
+    .seg {
+      display: flex
+    }
+
+    .seg button {
+      flex: 1;
+      border-radius: 0;
+      margin-left: -1px;
+      padding: 0 10px;
+      white-space: nowrap
+    }
+
+    .seg button:first-child {
+      border-radius: 6px 0 0 6px;
+      margin: 0
+    }
+
+    .seg button:last-child {
+      border-radius: 0 6px 6px 0
+    }
+
+    .seg button.on {
+      position: relative;
+      z-index: 1
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: var(--bg)
+    }
+
+    details details {
+      background: var(--pane);
+      margin-top: 4px
+    }
+
+    details>summary {
+      cursor: pointer;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none
+    }
+
+    details>summary::-webkit-details-marker {
+      display: none
+    }
+
+    details>summary::before {
+      content: '\25B8';
+      color: var(--mute);
+      font-size: 11px;
+      transition: transform .15s
+    }
+
+    details[open]>summary::before {
+      transform: rotate(90deg)
+    }
+
+    details> :not(summary) {
+      margin-left: 12px;
+      margin-right: 12px
+    }
+
+    details[open] {
+      padding-bottom: 4px
+    }
+
+    .ttl {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 600
+    }
+
+    .acts {
+      display: flex;
+      gap: 6px
+    }
+
+    .acts button {
+      padding: 1px 9px;
+      font-size: 12px
+    }
+
+    .acts button.del:hover {
+      border-color: #d1495b;
+      color: #ff7b8a
+    }
+
+    @media(max-width:860px) {
+      #split {
+        display: none
+      }
+
+      #stage {
+        margin: 10px
+      }
+    }
+
+    /* ---- v4: palettes, colour picker, selection lists ---- */
+    .mut {
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    #pal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding-left: 8px
+    }
+
+    #pal .car {
+      color: var(--mute);
+      font-size: 11px
+    }
+
+    .strip {
+      display: inline-flex
+    }
+
+    .strip i {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      margin-left: -4px;
+      box-shadow: 0 0 0 2px var(--pane)
+    }
+
+    .strip i:first-child {
+      margin-left: 0
+    }
+
+    .cs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      height: 30px;
+      padding: 0 8px;
+      text-align: left;
+      font: 12px ui-monospace, Menlo, Consolas, monospace
+    }
+
+    .cs .cd {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      flex: none;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25)
+    }
+
+    #pop {
+      position: fixed;
+      z-index: 50;
+      display: none;
+      width: 288px;
+      max-height: calc(100vh - 16px);
+      overflow: auto;
+      padding: 14px;
+      background: #1e1f2d;
+      border: 1px solid #3a3d52;
+      border-radius: 14px;
+      box-shadow: 0 20px 56px rgba(0, 0, 0, .6), 0 2px 0 rgba(255, 255, 255, .04) inset
+    }
+
+    #pop.open {
+      display: block;
+      animation: pin .14s ease-out
+    }
+
+    @keyframes pin {
+      from {
+        opacity: 0;
+        transform: translateY(-5px) scale(.98)
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #pop.open {
+        animation: none
+      }
+    }
+
+    #pop input[type=text] {
+      background: var(--bg)
+    }
+
+    .ph {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 14px 0 8px;
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    .ph:first-child {
+      margin-top: 0
+    }
+
+    .ph b {
+      color: var(--ink);
+      font-size: 13px
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .chip {
+      display: block;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--c);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2);
+      transition: transform .1s, box-shadow .1s
+    }
+
+    button.chip:hover {
+      transform: scale(1.15)
+    }
+
+    .chip.sel {
+      box-shadow: 0 0 0 2px #1e1f2d, 0 0 0 4px var(--acc)
+    }
+
+    .chip.cust {
+      width: 20px;
+      height: 20px;
+      flex: none;
+      background: conic-gradient(#f55, #fc4, #5d7, #4cf, #85f, #f5b, #f55)
+    }
+
+    .chip.add {
+      background: none;
+      border: 1px dashed var(--mute);
+      color: var(--mute);
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center
+    }
+
+    .cus {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 14px;
+      background: var(--bg);
+      padding: 6px 10px
+    }
+
+    .ced {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 8px;
+      margin-top: 10px
+    }
+
+    .ced[hidden] {
+      display: none
+    }
+
+    .ced input[type=color] {
+      width: 48px;
+      height: 30px;
+      padding: 2px;
+      border-radius: 8px;
+      background: var(--bg)
+    }
+
+    .plist {
+      display: grid;
+      gap: 2px;
+      max-height: 320px;
+      overflow: auto;
+      margin: 0 -4px
+    }
+
+    .pr {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      cursor: pointer
+    }
+
+    .pr:hover {
+      background: var(--bg)
+    }
+
+    .pr.on {
+      border-color: var(--acc);
+      background: var(--accsoft)
+    }
+
+    .pr .strip i {
+      width: 15px;
+      height: 15px;
+      box-shadow: 0 0 0 2px #1e1f2d
+    }
+
+    .pr:hover .strip i {
+      box-shadow: 0 0 0 2px var(--bg)
+    }
+
+    .pr.on .strip i {
+      box-shadow: 0 0 0 2px var(--accsoft)
+    }
+
+    .pn {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .x {
+      padding: 0 6px;
+      font-size: 13px;
+      line-height: 1.2;
+      border-radius: 999px
+    }
+
+    .pr .x {
+      opacity: 0
+    }
+
+    .pr:hover .x {
+      opacity: 1
+    }
+
+    .pf {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px
+    }
+
+    .pf button {
+      flex: 1;
+      height: 30px
+    }
+
+    .ce {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--c);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2)
+    }
+
+    .ce input[type=color] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer
+    }
+
+    .ce .x {
+      display: none;
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      z-index: 1;
+      background: #1e1f2d
+    }
+
+    .ce:hover .x {
+      display: block
+    }
+
+    .pe-name {
+      margin-bottom: 12px
+    }
+
+    .slist {
+      display: grid;
+      gap: 4px;
+      max-height: 220px;
+      overflow: auto;
+      padding: 2px;
+      margin: 0 -2px 8px
+    }
+
+    .si {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      cursor: pointer;
+      user-select: none
+    }
+
+    .si:hover {
+      border-color: #4a5058
+    }
+
+    .si.on {
+      border-color: var(--acc);
+      background: var(--accsoft)
+    }
+
+    .si .sd {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex: none;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25)
+    }
+
+    .si .sn {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .si small {
+      color: var(--mute);
+      font-size: 11px
+    }
+
+    .sbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 6px
+    }
+
+    .sbar .mut {
+      flex: 1
+    }
+
+    .sbar button {
+      height: 26px;
+      padding: 0 10px;
+      font-size: 12px
+    }
+
+    .ctl {
+      border-top: 1px solid var(--line);
+      margin-top: 14px;
+      padding-top: 14px
+    }
+
+    .ctl .sec:first-child {
+      margin-top: 0
+    }
+
+    button.del:hover {
+      border-color: #d1495b;
+      color: #ff7b8a
+    }
+
+    /* image overlay */
+    #wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 420px
+    }
+
+    #wrap #gd {
+      height: 100%
+    }
+
+    #imgLayer {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      overflow: visible;
+      z-index: 5
+    }
+
+    .ib {
+      position: absolute;
+      cursor: move;
+      outline: 1px dashed transparent;
+      touch-action: none
+    }
+
+    .ib:hover {
+      outline-color: rgba(255, 158, 82, .7)
+    }
+
+    .ib.sel {
+      outline: 2px solid var(--acc)
+    }
+
+    .hd {
+      display: none;
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      margin: -5.5px 0 0 -5.5px;
+      background: var(--bg);
+      border: 2px solid var(--acc);
+      border-radius: 3px
+    }
+
+    .ib.sel .hd {
+      display: block
+    }
+
+    .h-nw {
+      left: 0;
+      top: 0;
+      cursor: nwse-resize
+    }
+
+    .h-n {
+      left: 50%;
+      top: 0;
+      cursor: ns-resize
+    }
+
+    .h-ne {
+      left: 100%;
+      top: 0;
+      cursor: nesw-resize
+    }
+
+    .h-e {
+      left: 100%;
+      top: 50%;
+      cursor: ew-resize
+    }
+
+    .h-se {
+      left: 100%;
+      top: 100%;
+      cursor: nwse-resize
+    }
+
+    .h-s {
+      left: 50%;
+      top: 100%;
+      cursor: ns-resize
+    }
+
+    .h-sw {
+      left: 0;
+      top: 100%;
+      cursor: nesw-resize
+    }
+
+    .h-w {
+      left: 0;
+      top: 50%;
+      cursor: ew-resize
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <span class="logo">Plotly Touchup</span>
+    <label class="btn" style="margin:0;color:var(--ink);font-size:14px;display:inline-block">Open figure<input id="file"
+        type="file" accept=".json,application/json" hidden></label>
+    <button id="sample">Load sample</button>
+    <span class="sep"></span>
+    <div class="grp" id="tools"></div>
+    <span class="sep"></span>
+    <button id="pal" title="Colour palette"></button>
+    <span class="sep"></span>
+    <button id="addAnn">Add annotation</button>
+    <span class="sep"></span>
+    <button id="undo" title="Undo (Ctrl+Z)">Undo</button><button id="redo" title="Redo (Ctrl+Y)">Redo</button>
+    <span class="grow"></span>
+    <select id="scale" title="Image scale">
+      <option value="1">1× scale</option>
+      <option value="2">2× scale</option>
+      <option value="3" selected>3× scale</option>
+      <option value="4">4× scale</option>
+    </select>
+    <button data-x="png" class="primary">PNG</button><button data-x="svg">SVG</button><button
+      data-x="html">HTML</button><button data-x="json">JSON</button>
+  </header>
+  <main>
+    <section id="stage">
+      <div id="wrap">
+        <div id="gd"></div>
+        <div id="imgLayer"></div>
+      </div>
+      <div id="empty">
+        <h2>Drop a Plotly figure here</h2>
+        <div>Export one from Python with <code>fig.write_json("figure.json")</code>, then drop the file, paste its JSON,
+          or use Open figure.</div>
+        <div>Click titles, legend names and annotations to edit them. Drag to move them.</div>
+      </div>
+    </section>
+    <div id="split" role="separator" aria-orientation="vertical" title="Drag to resize. Double-click to reset."></div>
+    <aside>
+      <div class="tabs"><button data-tab="layout" class="on">Layout</button><button data-tab="axes">Axes</button><button
+          data-tab="traces">Traces</button><button data-tab="elems">Annotate</button><button
+          data-tab="hist">History</button><button data-tab="py">Python</button></div>
+      <div class="pane on" id="p-layout"></div>
+      <div class="pane" id="p-axes"></div>
+      <div class="pane" id="p-traces">
+        <div id="traces"></div>
+      </div>
+      <div class="pane" id="p-elems">
+        <div class="row"><button id="addAnn2" class="primary">Add annotation</button><button id="addImg2">Add
+            image</button></div>
+        <p class="hint">Select annotations, shapes and images from the list. Click annotations and shapes in the figure,
+          and drag an image to move it or its handles to resize it (Shift flips the aspect lock). Ctrl/Cmd-click adds or
+          removes one, Shift-click selects a range, and edits apply to everything selected. Draw shapes with the
+          toolbar.</p>
+        <div id="elems"></div>
+      </div>
+      <div class="pane" id="p-hist">
+        <p class="hint">Click an entry to jump back to that state.</p>
+        <div id="hist"></div>
+      </div>
+      <div class="pane" id="p-py">
+        <p class="hint">Python that reproduces your edits on the original figure.</p>
+        <label class="chk"><input type="checkbox" id="cons" checked>Merge repeated edits to the same property</label>
+        <label class="chk"><input type="checkbox" id="zoom">Also record zoom and pan</label>
+        <div class="row"><button id="copy" class="primary">Copy</button><button id="dlpy">Download .py</button></div>
+        <pre id="code"></pre>
+      </div>
+    </aside>
+  </main>
+  <div id="toast"></div>
+  <script>
+    if (typeof Plotly === 'undefined') document.body.insertAdjacentHTML('afterbegin', '<p style="padding:12px;color:#b00">Plotly failed to load.</p>');
+    const $ = s => document.querySelector(s), gd = $('#gd');
+    const h = (t, p = {}, ...k) => { const e = Object.assign(document.createElement(t), p); e.append(...k); return e };
+    const clone = o => { try { return structuredClone(o) } catch (e) { return JSON.parse(JSON.stringify(o)) } };
+    const J = (o, sp) => JSON.stringify(o, (k, v) => ArrayBuffer.isView(v) ? Array.from(v) : v, sp);
+    const CDN = 'https://cdn.plot.ly/plotly-4.1.1.min.js';
+    const S = { shut: new Set(), ready: false, name: 'figure', entries: [], snaps: [], idx: 0 };
+    const cfg = {
+      editable: true, responsive: true, scrollZoom: true, displaylogo: false,
+      modeBarButtonsToAdd: ['drawline', 'drawrect', 'drawcircle', 'drawopenpath', 'eraseshape']
+    };
+    const snap = () => clone({ data: gd.data, layout: gd.layout });
+    const hex = (c, d = '#ffffff') => { try { if (typeof c !== 'string') return d; const x = document.createElement('canvas').getContext('2d'); x.fillStyle = '#010203'; x.fillStyle = c; return /^#/.test(x.fillStyle) ? x.fillStyle : d } catch (e) { return d } };
+    let tt; const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2600) };
+    const save = (blob, name) => { const a = h('a', { href: URL.createObjectURL(blob), download: name }); a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 500) };
+
+    /* ---------- palettes, popovers and colour picker ---------- */
+    const LS = { get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d } catch (e) { return d } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch (e) { } } };
+    const PALS = [
+      ['Plotly', '#636EFA #EF553B #00CC96 #AB63FA #FFA15A #19D3F3 #FF6692 #B6E880 #FF97FF #FECB52'],
+      ['Hstern', '#1f3023 #003601 #394148 #a0a0a0 #eeccff #e1c1f2 #FF2E17 #FFAA90 #5BA3D8 #123FA1 #F1FA8C #FF79C6 #B0B1B3 #65666B'],
+      ['Dracula', '#282A36 #F8F8F2 #44475A #6272A4 #FF5555 #FFB86C #F1FA8C #50FA7B #BD93F9 #8BE9FD #FF79C6'],
+      ['Economist', '#F1EEE5 #2C2E35 #2C2E35 #CECFD1 #FFD4C5 #FF2E17 #FFAA90 #5BA3D8 #123FA1 #B0B1B3 #65666B']
+    ].map(([n, c]) => [n, c.split(' ')]);
+    const NEU = ['#ffffff', '#e6e6e6', '#b3b3b3', '#808080', '#4d4d4d', '#1a1a1a', '#000000'];
+    S.custom = LS.get('studio-custom-pals', []); S.pal = LS.get('studio-pal', 'Plotly'); S.recent = LS.get('studio-recent', []); S.edit = null;
+    const allPals = () => [...PALS, ...S.custom.map(p => [p.name, p.colors, true])];
+    const pal = () => (allPals().find(p => p[0] === S.pal) || PALS[0])[1];
+    const okc = c => { const x = h('canvas').getContext('2d'); x.fillStyle = '#010203'; x.fillStyle = c; const a = x.fillStyle; x.fillStyle = '#020304'; x.fillStyle = c; return a === x.fillStyle };
+    const strip = (c, n) => h('span', { className: 'strip' }, ...c.slice(0, n).map(x => h('i', { style: 'background:' + x })));
+
+    const pop = h('div', { id: 'pop' }); document.body.append(pop);
+    let popFn = null, popAnchor = null;
+    function drawPop() { pop.textContent = ''; popFn(pop) }
+    function placePop() {
+      if (!popAnchor) return; const r = popAnchor.getBoundingClientRect(), w = pop.offsetWidth, ht = pop.offsetHeight;
+      pop.style.left = Math.max(8, Math.min(r.left, innerWidth - w - 8)) + 'px';
+      pop.style.top = (r.bottom + 6 + ht > innerHeight - 8 ? Math.max(8, r.top - ht - 6) : r.bottom + 6) + 'px';
+    }
+    function closePop() { pop.classList.remove('open'); popAnchor = popFn = null }
+    function togglePop(anchor, fn) {
+      if (popAnchor === anchor) return closePop();
+      popFn = fn; popAnchor = anchor; pop.classList.add('open'); drawPop(); placePop();
+    }
+    addEventListener('pointerdown', e => { if (popAnchor && !pop.contains(e.target) && !popAnchor.contains(e.target)) closePop() }, true);
+    addEventListener('keydown', e => { if (e.key === 'Escape') closePop() });
+    addEventListener('resize', placePop);
+
+    function cpick() {
+      const sw = h('i', { className: 'cd' }), tx = h('span'), el = h('button', { type: 'button', className: 'cs' }, sw, tx); let v = '#ffffff';
+      Object.defineProperty(el, 'value', { get: () => v, set(x) { v = x; sw.style.background = x; tx.textContent = String(x).toUpperCase() } });
+      el.mixed = m => { tx.textContent = m ? 'Mixed' : String(v).toUpperCase() };
+      el.value = v; el.onclick = () => togglePop(el, () => colorPop(el)); return el;
+    }
+    function colorPop(el) {
+      const cur = norm(el.value), hx = hex(el.value), apply = c => { el.value = hex(c); el.onchange() };
+      const chip = c => h('button', { type: 'button', className: 'chip' + (norm(c) === cur ? ' sel' : ''), title: c, style: '--c:' + c, onclick() { apply(c); closePop() } });
+      const used = c => { apply(c); S.recent = [c, ...S.recent.filter(x => x !== c)].slice(0, 8); LS.set('studio-recent', S.recent) };
+      const cin = h('input', { type: 'color', value: hx }), txt = h('input', { type: 'text', value: hx, spellcheck: false, maxLength: 24 });
+      cin.oninput = () => { txt.value = cin.value }; cin.onchange = () => used(cin.value);
+      txt.onchange = () => { if (okc(txt.value)) { const c = hex(txt.value); cin.value = c; used(c) } else toast('That is not a valid colour') };
+      const ed = h('div', { className: 'ced' }, cin, txt); ed.hidden = [...pal(), ...NEU, ...S.recent].some(c => norm(c) === cur);
+      pop.append(h('div', { className: 'ph' }, h('b', { textContent: S.pal }), h('span', { textContent: 'palette' })), h('div', { className: 'chips' }, ...pal().map(chip)),
+        h('div', { className: 'ph' }, h('span', { textContent: 'Neutrals' })), h('div', { className: 'chips' }, ...NEU.map(chip)),
+        ...(S.recent.length ? [h('div', { className: 'ph' }, h('span', { textContent: 'Recent custom colours' })), h('div', { className: 'chips' }, ...S.recent.map(chip))] : []),
+        h('button', { type: 'button', className: 'cus', onclick() { ed.hidden = !ed.hidden; placePop() } }, h('i', { className: 'chip cust' }), 'Custom colour'), ed);
+    }
+
+    const palBtn = $('#pal');
+    function palRefresh() { palBtn.textContent = ''; palBtn.append(strip(pal(), 5), h('span', { textContent: S.pal.replace(/ \(.*\)$/, '') }), h('span', { className: 'car', textContent: '\u25BE' })) }
+    palBtn.onclick = () => { S.edit = null; togglePop(palBtn, palPop) };
+    const redraw = () => { drawPop(); placePop() };
+    function palPop(p) {
+      if (S.edit) return palEdit(p);
+      const list = h('div', { className: 'plist' });
+      allPals().forEach(([n, c, mine]) => list.append(h('div', {
+        className: 'pr' + (n === S.pal ? ' on' : ''), tabIndex: 0, role: 'option',
+        onclick() { S.pal = n; LS.set('studio-pal', n); palRefresh(); redraw() }, onkeydown(e) { if (e.key === 'Enter') this.click() }
+      }, strip(c, 12), h('span', { className: 'pn', textContent: n }),
+        ...(mine ? [ib('\u00D7', 'Delete this palette', () => { S.custom = S.custom.filter(x => x.name !== n); if (S.pal === n) S.pal = 'Plotly'; LS.set('studio-custom-pals', S.custom); LS.set('studio-pal', S.pal); palRefresh(); redraw() }, 'x')] : []))));
+      p.append(h('div', { className: 'ph' }, h('b', { textContent: 'Colour palettes' }), h('span', { textContent: 'used by every colour picker' })), list,
+        h('div', { className: 'pf' }, h('button', { type: 'button', textContent: '+ Custom', onclick() { S.edit = { name: 'My palette', colors: pal().slice(0, 8) }; redraw() } }),
+          h('button', { type: 'button', className: 'primary', textContent: 'Apply to traces', title: 'Recolour every trace and set the figure colourway', onclick: applyPal })));
+    }
+    function palEdit(p) {
+      const d = S.edit, ref = () => redraw();
+      const sw = d.colors.map((c, k) => {
+        const w = h('span', { className: 'ce' }, h('input', { type: 'color', value: hex(c), onchange() { d.colors[k] = this.value; ref() } }), ib('\u00D7', 'Remove colour', () => { d.colors.splice(k, 1); ref() }, 'x'));
+        w.style.setProperty('--c', hex(c)); return w;
+      });
+      p.append(h('div', { className: 'ph' }, h('b', { textContent: 'Custom palette' }), h('span', { textContent: 'click a colour to edit it' })),
+        h('input', { type: 'text', className: 'pe-name', value: d.name, placeholder: 'Palette name', onchange() { d.name = this.value } }),
+        h('div', { className: 'chips' }, ...sw, h('button', { type: 'button', className: 'chip add', title: 'Add a colour', textContent: '+', onclick() { d.colors.push('#999999'); ref() } })),
+        h('div', { className: 'ph' }, h('span', { textContent: 'Or paste hex codes' })),
+        h('input', { type: 'text', placeholder: '#1b9e77 #d95f02 #7570b3', onchange() { (this.value.match(/#?[0-9a-f]{6}\b/gi) || []).forEach(x => d.colors.push('#' + x.replace('#', '').toLowerCase())); this.value = ''; ref() } }),
+        h('div', { className: 'pf' }, h('button', { type: 'button', textContent: 'Cancel', onclick() { S.edit = null; ref() } }),
+          h('button', {
+            type: 'button', className: 'primary', textContent: 'Save and use', onclick() {
+              if (d.colors.length < 2) return toast('Add at least two colours');
+              const n0 = (d.name || 'My palette').trim(), n = PALS.some(x => x[0] === n0) ? n0 + ' (custom)' : n0;
+              S.custom = [...S.custom.filter(x => x.name !== n), { name: n, colors: [...d.colors] }]; LS.set('studio-custom-pals', S.custom);
+              S.pal = n; LS.set('studio-pal', n); S.edit = null; palRefresh(); ref();
+            }
+          })));
+    }
+    function applyPal() {
+      if (!S.ready) return toast('Load a figure first');
+      const c = pal(), col = i => c[i % c.length], F = gd._fullData || [], sc = [], oth = [], pie = [];
+      gd.data.forEach((t, i) => { const ty = F[i]?.type || t.type || 'scatter'; if (/^scatter(gl)?$/.test(ty)) sc.push(i); else if (ty === 'pie') pie.push(i); else if (F[i]?.marker) oth.push(i) });
+      if (sc.length) Plotly.restyle(gd, { 'marker.color': sc.map(col), 'line.color': sc.map(col) }, sc);
+      if (oth.length) Plotly.restyle(gd, { 'marker.color': oth.map(col) }, oth);
+      if (pie.length) Plotly.restyle(gd, { 'marker.colors': pie.map(() => [...c]) }, pie);
+      Plotly.relayout(gd, { colorway: [...c] }); closePop(); toast('Applied the ' + S.pal + ' palette');
+    }
+    palRefresh();
+
+    /* ---------- loading ---------- */
+    function load(f, name) {
+      if (f && f.figure) f = f.figure;
+      if (!f || !Array.isArray(f.data)) throw Error('This JSON has no "data" array. Export it with fig.write_json().');
+      f.layout = f.layout || {};
+      /* Named items defined in layout.template (annotations, shapes, images) are drawn by Plotly but are not in fig.layout.
+         Add an empty stub that points at each one, so it can be selected and edited; the template value is used until the user changes it. */
+      S.stubs = {}; S.n0 = {}; S.extra = {}; S.inj = {};
+      const T = f.layout.template && typeof f.layout.template === 'object' ? f.layout.template.layout : null;
+      /* Named template items are created by plotly.js; unnamed ones are ignored by it. Add a stub for each named item and a copy of each
+         unnamed item to the figure so that all of them are drawn and editable. Template values are used until the user changes them. */
+      ['annotations', 'shapes', 'images'].forEach(c => {
+        const have = f.layout[c] || [], add = (T?.[c] || []).filter(t => t && t.name && !have.some(x => x.templateitemname === t.name)),
+          un = (T?.[c] || []).filter(t => t && !t.name && t.visible !== false);
+        if (!add.length && !un.length) return;
+        S.n0[c] = have.length; if (add.length) S.stubs[c] = add.map(t => t.name); if (un.length) S.extra[c] = un.map(t => clone(t));
+        f.layout[c] = [...have, ...add.map(t => ({ templateitemname: t.name })), ...un.map(t => clone(t))];
+      });
+      /* plotly.js ignores width and height set only in the template, so apply them here */
+      ['width', 'height'].forEach(k => { if (f.layout[k] == null && typeof T?.[k] === 'number') { f.layout[k] = T[k]; S.inj[k] = T[k] } });
+      if (!f.layout.newshape && !T?.newshape) f.layout.newshape = { line: { color: '#d1495b', width: 2 } };
+      S.name = name || 'figure'; S.entries = []; S.idx = 0; S.seenT = 0; S.open.clear(); S.shut.clear();
+      return Plotly.newPlot(gd, clone(f.data), clone(f.layout), cfg).then(() => {
+        S.ready = true; S.link = norm(gd._fullLayout.paper_bgcolor) === norm(gd._fullLayout.plot_bgcolor); linkC.checked = S.link; $('#empty').style.display = 'none'; S.snaps = [snap()];
+        gd.on('plotly_relayout', onRelayout); gd.on('plotly_restyle', onRestyle); gd.on('plotly_relayout', toolSync); gd.on('plotly_afterplot', ov);
+        S.selT = gd.data.length ? [0] : []; S.selA = []; S.anchT = 0; S.anchA = null; toolSync(); ov(); ui();
+      });
+    }
+    const tryLoad = (text, name) => { try { load(JSON.parse(text), name).catch(e => toast(e.message)) } catch (e) { toast(e.message) } };
+    $('#file').onchange = e => { const f = e.target.files[0]; if (f) f.text().then(t => tryLoad(t, f.name.replace(/\.json$/i, ''))); e.target.value = '' };
+    addEventListener('dragover', e => { e.preventDefault(); document.body.classList.add('drag') });
+    addEventListener('dragleave', e => { if (!e.relatedTarget) document.body.classList.remove('drag') });
+    addEventListener('drop', e => { e.preventDefault(); document.body.classList.remove('drag'); const f = e.dataTransfer.files[0]; if (f && /^image\//.test(f.type)) return imgFile(f, addImage); if (f) f.text().then(t => tryLoad(t, f.name.replace(/\.json$/i, ''))) });
+    addEventListener('paste', e => { if (/input|textarea/i.test(e.target.tagName)) return; const im = [...e.clipboardData.files].find(f => /^image\//.test(f.type)); if (im) return imgFile(im, addImage); const t = e.clipboardData.getData('text'); if (t.trim().startsWith('{')) tryLoad(t, 'figure') });
+    $('#sample').onclick = () => {
+      const x = [...Array(24).keys()];
+      load({
+        data: [{ type: 'bar', name: 'Orders', x, y: x.map(i => (i * 7) % 13 + 3), marker: { color: '#9bb7d4' } },
+        { type: 'scatter', mode: 'lines+markers', name: 'Trend', x, y: x.map(i => Math.sin(i / 4) * 5 + i / 2 + 6), line: { color: '#0b6e69' } }],
+        layout: {
+          title: { text: 'Sample figure: click anything to edit it' }, xaxis: { title: { text: 'Week' } }, yaxis: { title: { text: 'Value' } },
+          annotations: [{ x: 12, y: 11, text: 'Peak', showarrow: true, arrowhead: 2, ax: 40, ay: -40 }]
+        }
+      }, 'sample')
+    };
+
+    /* ---------- history capture ---------- */
+    const skipZoom = k => /(^|\.)(autorange|range(\[\d\])?|camera)$/.test(k);
+    function onRelayout(ed) {
+      if (S.q) return;
+      const ops = Object.entries(ed).filter(([k]) => k !== 'dragmode' && (($('#zoom').checked) || !skipZoom(k)));
+      if (ops.length) commit('relayout', ops);
+    }
+    function onRestyle([u, ix]) {
+      const ops = [];
+      for (const [k, v] of Object.entries(u)) ix.forEach((t, j) => ops.push([k, Array.isArray(v) ? v[j % v.length] : v, t]));
+      commit('restyle', ops);
+    }
+    function commit(kind, ops) {
+      S.entries.length = S.idx; S.snaps.length = S.idx + 1;
+      S.entries.push({ t: new Date(), kind, ops }); S.snaps.push(snap()); S.idx++; ui();
+    }
+    function apply(i) {
+      S.idx = i; const s = S.snaps[i];
+      Plotly.react(gd, clone(s.data), clone(s.layout), cfg).then(ui);
+    }
+    const undo = () => { if (S.ready && S.idx > 0) apply(S.idx - 1) }, redo = () => { if (S.ready && S.idx < S.entries.length) apply(S.idx + 1) };
+    $('#undo').onclick = undo; $('#redo').onclick = redo;
+    addEventListener('keydown', e => {
+      if (/input|textarea/i.test(e.target.tagName)) return;
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); e.shiftKey ? redo() : undo() }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo() }
+    });
+
+    /* ---------- python generation ---------- */
+    const py = v => v === null || v === undefined ? 'None' : v === true ? 'True' : v === false ? 'False' : typeof v === 'string' ? JSON.stringify(v) :
+      Array.isArray(v) ? '[' + v.map(py).join(', ') + ']' : typeof v === 'object' ? '{' + Object.entries(v).map(([k, x]) => JSON.stringify(k) + ': ' + py(x)).join(', ') + '}' : String(v);
+    /* Minimal add_shape arguments: drop Plotly defaults and drawing noise */
+    const SHAPE_DEF = { xref: 'x', yref: 'y', layer: 'above', opacity: 1, visible: true, fillrule: 'evenodd', xsizemode: 'scaled', ysizemode: 'scaled', showlegend: false, legend: 'legend', fillcolor: 'rgba(0,0,0,0)', 'line.dash': 'solid', 'line.width': 2 };
+    function shapeArgs(s) {
+      const o = clone(s); delete o.editable;
+      if (o.type === 'line') delete o.fillcolor;
+      const walk = (obj, pre) => {
+        for (const k of Object.keys(obj)) {
+          const q = pre + k, v = obj[k], c = typeof v === 'string' ? v.replace(/\s/g, '') : v;
+          if (v && typeof v === 'object' && !Array.isArray(v)) { walk(v, q + '.'); if (!Object.keys(v).length) delete obj[k] }
+          else if (v === null || v === undefined || v === '' || (q in SHAPE_DEF && SHAPE_DEF[q] === c)) delete obj[k];
+        }
+      };
+      walk(o, '');
+      const first = ['type', 'xref', 'yref', 'x0', 'x1', 'y0', 'y1', 'path'];
+      return [...first, ...Object.keys(o).filter(k => !first.includes(k))].filter(k => k in o).map(k => `${k}=${py(o[k])}`).join(', ');
+    }
+    function lines() {
+      const out = [], seen = new Map(); let last = -1;
+      for (const e of S.entries.slice(0, S.idx)) for (const [k, v, t] of e.ops) {
+        if (e.kind === 'relayout' && /^shapes(\[|$)/.test(k)) continue;   /* shapes are handled below from the final state */
+        let line, plain = true;
+        if (e.kind === 'restyle') line = `update_traces({${JSON.stringify(k)}: ${py(v)}}, selector=${t})`;
+        else {
+          const m = k.match(/^(annotations|images)\[(\d+)\]$/);
+          if (m && v && typeof v === 'object') { line = `add_${m[1] === 'images' ? 'layout_image' : 'annotation'}(${py(v)})`; plain = false }
+          else if (m) { line = `update_layout(${m[1]}=fig.layout.${m[1]}[:${m[2]}] + fig.layout.${m[1]}[${+m[2] + 1}:])`; plain = false }
+          else { line = `update_layout({${JSON.stringify(k)}: ${py(v)}})`; if (/^(annotations|images)$/.test(k)) plain = false }
+        }
+        if ($('#cons').checked && plain) {
+          const key = e.kind + k + (t ?? ''); const p = seen.get(key);
+          if (p !== undefined && p > last) { out[p] = line; continue } seen.set(key, out.length)
+        }
+        if (!plain) last = out.length;
+        out.push(line);
+      }
+      /* shapes: whatever differs between the original and the current figure is added with add_shape */
+      const orig = S.snaps[0]?.layout?.shapes || [], fin = S.snaps[S.idx]?.layout?.shapes || [], used = new Set(), add = [];
+      fin.forEach(s => { const j = orig.findIndex((o, x) => !used.has(x) && J(o) === J(s)); if (j >= 0) used.add(j); else add.push(s) });
+      const lim = S.n0?.shapes ?? Infinity, gone = orig.map((_, i) => i).filter(i => !used.has(i) && i < lim);
+      out.pre = gone.length ? [`# Remove original shapes that were deleted or edited (edited ones are re-added below)\nfig.layout.shapes = [s for i, s in enumerate(fig.layout.shapes) if i not in ${py(gone)}]`] : [];
+      add.forEach(s => out.push(`add_shape(${shapeArgs(s)})`));
+      /* template items are not in the original figure: add references to them first when later edits address them by index */
+      const stubLines = [];
+      [['annotations', 'annotation'], ['images', 'layout_image']].forEach(([c, fn]) => {
+        const names = S.stubs?.[c] || [], extra = S.extra?.[c] || []; if (!names.length && !extra.length) return;
+        const re = new RegExp('^' + c + '(?:\\[(\\d+)\\])?'), used = S.entries.slice(0, S.idx).some(e => e.kind === 'relayout' && e.ops.some(([k]) => { const m = k.match(re); return m && (m[1] === undefined || +m[1] >= S.n0[c]) }));
+        if (used) { names.forEach(n => stubLines.push(`add_${fn}(templateitemname=${JSON.stringify(n)})`)); extra.forEach(x => stubLines.push(`add_${fn}(${py(x)})`)) }
+      });
+      out.unshift(...stubLines);
+      return out;
+    }
+    const script = () => {
+      const L = lines(), chain = L.length ? '(\n' + L.map((l, i) => '    ' + (i ? '.' : 'fig.') + l).join('\n') + '\n)' : '';
+      const body = [...L.pre, chain].filter(Boolean).join('\n') || '# (no edits yet)';
+      return `# Edits made in Plotly Touchup\n${body}\n${co()}\nfig.show()\n`
+    };
+    $('#cons').onchange = $('#zoom').onchange = () => ui();
+    $('#copy').onclick = () => navigator.clipboard.writeText(script()).then(() => toast('Python copied'), () => toast('Copy failed. Select the code manually.'));
+    $('#dlpy').onclick = () => save(new Blob([script()], { type: 'text/x-python' }), S.name + '_edits.py');
+
+    /* ---------- toolbar ---------- */
+    const TOOLS = [['drawline', 'Line'], ['drawrect', 'Rect'], ['drawcircle', 'Circle'], ['drawopenpath', 'Pen']];
+    const toolSync = () => document.querySelectorAll('#tools button').forEach(b => b.classList.toggle('on', !!S.ready && b.dataset.m === gd._fullLayout.dragmode));
+    TOOLS.forEach(([m, l]) => {
+      const b = h('button', {
+        textContent: l, title: 'Draw: ' + l + ' (click again to stop drawing)', onclick() {
+          if (!S.ready) return; Plotly.relayout(gd, { dragmode: this.classList.contains('on') ? 'zoom' : m }).then(toolSync)
+        }
+      });
+      b.dataset.m = m; $('#tools').append(b);
+    });
+    S.selT = []; S.selA = []; S.anchT = 0; S.anchA = null;
+    /* clicking an annotation or shape in the figure selects it */
+    gd.addEventListener('pointerdown', e => {
+      if (!S.ready || !e.target.closest) return;
+      const a = e.target.closest('g.annotation[data-index]'), s = !a && e.target.closest('.shapelayer [data-index]'), el = a || s; if (!el) return;
+      const k = (a ? 'a' : 's') + el.getAttribute('data-index'); if (!annKeys().includes(k)) return;
+      $('.tabs [data-tab=elems]').click(); pickA(k, e);
+    }, true);
+    $('#addAnn').onclick = () => {
+      if (!S.ready) return; const n = (gd.layout.annotations || []).length; S.selA = ['a' + n]; S.anchA = 'a' + n;
+      Plotly.relayout(gd, {
+        ['annotations[' + n + ']']: {
+          xref: 'paper', yref: 'paper', x: .5, y: .5, text: 'New annotation', showarrow: true, arrowhead: 2, ax: -60, ay: -50,
+          bgcolor: 'rgba(255,255,255,0.85)', bordercolor: '#444', borderwidth: 1, font: { size: 14, color: '#222' }
+        }
+      }); $('.tabs [data-tab=elems]').click()
+    };
+
+    /* ---------- export ---------- */
+    /* keep = true gives the figure exactly as drawn (used for the HTML export); otherwise unchanged template values are left to the template */
+    const figOut = keep => {
+      const o = { data: clone(gd.data), layout: clone(gd.layout) }; if (keep) return o;
+      Object.keys(S.inj || {}).forEach(k => { if (J(o.layout[k]) === J(S.inj[k])) delete o.layout[k] });
+      Object.entries(S.extra || {}).forEach(([c, ex]) => {
+        if (!o.layout[c]) return;
+        ex.forEach(x => { const j = o.layout[c].findIndex((y, i) => i >= (S.n0[c] || 0) && J(y) === J(x)); if (j >= 0) o.layout[c].splice(j, 1) });
+        if (!o.layout[c].length) delete o.layout[c];
+      });
+      return o;
+    };
+    document.querySelectorAll('[data-x]').forEach(b => b.onclick = () => {
+      if (!S.ready) return toast('Load a figure first');
+      const x = b.dataset.x, n = S.name + '_edited';
+      if (x === 'png' || x === 'svg') Plotly.downloadImage(gd, { format: x, scale: +$('#scale').value, filename: n });
+      else if (x === 'json') save(new Blob([J(figOut(), 2)], { type: 'application/json' }), n + '.json');
+      else { const f = figOut(true); save(new Blob([`<!doctype html><meta charset="utf-8"><title>${n}</title><script src="${CDN}"><\/script><div id="g" style="width:100%;height:100vh"></div><script>Plotly.newPlot("g",${J(f.data)},${J(f.layout)},{responsive:true})<\/script>`], { type: 'text/html' }), n + '.html') }
+    });
+
+    /* ---------- side panels ---------- */
+    document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+      document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+      document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + b.dataset.tab))
+    });
+    const dig = (o, p) => p.replace(/\[(\d+)\]/g, '.$1').split('.').reduce((a, k) => a?.[k], o);
+    const norm = c => { try { const x = document.createElement('canvas').getContext('2d'); x.fillStyle = '#010203'; x.fillStyle = c; return x.fillStyle } catch (e) { return '' } };
+    const SYNC = []; let REG = null; S.open = new Set(); S.col = 'color';
+    function fld(lab, type, opts, get, set, mix) {
+      const sel = type === 'select', bool = type === 'bool';
+      const attrs = type === 'number' ? { type, step: 'any' } : type === 'range' ? { type, min: 0, max: 1, step: .05 } : { type: type === 'val' ? 'text' : bool ? 'checkbox' : type };
+      const i = sel ? h('select', {}, ...opts.map(o => { const [v, l] = Array.isArray(o) ? o : [o, o]; return h('option', { value: v, textContent: l || 'auto' }) })) : type === 'color' ? cpick() : h('input', attrs);
+      i._sync = () => {
+        if (i === document.activeElement) return; let v; try { v = get() } catch (e) { }
+        const m = !!(mix && mix());
+        if (bool) { i.checked = !!v; i.indeterminate = m } else if (type === 'color') { i.value = hex(v, opts || '#ffffff'); i.mixed(m) }
+        else if (sel) { i.value = v ?? ''; if (m) i.selectedIndex = -1 } else { i.value = m ? '' : v ?? (type === 'range' ? 1 : ''); if (type !== 'range') i.placeholder = m ? 'Mixed' : '' }
+      };
+      i.onchange = () => {
+        let v = bool ? i.checked : i.value;
+        if (type === 'number') v = v === '' ? null : +v; else if (type === 'range') v = +v;
+        else if (type === 'val' || sel) v = v === '' ? null : isNaN(v) ? v : +v;
+        set(v)
+      };
+      if (REG) REG.push(i); else i._sync();
+      const l = bool ? h('label', { className: 'chk' }, i, lab) : h('label', {}, lab, i); l._i = i; return l;
+    }
+    const row = (...k) => h('div', { className: 'row' }, ...k);
+    const sec = t => h('div', { className: 'sec', textContent: t });
+    const grp = (t, o, ...k) => h('details', { open: o }, h('summary', { textContent: t }), ...k);
+    const det = (id, title, ...k) => { const d = h('details', { open: S.open.has(id), ontoggle() { d.open ? S.open.add(id) : S.open.delete(id) } }, h('summary', { textContent: title }), ...k); return d };
+    const busy = b => { const a = document.activeElement; return a && b.contains(a) && a.tagName !== 'BUTTON' };
+    const axsel = h('select', { onchange() { SYNC.forEach(i => i._sync()) } });
+    const AX = () => axsel.value || 'xaxis';
+    /* a value is read from fig.layout first, then fig.layout.template.layout, then Plotly's resolved layout */
+    const tmpl = () => (gd.layout.template && gd.layout.template.layout) || {};
+    const eff = p => dig(gd.layout, p) ?? dig(tmpl(), p);
+    const lay = (lab, type, path, opts, src) => fld(lab, type, opts, () => src ? eff(path) : eff(path) ?? dig(gd._fullLayout, path), v => {
+      /* clearing width/height goes back to the template value, not to the container size */
+      const t = dig(tmpl(), path); Plotly.relayout(gd, { [path]: (v === null || v === '') && /^(width|height)$/.test(path) && t != null ? t : v })
+    });
+    /* axis values: layout, then the template's same axis, then the template's base axis (xaxis/yaxis apply to xaxis2, yaxis3...) */
+    const effAx = sub => eff(AX() + '.' + sub) ?? dig(tmpl(), AX().replace(/\d+$/, '') + '.' + sub) ?? dig(gd._fullLayout, AX() + '.' + sub);
+    const axf = (lab, type, sub, opts) => fld(lab, type, opts, () => effAx(sub), v => Plotly.relayout(gd, { [AX() + '.' + sub]: v }));
+    const bg = (lab, key) => fld(lab, 'color', 0, () => eff(key) ?? gd._fullLayout[key], v => Plotly.relayout(gd, S.link ? { plot_bgcolor: v, paper_bgcolor: v } : { [key]: v }));
+    const linkC = h('input', { type: 'checkbox', onchange() { S.link = this.checked; if (S.link) Plotly.relayout(gd, { plot_bgcolor: gd._fullLayout.paper_bgcolor }) } });
+    const order = () => gd.data.map((_, i) => i).sort((a, b) => (gd.data[a].legendrank ?? 1000) - (gd.data[b].legendrank ?? 1000) || a - b);
+    const orderNames = () => [...new Set(order().filter(i => gd.data[i].showlegend !== false).map(i => gd.data[i].name ?? `trace ${i}`))];
+    const co = () => S.entries.slice(0, S.idx).some(e => e.ops.some(o => o[0] === 'legendrank')) ? `\n# Plotly Express equivalent for the legend order:\n# category_orders=${py({ [S.col]: orderNames() })}\n` : '';
+    const lcode = h('code', { id: 'lcode' });
+    const lcol = h('input', { type: 'text', value: 'color', onchange() { S.col = this.value || 'color'; legendUI() } });
+
+    REG = SYNC;
+    const wL = lay('Width (px)', 'number', 'width', 0, 1), hL = lay('Height (px)', 'number', 'height', 0, 1);
+    const L = (...a) => lay(...a);
+    $('#p-layout').append(
+      sec('Text'), L('Title', 'text', 'title.text'), row(L('X axis title', 'text', 'xaxis.title.text'), L('Y axis title', 'text', 'yaxis.title.text')),
+      sec('Appearance'), row(bg('Page background', 'paper_bgcolor'), bg('Plot background', 'plot_bgcolor')),
+      h('label', { className: 'chk' }, linkC, 'Keep page and plot backgrounds the same'),
+      row(L('Font family', 'text', 'font.family'), L('Font size', 'number', 'font.size'), L('Font color', 'color', 'font.color', '#444444')),
+      row(L('Title size', 'number', 'title.font.size'), wL, hL),
+      sec('Margins (px)'), row(L('Left', 'number', 'margin.l'), L('Right', 'number', 'margin.r'), L('Top', 'number', 'margin.t'), L('Bottom', 'number', 'margin.b')),
+      grp('More layout options', false, L('Padding', 'number', 'margin.pad'), L('Auto-expand margins', 'bool', 'margin.autoexpand'),
+        L('Hover mode', 'select', 'hovermode', ['', 'closest', 'x', 'y', 'x unified', 'y unified']), L('Bar mode', 'select', 'barmode', ['group', 'stack', 'overlay', 'relative'])),
+      sec('Legend'), L('Show legend', 'bool', 'showlegend'),
+      row(L('Orientation', 'select', 'legend.orientation', [['v', 'Vertical'], ['h', 'Horizontal']]), L('Title', 'text', 'legend.title.text')),
+      grp('Legend order', true, h('div', { id: 'lorder' }), h('label', { style: 'margin-top:8px' }, 'Plotly Express column', lcol),
+        row(lcode, h('button', { textContent: 'Copy', onclick: () => navigator.clipboard.writeText(lcode.textContent).then(() => toast('Copied')) }))),
+      grp('More legend options', false,
+        row(L('X', 'number', 'legend.x'), L('Y', 'number', 'legend.y')),
+        row(L('X anchor', 'select', 'legend.xanchor', ['auto', 'left', 'center', 'right']), L('Y anchor', 'select', 'legend.yanchor', ['auto', 'top', 'middle', 'bottom'])),
+        row(L('Background', 'color', 'legend.bgcolor'), L('Border', 'color', 'legend.bordercolor'), L('Border width', 'number', 'legend.borderwidth')),
+        row(L('Font size', 'number', 'legend.font.size'), L('Font color', 'color', 'legend.font.color', '#444444')),
+        L('Trace order', 'select', 'legend.traceorder', ['normal', 'reversed', 'grouped', 'reversed+grouped']),
+        row(L('Item sizing', 'select', 'legend.itemsizing', ['trace', 'constant']), L('Item click', 'select', 'legend.itemclick', ['toggle', 'toggleothers'])),
+        row(L('Group gap', 'number', 'legend.tracegroupgap'), L('Vertical align', 'select', 'legend.valign', ['top', 'middle', 'bottom']))));
+    $('#p-axes').append(h('label', {}, 'Axis', axsel),
+      sec('Common'), axf('Title', 'text', 'title.text'), row(axf('Range min', 'val', 'range[0]'), axf('Range max', 'val', 'range[1]')),
+      row(axf('Show grid', 'bool', 'showgrid'), axf('Tick labels', 'bool', 'showticklabels')),
+      row(axf('Tick angle', 'number', 'tickangle'), axf('Max ticks', 'number', 'nticks'), axf('Tick size', 'number', 'tickfont.size')),
+      grp('More axis options', false, axf('Type', 'select', 'type', ['', 'linear', 'log', 'date', 'category']),
+        row(axf('Tick spacing (dtick)', 'val', 'dtick'), axf('First tick (tick0)', 'val', 'tick0')),
+        row(axf('Tick marks', 'select', 'ticks', ['', 'outside', 'inside']), axf('Tick label color', 'color', 'tickfont.color', '#444444')),
+        axf('Tick format (e.g. .2f, %Y)', 'text', 'tickformat'), axf('Exponent format', 'select', 'exponentformat', ['none', 'e', 'E', 'power', 'SI', 'B']),
+        row(axf('Prefix', 'text', 'tickprefix'), axf('Suffix', 'text', 'ticksuffix')),
+        row(axf('Grid color', 'color', 'gridcolor'), axf('Zero line', 'bool', 'zeroline'), axf('Axis line', 'bool', 'showline'))));
+    REG = null;
+    function sync() {
+      if (!S.ready) return;
+      const axes = Object.keys(gd._fullLayout).filter(k => /^[xy]axis\d*$/.test(k)).sort();
+      if (axes.join() !== [...axsel.options].map(o => o.value).join()) {
+        const c = axsel.value; axsel.textContent = '';
+        axes.forEach(a => axsel.append(h('option', { value: a, textContent: a }))); axsel.value = axes.includes(c) ? c : axes[0]
+      }
+      SYNC.forEach(i => i._sync());
+      wL._i.placeholder = gd._fullLayout.width; hL._i.placeholder = gd._fullLayout.height;
+    }
+    function legendUI() {
+      const box = $('#lorder'); box.textContent = ''; const o = order();
+      o.forEach((ti, k) => {
+        const mv = d => () => { const n = [...o];[n[k], n[k + d]] = [n[k + d], n[k]]; Plotly.restyle(gd, { legendrank: n.map((_, r) => r + 1) }, n) };
+        box.append(h('div', { className: 'lo' }, h('span', { textContent: `${k + 1}. ${gd.data[ti].name ?? 'trace ' + ti}` }),
+          h('button', { textContent: '↑', disabled: k === 0, onclick: mv(-1) }), h('button', { textContent: '↓', disabled: k === o.length - 1, onclick: mv(1) })))
+      });
+      lcode.textContent = 'category_orders=' + py({ [S.col]: orderNames() });
+    }
+    /* ---------- shared helpers ---------- */
+    const lab = (t, el) => h('div', { className: 'lab' }, h('span', { textContent: t }), el);
+    function seg(opts, get, set) {
+      const w = h('div', { className: 'seg' }), bs = opts.map(([v, l, t]) => h('button', { type: 'button', textContent: l, title: t || '', onclick: () => set(v) }));
+      w.append(...bs); let c; try { c = get() } catch (e) { }
+      bs.forEach((b, k) => b.classList.toggle('on', String(opts[k][0]) === String(c))); return w;
+    }
+    function tog(text, get, set, title) {
+      let on = false; try { on = !!get() } catch (e) { }
+      return h('button', { type: 'button', className: on ? 'on' : '', textContent: text, title: title || '', onclick: () => set(!on) });
+    }
+    const ib = (t, title, fn, cls) => h('button', { type: 'button', textContent: t, title, className: cls || '', onclick(e) { e.preventDefault(); e.stopPropagation(); fn() } });
+    const clear = c => String(c ?? '').replace(/\s/g, '').endsWith(',0)');
+
+    /* ---------- multi-select lists (click, Ctrl/Cmd-click, Shift-click) ---------- */
+    function choose(sel, anchor, order, key, e) {
+      const multi = e && (e.ctrlKey || e.metaKey), range = e && e.shiftKey && order.includes(anchor);
+      let r;
+      if (range) { const a = order.indexOf(anchor), b = order.indexOf(key), part = order.slice(Math.min(a, b), Math.max(a, b) + 1); r = multi ? [...new Set([...sel, ...part])] : part }
+      else if (multi) r = sel.includes(key) ? sel.filter(x => x !== key) : [...sel, key];
+      else r = [key];
+      return [order.filter(k => r.includes(k)), range ? anchor : key];
+    }
+    function slist(items, sel, pick) {
+      const box = h('div', { className: 'slist', role: 'listbox' });
+      items.forEach(it => box.append(h('div', {
+        className: 'si' + (sel.includes(it.k) ? ' on' : ''), tabIndex: 0, role: 'option',
+        onclick: e => pick(it.k, e), onkeydown(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(it.k, e) } }
+      }, ...(it.sw ? [h('i', { className: 'sd', style: 'background:' + it.sw })] : []), h('span', { className: 'sn', textContent: it.t }), h('small', { textContent: it.sub || '' }))));
+      return box;
+    }
+    const sbar = (txt, ...b) => h('div', { className: 'sbar' }, h('span', { className: 'mut', textContent: txt }), ...b);
+    const sbtn = (t, fn, o = {}) => h('button', Object.assign({ type: 'button', textContent: t, onclick: fn }, o));
+    const COLL = { a: 'annotations', s: 'shapes', i: 'images' };
+    const shown = (c, i) => gd._fullLayout[c]?.[i]?.visible !== false;
+    const annKeys = () => ['a', 's', 'i'].flatMap(p => (gd.layout[COLL[p]] || []).map((_, i) => p + i).filter(k => shown(COLL[p], +k.slice(1))));
+    function pickT(i, e) { [S.selT, S.anchT] = choose(S.selT, S.anchT, gd.data.map((_, k) => k), i, e); traces(true) }
+    function pickA(k, e) { [S.selA, S.anchA] = choose(S.selA, S.anchA, annKeys(), k, e); elems(true) }
+
+    /* ---------- vline / hline / vrect / hrect ---------- */
+    const spanMode = F => { const v = / domain$/.test(F.yref || ''), x = / domain$/.test(F.xref || ''); return v && !x ? 'v' : x && !v ? 'h' : 'free' };
+    function spanU(i, mode) {
+      const FL = gd._fullLayout, F = FL.shapes?.[i]; if (!F || !/^(line|rect)$/.test(F.type)) return {};
+      const u = {}, p = `shapes[${i}].`, axO = r => FL[r.replace(/ domain$/, '').replace(/^([xy])/, '$1axis')];
+      const dom = d => { const R = F[d + 'ref']; if (R === 'paper') { u[p + d + '0'] = 0; u[p + d + '1'] = 1 } else if (!/ domain$/.test(R)) { u[p + d + 'ref'] = R + ' domain'; u[p + d + '0'] = 0; u[p + d + '1'] = 1 } };
+      const dat = d => {
+        const R = F[d + 'ref']; if (!/ domain$/.test(R)) return;
+        const A = axO(R), g = A.range.map(A.r2l); u[p + d + 'ref'] = R.replace(/ domain$/, '');
+        ['0', '1'].forEach(k => { u[p + d + k] = A.l2d(g[0] + F[d + k] * (g[1] - g[0])) });
+      };
+      if (mode === 'v') { dat('x'); dom('y'); if (F.type === 'line') u[p + 'x1'] = u[p + 'x0'] ?? F.x0 }
+      else if (mode === 'h') { dat('y'); dom('x'); if (F.type === 'line') u[p + 'y1'] = u[p + 'y0'] ?? F.y0 }
+      else { dat('x'); dat('y') }
+      return u;
+    }
+    const spanName = F => { const m = spanMode(F); return /^(line|rect)$/.test(F.type) && m !== 'free' ? m + F.type : F.type || 'path' };
+
+    /* ---------- traces: one set of controls for the selected traces ---------- */
+    /* rebuilding a panel must not reset the pane's or the list's scroll position */
+    function keepScroll(box, fn) {
+      const pane = box.closest('.pane'), top = pane.scrollTop, lt = box.querySelector('.slist')?.scrollTop || 0;
+      fn(); pane.scrollTop = top; const l = box.querySelector('.slist'); if (l) l.scrollTop = lt;
+    }
+    function traces(force) { const box = $('#traces'); if (!force && busy(box)) return; keepScroll(box, () => buildTraces(box)) }
+    function buildTraces(box) {
+      box.textContent = '';
+      const n = gd.data.length, F = i => gd._fullData?.[i] || {}; S.selT = S.selT.filter(i => i < n);
+      const tcol = i => { const t = gd.data[i], fu = F(i), c = typeof t.marker?.color === 'string' ? t.marker.color : fu.marker?.color ?? fu.line?.color; return typeof c === 'string' ? c : '#888888' };
+      const tname = i => gd.data[i].name ?? F(i).name ?? gd.data[i].type ?? 'trace';
+      box.append(slist(gd.data.map((t, i) => ({ k: i, t: `${i + 1}. ${tname(i)}`, sw: tcol(i), sub: F(i).type || t.type || 'scatter' })), S.selT, pickT),
+        sbar(`${S.selT.length} of ${n} selected`, sbtn('All', () => { S.selT = gd.data.map((_, k) => k); traces(true) }), sbtn('None', () => { S.selT = []; traces(true) })),
+        h('p', { className: 'hint', textContent: 'Click to select. Ctrl/Cmd-click adds or removes one, Shift-click selects a range.' }));
+      const sel = S.selT; if (!sel.length) return;
+      const p = sel.includes(S.anchT) ? S.anchT : sel[0], isSc = i => /^scatter(gl)?$/.test(F(i).type || gd.data[i].type || 'scatter');
+      const sc = sel.filter(isSc), ns = sel.filter(i => !isSc(i));
+      const f = (lab, ty, sub, opts, only) => {
+        const ix = only || sel, q = ix.includes(p) ? p : ix[0];
+        return fld(lab, ty, opts, () => dig(F(q), sub), v => Plotly.restyle(gd, { [sub]: v }, ix), () => ix.some(i => J(dig(F(i), sub)) !== J(dig(F(q), sub))));
+      };
+      const bf = (lab, key) => fld(lab, 'bool', 0, () => gd.data[p][key] !== false, v => Plotly.restyle(gd, { [key]: v }, sel), () => sel.some(i => (gd.data[i][key] !== false) !== (gd.data[p][key] !== false)));
+      const colorF = fld('Color', 'color', '#636efa', () => tcol(p), v => {
+        if (!ns.length) Plotly.restyle(gd, { 'marker.color': v, 'line.color': v }, sel);
+        else { Plotly.restyle(gd, { 'marker.color': v }, sel); if (sc.length) Plotly.restyle(gd, { 'line.color': v }, sc) }
+      }, () => sel.some(i => tcol(i) !== tcol(p)));
+      box.append(h('div', { className: 'ctl' }, sec(sel.length > 1 ? `Editing ${sel.length} traces` : `Editing trace ${p + 1}`),
+        ...(sel.length === 1 ? [f('Name', 'text', 'name')] : []),
+        row(colorF, f('Opacity', 'range', 'opacity')),
+        row(bf('Visible', 'visible'), bf('In legend', 'showlegend')),
+        ...(sc.length ? [row(f('Mode', 'select', 'mode', ['lines', 'markers', 'lines+markers', 'none'], sc), f('Line width', 'number', 'line.width', 0, sc))] : []),
+        det('tmore', 'More trace options',
+          ...(sc.length ? [row(f('Line dash', 'select', 'line.dash', ['solid', 'dot', 'dash', 'longdash', 'dashdot'], sc), f('Marker size', 'number', 'marker.size', 0, sc)),
+          f('Fill', 'select', 'fill', ['none', 'tozeroy', 'tonexty', 'tozerox', 'toself'], sc)] : []),
+          ...(ns.length ? [row(f('Outline color', 'color', 'marker.line.color', 0, ns), f('Outline width', 'number', 'marker.line.width', 0, ns))] : []),
+          f('Legend group', 'text', 'legendgroup'))));
+    }
+
+    /* ---------- annotations and shapes: one set of controls for the selection ---------- */
+    /* a layout item with its template values filled in (used when copying) */
+    const deepMerge = (a, b) => { for (const k in b) a[k] = b[k] && typeof b[k] === 'object' && !Array.isArray(b[k]) && a[k] && typeof a[k] === 'object' ? deepMerge(a[k], b[k]) : b[k]; return a };
+    function resolve(c, i) {
+      const u = clone(gd.layout[c][i]), tn = u.templateitemname; if (!tn) return u;
+      const t = (tmpl()[c] || []).find(x => x.name === tn); if (!t) { delete u.templateitemname; return u }
+      const o = deepMerge(clone(t), u); delete o.templateitemname; delete o.name; return o;
+    }
+    function dupe(sa, ss, si) {
+      const L = gd._fullLayout, d = 26, u = {}, nk = [];
+      [['annotations', sa, 'a'], ['shapes', ss, 's'], ['images', si, 'i']].forEach(([c, idxs, pre]) => {
+        const n0 = (gd.layout[c] || []).length;
+        idxs.forEach((i, k) => {
+          const o = resolve(c, i);
+          const mv = (key, ref, s, dim) => {
+            if (typeof o[key] !== 'number' && typeof o[key] !== 'string') return;
+            if (c === 'shapes' && /domain/.test(ref)) return;
+            try {
+              if (ref === 'paper' || /domain/.test(ref)) o[key] = +(+o[key] + s * d / L._size[dim]).toFixed(4);
+              else { const ax = L[ref.replace(/^([xy])/, '$1axis')]; o[key] = ax.l2d(ax.p2l(ax.l2p(ax.d2l(o[key])) + d)) }
+            } catch (e) { }
+          };
+          const xr = o.xref || (c === 'images' ? 'paper' : 'x'), yr = o.yref || (c === 'images' ? 'paper' : 'y');
+          if (c !== 'shapes') { mv('x', xr, 1, 'w'); mv('y', yr, -1, 'h') }
+          else if (o.type !== 'path') { mv('x0', xr, 1, 'w'); mv('x1', xr, 1, 'w'); mv('y0', yr, -1, 'h'); mv('y1', yr, -1, 'h') }
+          u[`${c}[${n0 + k}]`] = o; nk.push(pre + (n0 + k));
+        });
+      });
+      S.selA = nk; S.anchA = nk[0]; Plotly.relayout(gd, u); toast(nk.length + (nk.length > 1 ? ' items' : ' item') + ' copied');
+    }
+    function elems(force) { const box = $('#elems'); if (!force && busy(box)) return; keepScroll(box, () => buildElems(box)) }
+    function buildElems(box) {
+      box.textContent = '';
+      const FL = gd._fullLayout, keys = annKeys(); S.selA = S.selA.filter(k => keys.includes(k));
+      const A = gd.layout.annotations || [], Sh = gd.layout.shapes || [], Im = gd.layout.images || [];
+      if (!keys.length) return box.append(h('p', { className: 'hint', textContent: 'Nothing here yet. Add an annotation or an image, or draw a shape with the toolbar.' }));
+      const tn = (c, i) => gd.layout[c][i].templateitemname || (S.extra?.[c] && i >= (S.n0[c] || 0) + (S.stubs?.[c]?.length || 0) ? 'template' : undefined);
+      const items = keys.map(k => {
+        const pf = k[0], i = +k.slice(1), tp = tn(COLL[pf], i);
+        if (pf === 'a') return { k, t: `Annotation ${i + 1}: ${String(FL.annotations?.[i]?.text ?? '').slice(0, 26)}`, sub: tp ? 'template' : 'text' };
+        if (pf === 's') return { k, t: `Shape ${i + 1}${tp ? ': ' + tp : ''}`, sub: (tp ? 'template ' : '') + spanName(FL.shapes?.[i] || {}) };
+        return { k, t: `Image ${i + 1}${tp ? ': ' + tp : ''}`, sub: tp ? 'template' : 'image' };
+      });
+      const pick3 = pf => S.selA.filter(k => k[0] === pf).map(k => +k.slice(1)), sa = pick3('a'), ss = pick3('s'), si = pick3('i');
+      const del = () => {
+        const u = {};
+        [['annotations', sa], ['shapes', ss], ['images', si]].forEach(([c, ix]) => {
+          /* template items cannot be removed from the array (they would reappear), so they are hidden instead */
+          if (ix.length) u[c] = (gd.layout[c] || []).map((x, j) => !ix.includes(j) ? x : x.templateitemname ? { ...x, visible: false } : null).filter(Boolean);
+        });
+        S.selA = []; Plotly.relayout(gd, u);
+      };
+      box.append(slist(items, S.selA, pickA),
+        sbar(`${S.selA.length} of ${keys.length} selected`, sbtn('All', () => { S.selA = keys; elems(true) }), sbtn('None', () => { S.selA = []; elems(true) }),
+          sbtn('Duplicate', () => dupe(sa, ss, si), { disabled: !S.selA.length, title: 'Copy the selected items' }), sbtn('Delete', del, { disabled: !S.selA.length, className: 'del' })),
+        h('p', { className: 'hint', textContent: 'Click to select. Ctrl/Cmd-click adds or removes one, Shift-click selects a range. Annotations and shapes can also be clicked in the figure.' }));
+      if (!S.selA.length) return;
+      const pk = S.selA.includes(S.anchA) ? S.anchA : S.selA[0], pn = +pk.slice(1);
+      if (sa.length) {
+        const pa = pk[0] === 'a' && sa.includes(pn) ? pn : sa[0], FA = i => FL.annotations?.[i] || {}, F = FA(pa);
+        const setA = (k, v) => Plotly.relayout(gd, Object.fromEntries(sa.map(i => [`annotations[${i}].${k}`, v])));
+        const f = (lb, ty, sub, opts) => fld(lb, ty, opts, () => dig(FA(pa), sub), v => setA(sub, v), () => sa.some(i => J(dig(FA(i), sub)) !== J(dig(FA(pa), sub))));
+        box.append(h('div', { className: 'ctl' }, sec(sa.length > 1 ? `Editing ${sa.length} annotations` : `Editing annotation ${pa + 1}`),
+          ...(sa.length === 1 ? [f('Text', 'text', 'text')] : []),
+          row(f('Size', 'number', 'font.size'), f('Text color', 'color', 'font.color', '#222222'),
+            lab('Align', seg([['left', 'Left'], ['center', 'Center'], ['right', 'Right']], () => F.align, v => setA('align', v)))),
+          row(f('Fill', 'color', 'bgcolor'),
+            tog('Page color', () => norm(F.bgcolor) === norm(FL.paper_bgcolor), v => setA('bgcolor', v ? FL.paper_bgcolor : 'rgba(0,0,0,0)'), 'Fill with the page background'),
+            tog('No fill', () => clear(F.bgcolor), v => setA('bgcolor', v ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.85)')),
+            f('Border', 'color', 'bordercolor'),
+            tog('Border', () => F.borderwidth > 0, v => setA('borderwidth', v ? 1 : 0))),
+          row(tog('Arrow', () => F.showarrow, v => setA('showarrow', v)),
+            lab('Arrowhead', seg([[0, '\u2014', 'No head'], [1, '\u203A', 'Arrowhead 1'], [2, '\u25B8', 'Arrowhead 2'], [3, '\u25B6', 'Arrowhead 3']], () => F.arrowhead, v => setA('arrowhead', v))),
+            f('Arrow color', 'color', 'arrowcolor'), f('Width', 'number', 'arrowwidth')),
+          det('amore', 'More annotation options',
+            row(f('Rotation', 'number', 'textangle'), f('Padding', 'number', 'borderpad'), f('Border width', 'number', 'borderwidth')),
+            f('Opacity', 'range', 'opacity'),
+            row(f('Arrowhead style', 'select', 'arrowhead', ['0', '1', '2', '3', '4', '5', '6', '7', '8']), f('Arrow size', 'number', 'arrowsize')),
+            ...(sa.length === 1 ? [row(f('X position', 'val', 'x'), f('Y position', 'val', 'y'))] : []))));
+      }
+      if (ss.length) {
+        const ps = pk[0] === 's' && ss.includes(pn) ? pn : ss[0], FS = i => FL.shapes?.[i] || {};
+        const setS = (k, v) => Plotly.relayout(gd, Object.fromEntries(ss.map(i => [`shapes[${i}].${k}`, v])));
+        const f = (lb, ty, sub, opts) => fld(lb, ty, opts, () => dig(FS(ps), sub), v => setS(sub, v), () => ss.some(i => J(dig(FS(i), sub)) !== J(dig(FS(ps), sub))));
+        const elig = ss.filter(i => /^(line|rect)$/.test(FS(i).type)), eq = elig.includes(ps) ? ps : elig[0];
+        box.append(h('div', { className: 'ctl' }, sec(ss.length > 1 ? `Editing ${ss.length} shapes` : `Editing shape ${ps + 1}: ${FS(ps).type || 'path'}`),
+          row(...(ss.every(i => FS(i).type === 'line') ? [] : [f('Fill', 'color', 'fillcolor')]), f('Line color', 'color', 'line.color', '#d1495b'), f('Width', 'number', 'line.width')),
+          row(lab('Dash', seg([['solid', 'Solid'], ['dot', 'Dot'], ['dash', 'Dash']], () => dig(FS(ps), 'line.dash'), v => setS('line.dash', v))), f('Opacity', 'range', 'opacity')),
+          ...(elig.length ? [row(lab('Span (vline / hline / vrect / hrect)', seg([['free', 'Free', 'A normal line or rectangle'], ['v', 'Vertical', 'vline / vrect: spans the full plot height'], ['h', 'Horizontal', 'hline / hrect: spans the full plot width']],
+            () => spanMode(FS(eq)), v => { const u = Object.assign({}, ...elig.map(i => spanU(i, v))); if (Object.keys(u).length) Plotly.relayout(gd, u) })))] : []),
+          det('smore', 'More shape options', row(f('Dash style', 'select', 'line.dash', ['solid', 'dot', 'dash', 'longdash', 'dashdot', 'longdashdot']), f('Layer', 'select', 'layer', ['above', 'below', 'between'])),
+            ...(ss.length === 1 && FS(ps).type !== 'path' ? [row(f('x0', 'val', 'x0'), f('y0', 'val', 'y0')), row(f('x1', 'val', 'x1'), f('y1', 'val', 'y1'))] : []))));
+      }
+      if (si.length) {
+        const pi = pk[0] === 'i' && si.includes(pn) ? pn : si[0], FI = i => FL.images?.[i] || {};
+        const setI = (k, v) => Plotly.relayout(gd, Object.fromEntries(si.map(i => [`images[${i}].${k}`, v])));
+        const f = (lb, ty, sub, opts) => fld(lb, ty, opts, () => dig(FI(pi), sub), v => setI(sub, v), () => si.some(i => J(dig(FI(i), sub)) !== J(dig(FI(pi), sub))));
+        const emb = /^data:/.test(FI(pi).source || '');
+        box.append(h('div', { className: 'ctl' }, sec(si.length > 1 ? `Editing ${si.length} images` : `Editing image ${pi + 1}`),
+          ...(si.length === 1 ? [row(emb ? lab('Source', h('input', { type: 'text', value: 'Embedded image', disabled: true })) : f('Source URL', 'text', 'source'),
+            ib('Replace', 'Replace with another image file', () => { S.repl = pi; $('#imgfile').click() }))] : []),
+          row(f('X', 'number', 'x'), f('Y', 'number', 'y'), f('Width', 'number', 'sizex'), f('Height', 'number', 'sizey')),
+          row(f('Opacity', 'range', 'opacity'), f('Layer', 'select', 'layer', ['above', 'below']), f('Sizing', 'select', 'sizing', ['stretch', 'contain', 'fill'])),
+          row(tog('Lock aspect on corner handles', () => S.lock, v => { S.lock = v; elems(true) }, 'Hold Shift while dragging to do the opposite'))));
+      }
+    }
+
+    /* ---------- images: drag to move, handles to resize (works on template images too) ---------- */
+    S.lock = true; S.repl = null;
+    const qrel = u => { S.q = (S.q || 0) + 1; return S.pend = Plotly.relayout(gd, u).finally(() => S.q--) };
+    const IMX = { left: 0, center: .5, right: 1 }, IMY = { top: 0, middle: .5, bottom: 1 };
+    const axOf = r => /^[xy]\d*$/.test(r) ? gd._fullLayout[r.replace(/^([xy])/, '$1axis')] : null;
+    const imOK = F => F && F.visible !== false && (F.xref === 'paper' || /^x\d*$/.test(F.xref)) && (F.yref === 'paper' || /^y\d*$/.test(F.yref));
+    function imGeom(i) {
+      const FL = gd._fullLayout, F = FL.images?.[i], s = FL._size; if (!imOK(F)) return null;
+      const X = axOf(F.xref), Y = axOf(F.yref);
+      const px = X ? X._offset + X.l2p(X.d2l(F.x)) : s.l + F.x * s.w, py = Y ? Y._offset + Y.l2p(Y.d2l(F.y)) : s.t + (1 - F.y) * s.h;
+      const w = X ? Math.abs(X.l2p(X.d2l(F.x) + F.sizex) - X.l2p(X.d2l(F.x))) : F.sizex * s.w;
+      const ht = Y ? Math.abs(Y.l2p(Y.d2l(F.y) - F.sizey) - Y.l2p(Y.d2l(F.y))) : F.sizey * s.h;
+      return { l: px - (IMX[F.xanchor] ?? 0) * w, t: py - (IMY[F.yanchor] ?? 0) * ht, w, h: ht };
+    }
+    function imPut(i, r) {
+      const FL = gd._fullLayout, F = FL.images[i], s = FL._size, X = axOf(F.xref), Y = axOf(F.yref), p = `images[${i}].`;
+      const ax = r.l + (IMX[F.xanchor] ?? 0) * r.w, ay = r.t + (IMY[F.yanchor] ?? 0) * r.h, sig = v => typeof v === 'number' ? +v.toPrecision(7) : v, u = {};
+      if (X) { u[p + 'x'] = sig(X.l2d(X.p2l(ax - X._offset))); u[p + 'sizex'] = +Math.abs(X.p2l(r.w) - X.p2l(0)).toPrecision(6) }
+      else { u[p + 'x'] = +((ax - s.l) / s.w).toFixed(4); u[p + 'sizex'] = +(r.w / s.w).toFixed(4) }
+      if (Y) { u[p + 'y'] = sig(Y.l2d(Y.p2l(ay - Y._offset))); u[p + 'sizey'] = +Math.abs(Y.p2l(r.h) - Y.p2l(0)).toPrecision(6) }
+      else { u[p + 'y'] = +(1 - (ay - s.t) / s.h).toFixed(4); u[p + 'sizey'] = +(r.h / s.h).toFixed(4) }
+      return u;
+    }
+    const place = (b, r) => { b.style.left = r.l + 'px'; b.style.top = r.t + 'px'; b.style.width = r.w + 'px'; b.style.height = r.h + 'px' };
+    function mkBox() {
+      const b = h('div', { className: 'ib' });
+      ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'].forEach(k => b.append(h('i', { className: 'hd h-' + k })));
+      b.onpointerdown = e => {
+        if (e.button) return; e.preventDefault(); e.stopPropagation();
+        const i = +b.dataset.i, key = 'i' + i, r0 = imGeom(i); if (!r0) return;
+        $('.tabs [data-tab=elems]').click();
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return pickA(key, e);
+        if (!S.selA.includes(key)) pickA(key, e);
+        b.setPointerCapture(e.pointerId);
+        S.drag = { i, k: e.target.classList.contains('hd') ? e.target.className.split('h-')[1] : 'mv', x: e.clientX, y: e.clientY, r0, u: null };
+      };
+      b.onpointermove = e => {
+        const d = S.drag; if (!d || d.i !== +b.dataset.i) return;
+        const dx = e.clientX - d.x, dy = e.clientY - d.y, o = d.r0, M = 10; let l = o.l, t = o.t, r = o.l + o.w, bt = o.t + o.h;
+        if (d.k === 'mv') { l += dx; r += dx; t += dy; bt += dy }
+        else {
+          if (d.k.includes('w')) l = Math.min(l + dx, r - M); if (d.k.includes('e')) r = Math.max(r + dx, l + M);
+          if (d.k.includes('n')) t = Math.min(t + dy, bt - M); if (d.k.includes('s')) bt = Math.max(bt + dy, t + M);
+          if (d.k.length === 2 && S.lock !== e.shiftKey) {
+            const k = Math.max((r - l) / o.w, (bt - t) / o.h), nw = o.w * k, nh = o.h * k;
+            if (d.k.includes('w')) l = r - nw; else r = l + nw; if (d.k.includes('n')) t = bt - nh; else bt = t + nh;
+          }
+        }
+        const rect = { l, t, w: r - l, h: bt - t }; place(b, rect); d.u = imPut(d.i, rect);
+        cancelAnimationFrame(S.raf); S.raf = requestAnimationFrame(() => qrel(d.u));
+      };
+      b.onpointerup = b.onpointercancel = () => {
+        const d = S.drag; if (!d) return; S.drag = null; cancelAnimationFrame(S.raf);
+        if (d.u) (S.pend || Promise.resolve()).then(() => Plotly.relayout(gd, d.u)); else ov();
+      };
+      b.onwheel = e => {
+        const t = document.elementsFromPoint(e.clientX, e.clientY).find(n => n.classList.contains('nsewdrag')); if (!t) return;
+        e.preventDefault(); t.dispatchEvent(new WheelEvent('wheel', { deltaY: e.deltaY, deltaMode: e.deltaMode, clientX: e.clientX, clientY: e.clientY, ctrlKey: e.ctrlKey, shiftKey: e.shiftKey, bubbles: true, cancelable: true }));
+      };
+      return b;
+    }
+    function ov() {
+      const L = $('#imgLayer'); if (!L) return;
+      const dm = S.ready ? gd._fullLayout.dragmode : '', n = S.ready ? (gd._fullLayout.images || []).length : 0;
+      while (L.children.length > n) L.lastChild.remove();
+      while (L.children.length < n) L.append(mkBox());
+      [...L.children].forEach((b, i) => {
+        b.dataset.i = i; b.classList.toggle('sel', (S.selA || []).includes('i' + i)); b.style.pointerEvents = /^(draw|erase)/.test(dm) ? 'none' : 'auto';
+        if (S.drag?.i === i) return; const r = imGeom(i); b.style.display = r ? '' : 'none'; if (r) place(b, r);
+      });
+    }
+    function imgFile(f, then) {
+      const fr = new FileReader();
+      fr.onload = () => {
+        const im = new Image();
+        im.onload = () => {
+          let src = fr.result; const m = Math.max(im.naturalWidth, im.naturalHeight);
+          if (m > 1600 && !/svg/.test(f.type)) { const k = 1600 / m, c = h('canvas', { width: Math.round(im.naturalWidth * k), height: Math.round(im.naturalHeight * k) }); c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); src = c.toDataURL(f.type === 'image/jpeg' ? 'image/jpeg' : 'image/png', .92) }
+          then(src, im.naturalWidth / im.naturalHeight);
+        };
+        im.onerror = () => toast('Could not read that image'); im.src = fr.result;
+      };
+      fr.readAsDataURL(f);
+    }
+    function addImage(src, asp) {
+      if (!S.ready) return toast('Load a figure first');
+      const s = gd._fullLayout._size; let w = .28, ht = w * s.w / asp / s.h; if (ht > .5) { ht = .5; w = ht * s.h * asp / s.w }
+      const n = (gd.layout.images || []).length; S.selA = ['i' + n]; S.anchA = 'i' + n;
+      Plotly.relayout(gd, { ['images[' + n + ']']: { source: src, xref: 'paper', yref: 'paper', x: +(.5 - w / 2).toFixed(4), y: +(.5 + ht / 2).toFixed(4), sizex: +w.toFixed(4), sizey: +ht.toFixed(4), xanchor: 'left', yanchor: 'top', sizing: 'stretch', layer: 'above' } });
+      $('.tabs [data-tab=elems]').click();
+    }
+    $('#addImg2').onclick = () => $('#addImg').click();
+    $('#imgfile').onchange = e => {
+      const f = e.target.files[0], r = S.repl; S.repl = null; e.target.value = ''; if (!f) return;
+      if (!S.ready) return toast('Load a figure first');
+      imgFile(f, (src, a) => r != null ? Plotly.relayout(gd, { [`images[${r}].source`]: src }) : addImage(src, a));
+    };
+    $('#imgUrlGo').onclick = () => {
+      const u = $('#imgUrl').value.trim(); if (!u) return; const im = new Image();
+      im.onload = () => { addImage(u, im.naturalWidth / im.naturalHeight); $('#imgUrl').value = '' }; im.onerror = () => toast('Could not load that image URL'); im.src = u;
+    };
+    const short = o => (o[2] !== undefined ? `trace ${o[2]}: ` : '') + o[0] + ' = ' + (J(o[1]) ?? '').slice(0, 50);
+    function hist() {
+      const b = $('#hist'); b.textContent = '';
+      const row = (i, t, s) => b.append(h('div', { className: 'hi' + (i === S.idx ? ' on' : '') + (i > S.idx ? ' fut' : ''), onclick: () => apply(i) }, h('b', { textContent: t }), h('small', { textContent: s })));
+      row(0, 'Original', 'As loaded');
+      S.entries.forEach((e, j) => row(j + 1, `${j + 1}. ${e.kind} at ${e.t.toLocaleTimeString()}`, e.ops.slice(0, 3).map(short).join('\n') + (e.ops.length > 3 ? `\n+${e.ops.length - 3} more` : '')));
+    }
+    function ui() {
+      $('#undo').disabled = S.idx < 1; $('#redo').disabled = S.idx >= S.entries.length;
+      if (!S.ready) return;[hist, () => { $('#code').textContent = script() }, elems, traces, legendUI, sync].forEach(f => { try { f() } catch (e) { console.error(e) } });
+    }
+    /* ---------- resizable sidebar ---------- */
+    $('#addAnn2').onclick = () => $('#addAnn').click();
+    const split = $('#split'), setSide = w => { w = Math.round(Math.max(340, Math.min(w, innerWidth * .7))); document.documentElement.style.setProperty('--side', w + 'px'); return w };
+    const fit = () => S.ready && Plotly.Plots.resize(gd);
+    try { const w = +localStorage.getItem('studio-side'); if (w) setSide(w) } catch (e) { }
+    let raf = 0;
+    split.onpointerdown = e => { split.setPointerCapture(e.pointerId); document.body.classList.add('rs') };
+    split.onpointermove = e => { if (!split.hasPointerCapture(e.pointerId)) return; setSide(innerWidth - e.clientX); cancelAnimationFrame(raf); raf = requestAnimationFrame(fit) };
+    split.onpointerup = e => { document.body.classList.remove('rs'); try { localStorage.setItem('studio-side', parseInt(getComputedStyle(document.documentElement).getPropertyValue('--side'))) } catch (e) { } fit() };
+    split.ondblclick = () => { setSide(540); try { localStorage.removeItem('studio-side') } catch (e) { } fit() };
+    ui();
+
+    /* ---------- load from ?src=<url> ---------- */
+    (() => {
+      const q = new URLSearchParams(location.search), src = q.get('src');
+      if (!src) return;
+      fetch(src, { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw Error(`Could not fetch ${src} (HTTP ${r.status})`); return r.text() })
+        .then(t => tryLoad(t, q.get('name') || src.split('/').pop().replace(/\.json$/i, '')))
+        .catch(e => toast(e.message + (location.protocol === 'file:' ? ' (browsers block fetch() from file:// pages; open this page over http)' : '')));
+    })();
+  </script>
+</body>
+
+</html>
